@@ -1,0 +1,177 @@
+[gd_scene load_steps=21 format=3 uid="uid://b2iwuk2gndgr4"]
+
+[ext_resource type="Script" uid="uid://bsebhi65dqn0d" path="res://Player/Player.gd" id="1_cxr5p"]
+[ext_resource type="Material" uid="uid://vyxvhhf0hon" path="res://PlayerMat.tres" id="2_tdg3f"]
+[ext_resource type="Script" uid="uid://oh5umyrnpcif" path="res://addons/StateMachine/StateMachine/state_machine.gd" id="3_dtqjt"]
+[ext_resource type="Script" uid="uid://ofgysyk2gry1" path="res://Player/IdleState.gd" id="4_5ncpa"]
+[ext_resource type="Script" uid="uid://bxtyxib10gxlu" path="res://Player/MoveState.gd" id="5_wi0c6"]
+[ext_resource type="Script" uid="uid://f8hyo1x33o6j" path="res://Player/AttackState.gd" id="6_tdg3f"]
+[ext_resource type="AudioStream" uid="uid://b6kdy1orqnwqu" path="res://Player/Whoosh.ogg" id="7_j23h2"]
+[ext_resource type="AudioStream" uid="uid://jk1e673eyin2" path="res://Player/Hit2.ogg" id="8_s1rgi"]
+[ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://EnemyMat.tres" id="9_j23h2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_js7pq"]
+radius = 0.35
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bcbcq"]
+radius = 0.35
+
+[sub_resource type="PrismMesh" id="PrismMesh_bcbcq"]
+size = Vector3(0.2, 0.2, 0.5)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cxr5p"]
+radius = 0.15
+height = 0.75
+
+[sub_resource type="Animation" id="Animation_cxr5p"]
+resource_name = "Attack"
+length = 0.25
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Attack:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Attack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.209, 0.285, -0.185273, 0.025, 1, 0.209, 0.285, -0.57575, 0.25, 1, 0.209, 0.285, -0.57575)
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_attack_ended"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_tdg3f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Attack:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Attack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.208871, 0.285264, -0.417642)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dtqjt"]
+_data = {
+&"Attack": SubResource("Animation_cxr5p"),
+&"RESET": SubResource("Animation_tdg3f")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s1rgi"]
+radius = 0.6
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s1rgi"]
+random_pitch = 1.15
+streams_count = 1
+stream_0/stream = ExtResource("7_j23h2")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_j23h2"]
+random_pitch = 1.15
+streams_count = 1
+stream_0/stream = ExtResource("8_s1rgi")
+
+[sub_resource type="BoxMesh" id="BoxMesh_s1rgi"]
+size = Vector3(1, 0.1, 1)
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("debug_target", "state_machine")]
+collision_layer = 2
+collision_mask = 57
+script = ExtResource("1_cxr5p")
+debug_target = NodePath("DebugTarget")
+state_machine = NodePath("StateMachine")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "character")]
+script = ExtResource("3_dtqjt")
+initial_state = NodePath("IdleState")
+character = NodePath("..")
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("4_5ncpa")
+
+[node name="MoveState" type="Node" parent="StateMachine"]
+script = ExtResource("5_wi0c6")
+
+[node name="AttackState" type="Node" parent="StateMachine"]
+script = ExtResource("6_tdg3f")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_js7pq")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_bcbcq")
+surface_material_override/0 = ExtResource("2_tdg3f")
+
+[node name="Face" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-4.37114e-08, 0, 1, -1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -1, 0, 2.6502e-08, 0.606294, -0.314454)
+mesh = SubResource("PrismMesh_bcbcq")
+surface_material_override/0 = ExtResource("2_tdg3f")
+
+[node name="Attack" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.208871, 0.285264, -0.417642)
+visible = false
+mesh = SubResource("CapsuleMesh_cxr5p")
+surface_material_override/0 = ExtResource("2_tdg3f")
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dtqjt")
+}
+
+[node name="AttackCast" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.403641)
+shape = SubResource("CylinderShape3D_s1rgi")
+target_position = Vector3(0, 0, 0)
+max_results = 7
+collision_mask = 6
+
+[node name="AttackSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_s1rgi")
+volume_db = -15.0
+max_polyphony = 5
+
+[node name="HitSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_j23h2")
+volume_db = -15.0
+max_polyphony = 4
+
+[node name="DebugTarget" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+top_level = true
+visible = false
+mesh = SubResource("BoxMesh_s1rgi")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("9_j23h2")

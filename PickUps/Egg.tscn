@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfuiiibm4ogfg"]
+
+[ext_resource type="Script" uid="uid://drjo7eynvn08s" path="res://PickUps/Egg.gd" id="1_28s8g"]
+[ext_resource type="Material" uid="uid://vyxvhhf0hon" path="res://PlayerMat.tres" id="2_hgbad"]
+[ext_resource type="AudioStream" uid="uid://dfdvedeucdy5t" path="res://PickUps/PickUp.ogg" id="3_56cbk"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cp1ha"]
+radius = 0.25
+height = 0.75
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cp1ha"]
+height = 1.0
+radius = 0.35
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vxkqc"]
+random_pitch = 1.15
+streams_count = 1
+stream_0/stream = ExtResource("3_56cbk")
+
+[node name="Egg1" type="Node3D"]
+script = ExtResource("1_28s8g")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+mesh = SubResource("CapsuleMesh_cp1ha")
+surface_material_override/0 = ExtResource("2_hgbad")
+
+[node name="Area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_layer = 8
+collision_mask = 2
+
+[node name="Collision" type="CollisionShape3D" parent="Area"]
+shape = SubResource("CylinderShape3D_cp1ha")
+
+[node name="PickUpSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_vxkqc")
+volume_db = -15.0
+pitch_scale = 0.9
+max_polyphony = 5
+
+[connection signal="body_entered" from="Area" to="." method="_collected"]

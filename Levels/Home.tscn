@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfanycyrikuxq"]
+
+[ext_resource type="Material" uid="uid://vyxvhhf0hon" path="res://PlayerMat.tres" id="1_hf3nf"]
+[ext_resource type="Script" uid="uid://cb0eoph2pfe50" path="res://Levels/Home.gd" id="2_maaha"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mxnmf"]
+size = Vector3(1, 0.25, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4eo0i"]
+size = Vector3(1, 0.25, 0.25)
+
+[node name="Home" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_mxnmf")
+surface_material_override/0 = ExtResource("1_hf3nf")
+script = ExtResource("2_maaha")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_4eo0i")
+
+[node name="FlashTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="Area3D" to="." method="player_entered"]
+[connection signal="timeout" from="FlashTimer" to="." method="flash"]

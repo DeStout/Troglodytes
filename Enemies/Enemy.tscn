@@ -1,0 +1,221 @@
+[gd_scene load_steps=23 format=3 uid="uid://ddgvecm4ml23n"]
+
+[ext_resource type="Script" uid="uid://dhpybsoy6ujgs" path="res://Enemies/Enemy.gd" id="1_s7bn3"]
+[ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://EnemyMat.tres" id="1_tt7e2"]
+[ext_resource type="Script" uid="uid://oh5umyrnpcif" path="res://addons/StateMachine/StateMachine/state_machine.gd" id="2_biruh"]
+[ext_resource type="AudioStream" uid="uid://jk8n2mq5l5wc" path="res://Enemies/wilhelmscream.mp3" id="3_2hac7"]
+[ext_resource type="Script" uid="uid://b5uqn4ya5bhdr" path="res://Enemies/SpawnState.gd" id="3_n1bor"]
+[ext_resource type="Script" uid="uid://c80tuyrgsyayn" path="res://Enemies/ThinkState.gd" id="4_a5aut"]
+[ext_resource type="AudioStream" uid="uid://q818uwkwyke1" path="res://Enemies/EnemyDeath.ogg" id="4_e6d4v"]
+[ext_resource type="Script" uid="uid://c23iaae5ukn3n" path="res://Enemies/SearchState.gd" id="5_da7ms"]
+[ext_resource type="Script" uid="uid://bn6ao8jf3mh2i" path="res://Enemies/BashState.gd" id="6_jio8c"]
+[ext_resource type="Script" uid="uid://b4yx7pg1oxw8t" path="res://Enemies/HitStunState.gd" id="7_jio8c"]
+[ext_resource type="Script" uid="uid://bltef8ykkeyis" path="res://Enemies/DeathState.gd" id="8_un6pf"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qp131"]
+random_pitch = 1.05
+streams_count = 1
+stream_0/stream = ExtResource("4_e6d4v")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2hac7"]
+random_pitch = 1.05
+streams_count = 1
+stream_0/stream = ExtResource("3_2hac7")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_js7pq"]
+radius = 0.35
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bcbcq"]
+radius = 0.35
+
+[sub_resource type="PrismMesh" id="PrismMesh_bcbcq"]
+size = Vector3(0.2, 0.2, 0.5)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_un6pf"]
+radius = 0.2
+height = 1.735
+
+[sub_resource type="Animation" id="Animation_0hlsd"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Pivot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.453112, 0, 0, 0.891454)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/Pivot:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_un6pf"]
+resource_name = "Thinking"
+length = 1.4
+step = 0.01
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.2, 1, 0, 0.259, 0, 0.966, 0.5, 1, 0, 0.276, 0, 0.961, 0.9, 1, 0, -0.259, 0, 0.966, 1.2, 1, 0, -0.276, 0, 0.961, 1.4, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_fn17s"]
+resource_name = "Attack"
+length = 0.5
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Pivot")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.207, 0, 0, 0.978, 0.1, 1, 0.316, 0, 0, 0.949, 0.266667, 1, 0.936609, 0, 0, -0.350376, 0.5, 1, 0.936609, 0, 0, -0.350376)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Pivot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StateMachine/BashState")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.233333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"bash"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fn17s"]
+_data = {
+&"Attack": SubResource("Animation_fn17s"),
+&"RESET": SubResource("Animation_0hlsd"),
+&"Thinking": SubResource("Animation_un6pf")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_un6pf"]
+radius = 0.6
+
+[node name="Enemy1" type="CharacterBody3D" node_paths=PackedStringArray("state_machine")]
+collision_layer = 4
+collision_mask = 49
+script = ExtResource("1_s7bn3")
+state_machine = NodePath("StateMachine")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "character")]
+script = ExtResource("2_biruh")
+initial_state = NodePath("SpawnState")
+character = NodePath("..")
+
+[node name="SpawnState" type="Node" parent="StateMachine"]
+script = ExtResource("3_n1bor")
+
+[node name="ThinkState" type="Node" parent="StateMachine" node_paths=PackedStringArray("anim_player", "attack_cast")]
+script = ExtResource("4_a5aut")
+anim_player = NodePath("../../AnimationPlayer")
+attack_cast = NodePath("../../AttackCast")
+
+[node name="SearchState" type="Node" parent="StateMachine"]
+script = ExtResource("5_da7ms")
+
+[node name="BashState" type="Node" parent="StateMachine" node_paths=PackedStringArray("anim_player", "attack_cast")]
+script = ExtResource("6_jio8c")
+anim_player = NodePath("../../AnimationPlayer")
+attack_cast = NodePath("../../AttackCast")
+
+[node name="HitStunState" type="Node" parent="StateMachine"]
+script = ExtResource("7_jio8c")
+
+[node name="StunTimer" type="Timer" parent="StateMachine/HitStunState"]
+wait_time = 0.25
+one_shot = true
+
+[node name="DeathState" type="Node" parent="StateMachine"]
+script = ExtResource("8_un6pf")
+
+[node name="DeathSFX" type="AudioStreamPlayer" parent="StateMachine/DeathState"]
+stream = SubResource("AudioStreamRandomizer_qp131")
+
+[node name="Wilheim" type="AudioStreamPlayer" parent="StateMachine/DeathState"]
+stream = SubResource("AudioStreamRandomizer_2hac7")
+volume_db = -5.0
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_js7pq")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_bcbcq")
+surface_material_override/0 = ExtResource("1_tt7e2")
+
+[node name="Face" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-4.37114e-08, 0, 1, -1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -1, 0, 2.6502e-08, 0.606294, -0.314454)
+mesh = SubResource("PrismMesh_bcbcq")
+surface_material_override/0 = ExtResource("1_tt7e2")
+
+[node name="Pivot" type="Node3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 0.58938, -0.807856, 0, 0.807856, 0.58938, 0, 0.371379, 0)
+visible = false
+
+[node name="Attack" type="MeshInstance3D" parent="Body/Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.78716, -2.98023e-08)
+mesh = SubResource("CapsuleMesh_un6pf")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_tt7e2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fn17s")
+}
+
+[node name="AttackCheck" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.403641)
+collision_layer = 32
+collision_mask = 2
+monitorable = false
+
+[node name="Collision" type="CollisionShape3D" parent="AttackCheck"]
+shape = SubResource("CylinderShape3D_un6pf")
+
+[node name="AttackCast" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.403641)
+shape = SubResource("CylinderShape3D_un6pf")
+target_position = Vector3(0, 0, 0)
+max_results = 7
+collision_mask = 6
+
+[node name="OnScreenNotify" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+aabb = AABB(-0.5, -1, -0.5, 1, 2, 1)
+
+[connection signal="timeout" from="StateMachine/HitStunState/StunTimer" to="StateMachine/HitStunState" method="reset_attacked"]
+[connection signal="body_entered" from="AttackCheck" to="." method="_body_attackable"]
+[connection signal="screen_exited" from="OnScreenNotify" to="StateMachine/DeathState" method="die"]
