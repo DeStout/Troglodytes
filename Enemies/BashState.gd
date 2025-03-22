@@ -3,6 +3,7 @@ class_name BashState extends State
 
 @export var anim_player : AnimationPlayer
 @export var attack_cast : ShapeCast3D
+@export var bash_sfx : AudioStreamPlayer
 
 
 func enter() -> void:
@@ -11,13 +12,12 @@ func enter() -> void:
 	anim_player.play("Attack")
 
 
-func bash() -> void:	
-	#attack_sfx.play()
+func bash() -> void:
 	attack_cast.force_shapecast_update()
 	if attack_cast.is_colliding():
-		#hit_sfx.play()
 		for collision in attack_cast.collision_result:
 			if collision.collider is Player:
+				bash_sfx.play()
 				collision.collider.attacked()
 
 

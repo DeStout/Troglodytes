@@ -14,7 +14,7 @@ func enter() -> void:
 	death_dir = character.get_move_dir_vect(character.death_dir)
 	character.velocity = Vector3(death_dir.x, 0, death_dir.y) * DEATH_SPEED
 	
-	if randi_range(0, 49) == 0:
+	if randi_range(0, 50) == 0:
 		wilheim.play()
 	else:
 		death_sfx.play()

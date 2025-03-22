@@ -11,7 +11,7 @@ func enter() -> void:
 	if _is_turn_around():
 		_turn_around()
 	_set_target_square()
-	_slerp_to_dirp()
+	await _slerp_to_dirp()
 
 
 func exit() -> void:
@@ -26,13 +26,13 @@ func _input(event: InputEvent) -> void:
 		if _is_turn_around():
 			_turn_around()
 			_set_target_square()
-			_slerp_to_dirp(true)
+			await _slerp_to_dirp(true)
 		elif event.is_action_pressed("Attack"):
 			transition.emit(self, "AttackState")
 
 
 func _is_turn_around() -> bool:
-	return _is_direction_pressed() and _is_opp_dir_pressed()
+	return _is_direction_pressed() and _is_opp_dir_pressed() and _get_num_input() == 1
 
 
 func _is_direction_pressed() -> bool:
@@ -82,7 +82,7 @@ func physics_update(delta) -> void:
 		character.velocity = Vector3.ZERO
 		character.move_dir = _get_input_dir()
 		_set_target_square()
-		_slerp_to_dirp()
+		await _slerp_to_dirp()
 		return
 	_set_target_square()
 

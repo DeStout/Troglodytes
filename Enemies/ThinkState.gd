@@ -35,6 +35,8 @@ func _act(_anim_finished : String) -> void:
 
 
 func attack() -> void:
+	anim_player.pause()
+	anim_player.animation_finished.disconnect(_act)
 	transition.emit(self, "BashState")
 
 

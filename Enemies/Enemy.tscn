@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ddgvecm4ml23n"]
+[gd_scene load_steps=27 format=3 uid="uid://ddgvecm4ml23n"]
 
 [ext_resource type="Script" uid="uid://dhpybsoy6ujgs" path="res://Enemies/Enemy.gd" id="1_s7bn3"]
 [ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://EnemyMat.tres" id="1_tt7e2"]
@@ -9,8 +9,20 @@
 [ext_resource type="AudioStream" uid="uid://q818uwkwyke1" path="res://Enemies/EnemyDeath.ogg" id="4_e6d4v"]
 [ext_resource type="Script" uid="uid://c23iaae5ukn3n" path="res://Enemies/SearchState.gd" id="5_da7ms"]
 [ext_resource type="Script" uid="uid://bn6ao8jf3mh2i" path="res://Enemies/BashState.gd" id="6_jio8c"]
+[ext_resource type="AudioStream" uid="uid://b6kdy1orqnwqu" path="res://Player/Whoosh.ogg" id="7_0hlsd"]
 [ext_resource type="Script" uid="uid://b4yx7pg1oxw8t" path="res://Enemies/HitStunState.gd" id="7_jio8c"]
+[ext_resource type="AudioStream" uid="uid://bwnmslrp63bp5" path="res://Enemies/Smash.ogg" id="8_fn17s"]
 [ext_resource type="Script" uid="uid://bltef8ykkeyis" path="res://Enemies/DeathState.gd" id="8_un6pf"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0hlsd"]
+random_pitch = 1.05
+streams_count = 1
+stream_0/stream = ExtResource("7_0hlsd")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n2n7y"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("8_fn17s")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qp131"]
 random_pitch = 1.05
@@ -34,6 +46,57 @@ size = Vector3(0.2, 0.2, 0.5)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_un6pf"]
 radius = 0.2
 height = 1.735
+
+[sub_resource type="Animation" id="Animation_fn17s"]
+resource_name = "Attack"
+length = 0.5
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Pivot")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.207, 0, 0, 0.978, 0.1, 1, 0.316, 0, 0, 0.949, 0.266667, 1, 0.936609, 0, 0, -0.350376, 0.5, 1, 0.936609, 0, 0, -0.350376)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Pivot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StateMachine/BashState")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.233333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"bash"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StateMachine/BashState/SwingSFX")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_0hlsd"]
 length = 0.001
@@ -76,43 +139,6 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.2, 1, 0, 0.259, 0, 0.966, 0.5, 1, 0, 0.276, 0, 0.961, 0.9, 1, 0, -0.259, 0, 0.966, 1.2, 1, 0, -0.276, 0, 0.961, 1.4, 1, 0, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_fn17s"]
-resource_name = "Attack"
-length = 0.5
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Pivot")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.207, 0, 0, 0.978, 0.1, 1, 0.316, 0, 0, 0.949, 0.266667, 1, 0.936609, 0, 0, -0.350376, 0.5, 1, 0.936609, 0, 0, -0.350376)
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Pivot:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("StateMachine/BashState")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.233333),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"bash"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fn17s"]
 _data = {
 &"Attack": SubResource("Animation_fn17s"),
@@ -145,10 +171,21 @@ attack_cast = NodePath("../../AttackCast")
 [node name="SearchState" type="Node" parent="StateMachine"]
 script = ExtResource("5_da7ms")
 
-[node name="BashState" type="Node" parent="StateMachine" node_paths=PackedStringArray("anim_player", "attack_cast")]
+[node name="BashState" type="Node" parent="StateMachine" node_paths=PackedStringArray("anim_player", "attack_cast", "bash_sfx")]
 script = ExtResource("6_jio8c")
 anim_player = NodePath("../../AnimationPlayer")
 attack_cast = NodePath("../../AttackCast")
+bash_sfx = NodePath("BashSFX")
+
+[node name="SwingSFX" type="AudioStreamPlayer" parent="StateMachine/BashState"]
+stream = SubResource("AudioStreamRandomizer_0hlsd")
+volume_db = -10.0
+pitch_scale = 0.75
+
+[node name="BashSFX" type="AudioStreamPlayer" parent="StateMachine/BashState"]
+stream = SubResource("AudioStreamRandomizer_n2n7y")
+volume_db = -25.0
+pitch_scale = 0.95
 
 [node name="HitStunState" type="Node" parent="StateMachine"]
 script = ExtResource("7_jio8c")
@@ -182,7 +219,7 @@ mesh = SubResource("PrismMesh_bcbcq")
 surface_material_override/0 = ExtResource("1_tt7e2")
 
 [node name="Pivot" type="Node3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 0.58938, -0.807856, 0, 0.807856, 0.58938, 0, 0.371379, 0)
+transform = Transform3D(1, 0, 0, 0, 0.589379, -0.807856, 0, 0.807856, 0.589379, 0, 0.371379, 0)
 visible = false
 
 [node name="Attack" type="MeshInstance3D" parent="Body/Pivot"]
