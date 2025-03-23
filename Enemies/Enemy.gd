@@ -49,6 +49,10 @@ func attacked(attack_dir : int) -> void:
 		state_machine.current_state.attacked()
 
 
+func get_body() -> MeshInstance3D:
+	return $Body
+
+
 func die() -> void:
 	characters.enemy_defeated(self)
 	queue_free()
