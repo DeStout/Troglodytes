@@ -17,9 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Globals="*res://Utilities/Globals.gd"
+Globals="*res://Utilities/Autoloads/Globals.gd"
 Utilities="*res://Utilities/Utilities.gd"
-Pause="*res://Utilities/Pause.tscn"
+Pause="*res://Utilities/Autoloads/Pause.tscn"
 
 [display]
 
@@ -27,7 +27,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/script-ide/plugin.cfg", "res://addons/so_fluffy/plugin.cfg")
+enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
 
 [input]
 

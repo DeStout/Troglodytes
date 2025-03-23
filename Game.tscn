@@ -1,18 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://c320mood1d0f3"]
 
 [ext_resource type="Script" uid="uid://7xrixgba1i1x" path="res://Game.gd" id="1_xkndl"]
-[ext_resource type="PackedScene" uid="uid://dpgayrnq7arve" path="res://Levels/Level.tscn" id="2_u44n3"]
+[ext_resource type="PackedScene" uid="uid://ba8xg6j0dfk0i" path="res://Menus/MainMenu.tscn" id="2_xkndl"]
 
-[node name="World" type="Node" node_paths=PackedStringArray("level", "score_label", "lives_label")]
+[node name="Game" type="Node" node_paths=PackedStringArray("main_menu", "score_label", "lives_label")]
 script = ExtResource("1_xkndl")
-level = NodePath("Level")
+main_menu = NodePath("MainMenu")
 score_label = NodePath("UIBoard1/UIBoard2/Score")
 lives_label = NodePath("UIBoard1/UIBoard2/Lives")
 
-[node name="Level" parent="." node_paths=PackedStringArray("world") instance=ExtResource("2_u44n3")]
-world = NodePath("..")
-
 [node name="UIBoard1" type="ColorRect" parent="."]
+visible = false
 custom_minimum_size = Vector2(256, 76)
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,3 +64,6 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Lives: 2"
 vertical_alignment = 2
+
+[node name="MainMenu" parent="." node_paths=PackedStringArray("game") instance=ExtResource("2_xkndl")]
+game = NodePath("..")

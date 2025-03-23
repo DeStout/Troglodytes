@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=4 uid="uid://ddgvecm4ml23n"]
 
 [ext_resource type="Script" uid="uid://dhpybsoy6ujgs" path="res://Enemies/Enemy.gd" id="1_s7bn3"]
-[ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://EnemyMat.tres" id="1_tt7e2"]
+[ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://Enemies/EnemyMat.tres" id="1_tt7e2"]
 [ext_resource type="Script" uid="uid://oh5umyrnpcif" path="res://addons/StateMachine/StateMachine/state_machine.gd" id="2_biruh"]
 [ext_resource type="AudioStream" uid="uid://jk8n2mq5l5wc" path="res://Enemies/wilhelmscream.mp3" id="3_2hac7"]
 [ext_resource type="Script" uid="uid://b5uqn4ya5bhdr" path="res://Enemies/SpawnState.gd" id="3_n1bor"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bfuiiibm4ogfg"]
 
 [ext_resource type="Script" uid="uid://drjo7eynvn08s" path="res://PickUps/Egg.gd" id="1_28s8g"]
-[ext_resource type="Material" uid="uid://vyxvhhf0hon" path="res://PlayerMat.tres" id="2_hgbad"]
+[ext_resource type="Material" uid="uid://vyxvhhf0hon" path="res://Player/PlayerMat.tres" id="2_hgbad"]
 [ext_resource type="AudioStream" uid="uid://dfdvedeucdy5t" path="res://PickUps/PickUp.ogg" id="3_56cbk"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cp1ha"]

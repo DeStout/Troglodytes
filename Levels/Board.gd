@@ -5,9 +5,9 @@ extends Node3D
 #region Board Creation
 @export_group("BoardCreation")
 const PLAYER_SQUARE := "Row2/Square4"
-var _walk_mat := load("res://WalkSquare.tres")
-var _stone_mat := load("res://StoneSquare.tres")
-var _water_mat := load("res://PlayerMat.tres")
+var _walk_mat := load("res://Levels/WalkSquare.tres")
+var _stone_mat := load("res://Levels/StoneSquare.tres")
+var _water_mat := load("res://Player/PlayerMat.tres")
 
 const WATER_BUFFER := 4
 @export var play_area : CollisionShape3D

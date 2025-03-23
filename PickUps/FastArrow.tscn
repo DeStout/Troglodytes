@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0swdoas8jp2n"]
 
 [ext_resource type="PackedScene" uid="uid://b588328qy1e4m" path="res://PickUps/Arrow.blend" id="1_l3e6n"]
-[ext_resource type="Material" uid="uid://vyxvhhf0hon" path="res://PlayerMat.tres" id="2_0vryo"]
+[ext_resource type="Material" uid="uid://vyxvhhf0hon" path="res://Player/PlayerMat.tres" id="2_0vryo"]
 
 [node name="FastArrow" instance=ExtResource("1_l3e6n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
