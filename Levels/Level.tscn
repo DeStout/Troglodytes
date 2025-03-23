@@ -1986,5 +1986,6 @@ shape = SubResource("BoxShape3D_m3clv")
 stream = SubResource("AudioStreamRandomizer_rjnlo")
 volume_db = -35.0
 autoplay = true
+bus = &"Music"
 
 [connection signal="body_exited" from="PlayArea" to="Characters" method="character_exited"]

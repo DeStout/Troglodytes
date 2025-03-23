@@ -195,14 +195,17 @@ bonk_sfx = NodePath("BonkSFX")
 stream = SubResource("AudioStreamRandomizer_de0ly")
 volume_db = -10.0
 pitch_scale = 0.75
+bus = &"SFX"
 
 [node name="BashSFX" type="AudioStreamPlayer" parent="StateMachine/BashState"]
 stream = SubResource("AudioStreamRandomizer_lplnl")
 volume_db = -15.0
+bus = &"SFX"
 
 [node name="BonkSFX" type="AudioStreamPlayer" parent="StateMachine/BashState"]
 stream = SubResource("AudioStreamRandomizer_n2n7y")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="HitStunState" type="Node" parent="StateMachine"]
 script = ExtResource("7_jio8c")
@@ -216,10 +219,12 @@ script = ExtResource("8_un6pf")
 
 [node name="DeathSFX" type="AudioStreamPlayer" parent="StateMachine/DeathState"]
 stream = SubResource("AudioStreamRandomizer_qp131")
+bus = &"SFX"
 
 [node name="Wilheim" type="AudioStreamPlayer" parent="StateMachine/DeathState"]
 stream = SubResource("AudioStreamRandomizer_2hac7")
 volume_db = -5.0
+bus = &"SFX"
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

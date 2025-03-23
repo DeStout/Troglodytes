@@ -38,5 +38,6 @@ stream = SubResource("AudioStreamRandomizer_vxkqc")
 volume_db = -15.0
 pitch_scale = 0.9
 max_polyphony = 5
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area" to="." method="_collected"]
