@@ -120,12 +120,10 @@ func _add_water() -> void:
 			water.mesh.size = Vector3(width, 1, WATER_BUFFER)
 			water.position.z = pos * (board_size.y + WATER_BUFFER - 1.5)
 			water.position.y = -0.1
-			print(water.position.z)
 		else:
 			water.mesh.size = Vector3(WATER_BUFFER, 1, height)
 			water.position.x = pos * (board_size.x + WATER_BUFFER - 1.5)
 			water.position.y = -0.1
-			print(water.position.x)
 			pos *= -1
 
 func _set_play_area() -> void:

@@ -3,6 +3,8 @@ class_name PickUp extends Node3D
 
 signal despawn
 
+const SCORE_VALUE := 50
+
 var fast_ := load("res://PickUps/FastArrow.tscn")
 var slow_ := load("res://PickUps/SlowArrow.tscn")
 
@@ -34,6 +36,7 @@ func _add_mesh(new_mesh : Node3D) -> void:
 
 func _collected(body : CharacterBody3D) -> void:
 	if body is Player:
+		Globals.add_to_score(SCORE_VALUE)
 		_apply_effect(body)
 		_despawn()
 

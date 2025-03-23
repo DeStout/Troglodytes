@@ -39,7 +39,7 @@ func _pick_up_despawned(pick_up : PickUp) -> void:
 
 func _respawn_pick_up() -> void:
 		var pick_up : Node3D = pick_up_.instantiate()
-		var free_square : Node3D = level.get_rand_free_square(true)
+		var free_square : Node3D = level.get_rand_free_square()
 		pick_up.effect = randi() % pick_up.EFFECTS.size()
 		add_child(pick_up, true)
 		pick_up.global_position = Vector3(free_square.global_position.x, 0, \

@@ -1,7 +1,7 @@
 extends MeshInstance3D
 
 
-const SCORE_VALUE := 10000
+const SCORE_VALUE := 50000
 
 var level : Node3D
 

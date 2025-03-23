@@ -50,7 +50,7 @@ func clear_board() -> void:
 
 func _respawn_enemy() -> void:
 		var enemy = enemy_.instantiate()
-		var free_square : Node3D = level.get_rand_free_square(true)
+		var free_square : Node3D = level.get_rand_free_square()
 		add_child(enemy, true)
 		enemy.characters = self
 		enemy.position = Vector3(free_square.global_position.x, -2, \

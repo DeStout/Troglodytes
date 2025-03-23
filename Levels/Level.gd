@@ -40,10 +40,11 @@ func _spawn_eggs(used_squares : Array[Node3D]) -> void:
 
 
 func set_square_free(square : Node3D) -> void:
-	free_squares.append(square)
+	if !free_squares.has(square):
+		free_squares.append(square)
 
 
-func get_rand_free_square(use_square := false) -> Node3D:
+func get_rand_free_square(use_square := true) -> Node3D:
 	var free_square = free_squares.pick_random()
 	if use_square:
 		free_squares.erase(free_square)

@@ -3,7 +3,7 @@ extends Node3D
 
 signal collected
 
-const VALUE := 50
+const SCORE_VALUE := 250
 
 @onready var mesh := $Mesh
 @onready var collision := $Area/Collision
@@ -15,7 +15,7 @@ func _collected(body : CharacterBody3D) -> void:
 		pick_up_sfx.play()
 		mesh.visible = false
 		collision.call_deferred("set_disabled", true)
-		Globals.add_to_score(VALUE)
+		Globals.add_to_score(SCORE_VALUE)
 		await pick_up_sfx.finished
 		collected.emit(self)
 		queue_free()
