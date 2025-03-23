@@ -21,5 +21,5 @@ func start_new_level() -> void:
 	
 	var new_level : Node3D = level_.instantiate()
 	new_level.world = self
-	$LevelViewport/SubViewport.add_child(new_level, true)
+	add_child(new_level, true)
 	level = new_level

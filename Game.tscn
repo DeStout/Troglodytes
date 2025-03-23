@@ -1,30 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://c320mood1d0f3"]
 
-[ext_resource type="Script" uid="uid://7xrixgba1i1x" path="res://World.gd" id="1_2dftf"]
-[ext_resource type="PackedScene" uid="uid://dpgayrnq7arve" path="res://Levels/Level.tscn" id="1_c6gwx"]
+[ext_resource type="Script" uid="uid://7xrixgba1i1x" path="res://Game.gd" id="1_xkndl"]
+[ext_resource type="PackedScene" uid="uid://dpgayrnq7arve" path="res://Levels/Level.tscn" id="2_u44n3"]
 
 [node name="World" type="Node" node_paths=PackedStringArray("level", "score_label", "lives_label")]
-script = ExtResource("1_2dftf")
-level = NodePath("LevelViewport/SubViewport/Level")
+script = ExtResource("1_xkndl")
+level = NodePath("Level")
 score_label = NodePath("UIBoard1/UIBoard2/Score")
 lives_label = NodePath("UIBoard1/UIBoard2/Lives")
-metadata/_edit_horizontal_guides_ = [512.0]
 
-[node name="LevelViewport" type="SubViewportContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 0
-
-[node name="SubViewport" type="SubViewport" parent="LevelViewport"]
-handle_input_locally = false
-size = Vector2i(1152, 648)
-render_target_update_mode = 4
-
-[node name="Level" parent="LevelViewport/SubViewport" node_paths=PackedStringArray("world") instance=ExtResource("1_c6gwx")]
-world = NodePath("../../..")
+[node name="Level" parent="." node_paths=PackedStringArray("world") instance=ExtResource("2_u44n3")]
+world = NodePath("..")
 
 [node name="UIBoard1" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(256, 76)
