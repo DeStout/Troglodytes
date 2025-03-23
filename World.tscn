@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://c320mood1d0f3"]
+[gd_scene load_steps=3 format=3 uid="uid://c320mood1d0f3"]
 
+[ext_resource type="Script" uid="uid://7xrixgba1i1x" path="res://World.gd" id="1_2dftf"]
 [ext_resource type="PackedScene" uid="uid://dpgayrnq7arve" path="res://Levels/Level.tscn" id="1_c6gwx"]
 
-[node name="World" type="Node"]
+[node name="World" type="Node" node_paths=PackedStringArray("level", "score_label", "lives_label")]
+script = ExtResource("1_2dftf")
+level = NodePath("LevelViewport/SubViewport/Level")
+score_label = NodePath("UIBoard1/UIBoard2/Score")
+lives_label = NodePath("UIBoard1/UIBoard2/Lives")
 metadata/_edit_horizontal_guides_ = [512.0]
 
 [node name="LevelViewport" type="SubViewportContainer" parent="."]
@@ -18,4 +23,60 @@ handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="Level" parent="LevelViewport/SubViewport" instance=ExtResource("1_c6gwx")]
+[node name="Level" parent="LevelViewport/SubViewport" node_paths=PackedStringArray("world") instance=ExtResource("1_c6gwx")]
+world = NodePath("../../..")
+
+[node name="UIBoard1" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(256, 76)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 120.0
+offset_top = 557.0
+offset_right = -776.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.121094, 0.121094, 0.121094, 1)
+
+[node name="UIBoard2" type="ColorRect" parent="UIBoard1"]
+custom_minimum_size = Vector2(244, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.753906, 0.616073, 0.493017, 1)
+
+[node name="Score" type="Label" parent="UIBoard1/UIBoard2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 6.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Score: 0"
+
+[node name="Lives" type="Label" parent="UIBoard1/UIBoard2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 35.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Lives: 2"
+vertical_alignment = 2

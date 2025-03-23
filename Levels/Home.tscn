@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cb0eoph2pfe50" path="res://Levels/Home.gd" id="2_maaha"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mxnmf"]
-size = Vector3(1, 0.25, 0.25)
+size = Vector3(0.9, 0.25, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4eo0i"]
 size = Vector3(1, 0.25, 0.25)

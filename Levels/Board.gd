@@ -130,3 +130,11 @@ func _add_water() -> void:
 
 func _set_play_area() -> void:
 	play_area.shape.size = Vector3(board_size.x * 2, 1, board_size.y * 2)
+
+
+func level_complete_clean_up() -> void:
+	if !Engine.is_editor_hint():
+		for egg_square in get_tree().get_nodes_in_group("EggSquares"):
+			egg_square.remove_from_group("EggSquares")
+		for home_square in get_tree().get_nodes_in_group("HomeSquares"):
+			home_square.remove_from_group("HomeSquares")

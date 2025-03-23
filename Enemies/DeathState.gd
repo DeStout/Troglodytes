@@ -11,6 +11,7 @@ var death_dir : Vector2
 
 func enter() -> void:
 	#print(character.name, ": Enter DeathState")
+	Globals.add_to_score(character.SCORE_VALUE)
 	death_dir = character.get_move_dir_vect(character.death_dir)
 	character.velocity = Vector3(death_dir.x, 0, death_dir.y) * DEATH_SPEED
 	

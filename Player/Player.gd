@@ -3,7 +3,7 @@ class_name Player extends CharacterBody3D
 
 @export var debug_target : MeshInstance3D
 
-@export var state_machine : StateMachine
+signal game_over
 
 @onready var anim_player := $AnimPlayer
 @onready var attack_cast := $AttackCast
@@ -15,11 +15,10 @@ const MAX_SPEED := 4.5
 const MIN_SPEED := 1.5
 var speed := 3.0
 
+@export var state_machine : StateMachine
 enum DIRECTIONS { UP, DOWN, LEFT, RIGHT }
 var move_dir : DIRECTIONS = DIRECTIONS.DOWN
 var target_square : Vector2
-
-var num_lives := 3
 
 
 func get_prev_state() -> String:
@@ -54,16 +53,15 @@ func attacked() -> void:
 
 
 func respawn() -> void:
-	num_lives -= 1
-	if !num_lives:
-		Globals.reset_score()
-		get_tree().call_deferred("reload_current_scene")
-		return
+	Globals.add_to_player_lives(-1)
+	if Globals.player_lives == -1:
+		Globals.reset_game()
+		game_over.emit()
 	
-	print("Lives left: ", num_lives)
 	var respawn_pos = Utilities.get_closest_egg_square(global_position).global_position
 	position = Vector3(respawn_pos.x, 0, respawn_pos.z)
 	rotation = Vector3(0, PI, 0)
+	velocity = Vector3.ZERO
 	state_machine.current_state.respawn()
 	target_square = Vector2(position.x, position.z)
 	move_dir = DIRECTIONS.DOWN

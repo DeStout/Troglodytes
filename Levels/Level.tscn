@@ -44,12 +44,13 @@ size = Vector3(4, 1, 15)
 [sub_resource type="BoxShape3D" id="BoxShape3D_m3clv"]
 size = Vector3(18, 1, 14)
 
-[node name="Level" type="Node3D" node_paths=PackedStringArray("board", "characters", "pick_ups", "eggs")]
+[node name="Level" type="Node3D" node_paths=PackedStringArray("board", "characters", "pick_ups", "eggs", "play_area")]
 script = ExtResource("1_4eo0i")
 board = NodePath("Board")
 characters = NodePath("Characters")
 pick_ups = NodePath("PickUps")
 eggs = NodePath("Eggs")
+play_area = NodePath("PlayArea")
 
 [node name="Env" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_eu7l1")
@@ -63,7 +64,7 @@ directional_shadow_split_1 = 0.009
 directional_shadow_blend_splits = true
 
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8.32341, 8.72981)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8.32341, 9.46478)
 projection = 1
 current = true
 fov = 33.0
@@ -1973,4 +1974,5 @@ monitorable = false
 [node name="Collision" type="CollisionShape3D" parent="PlayArea"]
 shape = SubResource("BoxShape3D_m3clv")
 
+[connection signal="game_over" from="Characters/Player" to="." method="level_complete"]
 [connection signal="body_exited" from="PlayArea" to="Characters" method="character_exited"]

@@ -4,10 +4,12 @@ extends Node3D
 var egg_ := load("res://PickUps/Egg.tscn")
 var home_ := load("res://Levels/Home.tscn")
 
+@export var world : Node
 @export var board : Node3D
 @export var characters : Node3D
 @export var pick_ups : Node3D
 @export var eggs : Node3D
+@export var play_area : Area3D
 
 var free_squares : Array[Node3D] = []
 
@@ -61,6 +63,14 @@ func _spawn_home() -> void:
 	
 	var home : MeshInstance3D = home_.instantiate()
 	add_child(home)
+	home.level = self
 	home.position = Vector3(home_pos.x, 0.5, home_pos.z)
 	if abs(home.position.x) == board.board_size.x:
 		home.rotation.y = PI / 2
+
+
+func level_complete() -> void:
+	for connection in play_area.body_exited.get_connections():
+		play_area.body_exited.disconnect(connection["callable"])
+	board.level_complete_clean_up()
+	world.start_new_level()
