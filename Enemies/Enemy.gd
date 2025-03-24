@@ -70,6 +70,10 @@ func get_body() -> MeshInstance3D:
 	return $Body
 
 
+func disable_collision() -> void:
+	$Collision.call_deferred("set_disabled", true)
+
+
 func die() -> void:
 	characters.enemy_defeated(self)
 	queue_free()
