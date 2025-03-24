@@ -162,11 +162,12 @@ _data = {
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_un6pf"]
 radius = 0.6
 
-[node name="Enemy1" type="CharacterBody3D" node_paths=PackedStringArray("state_machine")]
+[node name="Enemy1" type="CharacterBody3D" node_paths=PackedStringArray("state_machine", "wall_check")]
 collision_layer = 4
 collision_mask = 49
 script = ExtResource("1_s7bn3")
 state_machine = NodePath("StateMachine")
+wall_check = NodePath("WallCheck")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "character")]
 script = ExtResource("2_biruh")
@@ -176,10 +177,10 @@ character = NodePath("..")
 [node name="SpawnState" type="Node" parent="StateMachine"]
 script = ExtResource("3_n1bor")
 
-[node name="ThinkState" type="Node" parent="StateMachine" node_paths=PackedStringArray("anim_player", "attack_cast")]
+[node name="ThinkState" type="Node" parent="StateMachine" node_paths=PackedStringArray("anim_player", "wall_check")]
 script = ExtResource("4_a5aut")
 anim_player = NodePath("../../AnimationPlayer")
-attack_cast = NodePath("../../AttackCast")
+wall_check = NodePath("../../WallCheck")
 
 [node name="SearchState" type="Node" parent="StateMachine"]
 script = ExtResource("5_da7ms")
@@ -229,6 +230,10 @@ bus = &"SFX"
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_js7pq")
+
+[node name="WallCheck" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target_position = Vector3(0, 0, -1)
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

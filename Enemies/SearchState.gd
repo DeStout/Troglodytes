@@ -16,7 +16,6 @@ func physics_update(delta) -> void:
 		return
 	
 	_move(delta)
-	
 	if _is_at_target():
 		character.position.x = character.target_square.x
 		character.position.z = character.target_square.y

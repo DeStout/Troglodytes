@@ -18,11 +18,28 @@ var speed := 3.0
 @export var state_machine : StateMachine
 enum DIRECTIONS { UP, DOWN, LEFT, RIGHT }
 var move_dir : DIRECTIONS = DIRECTIONS.DOWN
+@export var wall_check : RayCast3D
 var target_square : Vector2
 
 
 func get_prev_state() -> String:
 	return state_machine.prev_state.name.to_lower()
+
+
+func ray_check(check_dir : DIRECTIONS) -> bool:
+	var local_dir : Vector3
+	match check_dir:
+		0:
+			local_dir = Vector3(0, 0, -1) + wall_check.global_position
+		1:
+			local_dir = Vector3(0, 0, 1) + wall_check.global_position
+		2:
+			local_dir = Vector3(-1, 0, 0) + wall_check.global_position
+		3:
+			local_dir = Vector3(1, 0, 0) + wall_check.global_position
+	wall_check.target_position = wall_check.to_local(local_dir)
+	wall_check.force_raycast_update()
+	return wall_check.is_colliding()
 
 
 func attack() -> void:

@@ -1,0 +1,115 @@
+[gd_scene load_steps=5 format=3 uid="uid://dm3mtq53l16e7"]
+
+[ext_resource type="PackedScene" uid="uid://dpgayrnq7arve" path="res://Levels/Level.tscn" id="1_wcc2u"]
+[ext_resource type="Material" uid="uid://ct43l1nlw1evl" path="res://Levels/StoneSquare.tres" id="2_nn734"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_506po"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_v115i"]
+size = Vector3(0.5, 0.5, 2)
+
+[node name="Level" instance=ExtResource("1_wcc2u")]
+
+[node name="Barrier1" type="StaticBody3D" parent="Board" index="19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -4)
+collision_mask = 54
+
+[node name="Shape" type="CollisionShape3D" parent="Board/Barrier1" index="0"]
+shape = SubResource("BoxShape3D_506po")
+
+[node name="Mesh" type="MeshInstance3D" parent="Board/Barrier1" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("BoxMesh_v115i")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_nn734")
+
+[node name="Barrier2" type="StaticBody3D" parent="Board" index="20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -2)
+collision_mask = 54
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Board/Barrier2" index="0"]
+shape = SubResource("BoxShape3D_506po")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Board/Barrier2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("BoxMesh_v115i")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_nn734")
+
+[node name="Barrier4" type="StaticBody3D" parent="Board" index="21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 2)
+collision_mask = 54
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Board/Barrier4" index="0"]
+shape = SubResource("BoxShape3D_506po")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Board/Barrier4" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("BoxMesh_v115i")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_nn734")
+
+[node name="Barrier5" type="StaticBody3D" parent="Board" index="22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 4)
+collision_mask = 54
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Board/Barrier5" index="0"]
+shape = SubResource("BoxShape3D_506po")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Board/Barrier5" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("BoxMesh_v115i")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_nn734")
+
+[node name="Barrier3" type="StaticBody3D" parent="Board" index="23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -4)
+collision_mask = 54
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Board/Barrier3" index="0"]
+shape = SubResource("BoxShape3D_506po")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Board/Barrier3" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("BoxMesh_v115i")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_nn734")
+
+[node name="Barrier6" type="StaticBody3D" parent="Board" index="24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -2)
+collision_mask = 54
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Board/Barrier6" index="0"]
+shape = SubResource("BoxShape3D_506po")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Board/Barrier6" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("BoxMesh_v115i")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_nn734")
+
+[node name="Barrier7" type="StaticBody3D" parent="Board" index="25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 2)
+collision_mask = 54
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Board/Barrier7" index="0"]
+shape = SubResource("BoxShape3D_506po")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Board/Barrier7" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("BoxMesh_v115i")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_nn734")
+
+[node name="Barrier8" type="StaticBody3D" parent="Board" index="26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 4)
+collision_mask = 54
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Board/Barrier8" index="0"]
+shape = SubResource("BoxShape3D_506po")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Board/Barrier8" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("BoxMesh_v115i")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_nn734")

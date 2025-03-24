@@ -105,12 +105,13 @@ stream_0/stream = ExtResource("8_s1rgi")
 [sub_resource type="BoxMesh" id="BoxMesh_s1rgi"]
 size = Vector3(1, 0.1, 1)
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("debug_target", "state_machine")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("debug_target", "state_machine", "wall_check")]
 collision_layer = 2
 collision_mask = 57
 script = ExtResource("1_cxr5p")
 debug_target = NodePath("DebugTarget")
 state_machine = NodePath("StateMachine")
+wall_check = NodePath("WallCheck")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "character")]
 script = ExtResource("3_dtqjt")
@@ -129,6 +130,10 @@ script = ExtResource("6_tdg3f")
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_js7pq")
+
+[node name="WallCheck" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target_position = Vector3(0, 0, -1)
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -14,10 +14,6 @@ func enter() -> void:
 	await _slerp_to_dirp()
 
 
-func exit() -> void:
-	pass
-
-
 func _input(event: InputEvent) -> void:
 	if !active:
 		return
@@ -65,10 +61,6 @@ func _turn_around() -> void:
 	character.move_dir = _get_input_dir()
 
 
-func update(delta) -> void:
-	pass
-
-
 func physics_update(delta) -> void:
 	if turning:
 		return
@@ -77,6 +69,9 @@ func physics_update(delta) -> void:
 	if !_is_at_target():
 		return
 	if _get_num_input() == 1 and character.move_dir != _get_input_dir():
+		if character.ray_check(_get_input_dir()):
+			_set_target_square()
+			return
 		character.position.x = character.target_square.x
 		character.position.z = character.target_square.y
 		character.velocity = Vector3.ZERO
@@ -84,6 +79,11 @@ func physics_update(delta) -> void:
 		_set_target_square()
 		await _slerp_to_dirp()
 		return
+	if character.ray_check(character.move_dir):
+		character.position.x = character.target_square.x
+		character.position.z = character.target_square.y
+		character.velocity = Vector3.ZERO
+		transition.emit(self, "IdleState")
 	_set_target_square()
 
 
@@ -184,3 +184,7 @@ func respawn() -> void:
 	# Debug
 	character.debug_target.global_position = \
 				Vector3(character.target_square.x, 0.05, character.target_square.y)
+
+
+#func exit() -> void: pass
+#func update(delta) -> void: pass

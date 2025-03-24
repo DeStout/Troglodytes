@@ -1,7 +1,7 @@
 extends Node
 
 
-var level_ := load("res://Levels/Level.tscn")
+var level_ := load("res://Levels/Level2.tscn")
 
 @export var main_menu : Control
 

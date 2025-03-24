@@ -1,21 +1,14 @@
 class_name IdleState extends State
 
 
-func enter() -> void:
-	#print("Enter IdleState")
-	pass
-
-
-func exit() -> void:
-	pass
-
-
 func _input(event: InputEvent) -> void:
 	if !active:
 		return
 		
 	if event is InputEventKey:
 		if _is_direction_pressed(event):
+			if character.ray_check(_get_input_dir()):
+				return
 			_set_move_dir(event)
 			transition.emit(self, "MoveState")
 		elif event.is_action_pressed("Attack"):
@@ -30,12 +23,16 @@ func _is_direction_pressed(event : InputEvent) -> bool:
 	return false
 
 
-func update(delta) -> void:
-	pass
-
-
-func physics_update(delta) -> void:
-	pass
+func _get_input_dir() -> int:
+	if Input.is_action_pressed("MoveUp"):
+		return character.DIRECTIONS.UP
+	if Input.is_action_pressed("MoveDown"):
+		return character.DIRECTIONS.DOWN
+	if Input.is_action_pressed("MoveLeft"):
+		return character.DIRECTIONS.LEFT
+	if Input.is_action_pressed("MoveRight"):
+		return character.DIRECTIONS.RIGHT
+	return -1
 
 
 func _set_move_dir(event : InputEvent):
@@ -49,5 +46,11 @@ func _set_move_dir(event : InputEvent):
 		character.move_dir = character.DIRECTIONS.RIGHT
 
 
-func respawn() -> void:
-	pass
+# Keep this, please
+func respawn() -> void: pass
+
+
+#func enter() -> void: pass
+#func exit() -> void: pass
+#func update(delta) -> void: pass
+#func physics_update(delta) -> void: pass
