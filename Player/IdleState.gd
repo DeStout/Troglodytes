@@ -7,7 +7,7 @@ func _input(event: InputEvent) -> void:
 		
 	if event is InputEventKey:
 		if _is_direction_pressed(event):
-			if character.ray_check(_get_input_dir()):
+			if character.ray_check(_get_input_dir(event)):
 				return
 			_set_move_dir(event)
 			transition.emit(self, "MoveState")
@@ -23,14 +23,14 @@ func _is_direction_pressed(event : InputEvent) -> bool:
 	return false
 
 
-func _get_input_dir() -> int:
-	if Input.is_action_pressed("MoveUp"):
+func _get_input_dir(event : InputEventKey) -> int:
+	if event.is_action_pressed("MoveUp"):
 		return character.DIRECTIONS.UP
-	if Input.is_action_pressed("MoveDown"):
+	if event.is_action_pressed("MoveDown"):
 		return character.DIRECTIONS.DOWN
-	if Input.is_action_pressed("MoveLeft"):
+	if event.is_action_pressed("MoveLeft"):
 		return character.DIRECTIONS.LEFT
-	if Input.is_action_pressed("MoveRight"):
+	if event.is_action_pressed("MoveRight"):
 		return character.DIRECTIONS.RIGHT
 	return -1
 
@@ -50,7 +50,7 @@ func _set_move_dir(event : InputEvent):
 func respawn() -> void: pass
 
 
-#func enter() -> void: pass
+func enter() -> void: pass
 #func exit() -> void: pass
 #func update(delta) -> void: pass
 #func physics_update(delta) -> void: pass

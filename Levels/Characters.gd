@@ -2,7 +2,7 @@
 extends Node3D
 
 
-const MAX_ENEMIES := 5
+const MAX_ENEMIES := 0
 const RESPAWN_DELAY := Vector2(2.0, 6.0)
 
 var player_ := load("res://Player/Player.tscn")
