@@ -35,6 +35,7 @@ func _body_collided(body : Node3D) -> void:
 		return
 	if body != emitter:
 		body.burn()
+		queue_free()
 
 
 func _off_screen() -> void:
