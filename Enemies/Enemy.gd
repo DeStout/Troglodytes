@@ -75,6 +75,10 @@ func freeze() -> void:
 		state_machine.current_state.freeze()
 
 
+func burn() -> void:
+	queue_free()
+
+
 func disable_collision() -> void:
 	$Collision.call_deferred("set_disabled", true)
 

@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://bsebhi65dqn0d" path="res://Player/Player.gd" id="1_cxr5p"]
 [ext_resource type="Material" uid="uid://vyxvhhf0hon" path="res://Player/PlayerMat.tres" id="2_tdg3f"]
 [ext_resource type="Script" uid="uid://oh5umyrnpcif" path="res://addons/StateMachine/StateMachine/state_machine.gd" id="3_dtqjt"]
-[ext_resource type="Script" uid="uid://ofgysyk2gry1" path="res://Player/IdleState.gd" id="4_5ncpa"]
-[ext_resource type="Script" uid="uid://bxtyxib10gxlu" path="res://Player/MoveState.gd" id="5_wi0c6"]
-[ext_resource type="Script" uid="uid://f8hyo1x33o6j" path="res://Player/AttackState.gd" id="6_tdg3f"]
+[ext_resource type="Script" uid="uid://ofgysyk2gry1" path="res://Player/States/IdleState.gd" id="4_5ncpa"]
+[ext_resource type="Script" uid="uid://bxtyxib10gxlu" path="res://Player/States/MoveState.gd" id="5_wi0c6"]
+[ext_resource type="Script" uid="uid://f8hyo1x33o6j" path="res://Player/States/AttackState.gd" id="6_tdg3f"]
 [ext_resource type="AudioStream" uid="uid://b6kdy1orqnwqu" path="res://Player/Whoosh.ogg" id="7_j23h2"]
 [ext_resource type="AudioStream" uid="uid://jk1e673eyin2" path="res://Player/Hit2.ogg" id="8_s1rgi"]
 [ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://Enemies/EnemyMat.tres" id="9_j23h2"]
@@ -155,6 +155,10 @@ surface_material_override/0 = ExtResource("2_tdg3f")
 libraries = {
 &"": SubResource("AnimationLibrary_dtqjt")
 }
+
+[node name="FirePowerTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
 
 [node name="AttackCast" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.403641)

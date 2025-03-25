@@ -9,6 +9,7 @@ var home_ := load("res://Levels/Home.tscn")
 @export var characters : Node3D
 @export var pick_ups : Node3D
 @export var eggs : Node3D
+@export var fx : Node3D
 @export var play_area : Area3D
 
 var free_squares : Array[Node3D] = []
@@ -20,6 +21,8 @@ func _ready() -> void:
 
 func _set_up() -> void:
 	characters.player.game_over.connect(game_over)
+	characters.player.freeze_pick_up.connect(characters.freeze_enemies)
+	characters.player.spawn_fire_ball.connect(spawn_fire_ball)
 	
 	var used_squares : Array[Node3D] = []
 	used_squares = characters.spawn_enemies(used_squares)
@@ -51,6 +54,10 @@ func get_rand_free_square(use_square := true) -> Node3D:
 	if use_square:
 		free_squares.erase(free_square)
 	return free_square
+
+
+func spawn_fire_ball(player) -> void:
+	fx.spawn_fire_ball(player)
 
 
 func egg_collected(egg : Node3D) -> void:

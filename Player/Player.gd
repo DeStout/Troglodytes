@@ -5,8 +5,10 @@ class_name Player extends CharacterBody3D
 
 signal game_over
 signal freeze_pick_up
+signal spawn_fire_ball
 
 @onready var anim_player := $AnimPlayer
+@onready var fire_power_timer := $FirePowerTimer
 @onready var attack_cast := $AttackCast
 @onready var attack_sfx := $AttackSFX
 @onready var hit_sfx := $HitSFX
@@ -15,6 +17,7 @@ const ACCEL := 15.0
 const MAX_SPEED := 4.5
 const MIN_SPEED := 1.5
 var speed := 3.0
+const FIRE_POWER_TIME := 10.0
 
 @export var state_machine : StateMachine
 enum DIRECTIONS { UP, DOWN, LEFT, RIGHT }
@@ -46,6 +49,12 @@ func ray_check(check_dir : DIRECTIONS) -> bool:
 
 
 func attack() -> void:
+	if fire_power_timer.time_left:
+		# Signal to Level.spawn_fire_ball()
+		spawn_fire_ball.emit(self)
+		state_machine.current_state.attack_finished()
+		return
+		
 	if anim_player.current_animation == "Attack":
 		anim_player.seek(0.0)
 	else:
@@ -91,6 +100,10 @@ func respawn() -> void:
 func effect_speed(speed_effect : float) -> void:
 	speed += speed_effect
 	speed = clamp(speed, MIN_SPEED, MAX_SPEED)
+
+
+func give_fire_power() -> void:
+	fire_power_timer.start(FIRE_POWER_TIME)
 
 
 func apply_freeze() -> void:

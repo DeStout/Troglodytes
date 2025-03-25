@@ -28,7 +28,13 @@ func _set_type(new_effect) -> void:
 		EFFECTS.SLOW_DOWN:
 			_add_mesh(slow_down_.instantiate())
 		EFFECTS.FIRE_POWER:
-			pass
+			var cube := MeshInstance3D.new()
+			cube.mesh = BoxMesh.new()
+			cube.mesh.size = Vector3(0.8, 0.25, 0.25)
+			var mat = load("res://Enemies/EnemyMat.tres")
+			cube.set_surface_override_material(0, mat)
+			_add_mesh(cube)
+			cube.position.y = 1.0
 		EFFECTS.FREEZE:
 			var cube := MeshInstance3D.new()
 			cube.mesh = BoxMesh.new()
@@ -62,7 +68,7 @@ func _apply_effect(player : Player) -> void:
 		EFFECTS.SLOW_DOWN:
 			player.effect_speed(-0.5)
 		EFFECTS.FIRE_POWER:
-			pass
+			player.give_fire_power()
 		EFFECTS.FREEZE:
 			player.apply_freeze()
 		EFFECTS.INVINCIBLE:

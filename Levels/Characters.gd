@@ -27,7 +27,6 @@ func spawn_player(player_square : Node3D) -> void:
 	player = player_.instantiate()
 	add_child(player)
 	player.owner = level
-	player.freeze_pick_up.connect(freeze_enemies)
 	player.position = player_square.global_position
 	player.position.y = 0
 	player.rotation.y = PI

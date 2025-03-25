@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk3hna54702v6"]
+
+[ext_resource type="Script" uid="uid://dwkq0uelyudar" path="res://Player/FireBall.gd" id="1_avl5a"]
+[ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://Enemies/EnemyMat.tres" id="1_lwaqw"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_toymk"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lwaqw"]
+radius = 0.35
+
+[node name="FireBall" type="Node3D"]
+script = ExtResource("1_avl5a")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("SphereMesh_toymk")
+surface_material_override/0 = ExtResource("1_lwaqw")
+
+[node name="Area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 16
+collision_mask = 39
+monitorable = false
+
+[node name="Collision" type="CollisionShape3D" parent="Area"]
+shape = SubResource("CylinderShape3D_lwaqw")
+
+[node name="VisibleOnScreen" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+aabb = AABB(-0.3, -0.3, -0.3, 0.6, 0.6, 0.6)
+
+[connection signal="body_entered" from="Area" to="." method="_body_collided"]
+[connection signal="screen_exited" from="VisibleOnScreen" to="." method="_off_screen"]
