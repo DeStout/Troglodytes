@@ -219,10 +219,6 @@ one_shot = true
 [node name="FreezeState" type="Node" parent="StateMachine"]
 script = ExtResource("10_n2n7y")
 
-[node name="FreezeTimer" type="Timer" parent="StateMachine/FreezeState"]
-wait_time = 5.0
-one_shot = true
-
 [node name="DeathState" type="Node" parent="StateMachine"]
 script = ExtResource("8_un6pf")
 
@@ -289,6 +285,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 aabb = AABB(-0.5, -1, -0.5, 1, 2, 1)
 
 [connection signal="timeout" from="StateMachine/HitStunState/StunTimer" to="StateMachine/HitStunState" method="reset_attacked"]
-[connection signal="timeout" from="StateMachine/FreezeState/FreezeTimer" to="StateMachine/FreezeState" method="_unfreeze"]
 [connection signal="body_entered" from="AttackCheck" to="." method="_body_attackable"]
 [connection signal="screen_exited" from="OnScreenNotify" to="StateMachine/DeathState" method="die"]

@@ -1,29 +1,30 @@
-[gd_scene load_steps=14 format=3 uid="uid://bvgtfw77ix7ir"]
+[gd_scene load_steps=15 format=3 uid="uid://bvgtfw77ix7ir"]
 
 [ext_resource type="PackedScene" uid="uid://dpgayrnq7arve" path="res://Levels/Level.tscn" id="1_rhq3p"]
 [ext_resource type="Material" uid="uid://ct43l1nlw1evl" path="res://Levels/StoneSquare.tres" id="2_xb24h"]
 [ext_resource type="Material" uid="uid://cmf81tjijja2t" path="res://Levels/WalkSquare.tres" id="3_vybwq"]
 [ext_resource type="Material" uid="uid://vyxvhhf0hon" path="res://Player/PlayerMat.tres" id="4_4cgce"]
 [ext_resource type="PackedScene" uid="uid://b2iwuk2gndgr4" path="res://Player/Player.tscn" id="5_twi1l"]
+[ext_resource type="Script" uid="uid://bsebhi65dqn0d" path="res://Player/Player.gd" id="6_q5lgr"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_hy5j1"]
+[sub_resource type="BoxMesh" id="BoxMesh_vybwq"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_xxxi4"]
+[sub_resource type="SphereMesh" id="SphereMesh_4cgce"]
 radius = 0.35
 height = 0.7
 radial_segments = 12
 rings = 12
 
-[sub_resource type="BoxMesh" id="BoxMesh_4c4gq"]
+[sub_resource type="BoxMesh" id="BoxMesh_twi1l"]
 size = Vector3(27, 1, 4)
 
-[sub_resource type="BoxMesh" id="BoxMesh_3e7p2"]
+[sub_resource type="BoxMesh" id="BoxMesh_q5lgr"]
 size = Vector3(4, 1, 15)
 
-[sub_resource type="BoxMesh" id="BoxMesh_dxjb0"]
+[sub_resource type="BoxMesh" id="BoxMesh_hy5j1"]
 size = Vector3(27, 1, 4)
 
-[sub_resource type="BoxMesh" id="BoxMesh_hx0pg"]
+[sub_resource type="BoxMesh" id="BoxMesh_xxxi4"]
 size = Vector3(4, 1, 15)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jon3f"]
@@ -38,146 +39,146 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 
 [node name="Square1" type="MeshInstance3D" parent="Board/Row1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row1/Square1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square2" type="MeshInstance3D" parent="Board/Row1" index="1" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square3" type="MeshInstance3D" parent="Board/Row1" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row1/Square3" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square4" type="MeshInstance3D" parent="Board/Row1" index="3" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square5" type="MeshInstance3D" parent="Board/Row1" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row1/Square5" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square6" type="MeshInstance3D" parent="Board/Row1" index="5" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square7" type="MeshInstance3D" parent="Board/Row1" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row1/Square7" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square8" type="MeshInstance3D" parent="Board/Row1" index="7" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square9" type="MeshInstance3D" parent="Board/Row1" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row1/Square9" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square10" type="MeshInstance3D" parent="Board/Row1" index="9" groups=["HomeSquares"]]
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square11" type="MeshInstance3D" parent="Board/Row1" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row1/Square11" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square12" type="MeshInstance3D" parent="Board/Row1" index="11" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square13" type="MeshInstance3D" parent="Board/Row1" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row1/Square13" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square14" type="MeshInstance3D" parent="Board/Row1" index="13" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square15" type="MeshInstance3D" parent="Board/Row1" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row1/Square15" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square16" type="MeshInstance3D" parent="Board/Row1" index="15" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square17" type="MeshInstance3D" parent="Board/Row1" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row1/Square17" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square18" type="MeshInstance3D" parent="Board/Row1" index="17" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square19" type="MeshInstance3D" parent="Board/Row1" index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row1/Square19" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Row2" type="Node3D" parent="Board" index="1"]
@@ -185,96 +186,96 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 
 [node name="Square1" type="MeshInstance3D" parent="Board/Row2" index="0" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square2" type="MeshInstance3D" parent="Board/Row2" index="1" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square3" type="MeshInstance3D" parent="Board/Row2" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square4" type="MeshInstance3D" parent="Board/Row2" index="3" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square5" type="MeshInstance3D" parent="Board/Row2" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square6" type="MeshInstance3D" parent="Board/Row2" index="5" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square7" type="MeshInstance3D" parent="Board/Row2" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square8" type="MeshInstance3D" parent="Board/Row2" index="7" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square9" type="MeshInstance3D" parent="Board/Row2" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square10" type="MeshInstance3D" parent="Board/Row2" index="9" groups=["EggSquares"]]
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square11" type="MeshInstance3D" parent="Board/Row2" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square12" type="MeshInstance3D" parent="Board/Row2" index="11" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square13" type="MeshInstance3D" parent="Board/Row2" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square14" type="MeshInstance3D" parent="Board/Row2" index="13" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square15" type="MeshInstance3D" parent="Board/Row2" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square16" type="MeshInstance3D" parent="Board/Row2" index="15" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square17" type="MeshInstance3D" parent="Board/Row2" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square18" type="MeshInstance3D" parent="Board/Row2" index="17" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square19" type="MeshInstance3D" parent="Board/Row2" index="18" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Row3" type="Node3D" parent="Board" index="2"]
@@ -282,146 +283,146 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 
 [node name="Square1" type="MeshInstance3D" parent="Board/Row3" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row3/Square1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square2" type="MeshInstance3D" parent="Board/Row3" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square3" type="MeshInstance3D" parent="Board/Row3" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row3/Square3" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square4" type="MeshInstance3D" parent="Board/Row3" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square5" type="MeshInstance3D" parent="Board/Row3" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row3/Square5" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square6" type="MeshInstance3D" parent="Board/Row3" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square7" type="MeshInstance3D" parent="Board/Row3" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row3/Square7" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square8" type="MeshInstance3D" parent="Board/Row3" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square9" type="MeshInstance3D" parent="Board/Row3" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row3/Square9" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square10" type="MeshInstance3D" parent="Board/Row3" index="9"]
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square11" type="MeshInstance3D" parent="Board/Row3" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row3/Square11" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square12" type="MeshInstance3D" parent="Board/Row3" index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square13" type="MeshInstance3D" parent="Board/Row3" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row3/Square13" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square14" type="MeshInstance3D" parent="Board/Row3" index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square15" type="MeshInstance3D" parent="Board/Row3" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row3/Square15" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square16" type="MeshInstance3D" parent="Board/Row3" index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square17" type="MeshInstance3D" parent="Board/Row3" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row3/Square17" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square18" type="MeshInstance3D" parent="Board/Row3" index="17"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square19" type="MeshInstance3D" parent="Board/Row3" index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row3/Square19" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Row4" type="Node3D" parent="Board" index="3"]
@@ -429,96 +430,96 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 
 [node name="Square1" type="MeshInstance3D" parent="Board/Row4" index="0" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square2" type="MeshInstance3D" parent="Board/Row4" index="1" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square3" type="MeshInstance3D" parent="Board/Row4" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square4" type="MeshInstance3D" parent="Board/Row4" index="3" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square5" type="MeshInstance3D" parent="Board/Row4" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square6" type="MeshInstance3D" parent="Board/Row4" index="5" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square7" type="MeshInstance3D" parent="Board/Row4" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square8" type="MeshInstance3D" parent="Board/Row4" index="7" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square9" type="MeshInstance3D" parent="Board/Row4" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square10" type="MeshInstance3D" parent="Board/Row4" index="9" groups=["EggSquares"]]
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square11" type="MeshInstance3D" parent="Board/Row4" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square12" type="MeshInstance3D" parent="Board/Row4" index="11" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square13" type="MeshInstance3D" parent="Board/Row4" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square14" type="MeshInstance3D" parent="Board/Row4" index="13" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square15" type="MeshInstance3D" parent="Board/Row4" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square16" type="MeshInstance3D" parent="Board/Row4" index="15" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square17" type="MeshInstance3D" parent="Board/Row4" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square18" type="MeshInstance3D" parent="Board/Row4" index="17" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square19" type="MeshInstance3D" parent="Board/Row4" index="18" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Row5" type="Node3D" parent="Board" index="4"]
@@ -526,146 +527,146 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
 [node name="Square1" type="MeshInstance3D" parent="Board/Row5" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row5/Square1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square2" type="MeshInstance3D" parent="Board/Row5" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square3" type="MeshInstance3D" parent="Board/Row5" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row5/Square3" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square4" type="MeshInstance3D" parent="Board/Row5" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square5" type="MeshInstance3D" parent="Board/Row5" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row5/Square5" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square6" type="MeshInstance3D" parent="Board/Row5" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square7" type="MeshInstance3D" parent="Board/Row5" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row5/Square7" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square8" type="MeshInstance3D" parent="Board/Row5" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square9" type="MeshInstance3D" parent="Board/Row5" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row5/Square9" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square10" type="MeshInstance3D" parent="Board/Row5" index="9"]
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square11" type="MeshInstance3D" parent="Board/Row5" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row5/Square11" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square12" type="MeshInstance3D" parent="Board/Row5" index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square13" type="MeshInstance3D" parent="Board/Row5" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row5/Square13" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square14" type="MeshInstance3D" parent="Board/Row5" index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square15" type="MeshInstance3D" parent="Board/Row5" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row5/Square15" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square16" type="MeshInstance3D" parent="Board/Row5" index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square17" type="MeshInstance3D" parent="Board/Row5" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row5/Square17" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square18" type="MeshInstance3D" parent="Board/Row5" index="17"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square19" type="MeshInstance3D" parent="Board/Row5" index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row5/Square19" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Row6" type="Node3D" parent="Board" index="5"]
@@ -673,96 +674,96 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="Square1" type="MeshInstance3D" parent="Board/Row6" index="0" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square2" type="MeshInstance3D" parent="Board/Row6" index="1" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square3" type="MeshInstance3D" parent="Board/Row6" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square4" type="MeshInstance3D" parent="Board/Row6" index="3" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square5" type="MeshInstance3D" parent="Board/Row6" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square6" type="MeshInstance3D" parent="Board/Row6" index="5" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square7" type="MeshInstance3D" parent="Board/Row6" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square8" type="MeshInstance3D" parent="Board/Row6" index="7" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square9" type="MeshInstance3D" parent="Board/Row6" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square10" type="MeshInstance3D" parent="Board/Row6" index="9" groups=["EggSquares"]]
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square11" type="MeshInstance3D" parent="Board/Row6" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square12" type="MeshInstance3D" parent="Board/Row6" index="11" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square13" type="MeshInstance3D" parent="Board/Row6" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square14" type="MeshInstance3D" parent="Board/Row6" index="13" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square15" type="MeshInstance3D" parent="Board/Row6" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square16" type="MeshInstance3D" parent="Board/Row6" index="15" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square17" type="MeshInstance3D" parent="Board/Row6" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square18" type="MeshInstance3D" parent="Board/Row6" index="17" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square19" type="MeshInstance3D" parent="Board/Row6" index="18" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Row7" type="Node3D" parent="Board" index="6"]
@@ -770,242 +771,242 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
 [node name="Square1" type="MeshInstance3D" parent="Board/Row7" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row7/Square1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square2" type="MeshInstance3D" parent="Board/Row7" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square3" type="MeshInstance3D" parent="Board/Row7" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row7/Square3" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square4" type="MeshInstance3D" parent="Board/Row7" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square5" type="MeshInstance3D" parent="Board/Row7" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row7/Square5" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square6" type="MeshInstance3D" parent="Board/Row7" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square7" type="MeshInstance3D" parent="Board/Row7" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row7/Square7" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square8" type="MeshInstance3D" parent="Board/Row7" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square9" type="MeshInstance3D" parent="Board/Row7" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row7/Square9" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square10" type="MeshInstance3D" parent="Board/Row7" index="9"]
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square11" type="MeshInstance3D" parent="Board/Row7" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row7/Square11" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square12" type="MeshInstance3D" parent="Board/Row7" index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square13" type="MeshInstance3D" parent="Board/Row7" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row7/Square13" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square14" type="MeshInstance3D" parent="Board/Row7" index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square15" type="MeshInstance3D" parent="Board/Row7" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row7/Square15" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square16" type="MeshInstance3D" parent="Board/Row7" index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square17" type="MeshInstance3D" parent="Board/Row7" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row7/Square17" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square18" type="MeshInstance3D" parent="Board/Row7" index="17"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square19" type="MeshInstance3D" parent="Board/Row7" index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row7/Square19" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Row8" type="Node3D" parent="Board" index="7"]
 
 [node name="Square1" type="MeshInstance3D" parent="Board/Row8" index="0" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square2" type="MeshInstance3D" parent="Board/Row8" index="1" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square3" type="MeshInstance3D" parent="Board/Row8" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square4" type="MeshInstance3D" parent="Board/Row8" index="3" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square5" type="MeshInstance3D" parent="Board/Row8" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square6" type="MeshInstance3D" parent="Board/Row8" index="5" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square7" type="MeshInstance3D" parent="Board/Row8" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square8" type="MeshInstance3D" parent="Board/Row8" index="7" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square9" type="MeshInstance3D" parent="Board/Row8" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square10" type="MeshInstance3D" parent="Board/Row8" index="9" groups=["EggSquares"]]
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square11" type="MeshInstance3D" parent="Board/Row8" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square12" type="MeshInstance3D" parent="Board/Row8" index="11" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square13" type="MeshInstance3D" parent="Board/Row8" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square14" type="MeshInstance3D" parent="Board/Row8" index="13" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square15" type="MeshInstance3D" parent="Board/Row8" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square16" type="MeshInstance3D" parent="Board/Row8" index="15" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square17" type="MeshInstance3D" parent="Board/Row8" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square18" type="MeshInstance3D" parent="Board/Row8" index="17" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square19" type="MeshInstance3D" parent="Board/Row8" index="18" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Row9" type="Node3D" parent="Board" index="8"]
@@ -1013,146 +1014,146 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
 [node name="Square1" type="MeshInstance3D" parent="Board/Row9" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row9/Square1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square2" type="MeshInstance3D" parent="Board/Row9" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square3" type="MeshInstance3D" parent="Board/Row9" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row9/Square3" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square4" type="MeshInstance3D" parent="Board/Row9" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square5" type="MeshInstance3D" parent="Board/Row9" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row9/Square5" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square6" type="MeshInstance3D" parent="Board/Row9" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square7" type="MeshInstance3D" parent="Board/Row9" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row9/Square7" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square8" type="MeshInstance3D" parent="Board/Row9" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square9" type="MeshInstance3D" parent="Board/Row9" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row9/Square9" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square10" type="MeshInstance3D" parent="Board/Row9" index="9"]
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square11" type="MeshInstance3D" parent="Board/Row9" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row9/Square11" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square12" type="MeshInstance3D" parent="Board/Row9" index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square13" type="MeshInstance3D" parent="Board/Row9" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row9/Square13" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square14" type="MeshInstance3D" parent="Board/Row9" index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square15" type="MeshInstance3D" parent="Board/Row9" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row9/Square15" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square16" type="MeshInstance3D" parent="Board/Row9" index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square17" type="MeshInstance3D" parent="Board/Row9" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row9/Square17" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square18" type="MeshInstance3D" parent="Board/Row9" index="17"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square19" type="MeshInstance3D" parent="Board/Row9" index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row9/Square19" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Row10" type="Node3D" parent="Board" index="9"]
@@ -1160,96 +1161,96 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
 [node name="Square1" type="MeshInstance3D" parent="Board/Row10" index="0" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square2" type="MeshInstance3D" parent="Board/Row10" index="1" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square3" type="MeshInstance3D" parent="Board/Row10" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square4" type="MeshInstance3D" parent="Board/Row10" index="3" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square5" type="MeshInstance3D" parent="Board/Row10" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square6" type="MeshInstance3D" parent="Board/Row10" index="5" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square7" type="MeshInstance3D" parent="Board/Row10" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square8" type="MeshInstance3D" parent="Board/Row10" index="7" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square9" type="MeshInstance3D" parent="Board/Row10" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square10" type="MeshInstance3D" parent="Board/Row10" index="9" groups=["EggSquares"]]
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square11" type="MeshInstance3D" parent="Board/Row10" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square12" type="MeshInstance3D" parent="Board/Row10" index="11" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square13" type="MeshInstance3D" parent="Board/Row10" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square14" type="MeshInstance3D" parent="Board/Row10" index="13" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square15" type="MeshInstance3D" parent="Board/Row10" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square16" type="MeshInstance3D" parent="Board/Row10" index="15" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square17" type="MeshInstance3D" parent="Board/Row10" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square18" type="MeshInstance3D" parent="Board/Row10" index="17" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square19" type="MeshInstance3D" parent="Board/Row10" index="18" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Row11" type="Node3D" parent="Board" index="10"]
@@ -1257,146 +1258,146 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 
 [node name="Square1" type="MeshInstance3D" parent="Board/Row11" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row11/Square1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square2" type="MeshInstance3D" parent="Board/Row11" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square3" type="MeshInstance3D" parent="Board/Row11" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row11/Square3" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square4" type="MeshInstance3D" parent="Board/Row11" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square5" type="MeshInstance3D" parent="Board/Row11" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row11/Square5" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square6" type="MeshInstance3D" parent="Board/Row11" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square7" type="MeshInstance3D" parent="Board/Row11" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row11/Square7" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square8" type="MeshInstance3D" parent="Board/Row11" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square9" type="MeshInstance3D" parent="Board/Row11" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row11/Square9" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square10" type="MeshInstance3D" parent="Board/Row11" index="9"]
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square11" type="MeshInstance3D" parent="Board/Row11" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row11/Square11" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square12" type="MeshInstance3D" parent="Board/Row11" index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square13" type="MeshInstance3D" parent="Board/Row11" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row11/Square13" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square14" type="MeshInstance3D" parent="Board/Row11" index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square15" type="MeshInstance3D" parent="Board/Row11" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row11/Square15" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square16" type="MeshInstance3D" parent="Board/Row11" index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square17" type="MeshInstance3D" parent="Board/Row11" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row11/Square17" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square18" type="MeshInstance3D" parent="Board/Row11" index="17"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square19" type="MeshInstance3D" parent="Board/Row11" index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row11/Square19" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Row12" type="Node3D" parent="Board" index="11"]
@@ -1404,96 +1405,96 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 
 [node name="Square1" type="MeshInstance3D" parent="Board/Row12" index="0" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square2" type="MeshInstance3D" parent="Board/Row12" index="1" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square3" type="MeshInstance3D" parent="Board/Row12" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square4" type="MeshInstance3D" parent="Board/Row12" index="3" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square5" type="MeshInstance3D" parent="Board/Row12" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square6" type="MeshInstance3D" parent="Board/Row12" index="5" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square7" type="MeshInstance3D" parent="Board/Row12" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square8" type="MeshInstance3D" parent="Board/Row12" index="7" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square9" type="MeshInstance3D" parent="Board/Row12" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square10" type="MeshInstance3D" parent="Board/Row12" index="9" groups=["EggSquares"]]
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square11" type="MeshInstance3D" parent="Board/Row12" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square12" type="MeshInstance3D" parent="Board/Row12" index="11" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square13" type="MeshInstance3D" parent="Board/Row12" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square14" type="MeshInstance3D" parent="Board/Row12" index="13" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square15" type="MeshInstance3D" parent="Board/Row12" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square16" type="MeshInstance3D" parent="Board/Row12" index="15" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square17" type="MeshInstance3D" parent="Board/Row12" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square18" type="MeshInstance3D" parent="Board/Row12" index="17" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square19" type="MeshInstance3D" parent="Board/Row12" index="18" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Row13" type="Node3D" parent="Board" index="12"]
@@ -1501,146 +1502,146 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 
 [node name="Square1" type="MeshInstance3D" parent="Board/Row13" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row13/Square1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square2" type="MeshInstance3D" parent="Board/Row13" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square3" type="MeshInstance3D" parent="Board/Row13" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row13/Square3" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square4" type="MeshInstance3D" parent="Board/Row13" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square5" type="MeshInstance3D" parent="Board/Row13" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row13/Square5" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square6" type="MeshInstance3D" parent="Board/Row13" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square7" type="MeshInstance3D" parent="Board/Row13" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row13/Square7" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square8" type="MeshInstance3D" parent="Board/Row13" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square9" type="MeshInstance3D" parent="Board/Row13" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row13/Square9" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square10" type="MeshInstance3D" parent="Board/Row13" index="9"]
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square11" type="MeshInstance3D" parent="Board/Row13" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row13/Square11" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square12" type="MeshInstance3D" parent="Board/Row13" index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square13" type="MeshInstance3D" parent="Board/Row13" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row13/Square13" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square14" type="MeshInstance3D" parent="Board/Row13" index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square15" type="MeshInstance3D" parent="Board/Row13" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row13/Square15" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square16" type="MeshInstance3D" parent="Board/Row13" index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square17" type="MeshInstance3D" parent="Board/Row13" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row13/Square17" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square18" type="MeshInstance3D" parent="Board/Row13" index="17"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square19" type="MeshInstance3D" parent="Board/Row13" index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row13/Square19" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Row14" type="Node3D" parent="Board" index="13"]
@@ -1648,96 +1649,96 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 
 [node name="Square1" type="MeshInstance3D" parent="Board/Row14" index="0" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square2" type="MeshInstance3D" parent="Board/Row14" index="1" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square3" type="MeshInstance3D" parent="Board/Row14" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square4" type="MeshInstance3D" parent="Board/Row14" index="3" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square5" type="MeshInstance3D" parent="Board/Row14" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square6" type="MeshInstance3D" parent="Board/Row14" index="5" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square7" type="MeshInstance3D" parent="Board/Row14" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square8" type="MeshInstance3D" parent="Board/Row14" index="7" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square9" type="MeshInstance3D" parent="Board/Row14" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square10" type="MeshInstance3D" parent="Board/Row14" index="9" groups=["EggSquares"]]
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square11" type="MeshInstance3D" parent="Board/Row14" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square12" type="MeshInstance3D" parent="Board/Row14" index="11" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square13" type="MeshInstance3D" parent="Board/Row14" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square14" type="MeshInstance3D" parent="Board/Row14" index="13" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square15" type="MeshInstance3D" parent="Board/Row14" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square16" type="MeshInstance3D" parent="Board/Row14" index="15" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square17" type="MeshInstance3D" parent="Board/Row14" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square18" type="MeshInstance3D" parent="Board/Row14" index="17" groups=["EggSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square19" type="MeshInstance3D" parent="Board/Row14" index="18" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Row15" type="Node3D" parent="Board" index="14"]
@@ -1745,166 +1746,166 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
 
 [node name="Square1" type="MeshInstance3D" parent="Board/Row15" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row15/Square1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square2" type="MeshInstance3D" parent="Board/Row15" index="1" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square3" type="MeshInstance3D" parent="Board/Row15" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row15/Square3" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square4" type="MeshInstance3D" parent="Board/Row15" index="3" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square5" type="MeshInstance3D" parent="Board/Row15" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row15/Square5" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square6" type="MeshInstance3D" parent="Board/Row15" index="5" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square7" type="MeshInstance3D" parent="Board/Row15" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row15/Square7" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square8" type="MeshInstance3D" parent="Board/Row15" index="7" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square9" type="MeshInstance3D" parent="Board/Row15" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row15/Square9" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square10" type="MeshInstance3D" parent="Board/Row15" index="9" groups=["HomeSquares"]]
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square11" type="MeshInstance3D" parent="Board/Row15" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row15/Square11" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square12" type="MeshInstance3D" parent="Board/Row15" index="11" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square13" type="MeshInstance3D" parent="Board/Row15" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row15/Square13" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square14" type="MeshInstance3D" parent="Board/Row15" index="13" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square15" type="MeshInstance3D" parent="Board/Row15" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row15/Square15" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square16" type="MeshInstance3D" parent="Board/Row15" index="15" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square17" type="MeshInstance3D" parent="Board/Row15" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row15/Square17" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Square18" type="MeshInstance3D" parent="Board/Row15" index="17" groups=["HomeSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("3_vybwq")
 
 [node name="Square19" type="MeshInstance3D" parent="Board/Row15" index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.1, 0)
-mesh = SubResource("BoxMesh_hy5j1")
+mesh = SubResource("BoxMesh_vybwq")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Stone" type="MeshInstance3D" parent="Board/Row15/Square19" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_xxxi4")
+mesh = SubResource("SphereMesh_4cgce")
 surface_material_override/0 = ExtResource("2_xb24h")
 
 [node name="Water1" type="MeshInstance3D" parent="Board" index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 9.5)
-mesh = SubResource("BoxMesh_4c4gq")
+mesh = SubResource("BoxMesh_twi1l")
 surface_material_override/0 = ExtResource("4_4cgce")
 
 [node name="Water2" type="MeshInstance3D" parent="Board" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, -0.1, 0)
-mesh = SubResource("BoxMesh_3e7p2")
+mesh = SubResource("BoxMesh_q5lgr")
 surface_material_override/0 = ExtResource("4_4cgce")
 
 [node name="Water3" type="MeshInstance3D" parent="Board" index="17"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -9.5)
-mesh = SubResource("BoxMesh_dxjb0")
+mesh = SubResource("BoxMesh_hy5j1")
 surface_material_override/0 = ExtResource("4_4cgce")
 
 [node name="Water4" type="MeshInstance3D" parent="Board" index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, -0.1, 0)
-mesh = SubResource("BoxMesh_hx0pg")
+mesh = SubResource("BoxMesh_xxxi4")
 surface_material_override/0 = ExtResource("4_4cgce")
 
 [node name="Barrier1" type="StaticBody3D" parent="Board" index="19"]
@@ -2134,8 +2135,14 @@ surface_material_override/0 = ExtResource("2_xb24h")
 [node name="Characters" parent="." index="4" node_paths=PackedStringArray("player")]
 player = NodePath("Player")
 
-[node name="Player" parent="Characters" index="0" instance=ExtResource("5_twi1l")]
+[node name="Player" type="CharacterBody3D" parent="Characters" index="0" node_paths=PackedStringArray("debug_target", "state_machine", "wall_check") instance=ExtResource("5_twi1l")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6, 0, -6)
+collision_layer = 2
+collision_mask = 57
+script = ExtResource("6_q5lgr")
+debug_target = NodePath("DebugTarget")
+state_machine = NodePath("StateMachine")
+wall_check = NodePath("WallCheck")
 
 [node name="PickUps" parent="." index="5"]
 level_pick_ups = Array[int]([0, 1, 3, 2])

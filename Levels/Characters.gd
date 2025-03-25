@@ -12,15 +12,17 @@ var enemy_ := load("res://Enemies/Enemy.tscn")
 @export var player : CharacterBody3D
 var enemies : Array[Enemy]
 var respawn_tweens : Array[Tween]
+
 var freeze_time := 0.0
+@export var freeze_sfx : AudioStreamPlayer
+@export var unfreeze_sfx : AudioStreamPlayer
 
 
 func _process(delta: float) -> void:
 	if freeze_time:
 		freeze_time = max(freeze_time - delta, 0.0)
 		if freeze_time == 0.0:
-			for tween in respawn_tweens:
-				tween.play()
+			_unfreeze_enemies()
 
 
 func spawn_player(player_square : Node3D) -> void:
@@ -76,11 +78,24 @@ func enemy_finished_spawning(spawn_square : Node3D) -> void:
 
 
 func freeze_enemies() -> void:
+	freeze_sfx.play()
 	freeze_time = 5.0
 	for tween in respawn_tweens:
 		tween.pause()
 	for enemy in enemies:
-		enemy.freeze()
+		if enemy.has_method("freeze"):
+			enemy.freeze()
+
+
+func _unfreeze_enemies() -> void:
+	unfreeze_sfx.play()
+	await unfreeze_sfx.finished
+	for tween in respawn_tweens:
+		tween.play()
+	for enemy in enemies:
+		if enemy.has_method("unfreeze"):
+			enemy.unfreeze()
+	
 
 
 func enemy_defeated(enemy : Enemy) -> void:
