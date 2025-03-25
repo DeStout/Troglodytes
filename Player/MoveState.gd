@@ -68,23 +68,34 @@ func physics_update(delta) -> void:
 	_move(delta)
 	if !_is_at_target():
 		return
+	var walls :=[character.ray_check(character.move_dir), \
+											character.ray_check(_get_input_dir())]
 	if _get_num_input() == 1 and character.move_dir != _get_input_dir():
-		if character.ray_check(_get_input_dir()):
+		# Turn if no wall in input direction
+		if !walls[1]:
+			_stop_and_snap()
+			character.move_dir = _get_input_dir()
 			_set_target_square()
+			await _slerp_to_dirp()
 			return
-		character.position.x = character.target_square.x
-		character.position.z = character.target_square.y
-		character.velocity = Vector3.ZERO
-		character.move_dir = _get_input_dir()
-		_set_target_square()
-		await _slerp_to_dirp()
-		return
-	if character.ray_check(character.move_dir):
-		character.position.x = character.target_square.x
-		character.position.z = character.target_square.y
-		character.velocity = Vector3.ZERO
+		# Stop if wall ahead
+		if walls[0]:
+			_stop_and_snap()
+			return
+		# Continue forward if wall in input direction
+		if walls[1]:
+			_set_target_square()
+			
+	elif walls[0]:
+		_stop_and_snap()
 		transition.emit(self, "IdleState")
 	_set_target_square()
+
+
+func _stop_and_snap() -> void:
+	character.position.x = character.target_square.x
+	character.position.z = character.target_square.y
+	character.velocity = Vector3.ZERO
 
 
 func _move(delta : float) -> void:

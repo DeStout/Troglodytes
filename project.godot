@@ -70,3 +70,7 @@ Pause={
 3d_physics/layer_4="PickUps"
 3d_physics/layer_5="PlayerAttack"
 3d_physics/layer_6="EnemyAttack"
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true

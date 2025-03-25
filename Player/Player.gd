@@ -30,6 +30,8 @@ func get_prev_state() -> String:
 func ray_check(check_dir : DIRECTIONS) -> bool:
 	var local_dir : Vector3
 	match check_dir:
+		-1:
+			return false
 		0:
 			local_dir = Vector3(0, 0, -1) + wall_check.global_position
 		1:
