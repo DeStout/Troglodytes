@@ -18,6 +18,7 @@ const MAX_SPEED := 4.5
 const MIN_SPEED := 1.5
 var speed := 3.0
 const FIRE_POWER_TIME := 10.0
+@export var fire_sfx : AudioStreamPlayer
 
 @export var state_machine : StateMachine
 enum DIRECTIONS { UP, DOWN, LEFT, RIGHT }
@@ -50,6 +51,7 @@ func ray_check(check_dir : DIRECTIONS) -> bool:
 
 func attack() -> void:
 	if fire_power_timer.time_left:
+		fire_sfx.play()
 		# Signal to Level.spawn_fire_ball()
 		spawn_fire_ball.emit(self)
 		state_machine.current_state.attack_finished()

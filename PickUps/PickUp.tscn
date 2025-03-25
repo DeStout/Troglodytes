@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://jwxh6mbhxdij"]
+[gd_scene load_steps=11 format=3 uid="uid://jwxh6mbhxdij"]
 
 [ext_resource type="Script" uid="uid://cjhfr764nj21f" path="res://PickUps/PickUp.gd" id="1_3hj2f"]
 [ext_resource type="AudioStream" uid="uid://x06ccerbknan" path="res://PickUps/SpeedUp.ogg" id="2_38vqf"]
 [ext_resource type="AudioStream" uid="uid://cxi86u32usgd1" path="res://PickUps/SlowDown.ogg" id="3_le7pk"]
 [ext_resource type="AudioStream" uid="uid://cvoyjtcnlid4a" path="res://PickUps/IceFreeze.ogg" id="4_le7pk"]
+[ext_resource type="AudioStream" uid="uid://ciqx0wcnvc2c1" path="res://PickUps/FirePickUp.ogg" id="5_ebm5d"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_h8yf4"]
 height = 1.0
@@ -24,12 +25,18 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("4_le7pk")
 
-[node name="PickUp1" type="Node3D" node_paths=PackedStringArray("collision", "speed_up_sfx", "slow_down_sfx", "freeze_sfx", "despawn_timer")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_byf2i"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("5_ebm5d")
+
+[node name="PickUp1" type="Node3D" node_paths=PackedStringArray("collision", "speed_up_sfx", "slow_down_sfx", "freeze_sfx", "fire_sfx", "despawn_timer")]
 script = ExtResource("1_3hj2f")
 collision = NodePath("Area/Collision")
 speed_up_sfx = NodePath("SpeedUpSFX")
 slow_down_sfx = NodePath("SlowDownSFX")
 freeze_sfx = NodePath("FreezeSFX")
+fire_sfx = NodePath("FireSFX")
 despawn_timer = NodePath("Despawn")
 
 [node name="Area" type="Area3D" parent="."]
@@ -45,14 +52,21 @@ shape = SubResource("CylinderShape3D_h8yf4")
 
 [node name="SpeedUpSFX" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_le7pk")
-volume_db = -10.0
+volume_db = -15.0
+bus = &"SFX"
 
 [node name="SlowDownSFX" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ebm5d")
 volume_db = -20.0
+bus = &"SFX"
 
 [node name="FreezeSFX" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_38vqf")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="FireSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_byf2i")
 volume_db = -10.0
 bus = &"SFX"
 

@@ -12,9 +12,11 @@ enum EFFECTS { SPEED_UP, SLOW_DOWN, FIRE_POWER, FREEZE, INVINCIBLE, PINEAPPLE }
 var effect : int : set = _set_type
 var mesh : Node3D = null
 @export var collision : CollisionShape3D
+
 @export var speed_up_sfx : AudioStreamPlayer
 @export var slow_down_sfx : AudioStreamPlayer
 @export var freeze_sfx : AudioStreamPlayer
+@export var fire_sfx : AudioStreamPlayer
 
 const DESPAWN_RANGE := Vector2(9.0, 14.0)
 @export var despawn_timer : Timer
@@ -79,6 +81,7 @@ func _apply_effect(player : Player) -> AudioStreamPlayer:
 			sfx = slow_down_sfx
 			player.effect_speed(-0.5)
 		EFFECTS.FIRE_POWER:
+			sfx = fire_sfx
 			player.give_fire_power()
 		EFFECTS.FREEZE:
 			sfx = freeze_sfx
