@@ -70,6 +70,11 @@ func get_body() -> MeshInstance3D:
 	return $Body
 
 
+func freeze() -> void:
+	if state_machine.current_state.has_method("freeze"):
+		state_machine.current_state.freeze()
+
+
 func disable_collision() -> void:
 	$Collision.call_deferred("set_disabled", true)
 

@@ -4,6 +4,7 @@ class_name Player extends CharacterBody3D
 @export var debug_target : MeshInstance3D
 
 signal game_over
+signal freeze_pick_up
 
 @onready var anim_player := $AnimPlayer
 @onready var attack_cast := $AttackCast
@@ -73,6 +74,7 @@ func respawn() -> void:
 	Globals.add_to_player_lives(-1)
 	if Globals.player_lives == -1:
 		Globals.reset_game()
+		# Signal to Level.game_over()
 		game_over.emit()
 	
 	var respawn_pos = Utilities.get_closest_egg_square(global_position).global_position
@@ -87,3 +89,8 @@ func respawn() -> void:
 func effect_speed(speed_effect : float) -> void:
 	speed += speed_effect
 	speed = clamp(speed, MIN_SPEED, MAX_SPEED)
+
+
+func apply_freeze() -> void:
+	# Signal to Characters.freeze_enemies()
+	freeze_pick_up.emit()

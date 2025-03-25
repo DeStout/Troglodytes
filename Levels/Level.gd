@@ -1,4 +1,4 @@
-extends Node3D
+class_name Level extends Node3D
 
 
 var egg_ := load("res://PickUps/Egg.tscn")
@@ -19,7 +19,7 @@ func _ready() -> void:
 
 
 func _set_up() -> void:
-	characters.player.game_over.connect(level_complete)
+	characters.player.game_over.connect(game_over)
 	
 	var used_squares : Array[Node3D] = []
 	used_squares = characters.spawn_enemies(used_squares)
@@ -72,8 +72,17 @@ func _spawn_home() -> void:
 		home.rotation.y = PI / 2
 
 
-func level_complete() -> void:
+func level_clean_up() -> void:
 	for connection in play_area.body_exited.get_connections():
 		play_area.body_exited.disconnect(connection["callable"])
 	board.level_complete_clean_up()
-	game.start_new_level()
+
+
+func level_complete() -> void:
+	level_clean_up()
+	game.load_next_level()
+
+
+func game_over() -> void:
+	level_clean_up()
+	game.start_new_game()

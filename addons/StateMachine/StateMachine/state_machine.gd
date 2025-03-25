@@ -36,7 +36,9 @@ func _physics_process(delta : float) -> void:
 
 func on_state_transitioned(state : State, new_state_name : String) -> void:
 	if state != current_state:
-		printerr(character.name, ": Cannot change state from a non-active state")
+		printerr(character.name, ": Cannot change state from a non-active state (", \
+						current_state.name, ", ", state.name, ", ", new_state_name, ")")
+		breakpoint
 		return
 	
 	if !current_state:
@@ -45,7 +47,8 @@ func on_state_transitioned(state : State, new_state_name : String) -> void:
 	
 	var new_state : State = states[new_state_name.to_lower()]
 	if !new_state: 
-		printerr(character.name, ": Transition state name does not match a state's name")
+		printerr(character.name, ": Transition state name does not match a \
+												state's name (", new_state_name, ")")
 	
 	if current_state:
 		current_state.exit()

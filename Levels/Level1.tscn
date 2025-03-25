@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ogh1hkwcx66e"]
+
+[ext_resource type="PackedScene" uid="uid://dpgayrnq7arve" path="res://Levels/Level.tscn" id="1_w77jt"]
+
+[node name="Level1" instance=ExtResource("1_w77jt")]
+
+[node name="PickUps" parent="." index="5"]
+level_pick_ups = Array[int]([0, 1])

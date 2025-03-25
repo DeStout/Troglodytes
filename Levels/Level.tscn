@@ -1988,4 +1988,5 @@ volume_db = -35.0
 autoplay = true
 bus = &"Music"
 
+[connection signal="freeze_pick_up" from="Characters/Player" to="Characters" method="freeze_enemies"]
 [connection signal="body_exited" from="PlayArea" to="Characters" method="character_exited"]

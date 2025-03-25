@@ -2,7 +2,7 @@
 extends Node3D
 
 
-const MAX_ENEMIES := 0
+const MAX_ENEMIES := 5
 const RESPAWN_DELAY := Vector2(2.0, 6.0)
 
 var player_ := load("res://Player/Player.tscn")
@@ -10,12 +10,24 @@ var enemy_ := load("res://Enemies/Enemy.tscn")
 
 @export var level : Node3D
 @export var player : CharacterBody3D
+var enemies : Array[Enemy]
+var respawn_tweens : Array[Tween]
+var freeze_time := 0.0
+
+
+func _process(delta: float) -> void:
+	if freeze_time:
+		freeze_time = max(freeze_time - delta, 0.0)
+		if freeze_time == 0.0:
+			for tween in respawn_tweens:
+				tween.play()
 
 
 func spawn_player(player_square : Node3D) -> void:
 	player = player_.instantiate()
 	add_child(player)
 	player.owner = level
+	player.freeze_pick_up.connect(freeze_enemies)
 	player.position = player_square.global_position
 	player.position.y = 0
 	player.rotation.y = PI
@@ -31,6 +43,7 @@ func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 			
 		var enemy = enemy_.instantiate()
 		add_child(enemy, true)
+		enemies.append(enemy)
 		enemy.characters = self
 		enemy.position = Vector3(egg_square.global_position.x, -2, \
 														egg_square.global_position.z)
@@ -52,6 +65,7 @@ func _respawn_enemy() -> void:
 		var enemy = enemy_.instantiate()
 		var free_square : Node3D = level.get_rand_free_square()
 		add_child(enemy, true)
+		enemies.append(enemy)
 		enemy.characters = self
 		enemy.position = Vector3(free_square.global_position.x, -2, \
 														free_square.global_position.z)
@@ -62,8 +76,23 @@ func enemy_finished_spawning(spawn_square : Node3D) -> void:
 	level.set_square_free(spawn_square)
 
 
+func freeze_enemies() -> void:
+	freeze_time = 5.0
+	for tween in respawn_tweens:
+		tween.pause()
+	for enemy in enemies:
+		enemy.freeze()
+
+
 func enemy_defeated(enemy : Enemy) -> void:
-	await get_tree().create_timer(randf_range(RESPAWN_DELAY.x, RESPAWN_DELAY.y)).timeout
+	enemies.erase(enemy)
+	var tween = create_tween()
+	respawn_tweens.append(tween)
+	tween.tween_interval(randf_range(RESPAWN_DELAY.x, RESPAWN_DELAY.y))
+	if freeze_time:
+		tween.pause()
+	await tween.finished
+	respawn_tweens.erase(tween)
 	_respawn_enemy()
 
 

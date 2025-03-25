@@ -5,10 +5,10 @@ signal despawn
 
 const SCORE_VALUE := 50
 
-var fast_ := load("res://PickUps/FastArrow.tscn")
-var slow_ := load("res://PickUps/SlowArrow.tscn")
+var speed_up_ := load("res://PickUps/FastArrow.tscn")
+var slow_down_ := load("res://PickUps/SlowArrow.tscn")
 
-enum EFFECTS { FAST, SLOW }
+enum EFFECTS { SPEED_UP, SLOW_DOWN, FIRE_POWER, FREEZE, INVINCIBLE, PINEAPPLE }
 var effect : int : set = _set_type
 var mesh : Node3D = null
 
@@ -23,10 +23,24 @@ func _ready() -> void:
 func _set_type(new_effect) -> void:
 	effect = new_effect
 	match effect:
-		EFFECTS.FAST:
-			_add_mesh(fast_.instantiate())
-		EFFECTS.SLOW:
-			_add_mesh(slow_.instantiate())
+		EFFECTS.SPEED_UP:
+			_add_mesh(speed_up_.instantiate())
+		EFFECTS.SLOW_DOWN:
+			_add_mesh(slow_down_.instantiate())
+		EFFECTS.FIRE_POWER:
+			pass
+		EFFECTS.FREEZE:
+			var cube := MeshInstance3D.new()
+			cube.mesh = BoxMesh.new()
+			cube.mesh.size = Vector3(0.8, 0.8, 0.8)
+			var mat = load("res://Player/PlayerMat.tres")
+			cube.set_surface_override_material(0, mat)
+			_add_mesh(cube)
+			cube.position.y = 1.0
+		EFFECTS.INVINCIBLE:
+			pass
+		EFFECTS.PINEAPPLE:
+			pass
 
 
 func _add_mesh(new_mesh : Node3D) -> void:
@@ -43,10 +57,18 @@ func _collected(body : CharacterBody3D) -> void:
 
 func _apply_effect(player : Player) -> void:
 	match effect:
-		EFFECTS.FAST:
+		EFFECTS.SPEED_UP:
 			player.effect_speed(0.5)
-		EFFECTS.SLOW:
+		EFFECTS.SLOW_DOWN:
 			player.effect_speed(-0.5)
+		EFFECTS.FIRE_POWER:
+			pass
+		EFFECTS.FREEZE:
+			player.apply_freeze()
+		EFFECTS.INVINCIBLE:
+			pass
+		EFFECTS.PINEAPPLE:
+			pass
 
 
 func _despawn() -> void:

@@ -8,7 +8,7 @@
 [sub_resource type="BoxMesh" id="BoxMesh_v115i"]
 size = Vector3(0.5, 0.5, 2)
 
-[node name="Level" instance=ExtResource("1_wcc2u")]
+[node name="Level2" instance=ExtResource("1_wcc2u")]
 
 [node name="Barrier1" type="StaticBody3D" parent="Board" index="19"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -4)
@@ -113,3 +113,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 mesh = SubResource("BoxMesh_v115i")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("2_nn734")
+
+[node name="PickUps" parent="." index="5"]
+level_pick_ups = Array[int]([0, 0, 3])

@@ -8,6 +8,7 @@ func enter() -> void:
 	#print("Enter SpawnState")
 	if tween:
 		tween.play()
+		return
 	else:
 		tween = create_tween()
 		tween.tween_property(character, "position:y", 0, 1.0)
@@ -19,6 +20,11 @@ func enter() -> void:
 func attacked() -> void:
 	tween.pause()
 	transition.emit(self, "HitStunState")
+
+
+func freeze() -> void:
+	tween.pause()
+	transition.emit(self, "FreezeState")
 
 
 #func exit() -> void: pass

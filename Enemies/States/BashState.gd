@@ -36,6 +36,12 @@ func attacked() -> void:
 	transition.emit(self, "HitStunState")
 
 
+func freeze() -> void:
+	anim_player.pause()
+	anim_player.animation_finished.disconnect(_attack_finished)
+	transition.emit(self, "FreezeState")
+
+
 #func exit() -> void: pass
 #func update(delta) -> void: pass
 #func physics_update(delta) -> void: pass

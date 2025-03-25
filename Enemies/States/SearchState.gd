@@ -4,10 +4,14 @@ class_name SearchState extends State
 const SNAP_TOL := 0.005
 
 var turning := false
+var tween : Tween
 
 
 func enter() -> void:
 	#print(character.name, ": Enter SearchState")
+	if tween and tween.is_valid():
+		tween.play()
+		return
 	_slerp_to_dirp()
 
 
@@ -61,7 +65,7 @@ func _slerp_to_dirp() -> void:
 	
 	turning = true
 	var new_basis = character.basis.looking_at(Vector3(target_dir.x, 0, target_dir.y))
-	var tween = create_tween()
+	tween = create_tween()
 	tween.tween_method(func(weight : float):
 		character.basis = character.basis.slerp(new_basis, weight), 
 																0.0, 1.0, 0.15)
@@ -75,7 +79,13 @@ func attack() -> void:
 
 
 func attacked() -> void:
+	tween.pause()
 	transition.emit(self, "HitStunState")
+
+
+func freeze() -> void:
+	tween.pause()
+	transition.emit(self, "FreezeState")
 
 
 #func exit() -> void: pass
