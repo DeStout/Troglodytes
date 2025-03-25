@@ -1,7 +1,7 @@
 extends State
 
 
-func aunfreeze() -> void:
+func unfreeze() -> void:
 	transition.emit(self, character.get_prev_state())
 
 

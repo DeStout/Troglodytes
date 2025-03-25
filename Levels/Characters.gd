@@ -78,23 +78,22 @@ func enemy_finished_spawning(spawn_square : Node3D) -> void:
 
 
 func freeze_enemies() -> void:
-	freeze_sfx.play()
 	freeze_time = 5.0
 	for tween in respawn_tweens:
 		tween.pause()
 	for enemy in enemies:
-		if enemy.has_method("freeze"):
-			enemy.freeze()
+		enemy.freeze()
 
 
 func _unfreeze_enemies() -> void:
 	unfreeze_sfx.play()
 	await unfreeze_sfx.finished
+	if freeze_time:
+		return
 	for tween in respawn_tweens:
 		tween.play()
 	for enemy in enemies:
-		if enemy.has_method("unfreeze"):
-			enemy.unfreeze()
+		enemy.unfreeze()
 	
 
 

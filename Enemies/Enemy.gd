@@ -75,6 +75,11 @@ func freeze() -> void:
 		state_machine.current_state.freeze()
 
 
+func unfreeze() -> void:
+	if state_machine.current_state.has_method("unfreeze"):
+		state_machine.current_state.unfreeze()
+
+
 func burn() -> void:
 	queue_free()
 

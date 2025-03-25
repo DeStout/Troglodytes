@@ -11,6 +11,10 @@ var slow_down_ := load("res://PickUps/SlowArrow.tscn")
 enum EFFECTS { SPEED_UP, SLOW_DOWN, FIRE_POWER, FREEZE, INVINCIBLE, PINEAPPLE }
 var effect : int : set = _set_type
 var mesh : Node3D = null
+@export var collision : CollisionShape3D
+@export var speed_up_sfx : AudioStreamPlayer
+@export var slow_down_sfx : AudioStreamPlayer
+@export var freeze_sfx : AudioStreamPlayer
 
 const DESPAWN_RANGE := Vector2(9.0, 14.0)
 @export var despawn_timer : Timer
@@ -57,24 +61,35 @@ func _add_mesh(new_mesh : Node3D) -> void:
 func _collected(body : CharacterBody3D) -> void:
 	if body is Player:
 		Globals.add_to_score(SCORE_VALUE)
-		_apply_effect(body)
+		var sfx := _apply_effect(body)
+		mesh.visible = false
+		collision.call_deferred("set_disabled", true)
+		if sfx:
+			await sfx.finished
 		_despawn()
 
 
-func _apply_effect(player : Player) -> void:
+func _apply_effect(player : Player) -> AudioStreamPlayer:
+	var sfx : AudioStreamPlayer
 	match effect:
 		EFFECTS.SPEED_UP:
+			sfx = speed_up_sfx
 			player.effect_speed(0.5)
 		EFFECTS.SLOW_DOWN:
+			sfx = slow_down_sfx
 			player.effect_speed(-0.5)
 		EFFECTS.FIRE_POWER:
 			player.give_fire_power()
 		EFFECTS.FREEZE:
+			sfx = freeze_sfx
 			player.apply_freeze()
 		EFFECTS.INVINCIBLE:
 			pass
 		EFFECTS.PINEAPPLE:
 			pass
+	if sfx:
+		sfx.play()
+	return sfx
 
 
 func _despawn() -> void:

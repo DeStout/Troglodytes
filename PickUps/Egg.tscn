@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://drjo7eynvn08s" path="res://PickUps/Egg.gd" id="1_28s8g"]
 [ext_resource type="Material" uid="uid://vyxvhhf0hon" path="res://Player/PlayerMat.tres" id="2_hgbad"]
-[ext_resource type="AudioStream" uid="uid://dfdvedeucdy5t" path="res://PickUps/PickUp.ogg" id="3_56cbk"]
+[ext_resource type="AudioStream" uid="uid://ds6yki4qhf2rh" path="res://PickUps/EggPickUp.mp3" id="3_56cbk"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cp1ha"]
 radius = 0.25
@@ -12,8 +12,8 @@ height = 0.75
 height = 1.0
 radius = 0.35
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vxkqc"]
-random_pitch = 1.15
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cnj8b"]
+random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("3_56cbk")
 
@@ -34,9 +34,9 @@ collision_mask = 2
 shape = SubResource("CylinderShape3D_cp1ha")
 
 [node name="PickUpSFX" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_vxkqc")
+stream = SubResource("AudioStreamRandomizer_cnj8b")
 volume_db = -15.0
-pitch_scale = 0.9
+pitch_scale = 1.3
 max_polyphony = 5
 bus = &"SFX"
 
