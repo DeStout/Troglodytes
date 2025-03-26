@@ -64,10 +64,9 @@ play_area = NodePath("../PlayArea/Collision")
 board_size = Vector2i(9, 7)
 level = NodePath("..")
 
-[node name="Characters" type="Node3D" parent="." node_paths=PackedStringArray("level", "freeze_sfx", "unfreeze_sfx")]
+[node name="Characters" type="Node3D" parent="." node_paths=PackedStringArray("level", "unfreeze_sfx")]
 script = ExtResource("5_mxnmf")
 level = NodePath("..")
-freeze_sfx = NodePath("")
 unfreeze_sfx = NodePath("../UnfreezeSFX")
 
 [node name="PickUps" type="Node3D" parent="." node_paths=PackedStringArray("level")]

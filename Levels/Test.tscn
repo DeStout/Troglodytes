@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7f7rd7ltauxf"]
+
+[ext_resource type="PackedScene" uid="uid://dpgayrnq7arve" path="res://Levels/Level.tscn" id="1_n7cfa"]
+[ext_resource type="Texture2D" uid="uid://1qlh1cc6v26q" path="res://Levels/Sand1.png" id="2_f8gr7"]
+[ext_resource type="Texture2D" uid="uid://bb1exretsg64u" path="res://Levels/Sand1_N.png" id="3_xfdtu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n7cfa"]
+size = Vector3(19, 1, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ah0qf"]
+albedo_texture = ExtResource("2_f8gr7")
+normal_enabled = true
+normal_scale = 2.79
+normal_texture = ExtResource("3_xfdtu")
+uv1_scale = Vector3(10, 10, 10)
+
+[node name="Level" instance=ExtResource("1_n7cfa")]
+
+[node name="Board" type="MeshInstance3D" parent="Board" index="0"]
+mesh = SubResource("BoxMesh_n7cfa")
+surface_material_override/0 = SubResource("StandardMaterial3D_ah0qf")
