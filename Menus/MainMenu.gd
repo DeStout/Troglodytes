@@ -7,6 +7,7 @@ extends Control
 
 
 func _play_button() -> void:
+	Pause.update()
 	game.start_game()
 
 

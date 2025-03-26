@@ -5,7 +5,9 @@ extends Node
 
 var levels : Array[String] = [ "res://Levels/Level1.tscn",
 								"res://Levels/Level2.tscn",
-								"res://Levels/Level3.tscn"]
+								"res://Levels/Level3.tscn",
+								"res://Levels/Level4.tscn",
+								"res://Levels/Level5.tscn"]
 @export var level : Node3D
 var level_num : int = 0
 @export var score_label : Label

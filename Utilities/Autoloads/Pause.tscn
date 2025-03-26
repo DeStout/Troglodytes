@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://ce2swcu7afa84"]
+[gd_scene load_steps=3 format=3 uid="uid://ce2swcu7afa84"]
 
 [ext_resource type="Script" uid="uid://cwf6dntlanjof" path="res://Utilities/Autoloads/Pause.gd" id="1_ni8ss"]
+[ext_resource type="Script" uid="uid://dqolwe002khq0" path="res://Menus/OptionsMenu.gd" id="2_wyn1i"]
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("options")]
 process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,32 +13,132 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ni8ss")
+options = NodePath("BG/Options")
 
-[node name="BG" type="ColorRect" parent="."]
-visible = false
+[node name="Pause" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 291.0
-offset_top = 233.0
-offset_right = -291.0
-offset_bottom = -233.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.183594, 0.253971, 0.367188, 0.756863)
-
-[node name="Pause" type="Label" parent="BG"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 1.02315
+offset_bottom = -599.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 36
 text = "Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.185, 0.255917, 0.37, 0.968627)
+
+[node name="Options" type="MarginContainer" parent="BG" node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 75
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 75
+script = ExtResource("2_wyn1i")
+master_slider = NodePath("VLayout/Master/VLayout/MasterSlider")
+music_slider = NodePath("VLayout/Music/VLayout/MusicSlider")
+sfx_slider = NodePath("VLayout/SFX/VLayout/SFXSlider")
+
+[node name="VLayout" type="VBoxContainer" parent="BG/Options"]
+layout_mode = 2
+theme_override_constants/separation = 160
+
+[node name="Master" type="Control" parent="BG/Options/VLayout"]
+layout_mode = 2
+
+[node name="VLayout" type="VBoxContainer" parent="BG/Options/VLayout/Master"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="BG/Options/VLayout/Master/VLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Master Volume"
+
+[node name="MasterSlider" type="HSlider" parent="BG/Options/VLayout/Master/VLayout"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+value = 50.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+
+[node name="Music" type="Control" parent="BG/Options/VLayout"]
+layout_mode = 2
+
+[node name="VLayout" type="VBoxContainer" parent="BG/Options/VLayout/Music"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="BG/Options/VLayout/Music/VLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="BG/Options/VLayout/Music/VLayout"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+value = 50.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+
+[node name="SFX" type="Control" parent="BG/Options/VLayout"]
+layout_mode = 2
+
+[node name="VLayout" type="VBoxContainer" parent="BG/Options/VLayout/SFX"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="BG/Options/VLayout/SFX/VLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "SFX Volume"
+
+[node name="SFXSlider" type="HSlider" parent="BG/Options/VLayout/SFX/VLayout"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+value = 50.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+
+[connection signal="value_changed" from="BG/Options/VLayout/Master/VLayout/MasterSlider" to="BG/Options" method="_master_volume_changed"]
+[connection signal="value_changed" from="BG/Options/VLayout/Music/VLayout/MusicSlider" to="BG/Options" method="_music_volume_changed"]
+[connection signal="value_changed" from="BG/Options/VLayout/SFX/VLayout/SFXSlider" to="BG/Options" method="_sfx_volume_changed"]
