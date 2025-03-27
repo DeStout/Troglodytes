@@ -3,7 +3,8 @@ extends Node
 
 @export var main_menu : Control
 
-var levels : Array[String] = [ "res://Levels/Level1.tscn"]
+var levels : Array[String] = [ "res://Levels/Level1.tscn",
+								"res://Levels/Level2.tscn" ]
 @export var level : Node3D
 var level_num : int = 0
 @export var score_label : Label

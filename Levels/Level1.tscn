@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfxflxfqt2ahi"]
+[gd_scene load_steps=10 format=3 uid="uid://cfxflxfqt2ahi"]
 
 [ext_resource type="PackedScene" uid="uid://c7f7rd7ltauxf" path="res://Levels/Level.tscn" id="1_dl8mf"]
-[ext_resource type="Texture2D" uid="uid://1qlh1cc6v26q" path="res://Levels/Sand1.png" id="3_p2sgf"]
-[ext_resource type="Texture2D" uid="uid://bb1exretsg64u" path="res://Levels/Sand1_N.png" id="4_ufevr"]
+[ext_resource type="Material" uid="uid://dddqom874sl5u" path="res://Levels/Sand.tres" id="2_dl8mf"]
 [ext_resource type="PackedScene" uid="uid://bxn2pdir8kpwt" path="res://Levels/Stone1.blend" id="5_gmnjr"]
 [ext_resource type="Script" uid="uid://cl8s8e71ch3go" path="res://Levels/Water.gd" id="6_qg0tc"]
 [ext_resource type="PackedScene" uid="uid://hld77c0k73eb" path="res://Levels/Water1.blend" id="7_13mt1"]
@@ -11,13 +10,6 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_xcayt"]
 size = Vector3(19, 2, 15)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5g41i"]
-albedo_texture = ExtResource("3_p2sgf")
-normal_enabled = true
-normal_scale = 3.69
-normal_texture = ExtResource("4_ufevr")
-uv1_scale = Vector3(10, 10, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xcayt"]
 size = Vector3(18, 1, 14)
@@ -28,7 +20,7 @@ size = Vector3(18, 1, 14)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh = SubResource("BoxMesh_xcayt")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_5g41i")
+surface_material_override/0 = ExtResource("2_dl8mf")
 
 [node name="EggSquare1" type="Node3D" parent="Board/Squares/EggSquares" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -6)
@@ -315,244 +307,244 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -6)
 
 [node name="Stone1" parent="Board/Stones" index="0" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -7)
 
 [node name="Stone2" parent="Board/Stones" index="1" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -7)
 
 [node name="Stone3" parent="Board/Stones" index="2" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -7)
 
 [node name="Stone4" parent="Board/Stones" index="3" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -7)
 
 [node name="Stone5" parent="Board/Stones" index="4" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -7)
 
 [node name="Stone6" parent="Board/Stones" index="5" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7)
 
 [node name="Stone7" parent="Board/Stones" index="6" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -7)
 
 [node name="Stone8" parent="Board/Stones" index="7" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -7)
 
 [node name="Stone9" parent="Board/Stones" index="8" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -7)
 
 [node name="Stone10" parent="Board/Stones" index="9" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -7)
 
 [node name="Stone11" parent="Board/Stones" index="10" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -5)
 
 [node name="Stone12" parent="Board/Stones" index="11" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -5)
 
 [node name="Stone13" parent="Board/Stones" index="12" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -5)
 
 [node name="Stone14" parent="Board/Stones" index="13" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -5)
 
 [node name="Stone15" parent="Board/Stones" index="14" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
 
 [node name="Stone16" parent="Board/Stones" index="15" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
 
 [node name="Stone17" parent="Board/Stones" index="16" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -5)
 
 [node name="Stone18" parent="Board/Stones" index="17" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -5)
 
 [node name="Stone19" parent="Board/Stones" index="18" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -5)
 
 [node name="Stone20" parent="Board/Stones" index="19" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -5)
 
 [node name="Stone21" parent="Board/Stones" index="20" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -3)
 
 [node name="Stone22" parent="Board/Stones" index="21" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -3)
 
 [node name="Stone23" parent="Board/Stones" index="22" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -3)
 
 [node name="Stone24" parent="Board/Stones" index="23" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
 
 [node name="Stone25" parent="Board/Stones" index="24" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
 
 [node name="Stone26" parent="Board/Stones" index="25" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
 
 [node name="Stone27" parent="Board/Stones" index="26" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
 
 [node name="Stone28" parent="Board/Stones" index="27" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -3)
 
 [node name="Stone29" parent="Board/Stones" index="28" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -3)
 
 [node name="Stone30" parent="Board/Stones" index="29" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -3)
 
 [node name="Stone31" parent="Board/Stones" index="30" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -1)
 
 [node name="Stone32" parent="Board/Stones" index="31" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -1)
 
 [node name="Stone33" parent="Board/Stones" index="32" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -1)
 
 [node name="Stone34" parent="Board/Stones" index="33" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -1)
 
 [node name="Stone35" parent="Board/Stones" index="34" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 
 [node name="Stone36" parent="Board/Stones" index="35" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
 
 [node name="Stone37" parent="Board/Stones" index="36" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1)
 
 [node name="Stone38" parent="Board/Stones" index="37" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -1)
 
 [node name="Stone39" parent="Board/Stones" index="38" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -1)
 
 [node name="Stone40" parent="Board/Stones" index="39" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -1)
 
 [node name="Stone41" parent="Board/Stones" index="40" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 1)
 
 [node name="Stone42" parent="Board/Stones" index="41" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 1)
 
 [node name="Stone43" parent="Board/Stones" index="42" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1)
 
 [node name="Stone44" parent="Board/Stones" index="43" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1)
 
 [node name="Stone45" parent="Board/Stones" index="44" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
 
 [node name="Stone46" parent="Board/Stones" index="45" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 
 [node name="Stone47" parent="Board/Stones" index="46" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1)
 
 [node name="Stone48" parent="Board/Stones" index="47" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 1)
 
 [node name="Stone49" parent="Board/Stones" index="48" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 1)
 
 [node name="Stone50" parent="Board/Stones" index="49" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 1)
 
 [node name="Stone51" parent="Board/Stones" index="50" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 3)
 
 [node name="Stone52" parent="Board/Stones" index="51" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 3)
 
 [node name="Stone53" parent="Board/Stones" index="52" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 3)
 
 [node name="Stone54" parent="Board/Stones" index="53" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
 
 [node name="Stone55" parent="Board/Stones" index="54" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
 
 [node name="Stone56" parent="Board/Stones" index="55" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
 
 [node name="Stone57" parent="Board/Stones" index="56" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3)
 
 [node name="Stone58" parent="Board/Stones" index="57" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 3)
 
 [node name="Stone59" parent="Board/Stones" index="58" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 3)
 
 [node name="Stone60" parent="Board/Stones" index="59" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 3)
 
 [node name="Stone61" parent="Board/Stones" index="60" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 5)
 
 [node name="Stone62" parent="Board/Stones" index="61" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 5)
 
 [node name="Stone63" parent="Board/Stones" index="62" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5)
 
 [node name="Stone64" parent="Board/Stones" index="63" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5)
 
 [node name="Stone65" parent="Board/Stones" index="64" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5)
 
 [node name="Stone66" parent="Board/Stones" index="65" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
 
 [node name="Stone67" parent="Board/Stones" index="66" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5)
 
 [node name="Stone68" parent="Board/Stones" index="67" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
 
 [node name="Stone69" parent="Board/Stones" index="68" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 5)
 
 [node name="Stone70" parent="Board/Stones" index="69" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 5)
 
 [node name="Stone71" parent="Board/Stones" index="70" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 7)
 
 [node name="Stone72" parent="Board/Stones" index="71" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 7)
 
 [node name="Stone73" parent="Board/Stones" index="72" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 7)
 
 [node name="Stone74" parent="Board/Stones" index="73" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 7)
 
 [node name="Stone75" parent="Board/Stones" index="74" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 7)
 
 [node name="Stone76" parent="Board/Stones" index="75" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 7)
 
 [node name="Stone77" parent="Board/Stones" index="76" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 7)
 
 [node name="Stone78" parent="Board/Stones" index="77" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 7)
 
 [node name="Stone79" parent="Board/Stones" index="78" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 7)
 
 [node name="Stone80" parent="Board/Stones" index="79" instance=ExtResource("5_gmnjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 7)
 
 [node name="WaterRow1" type="Node3D" parent="Board/Water" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, -10)
@@ -1247,6 +1239,9 @@ player = NodePath("Player")
 
 [node name="Player" parent="Characters" index="0" instance=ExtResource("10_8ubki")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6, 0, -6)
+
+[node name="PickUps" parent="." index="5"]
+level_pick_ups = Array[int]([0, 1])
 
 [node name="Collision" type="CollisionShape3D" parent="PlayArea" index="0"]
 shape = SubResource("BoxShape3D_xcayt")

@@ -66,7 +66,6 @@ home_squares = NodePath("Squares/HomeSquares")
 [node name="HomeSquares" type="Node3D" parent="Board/Squares"]
 
 [node name="Stones" type="Node3D" parent="Board"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="Water" type="Node3D" parent="Board"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -80,7 +79,6 @@ unfreeze_sfx = NodePath("../UnfreezeSFX")
 [node name="PickUps" type="Node3D" parent="." node_paths=PackedStringArray("level")]
 script = ExtResource("7_jjge0")
 level = NodePath("..")
-level_pick_ups = Array[int]([0, 1, 3, 2])
 
 [node name="Eggs" type="Node3D" parent="."]
 
