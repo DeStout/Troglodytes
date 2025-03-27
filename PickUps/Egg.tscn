@@ -1,12 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfuiiibm4ogfg"]
+[gd_scene load_steps=6 format=3 uid="uid://bfuiiibm4ogfg"]
 
 [ext_resource type="Script" uid="uid://drjo7eynvn08s" path="res://PickUps/Egg.gd" id="1_28s8g"]
-[ext_resource type="Material" uid="uid://vyxvhhf0hon" path="res://Player/PlayerMat.tres" id="2_hgbad"]
 [ext_resource type="AudioStream" uid="uid://ds6yki4qhf2rh" path="res://PickUps/EggPickUp.mp3" id="3_56cbk"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_cp1ha"]
-radius = 0.25
-height = 0.75
+[ext_resource type="PackedScene" uid="uid://cn0w3m48ib2d4" path="res://PickUps/Egg1.blend" id="3_cnj8b"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_cp1ha"]
 height = 1.0
@@ -20,10 +16,8 @@ stream_0/stream = ExtResource("3_56cbk")
 [node name="Egg1" type="Node3D"]
 script = ExtResource("1_28s8g")
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
-mesh = SubResource("CapsuleMesh_cp1ha")
-surface_material_override/0 = ExtResource("2_hgbad")
+[node name="Mesh" parent="." instance=ExtResource("3_cnj8b")]
+transform = Transform3D(0.3575, 0, 0, 0, 0.3575, 0, 0, 0, 0.3575, 0, 0.75, 0)
 
 [node name="Area" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

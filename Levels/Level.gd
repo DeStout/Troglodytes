@@ -4,7 +4,7 @@ class_name Level extends Node3D
 var egg_ := load("res://PickUps/Egg.tscn")
 var home_ := load("res://Levels/Home.tscn")
 
-@export var game : Node
+var game : Node
 @export var board : Node3D
 @export var characters : Node3D
 @export var pick_ups : Node3D
@@ -68,15 +68,13 @@ func egg_collected(egg : Node3D) -> void:
 
 func _spawn_home() -> void:
 	var home_squares := get_tree().get_nodes_in_group("HomeSquares")
-	var home_square : MeshInstance3D = home_squares.pick_random()
+	var home_square : Node3D = home_squares.pick_random()
 	var home_pos : Vector3 = home_square.global_position
 	
 	var home : MeshInstance3D = home_.instantiate()
 	add_child(home)
 	home.level = self
 	home.position = Vector3(home_pos.x, 0.5, home_pos.z)
-	if abs(home.position.x) == board.board_size.x:
-		home.rotation.y = PI / 2
 
 
 func level_clean_up() -> void:

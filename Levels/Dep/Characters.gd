@@ -1,6 +1,8 @@
+@tool
 extends Node3D
 
 
+const MAX_ENEMIES := 5
 const RESPAWN_DELAY := Vector2(2.0, 6.0)
 
 var player_ := load("res://Player/Player.tscn")
@@ -8,11 +10,11 @@ var enemy_ := load("res://Enemies/Enemy.tscn")
 
 @export var level : Node3D
 @export var player : CharacterBody3D
-@export var num_enemies := 5
 var enemies : Array[Enemy]
 var respawn_tweens : Array[Tween]
 
 var freeze_time := 0.0
+@export var freeze_sfx : AudioStreamPlayer
 @export var unfreeze_sfx : AudioStreamPlayer
 
 
@@ -23,9 +25,18 @@ func _process(delta: float) -> void:
 			_unfreeze_enemies()
 
 
+func spawn_player(player_square : Node3D) -> void:
+	player = player_.instantiate()
+	add_child(player)
+	player.owner = level
+	player.position = player_square.global_position
+	player.position.y = 0
+	player.rotation.y = PI
+
+
 func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 	var egg_squares := get_tree().get_nodes_in_group("EggSquares")
-	for i in range(num_enemies):
+	for i in range(MAX_ENEMIES):
 		var egg_square : Node3D = egg_squares.pick_random()
 		while(player.global_position.distance_to(egg_square.global_position) < 3.0):
 			egg_squares.erase(egg_square)
@@ -44,6 +55,11 @@ func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 		level.set_square_free(egg_square)
 		
 	return used_squares
+
+
+func clear_board() -> void:
+	for character in get_children():
+		character.free()
 
 
 func _respawn_enemy() -> void:
