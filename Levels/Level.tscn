@@ -68,12 +68,10 @@ home_squares = NodePath("Squares/HomeSquares")
 [node name="Stones" type="Node3D" parent="Board"]
 
 [node name="Water" type="Node3D" parent="Board"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
-[node name="Characters" type="Node3D" parent="." node_paths=PackedStringArray("level", "player", "unfreeze_sfx")]
+[node name="Characters" type="Node3D" parent="." node_paths=PackedStringArray("level", "unfreeze_sfx")]
 script = ExtResource("6_wuvkx")
 level = NodePath("..")
-player = NodePath("")
 unfreeze_sfx = NodePath("../UnfreezeSFX")
 
 [node name="PickUps" type="Node3D" parent="." node_paths=PackedStringArray("level")]

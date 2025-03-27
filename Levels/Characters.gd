@@ -32,11 +32,11 @@ func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 			egg_square = egg_squares.pick_random()
 			
 		var enemy = enemy_.instantiate()
+		enemy.position = Vector3(egg_square.global_position.x, -2, \
+														egg_square.global_position.z)
 		add_child(enemy, true)
 		enemies.append(enemy)
 		enemy.characters = self
-		enemy.position = Vector3(egg_square.global_position.x, -2, \
-														egg_square.global_position.z)
 		enemy.rotation.y = PI
 		
 		egg_squares.erase(egg_square)
@@ -49,11 +49,12 @@ func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 func _respawn_enemy() -> void:
 		var enemy = enemy_.instantiate()
 		var free_square : Node3D = level.get_rand_free_square()
+		print(enemy.name, ": ", free_square)
+		enemy.position = Vector3(free_square.global_position.x, -2, \
+														free_square.global_position.z)
 		add_child(enemy, true)
 		enemies.append(enemy)
 		enemy.characters = self
-		enemy.position = Vector3(free_square.global_position.x, -2, \
-														free_square.global_position.z)
 		enemy.rotation.y = PI
 
 
@@ -97,6 +98,7 @@ func character_exited(character : CharacterBody3D) -> void:
 	if character is Player:
 		player.respawn()
 	elif character is Enemy:
+		print(character.name, ": ", character.global_position)
 		if character.state_machine.current_state is DeathState:
 			return
 		character.die()

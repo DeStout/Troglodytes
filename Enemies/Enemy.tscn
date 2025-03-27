@@ -280,10 +280,5 @@ target_position = Vector3(0, 0, 0)
 max_results = 7
 collision_mask = 6
 
-[node name="OnScreenNotify" type="VisibleOnScreenNotifier3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-aabb = AABB(-0.5, -1, -0.5, 1, 2, 1)
-
 [connection signal="timeout" from="StateMachine/HitStunState/StunTimer" to="StateMachine/HitStunState" method="reset_attacked"]
 [connection signal="body_entered" from="AttackCheck" to="." method="_body_attackable"]
-[connection signal="screen_exited" from="OnScreenNotify" to="StateMachine/DeathState" method="die"]
