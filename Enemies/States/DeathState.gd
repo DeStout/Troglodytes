@@ -19,8 +19,11 @@ func enter() -> void:
 	
 	if randi_range(0, 25) == 0:
 		wilheim.play()
+		await wilheim.finished
 	else:
 		death_sfx.play()
+		await death_sfx.finished
+	character.die()
 
 
 func physics_update(delta) -> void:
@@ -32,14 +35,6 @@ func physics_update(delta) -> void:
 	
 	character.velocity = velocity
 	character.move_and_slide()
-
-
-func die() -> void:
-	if death_sfx.playing:
-		await death_sfx.finished
-	elif wilheim.playing:
-		await wilheim.finished
-	character.die()
 
 
 #func exit() -> void: pass

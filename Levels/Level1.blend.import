@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://hld77c0k73eb"
-path="res://.godot/imported/Water1.blend-8c9c487a8f34c5e04ab8f637c8cba7e7.scn"
+uid="uid://btk6mg1tq8aqr"
+path="res://.godot/imported/Level1.blend-7dda7baf37429d6abdaae3d934731953.scn"
 
 [deps]
 
-source_file="res://Levels/Water1.blend"
-dest_files=["res://.godot/imported/Water1.blend-8c9c487a8f34c5e04ab8f637c8cba7e7.scn"]
+source_file="res://Levels/Level1.blend"
+dest_files=["res://.godot/imported/Level1.blend-7dda7baf37429d6abdaae3d934731953.scn"]
 
 [params]
 
@@ -32,14 +32,7 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path="uid://bwjtvoj5ffoja"
-_subresources={
-"materials": {
-"Material": {
-"use_external/enabled": true,
-"use_external/path": ""
-}
-}
-}
+_subresources={}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true

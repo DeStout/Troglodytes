@@ -21,7 +21,7 @@ stream_0/stream = ExtResource("3_56cbk")
 script = ExtResource("1_28s8g")
 
 [node name="Mesh" parent="." instance=ExtResource("3_cnj8b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_7m588")
 
 [node name="Area" type="Area3D" parent="."]

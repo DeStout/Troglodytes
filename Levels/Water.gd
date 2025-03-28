@@ -1,10 +1,10 @@
 extends Node3D
 
 
-const Y_AMP := 0.2
+const Y_AMP := 0.19
 
 @onready var pos_offset := position
-@onready var time_offset := fposmod(position.z, 0.9)
+@onready var time_offset := fmod(position.z, 0.9)
 var time := 0.0
 
 
