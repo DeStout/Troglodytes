@@ -18,6 +18,7 @@ const ACCEL := 15.0
 const MAX_SPEED := 4.5
 const MIN_SPEED := 1.5
 var speed := 3.0
+var anim_speed := 1.0
 const FIRE_POWER_TIME := 10.0
 @export var fire_sfx : AudioStreamPlayer
 
@@ -91,6 +92,8 @@ func respawn() -> void:
 		# Signal to Level.game_over()
 		game_over.emit()
 	
+	speed = (MAX_SPEED + MIN_SPEED) / 2
+	anim_speed = 1.0
 	var respawn_pos = Utilities.get_closest_egg_square(global_position).global_position
 	position = Vector3(respawn_pos.x, 0, respawn_pos.z)
 	rotation = Vector3(0, PI, 0)
@@ -102,6 +105,8 @@ func respawn() -> void:
 
 func effect_speed(speed_effect : float) -> void:
 	speed += speed_effect
+	anim_speed += sign(speed_effect) * 0.2
+	anim_player.speed_scale = anim_speed
 	speed = clamp(speed, MIN_SPEED, MAX_SPEED)
 
 

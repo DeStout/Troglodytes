@@ -3,6 +3,7 @@ class_name AttackState extends State
 
 func enter() -> void:
 	#print("Enter AttackState")
+	character.anim_player.speed_scale = 1.0
 	character.attack()
 
 

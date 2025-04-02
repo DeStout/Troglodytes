@@ -8,6 +8,8 @@ var turning := false
 
 func enter() -> void:
 	#print("Enter MoveState")
+	character.anim_player.speed_scale = character.anim_speed
+	character.anim_player.play("Walk")
 	if _is_turn_around():
 		_turn_around()
 	_set_target_square()
@@ -99,7 +101,6 @@ func _stop_and_snap() -> void:
 
 
 func _move(delta : float) -> void:
-	character.anim_player.play("Walk")
 	var move_dir := _get_move_dir_vect()
 	character.velocity.x = move_toward(character.velocity.x, \
 				move_dir.x * character.speed, character.ACCEL * delta)
@@ -163,11 +164,26 @@ func _slerp_to_dirp(stop := false) -> void:
 	
 	turning = stop
 	var new_basis = character.basis.looking_at(Vector3(target_dir.x, 0, target_dir.y))
+	
+	var turn_dir = -character.basis.z.signed_angle_to(-new_basis.z, Vector3.UP)
+	if turn_dir > 0:
+		character.anim_player.play("TurnLeft")
+	elif turn_dir < 0:
+		character.anim_player.play("TurnRight")
+	else:
+		if target_dir == Vector2.DOWN or target_dir == Vector2.LEFT:
+			character.anim_player.play("TurnLeft")
+		else:
+			character.anim_player.play("TurnRight")
+			
+	
 	var tween = create_tween()
 	tween.tween_method(func(weight : float):
 		character.basis = character.basis.slerp(new_basis, weight), 
-																0.0, 1.0, 0.15)
+																0.0, 1.0, 0.20)
 	await tween.finished
+	if !character.state_machine.current_state is AttackState:
+		character.anim_player.play("Walk")
 	turning = false
 
 

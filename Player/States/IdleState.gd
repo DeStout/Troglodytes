@@ -4,6 +4,7 @@ class_name IdleState extends State
 func enter() -> void:
 	#print("Enter IdleState")
 	if character.anim_player:
+		character.anim_player.speed_scale = 1.0
 		character.anim_player.play("Idle")
 
 
