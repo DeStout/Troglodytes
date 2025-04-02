@@ -19,7 +19,7 @@ size = Vector3(10, 1, 10)
 transform = Transform3D(0.83998, -0.469921, 0.271308, -1.01783e-08, 0.499999, 0.866026, -0.542617, -0.727445, 0.419989, 0, 7.81542, 3.05087)
 
 [node name="Camera" parent="." index="2" node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -3, 8.323, 1)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -8, 8, -2.5)
 visible = false
 margin_perc = Vector2(0.7, 0.6)
 player = NodePath("../Characters/Player")
@@ -629,7 +629,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 11)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 11)
 
 [node name="WaterRow1" type="Node3D" parent="Board/Water" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.26, -18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.35, -18)
 script = ExtResource("5_m3ha0")
 
 [node name="Water1" parent="Board/Water/WaterRow1" index="0" instance=ExtResource("6_vd23k")]
@@ -696,7 +696,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
 [node name="WaterRow2" type="Node3D" parent="Board/Water" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.26, -16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.35, -16)
 script = ExtResource("5_m3ha0")
 
 [node name="Water1" parent="Board/Water/WaterRow2" index="0" instance=ExtResource("6_vd23k")]
@@ -763,7 +763,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
 [node name="WaterRow3" type="Node3D" parent="Board/Water" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.26, -14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.35, -14)
 script = ExtResource("5_m3ha0")
 
 [node name="Water1" parent="Board/Water/WaterRow3" index="0" instance=ExtResource("6_vd23k")]
@@ -830,7 +830,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
 [node name="WaterRow4" type="Node3D" parent="Board/Water" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.26, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.35, -12)
 script = ExtResource("5_m3ha0")
 
 [node name="Water1" parent="Board/Water/WaterRow4" index="0" instance=ExtResource("6_vd23k")]
@@ -897,7 +897,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
 [node name="WaterRow5" type="Node3D" parent="Board/Water" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.26, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.35, -10)
 script = ExtResource("5_m3ha0")
 
 [node name="Water1" parent="Board/Water/WaterRow5" index="0" instance=ExtResource("6_vd23k")]
@@ -952,7 +952,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
 [node name="WaterRow6" type="Node3D" parent="Board/Water" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.26, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.35, -8)
 script = ExtResource("5_m3ha0")
 
 [node name="Water1" parent="Board/Water/WaterRow6" index="0" instance=ExtResource("6_vd23k")]
@@ -1007,7 +1007,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
 [node name="WaterRow7" type="Node3D" parent="Board/Water" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.26, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.35, -6)
 script = ExtResource("5_m3ha0")
 
 [node name="Water1" parent="Board/Water/WaterRow7" index="0" instance=ExtResource("6_vd23k")]
@@ -1062,7 +1062,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
 [node name="WaterRow8" type="Node3D" parent="Board/Water" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.26, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.35, -4)
 script = ExtResource("5_m3ha0")
 
 [node name="Water1" parent="Board/Water/WaterRow8" index="0" instance=ExtResource("6_vd23k")]
@@ -1108,7 +1108,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
 [node name="WaterRow9" type="Node3D" parent="Board/Water" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.26, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.35, -2)
 script = ExtResource("5_m3ha0")
 
 [node name="Water1" parent="Board/Water/WaterRow9" index="0" instance=ExtResource("6_vd23k")]
@@ -1154,7 +1154,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
 [node name="WaterRow10" type="Node3D" parent="Board/Water" index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.26, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.35, 0)
 script = ExtResource("5_m3ha0")
 
 [node name="Water1" parent="Board/Water/WaterRow10" index="0" instance=ExtResource("6_vd23k")]
@@ -1209,7 +1209,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
 [node name="WaterRow11" type="Node3D" parent="Board/Water" index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.26, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.35, 2)
 script = ExtResource("5_m3ha0")
 
 [node name="Water1" parent="Board/Water/WaterRow11" index="0" instance=ExtResource("6_vd23k")]
@@ -1255,7 +1255,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
 [node name="WaterRow12" type="Node3D" parent="Board/Water" index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.26, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.35, 4)
 script = ExtResource("5_m3ha0")
 
 [node name="Water1" parent="Board/Water/WaterRow12" index="0" instance=ExtResource("6_vd23k")]
@@ -1301,7 +1301,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
 [node name="WaterRow13" type="Node3D" parent="Board/Water" index="12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.26, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.35, 6)
 script = ExtResource("5_m3ha0")
 
 [node name="Water1" parent="Board/Water/WaterRow13" index="0" instance=ExtResource("6_vd23k")]
@@ -1356,7 +1356,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
 [node name="WaterRow14" type="Node3D" parent="Board/Water" index="13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.26, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.35, 8)
 script = ExtResource("5_m3ha0")
 
 [node name="Water1" parent="Board/Water/WaterRow14" index="0" instance=ExtResource("6_vd23k")]
@@ -1411,7 +1411,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
 [node name="WaterRow15" type="Node3D" parent="Board/Water" index="14"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.26, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.35, 10)
 script = ExtResource("5_m3ha0")
 
 [node name="Water1" parent="Board/Water/WaterRow15" index="0" instance=ExtResource("6_vd23k")]
@@ -1478,7 +1478,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
 [node name="WaterRow16" type="Node3D" parent="Board/Water" index="15"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.26, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.35, 12)
 script = ExtResource("5_m3ha0")
 
 [node name="Water1" parent="Board/Water/WaterRow16" index="0" instance=ExtResource("6_vd23k")]
@@ -1545,7 +1545,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
 [node name="WaterRow17" type="Node3D" parent="Board/Water" index="16"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.26, 14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.35, 14)
 script = ExtResource("5_m3ha0")
 
 [node name="Water1" parent="Board/Water/WaterRow17" index="0" instance=ExtResource("6_vd23k")]
@@ -1612,7 +1612,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
 [node name="WaterRow18" type="Node3D" parent="Board/Water" index="17"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.26, 16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.35, 16)
 script = ExtResource("5_m3ha0")
 
 [node name="Water1" parent="Board/Water/WaterRow18" index="0" instance=ExtResource("6_vd23k")]
@@ -1679,7 +1679,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
 [node name="WaterRow19" type="Node3D" parent="Board/Water" index="18"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.26, 18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.35, 18)
 script = ExtResource("5_m3ha0")
 
 [node name="Water1" parent="Board/Water/WaterRow19" index="0" instance=ExtResource("6_vd23k")]
@@ -1753,7 +1753,7 @@ num_enemies = 7
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8, 0, -10)
 
 [node name="PickUps" parent="." index="5"]
-level_pick_ups = Array[int]([0, 1, 3, 2])
+level_pick_ups = Array[int]([0, 1, 3])
 
 [node name="PlayArea" parent="." index="8"]
 visible = false

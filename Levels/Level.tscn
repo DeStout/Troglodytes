@@ -74,7 +74,6 @@ home_squares = NodePath("Squares/HomeSquares")
 [node name="Characters" type="Node3D" parent="." node_paths=PackedStringArray("level", "unfreeze_sfx")]
 script = ExtResource("6_wuvkx")
 level = NodePath("..")
-num_enemies = 0
 unfreeze_sfx = NodePath("../UnfreezeSFX")
 
 [node name="PickUps" type="Node3D" parent="." node_paths=PackedStringArray("level")]
