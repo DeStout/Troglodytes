@@ -31,5 +31,4 @@ func attack_finished() -> void:
 
 
 func respawn() -> void:
-	character.anim_player.play("RESET")
 	transition.emit(self, "IdleState")

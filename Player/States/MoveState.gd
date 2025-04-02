@@ -99,6 +99,7 @@ func _stop_and_snap() -> void:
 
 
 func _move(delta : float) -> void:
+	character.anim_player.play("Walk")
 	var move_dir := _get_move_dir_vect()
 	character.velocity.x = move_toward(character.velocity.x, \
 				move_dir.x * character.speed, character.ACCEL * delta)

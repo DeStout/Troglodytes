@@ -7,7 +7,8 @@ signal game_over
 signal freeze_pick_up
 signal spawn_fire_ball
 
-@onready var anim_player := $AnimPlayer
+@onready var anim_player: AnimationPlayer = $Player1/AnimationPlayer
+#@onready var anim_player := $AnimPlayer
 @onready var fire_power_timer := $FirePowerTimer
 @onready var attack_cast := $AttackCast
 @onready var attack_sfx := $AttackSFX

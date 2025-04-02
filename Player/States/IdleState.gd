@@ -1,6 +1,12 @@
 class_name IdleState extends State
 
 
+func enter() -> void:
+	#print("Enter IdleState")
+	if character.anim_player:
+		character.anim_player.play("Idle")
+
+
 func _input(event: InputEvent) -> void:
 	if !active:
 		return
@@ -50,7 +56,6 @@ func _set_move_dir(event : InputEvent):
 func respawn() -> void: pass
 
 
-func enter() -> void: pass
 #func exit() -> void: pass
 #func update(delta) -> void: pass
 #func physics_update(delta) -> void: pass
