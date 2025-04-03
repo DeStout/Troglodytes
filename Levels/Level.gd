@@ -71,6 +71,10 @@ func _spawn_home() -> void:
 	var home_square : Node3D = home_squares.pick_random()
 	var home_pos : Vector3 = home_square.global_position
 	
+	for wall in board.walls.get_children():
+		if Utilities.v3_to_v2(wall.global_position) == Utilities.v3_to_v2(home_pos):
+			wall.queue_free()
+			break
 	var home : MeshInstance3D = home_.instantiate()
 	add_child(home)
 	home.level = self

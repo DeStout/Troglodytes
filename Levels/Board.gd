@@ -3,6 +3,7 @@ extends Node3D
 
 @export var egg_squares : Node3D
 @export var home_squares : Node3D
+@export var walls : Node3D
 
 
 func _ready() -> void:

@@ -94,6 +94,7 @@ func respawn() -> void:
 	
 	speed = (MAX_SPEED + MIN_SPEED) / 2
 	anim_speed = 1.0
+	fire_power_timer.stop()
 	var respawn_pos = Utilities.get_closest_egg_square(global_position).global_position
 	position = Vector3(respawn_pos.x, 0, respawn_pos.z)
 	rotation = Vector3(0, PI, 0)

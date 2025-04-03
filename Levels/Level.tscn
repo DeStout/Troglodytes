@@ -53,13 +53,14 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 projection = 1
 current = true
 fov = 33.0
-size = 13.5
+size = 12.0
 script = ExtResource("2_ht8ui")
 
-[node name="Board" type="Node3D" parent="." node_paths=PackedStringArray("egg_squares", "home_squares")]
+[node name="Board" type="Node3D" parent="." node_paths=PackedStringArray("egg_squares", "home_squares", "walls")]
 script = ExtResource("2_ah0qf")
 egg_squares = NodePath("Squares/EggSquares")
 home_squares = NodePath("Squares/HomeSquares")
+walls = NodePath("Walls")
 
 [node name="Squares" type="Node3D" parent="Board"]
 
@@ -68,6 +69,8 @@ home_squares = NodePath("Squares/HomeSquares")
 [node name="HomeSquares" type="Node3D" parent="Board/Squares"]
 
 [node name="Stones" type="Node3D" parent="Board"]
+
+[node name="Walls" type="Node3D" parent="Board"]
 
 [node name="Water" type="Node3D" parent="Board"]
 
