@@ -3,12 +3,14 @@ class_name SearchState extends State
 
 const SNAP_TOL := 0.005
 
+@export var anim_player : AnimationPlayer
 var turning := false
 var tween : Tween
 
 
 func enter() -> void:
 	#print(character.name, ": Enter SearchState")
+	anim_player.play("Run")
 	if tween and tween.is_valid():
 		tween.play()
 		return
@@ -79,11 +81,13 @@ func attack() -> void:
 
 
 func attacked() -> void:
+	anim_player.pause()
 	tween.pause()
 	transition.emit(self, "HitStunState")
 
 
 func freeze() -> void:
+	anim_player.pause()
 	tween.pause()
 	transition.emit(self, "FreezeState")
 

@@ -25,6 +25,7 @@ transform = Transform3D(0.83998, -0.469921, 0.271308, -1.01783e-08, 0.499999, 0.
 [node name="Camera" parent="." index="2" node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -8, 8, -2.5)
 visible = false
+size = 13.5
 margin_perc = Vector2(0.7, 0.6)
 player = NodePath("../Characters/Player")
 

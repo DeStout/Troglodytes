@@ -10,7 +10,7 @@ var _next_action := ""
 func enter() -> void:
 	#print(character.name, ": Enter ThinkState")
 	anim_player.animation_finished.connect(_act)
-	anim_player.play("Thinking")
+	anim_player.play("Think")
 	_next_action = _choose_action()
 
 

@@ -30,6 +30,7 @@ size = Vector3(20, 1, 4)
 
 [node name="Camera" parent="." index="2" node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -11, 10, -4)
+size = 13.5
 player = NodePath("../Characters/Player")
 
 [node name="Level3" parent="Board" index="0" instance=ExtResource("2_jon3f")]

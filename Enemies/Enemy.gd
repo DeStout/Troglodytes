@@ -4,6 +4,8 @@ class_name Enemy extends CharacterBody3D
 const SCORE_VALUE := 1000
 
 @export var characters : Node3D
+@export var body : MeshInstance3D
+@export var anim_player : AnimationPlayer
 @export var state_machine : Node
 
 const ACCEL := 15.0

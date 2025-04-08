@@ -3,6 +3,7 @@ class_name BashState extends State
 
 @export var anim_player : AnimationPlayer
 @export var attack_cast : ShapeCast3D
+@export var swing_sfx : AudioStreamPlayer
 @export var bash_sfx : AudioStreamPlayer
 @export var bonk_sfx : AudioStreamPlayer
 
@@ -10,7 +11,8 @@ class_name BashState extends State
 func enter() -> void:
 	#print(character.name, ": Enter BashState")
 	anim_player.animation_finished.connect(_attack_finished)
-	anim_player.play("Attack")
+	swing_sfx.play()
+	anim_player.play("Bash")
 
 
 func bash() -> void:

@@ -25,16 +25,16 @@ func attacked() -> void:
 		transition.emit(self, "DeathState")
 	if tween:
 		tween.kill()
-		character.get_body().position = Vector3.UP
+		character.body.position = Vector3.ZERO
 	_hit_jitter()
 
 
 func _hit_jitter() -> void:
 	var death_dir : Vector2 = character.get_move_dir_vect(character.death_dir) * 0.25
-	var jitter_pos := character.global_position + Vector3(death_dir.x, 1.0, death_dir.y)
+	var jitter_pos := character.global_position + Vector3(death_dir.x, 0.0, death_dir.y)
 	tween = create_tween()
-	tween.tween_property(character.get_body(), "global_position", jitter_pos, 0.05)
-	tween.tween_property(character.get_body(), "position", Vector3.UP, 0.05)
+	tween.tween_property(character.body, "global_position", jitter_pos, 0.05)
+	tween.tween_property(character.body, "position", Vector3.ZERO, 0.05)
 
 
 func reset_attacked() -> void:
