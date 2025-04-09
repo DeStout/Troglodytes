@@ -1912,12 +1912,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
 [node name="Characters" parent="." index="4" node_paths=PackedStringArray("player")]
 player = NodePath("Player")
-num_enemies = 7
+num_enemies = 6
 
 [node name="Player" parent="Characters" index="0" instance=ExtResource("7_4d3pe")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8, 0, -10)
 
 [node name="PickUps" parent="." index="5"]
+num_pick_ups = 5
 level_pick_ups = Array[int]([0, 1, 3])
 
 [node name="PlayArea" parent="." index="8"]

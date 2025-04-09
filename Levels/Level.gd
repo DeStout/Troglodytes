@@ -88,6 +88,7 @@ func level_clean_up() -> void:
 
 
 func level_complete() -> void:
+	Globals.add_to_player_lives(1)
 	level_clean_up()
 	game.load_next_level()
 

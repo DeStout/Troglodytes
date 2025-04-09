@@ -14,13 +14,13 @@ func add_to_score(points : int) -> void:
 	game.set_score(score)
 
 
+func add_to_player_lives(lives : int) -> void:
+	player_lives = clamp(player_lives + lives, 0, 3)
+	game.set_lives(player_lives)
+
+
 func reset_game() -> void:
 	score = 0
 	player_lives = INIT_PLAYER_LIVES
 	game.set_score(score)
-	game.set_lives(player_lives)
-
-
-func add_to_player_lives(lives : int) -> void:
-	player_lives += lives
 	game.set_lives(player_lives)

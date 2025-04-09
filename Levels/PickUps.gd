@@ -4,10 +4,10 @@ extends Node3D
 var pick_up_ := load("res://PickUps/PickUp.tscn")
 
 enum PICK_UPS {SPEED_UP, SLOW_DOWN, FIRE_POWER, FREEZE, INVINCIBLE, PINEAPPLE}
-const MAX_PICK_UPS := 4
 const RESPAWN_DELAY := Vector2(1.0, 5.0)
 
 @export var level : Node3D
+@export var num_pick_ups := 4
 @export var level_pick_ups : Array[PICK_UPS]
 
 
@@ -18,7 +18,7 @@ func spawn_pick_ups(used_squares : Array[Node3D]) -> Array:
 	var egg_squares := get_tree().get_nodes_in_group("EggSquares")
 	for square in used_squares:
 		egg_squares.erase(square)
-	for i in range(MAX_PICK_UPS):
+	for i in range(num_pick_ups):
 		var egg_square : Node3D = egg_squares.pick_random()
 		if egg_square.global_position.distance_to(\
 									level.characters.player.global_position) < 1.0:
