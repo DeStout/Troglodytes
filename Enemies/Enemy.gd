@@ -17,8 +17,11 @@ var move_dir : DIRECTIONS = DIRECTIONS.DOWN
 var death_dir : DIRECTIONS
 var target_square : Vector2
 
+var spawn_hole : CSGCylinder3D
+
 
 func spawn_finished() -> void:
+	spawn_hole.close()
 	characters.enemy_finished_spawning(Utilities.get_closest_egg_square(global_position))
 
 
@@ -26,20 +29,20 @@ func get_prev_state() -> String:
 	return state_machine.prev_state.name.to_lower()
 
 
-func ray_check(check_dir : DIRECTIONS) -> bool:
-	var local_dir : Vector3
-	match check_dir:
-		0:
-			local_dir = Vector3(0, 0, -1) + wall_check.global_position
-		1:
-			local_dir = Vector3(0, 0, 1) + wall_check.global_position
-		2:
-			local_dir = Vector3(-1, 0, 0) + wall_check.global_position
-		3:
-			local_dir = Vector3(1, 0, 0) + wall_check.global_position
-	wall_check.target_position = wall_check.to_local(local_dir)
-	wall_check.force_raycast_update()
-	return wall_check.is_colliding()
+#func ray_check(check_dir : DIRECTIONS) -> bool:
+	#var local_dir : Vector3
+	#match check_dir:
+		#0:
+			#local_dir = Vector3(0, 0, -1) + wall_check.global_position
+		#1:
+			#local_dir = Vector3(0, 0, 1) + wall_check.global_position
+		#2:
+			#local_dir = Vector3(-1, 0, 0) + wall_check.global_position
+		#3:
+			#local_dir = Vector3(1, 0, 0) + wall_check.global_position
+	#wall_check.target_position = wall_check.to_local(local_dir)
+	#wall_check.force_raycast_update()
+	#return wall_check.is_colliding()
 
 
 func get_move_dir_vect(move_dir : int) -> Vector2:
@@ -91,5 +94,7 @@ func disable_collision() -> void:
 
 
 func die() -> void:
+	if spawn_hole:
+		spawn_hole.close()
 	characters.enemy_defeated(self)
 	queue_free()

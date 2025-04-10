@@ -33,11 +33,13 @@ func _set_search_target() -> void:
 		v3_square = Utilities.get_closest_egg_square( \
 									wall_check.get_collision_point()).global_position
 		character.target_square = Utilities.v3_to_v2(v3_square)
+		wall_check.target_position = Vector3.FORWARD
 		return
 	
 	v3_square += character.position
 	v3_square = Utilities.get_closest_egg_square(v3_square).global_position
 	character.target_square = Utilities.v3_to_v2(v3_square)
+	wall_check.target_position = Vector3.FORWARD
 
 
 func _act(_anim_finished : String) -> void:

@@ -1,29 +1,31 @@
 class_name SpawnState extends State
 
 
-var tween : Tween
+@export var anim_player : AnimationPlayer
 
 
 func enter() -> void:
 	#print("Enter SpawnState")
-	if tween:
-		tween.play()
-		return
-	else:
-		tween = create_tween()
-		tween.tween_property(character, "position:y", 0, 1.0)
-	await tween.finished
+	anim_player.animation_finished.connect(_spawn_finished)
+	anim_player.play("Spawn")
+
+
+func _spawn_finished(anim_finished : String) -> void:
+	assert(anim_finished == "Spawn", "SpawnState and 'Spawn' animation desynced")
 	character.spawn_finished()
+	anim_player.animation_finished.disconnect(_spawn_finished)
 	transition.emit(self, "ThinkState")
 
 
 func attacked() -> void:
-	tween.pause()
+	anim_player.animation_finished.disconnect(_spawn_finished)
+	anim_player.pause()
 	transition.emit(self, "HitStunState")
 
 
 func freeze() -> void:
-	tween.pause()
+	anim_player.animation_finished.disconnect(_spawn_finished)
+	anim_player.pause()
 	transition.emit(self, "FreezeState")
 
 

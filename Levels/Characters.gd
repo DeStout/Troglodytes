@@ -35,15 +35,13 @@ func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 			
 		var enemy = enemy_.instantiate()
 		var spawn_hole = spawn_hole_.instantiate()
-		var spawn_pos = Vector3(egg_square.global_position.x, -2, \
+		var spawn_pos = Vector3(egg_square.global_position.x, 0, \
 														egg_square.global_position.z)
-		enemy.position = spawn_pos
 		spawn_hole.position = Vector3(spawn_pos.x, -0.8, spawn_pos.z)
-		add_child(enemy, true)
 		ground.add_child(spawn_hole, true)
-		enemies.append(enemy)
-		enemy.characters = self
-		enemy.rotation.y = PI
+		enemy.position = spawn_pos
+		enemy.spawn_hole = spawn_hole
+		spawn_hole.open_finished.connect(_add_enemy.bind(enemy))
 		
 		egg_squares.erase(egg_square)
 		used_squares.append(egg_square)
@@ -56,15 +54,20 @@ func _respawn_enemy() -> void:
 		var enemy = enemy_.instantiate()
 		var spawn_hole = spawn_hole_.instantiate()
 		var free_square : Node3D = level.get_rand_free_square()
-		var spawn_pos := Vector3(free_square.global_position.x, -2, \
+		var spawn_pos := Vector3(free_square.global_position.x, 0, \
 														free_square.global_position.z)
-		enemy.position = spawn_pos
 		spawn_hole.position = Vector3(spawn_pos.x, -0.8, spawn_pos.z)
-		add_child(enemy, true)
 		ground.add_child(spawn_hole, true)
-		enemies.append(enemy)
-		enemy.characters = self
-		enemy.rotation.y = PI
+		enemy.position = spawn_pos
+		enemy.spawn_hole = spawn_hole
+		spawn_hole.open_finished.connect(_add_enemy.bind(enemy))
+
+
+func _add_enemy(new_enemy : Enemy) -> void:
+	add_child(new_enemy, true)
+	enemies.append(new_enemy)
+	new_enemy.characters = self
+	new_enemy.rotation.y = PI
 
 
 func enemy_finished_spawning(spawn_square : Node3D) -> void:

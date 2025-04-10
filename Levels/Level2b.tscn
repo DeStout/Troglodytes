@@ -66,7 +66,6 @@ transform = Transform3D(0.83998, -0.469921, 0.271308, -1.01783e-08, 0.499999, 0.
 
 [node name="Camera" parent="." index="2" node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -8, 8, -2.5)
-visible = false
 size = 13.5
 margin_perc = Vector2(0.7, 0.6)
 player = NodePath("../Characters/Player")
@@ -685,6 +684,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 collision_mask = 54
 
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall1/WallBody1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_x7rwe")
 
 [node name="StoneWall2" parent="Board/Walls" index="1" instance=ExtResource("4_ut5co")]
@@ -695,6 +695,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 collision_mask = 54
 
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall2/WallBody1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_x7rwe")
 
 [node name="StoneWall3" parent="Board/Walls" index="2" instance=ExtResource("4_ut5co")]
@@ -705,6 +706,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 collision_mask = 54
 
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall3/WallBody1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_x7rwe")
 
 [node name="StoneWall4" parent="Board/Walls" index="3" instance=ExtResource("4_ut5co")]
@@ -715,6 +717,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 collision_mask = 54
 
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall4/WallBody1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_x7rwe")
 
 [node name="StoneWall5" parent="Board/Walls" index="4" instance=ExtResource("4_ut5co")]
@@ -725,6 +728,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 collision_mask = 54
 
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall5/WallBody1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_x7rwe")
 
 [node name="StoneWall6" parent="Board/Walls" index="5" instance=ExtResource("4_ut5co")]
@@ -735,6 +739,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 collision_mask = 54
 
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall6/WallBody1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_x7rwe")
 
 [node name="StoneWall7" parent="Board/Walls" index="6" instance=ExtResource("4_ut5co")]
@@ -745,6 +750,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 collision_mask = 54
 
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall7/WallBody1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_x7rwe")
 
 [node name="StoneWall8" parent="Board/Walls" index="7" instance=ExtResource("4_ut5co")]
@@ -755,6 +761,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 collision_mask = 54
 
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall8/WallBody1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_x7rwe")
 
 [node name="StoneWall9" parent="Board/Walls" index="8" instance=ExtResource("4_ut5co")]
@@ -765,6 +772,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 collision_mask = 54
 
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall9/WallBody1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_x7rwe")
 
 [node name="StoneWall10" parent="Board/Walls" index="9" instance=ExtResource("4_ut5co")]
@@ -775,6 +783,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 collision_mask = 54
 
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall10/WallBody1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_x7rwe")
 
 [node name="StoneWall11" parent="Board/Walls" index="10" instance=ExtResource("4_ut5co")]
@@ -785,6 +794,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 collision_mask = 54
 
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall11/WallBody1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_x7rwe")
 
 [node name="StoneWall12" parent="Board/Walls" index="11" instance=ExtResource("4_ut5co")]
@@ -795,6 +805,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 collision_mask = 54
 
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall12/WallBody1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_x7rwe")
 
 [node name="StoneWall13" parent="Board/Walls" index="12" instance=ExtResource("4_ut5co")]
@@ -805,6 +816,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 collision_mask = 54
 
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall13/WallBody1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_x7rwe")
 
 [node name="StoneWall14" parent="Board/Walls" index="13" instance=ExtResource("4_ut5co")]
@@ -815,6 +827,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 collision_mask = 54
 
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall14/WallBody1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_x7rwe")
 
 [node name="StoneWall15" parent="Board/Walls" index="14" instance=ExtResource("4_ut5co")]
@@ -825,6 +838,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 collision_mask = 54
 
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall15/WallBody1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_x7rwe")
 
 [node name="StoneWall16" parent="Board/Walls" index="15" instance=ExtResource("4_ut5co")]
@@ -835,6 +849,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 collision_mask = 54
 
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall16/WallBody1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_x7rwe")
 
 [node name="WaterRow1" type="Node3D" parent="Board/Water" index="0"]

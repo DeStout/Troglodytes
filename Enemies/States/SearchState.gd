@@ -4,6 +4,7 @@ class_name SearchState extends State
 const SNAP_TOL := 0.005
 
 @export var anim_player : AnimationPlayer
+@export var wall_check : RayCast3D
 var turning := false
 var tween : Tween
 
@@ -27,6 +28,7 @@ func physics_update(delta) -> void:
 		character.position.z = character.target_square.y
 		character.velocity = Vector3.ZERO
 		transition.emit(self, "ThinkState")
+		return
 
 
 func _move(delta : float) -> void:
