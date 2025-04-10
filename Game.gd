@@ -3,11 +3,11 @@ extends Node
 
 @export var main_menu : Control
 
-var levels : Array[String] = [ "res://Levels/Level1.tscn",
+var levels : Array[String] = [ "res://Levels/Level1a.tscn",
 								"res://Levels/Level1b.tscn",
-								"res://Levels/Level2.tscn",
+								"res://Levels/Level2a.tscn",
 								"res://Levels/Level2b.tscn",
-								"res://Levels/Level3.tscn",
+								"res://Levels/Level3a.tscn",
 								"res://Levels/Level3b.tscn" ]
 @export var level : Node3D
 var level_num : int = 0
@@ -34,6 +34,7 @@ func start_new_game() -> void:
 		level.queue_free()
 	
 	var new_level : Node3D = load(levels[level_num]).instantiate()
+	#var new_level : Node3D = load(levels[2]).instantiate()
 	new_level.game = self
 	add_child(new_level, true)
 	level = new_level

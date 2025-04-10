@@ -46,7 +46,6 @@ light_angular_distance = 0.5
 shadow_enabled = true
 shadow_blur = 4.905
 directional_shadow_split_1 = 0.009
-directional_shadow_blend_splits = true
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8.32341, 9.46478)

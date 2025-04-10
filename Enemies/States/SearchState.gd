@@ -69,8 +69,7 @@ func _slerp_to_dirp() -> void:
 	var new_basis = character.basis.looking_at(Vector3(target_dir.x, 0, target_dir.y))
 	tween = create_tween()
 	tween.tween_method(func(weight : float):
-		character.basis = character.basis.slerp(new_basis, weight), 
-																0.0, 1.0, 0.15)
+		character.basis = character.basis.slerp(new_basis, weight), 0.0, 1.0, 0.15)
 	await tween.finished
 	turning = false
 	return

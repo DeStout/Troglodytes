@@ -1,23 +1,23 @@
-[gd_scene load_steps=14 format=4 uid="uid://ccd4v8q3jtyd5"]
+[gd_scene load_steps=14 format=4 uid="uid://cfxflxfqt2ahi"]
 
-[ext_resource type="PackedScene" uid="uid://c7f7rd7ltauxf" path="res://Levels/Level.tscn" id="1_cb8xl"]
-[ext_resource type="Texture2D" uid="uid://1qlh1cc6v26q" path="res://Levels/Sand1.png" id="2_nb8dl"]
-[ext_resource type="PackedScene" uid="uid://bxn2pdir8kpwt" path="res://Levels/Stone1.blend" id="3_nb8dl"]
-[ext_resource type="Texture2D" uid="uid://bb1exretsg64u" path="res://Levels/Sand1_N.png" id="3_wemap"]
-[ext_resource type="PackedScene" uid="uid://y4p6vg7hixip" path="res://Levels/StoneWall1.blend" id="4_wemap"]
-[ext_resource type="Script" uid="uid://cl8s8e71ch3go" path="res://Levels/Water.gd" id="5_w58g5"]
-[ext_resource type="PackedScene" uid="uid://hld77c0k73eb" path="res://Levels/Water1.blend" id="6_8glmb"]
-[ext_resource type="PackedScene" uid="uid://b2iwuk2gndgr4" path="res://Player/Player.tscn" id="7_2bx7r"]
+[ext_resource type="PackedScene" uid="uid://c7f7rd7ltauxf" path="res://Levels/Level.tscn" id="1_dl8mf"]
+[ext_resource type="Texture2D" uid="uid://1qlh1cc6v26q" path="res://Levels/Sand1.png" id="2_5g41i"]
+[ext_resource type="Texture2D" uid="uid://bb1exretsg64u" path="res://Levels/Sand1_N.png" id="3_7fl83"]
+[ext_resource type="PackedScene" uid="uid://y4p6vg7hixip" path="res://Levels/StoneWall1.blend" id="4_dl8mf"]
+[ext_resource type="PackedScene" uid="uid://bxn2pdir8kpwt" path="res://Levels/Stone1.blend" id="5_gmnjr"]
+[ext_resource type="Script" uid="uid://cl8s8e71ch3go" path="res://Levels/Water.gd" id="6_qg0tc"]
+[ext_resource type="PackedScene" uid="uid://hld77c0k73eb" path="res://Levels/Water1.blend" id="7_13mt1"]
+[ext_resource type="PackedScene" uid="uid://b2iwuk2gndgr4" path="res://Player/Player.tscn" id="10_8ubki"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nb207"]
 resource_name = "Material"
 cull_mode = 2
-albedo_texture = ExtResource("2_nb8dl")
+albedo_texture = ExtResource("2_5g41i")
 roughness = 0.5
 normal_enabled = true
-normal_texture = ExtResource("3_wemap")
+normal_texture = ExtResource("3_7fl83")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_1f2di"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_xcayt"]
 _surfaces = [{
 "aabb": AABB(-9.62081, -2.06845, -7.6261, 19.2419, 2.1472, 15.2472),
 "format": 34359742465,
@@ -32,7 +32,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_w58g5"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_p5226"]
 resource_name = "Level1_Level1Mesh"
 _surfaces = [{
 "aabb": AABB(-9.62081, -2.06845, -7.6261, 19.2419, 2.1472, 15.2472),
@@ -49,7 +49,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("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")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_1f2di")
+shadow_mesh = SubResource("ArrayMesh_xcayt")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dl8mf"]
 size = Vector3(2, 1, 1)
@@ -57,7 +57,10 @@ size = Vector3(2, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xcayt"]
 size = Vector3(18, 1, 14)
 
-[node name="Level1b" instance=ExtResource("1_cb8xl")]
+[node name="Level1a" instance=ExtResource("1_dl8mf")]
+
+[node name="Sun" parent="." index="1"]
+directional_shadow_blend_splits = false
 
 [node name="Camera" parent="." index="2" node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 10.5)
@@ -66,7 +69,7 @@ margin_perc = Vector2(1, 1)
 player = NodePath("../Characters/Player")
 
 [node name="Ground" type="CSGMesh3D" parent="Board" index="0"]
-mesh = SubResource("ArrayMesh_w58g5")
+mesh = SubResource("ArrayMesh_p5226")
 
 [node name="EggSquare1" type="Node3D" parent="Board/Squares/EggSquares" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -6)
@@ -352,249 +355,248 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4)
 [node name="HomeSquare32" type="Node3D" parent="Board/Squares/HomeSquares" index="31"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -6)
 
-[node name="Stone1" parent="Board/Stones" index="0" instance=ExtResource("3_nb8dl")]
+[node name="Stone1" parent="Board/Stones" index="0" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -7)
 
-[node name="Stone2" parent="Board/Stones" index="1" instance=ExtResource("3_nb8dl")]
+[node name="Stone2" parent="Board/Stones" index="1" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -7)
 
-[node name="Stone3" parent="Board/Stones" index="2" instance=ExtResource("3_nb8dl")]
+[node name="Stone3" parent="Board/Stones" index="2" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -7)
 
-[node name="Stone4" parent="Board/Stones" index="3" instance=ExtResource("3_nb8dl")]
+[node name="Stone4" parent="Board/Stones" index="3" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -7)
 
-[node name="Stone5" parent="Board/Stones" index="4" instance=ExtResource("3_nb8dl")]
+[node name="Stone5" parent="Board/Stones" index="4" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -7)
 
-[node name="Stone6" parent="Board/Stones" index="5" instance=ExtResource("3_nb8dl")]
+[node name="Stone6" parent="Board/Stones" index="5" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7)
 
-[node name="Stone7" parent="Board/Stones" index="6" instance=ExtResource("3_nb8dl")]
+[node name="Stone7" parent="Board/Stones" index="6" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -7)
 
-[node name="Stone8" parent="Board/Stones" index="7" instance=ExtResource("3_nb8dl")]
+[node name="Stone8" parent="Board/Stones" index="7" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -7)
 
-[node name="Stone9" parent="Board/Stones" index="8" instance=ExtResource("3_nb8dl")]
+[node name="Stone9" parent="Board/Stones" index="8" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -7)
 
-[node name="Stone10" parent="Board/Stones" index="9" instance=ExtResource("3_nb8dl")]
+[node name="Stone10" parent="Board/Stones" index="9" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -7)
 
-[node name="Stone11" parent="Board/Stones" index="10" instance=ExtResource("3_nb8dl")]
+[node name="Stone11" parent="Board/Stones" index="10" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -5)
 
-[node name="Stone12" parent="Board/Stones" index="11" instance=ExtResource("3_nb8dl")]
+[node name="Stone12" parent="Board/Stones" index="11" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -5)
 
-[node name="Stone13" parent="Board/Stones" index="12" instance=ExtResource("3_nb8dl")]
+[node name="Stone13" parent="Board/Stones" index="12" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -5)
 
-[node name="Stone14" parent="Board/Stones" index="13" instance=ExtResource("3_nb8dl")]
+[node name="Stone14" parent="Board/Stones" index="13" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -5)
 
-[node name="Stone15" parent="Board/Stones" index="14" instance=ExtResource("3_nb8dl")]
+[node name="Stone15" parent="Board/Stones" index="14" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
 
-[node name="Stone16" parent="Board/Stones" index="15" instance=ExtResource("3_nb8dl")]
+[node name="Stone16" parent="Board/Stones" index="15" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
 
-[node name="Stone17" parent="Board/Stones" index="16" instance=ExtResource("3_nb8dl")]
+[node name="Stone17" parent="Board/Stones" index="16" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -5)
 
-[node name="Stone18" parent="Board/Stones" index="17" instance=ExtResource("3_nb8dl")]
+[node name="Stone18" parent="Board/Stones" index="17" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -5)
 
-[node name="Stone19" parent="Board/Stones" index="18" instance=ExtResource("3_nb8dl")]
+[node name="Stone19" parent="Board/Stones" index="18" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -5)
 
-[node name="Stone20" parent="Board/Stones" index="19" instance=ExtResource("3_nb8dl")]
+[node name="Stone20" parent="Board/Stones" index="19" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -5)
 
-[node name="Stone21" parent="Board/Stones" index="20" instance=ExtResource("3_nb8dl")]
+[node name="Stone21" parent="Board/Stones" index="20" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -3)
 
-[node name="Stone22" parent="Board/Stones" index="21" instance=ExtResource("3_nb8dl")]
+[node name="Stone22" parent="Board/Stones" index="21" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -3)
 
-[node name="Stone23" parent="Board/Stones" index="22" instance=ExtResource("3_nb8dl")]
+[node name="Stone23" parent="Board/Stones" index="22" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -3)
 
-[node name="Stone24" parent="Board/Stones" index="23" instance=ExtResource("3_nb8dl")]
+[node name="Stone24" parent="Board/Stones" index="23" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
 
-[node name="Stone25" parent="Board/Stones" index="24" instance=ExtResource("3_nb8dl")]
+[node name="Stone25" parent="Board/Stones" index="24" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
 
-[node name="Stone26" parent="Board/Stones" index="25" instance=ExtResource("3_nb8dl")]
+[node name="Stone26" parent="Board/Stones" index="25" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
 
-[node name="Stone27" parent="Board/Stones" index="26" instance=ExtResource("3_nb8dl")]
+[node name="Stone27" parent="Board/Stones" index="26" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
 
-[node name="Stone28" parent="Board/Stones" index="27" instance=ExtResource("3_nb8dl")]
+[node name="Stone28" parent="Board/Stones" index="27" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -3)
 
-[node name="Stone29" parent="Board/Stones" index="28" instance=ExtResource("3_nb8dl")]
+[node name="Stone29" parent="Board/Stones" index="28" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -3)
 
-[node name="Stone30" parent="Board/Stones" index="29" instance=ExtResource("3_nb8dl")]
+[node name="Stone30" parent="Board/Stones" index="29" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -3)
 
-[node name="Stone31" parent="Board/Stones" index="30" instance=ExtResource("3_nb8dl")]
+[node name="Stone31" parent="Board/Stones" index="30" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -1)
 
-[node name="Stone32" parent="Board/Stones" index="31" instance=ExtResource("3_nb8dl")]
+[node name="Stone32" parent="Board/Stones" index="31" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -1)
 
-[node name="Stone33" parent="Board/Stones" index="32" instance=ExtResource("3_nb8dl")]
+[node name="Stone33" parent="Board/Stones" index="32" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -1)
 
-[node name="Stone34" parent="Board/Stones" index="33" instance=ExtResource("3_nb8dl")]
+[node name="Stone34" parent="Board/Stones" index="33" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -1)
 
-[node name="Stone35" parent="Board/Stones" index="34" instance=ExtResource("3_nb8dl")]
+[node name="Stone35" parent="Board/Stones" index="34" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 
-[node name="Stone36" parent="Board/Stones" index="35" instance=ExtResource("3_nb8dl")]
+[node name="Stone36" parent="Board/Stones" index="35" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
 
-[node name="Stone37" parent="Board/Stones" index="36" instance=ExtResource("3_nb8dl")]
+[node name="Stone37" parent="Board/Stones" index="36" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1)
 
-[node name="Stone38" parent="Board/Stones" index="37" instance=ExtResource("3_nb8dl")]
+[node name="Stone38" parent="Board/Stones" index="37" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -1)
 
-[node name="Stone39" parent="Board/Stones" index="38" instance=ExtResource("3_nb8dl")]
+[node name="Stone39" parent="Board/Stones" index="38" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -1)
 
-[node name="Stone40" parent="Board/Stones" index="39" instance=ExtResource("3_nb8dl")]
+[node name="Stone40" parent="Board/Stones" index="39" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -1)
 
-[node name="Stone41" parent="Board/Stones" index="40" instance=ExtResource("3_nb8dl")]
+[node name="Stone41" parent="Board/Stones" index="40" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 1)
 
-[node name="Stone42" parent="Board/Stones" index="41" instance=ExtResource("3_nb8dl")]
+[node name="Stone42" parent="Board/Stones" index="41" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 1)
 
-[node name="Stone43" parent="Board/Stones" index="42" instance=ExtResource("3_nb8dl")]
+[node name="Stone43" parent="Board/Stones" index="42" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1)
 
-[node name="Stone44" parent="Board/Stones" index="43" instance=ExtResource("3_nb8dl")]
+[node name="Stone44" parent="Board/Stones" index="43" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1)
 
-[node name="Stone45" parent="Board/Stones" index="44" instance=ExtResource("3_nb8dl")]
+[node name="Stone45" parent="Board/Stones" index="44" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
 
-[node name="Stone46" parent="Board/Stones" index="45" instance=ExtResource("3_nb8dl")]
+[node name="Stone46" parent="Board/Stones" index="45" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 
-[node name="Stone47" parent="Board/Stones" index="46" instance=ExtResource("3_nb8dl")]
+[node name="Stone47" parent="Board/Stones" index="46" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1)
 
-[node name="Stone48" parent="Board/Stones" index="47" instance=ExtResource("3_nb8dl")]
+[node name="Stone48" parent="Board/Stones" index="47" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 1)
 
-[node name="Stone49" parent="Board/Stones" index="48" instance=ExtResource("3_nb8dl")]
+[node name="Stone49" parent="Board/Stones" index="48" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 1)
 
-[node name="Stone50" parent="Board/Stones" index="49" instance=ExtResource("3_nb8dl")]
+[node name="Stone50" parent="Board/Stones" index="49" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 1)
 
-[node name="Stone51" parent="Board/Stones" index="50" instance=ExtResource("3_nb8dl")]
+[node name="Stone51" parent="Board/Stones" index="50" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 3)
 
-[node name="Stone52" parent="Board/Stones" index="51" instance=ExtResource("3_nb8dl")]
+[node name="Stone52" parent="Board/Stones" index="51" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 3)
 
-[node name="Stone53" parent="Board/Stones" index="52" instance=ExtResource("3_nb8dl")]
+[node name="Stone53" parent="Board/Stones" index="52" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 3)
 
-[node name="Stone54" parent="Board/Stones" index="53" instance=ExtResource("3_nb8dl")]
+[node name="Stone54" parent="Board/Stones" index="53" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
 
-[node name="Stone55" parent="Board/Stones" index="54" instance=ExtResource("3_nb8dl")]
+[node name="Stone55" parent="Board/Stones" index="54" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
 
-[node name="Stone56" parent="Board/Stones" index="55" instance=ExtResource("3_nb8dl")]
+[node name="Stone56" parent="Board/Stones" index="55" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
 
-[node name="Stone57" parent="Board/Stones" index="56" instance=ExtResource("3_nb8dl")]
+[node name="Stone57" parent="Board/Stones" index="56" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3)
 
-[node name="Stone58" parent="Board/Stones" index="57" instance=ExtResource("3_nb8dl")]
+[node name="Stone58" parent="Board/Stones" index="57" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 3)
 
-[node name="Stone59" parent="Board/Stones" index="58" instance=ExtResource("3_nb8dl")]
+[node name="Stone59" parent="Board/Stones" index="58" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 3)
 
-[node name="Stone60" parent="Board/Stones" index="59" instance=ExtResource("3_nb8dl")]
+[node name="Stone60" parent="Board/Stones" index="59" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 3)
 
-[node name="Stone61" parent="Board/Stones" index="60" instance=ExtResource("3_nb8dl")]
+[node name="Stone61" parent="Board/Stones" index="60" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 5)
 
-[node name="Stone62" parent="Board/Stones" index="61" instance=ExtResource("3_nb8dl")]
+[node name="Stone62" parent="Board/Stones" index="61" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 5)
 
-[node name="Stone63" parent="Board/Stones" index="62" instance=ExtResource("3_nb8dl")]
+[node name="Stone63" parent="Board/Stones" index="62" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5)
 
-[node name="Stone64" parent="Board/Stones" index="63" instance=ExtResource("3_nb8dl")]
+[node name="Stone64" parent="Board/Stones" index="63" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5)
 
-[node name="Stone65" parent="Board/Stones" index="64" instance=ExtResource("3_nb8dl")]
+[node name="Stone65" parent="Board/Stones" index="64" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5)
 
-[node name="Stone66" parent="Board/Stones" index="65" instance=ExtResource("3_nb8dl")]
+[node name="Stone66" parent="Board/Stones" index="65" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
 
-[node name="Stone67" parent="Board/Stones" index="66" instance=ExtResource("3_nb8dl")]
+[node name="Stone67" parent="Board/Stones" index="66" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5)
 
-[node name="Stone68" parent="Board/Stones" index="67" instance=ExtResource("3_nb8dl")]
+[node name="Stone68" parent="Board/Stones" index="67" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
 
-[node name="Stone69" parent="Board/Stones" index="68" instance=ExtResource("3_nb8dl")]
+[node name="Stone69" parent="Board/Stones" index="68" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 5)
 
-[node name="Stone70" parent="Board/Stones" index="69" instance=ExtResource("3_nb8dl")]
+[node name="Stone70" parent="Board/Stones" index="69" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 5)
 
-[node name="Stone71" parent="Board/Stones" index="70" instance=ExtResource("3_nb8dl")]
+[node name="Stone71" parent="Board/Stones" index="70" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 7)
 
-[node name="Stone72" parent="Board/Stones" index="71" instance=ExtResource("3_nb8dl")]
+[node name="Stone72" parent="Board/Stones" index="71" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 7)
 
-[node name="Stone73" parent="Board/Stones" index="72" instance=ExtResource("3_nb8dl")]
+[node name="Stone73" parent="Board/Stones" index="72" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 7)
 
-[node name="Stone74" parent="Board/Stones" index="73" instance=ExtResource("3_nb8dl")]
+[node name="Stone74" parent="Board/Stones" index="73" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 7)
 
-[node name="Stone75" parent="Board/Stones" index="74" instance=ExtResource("3_nb8dl")]
+[node name="Stone75" parent="Board/Stones" index="74" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 7)
 
-[node name="Stone76" parent="Board/Stones" index="75" instance=ExtResource("3_nb8dl")]
+[node name="Stone76" parent="Board/Stones" index="75" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 7)
 
-[node name="Stone77" parent="Board/Stones" index="76" instance=ExtResource("3_nb8dl")]
+[node name="Stone77" parent="Board/Stones" index="76" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 7)
 
-[node name="Stone78" parent="Board/Stones" index="77" instance=ExtResource("3_nb8dl")]
+[node name="Stone78" parent="Board/Stones" index="77" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 7)
 
-[node name="Stone79" parent="Board/Stones" index="78" instance=ExtResource("3_nb8dl")]
+[node name="Stone79" parent="Board/Stones" index="78" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 7)
 
-[node name="Stone80" parent="Board/Stones" index="79" instance=ExtResource("3_nb8dl")]
+[node name="Stone80" parent="Board/Stones" index="79" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 7)
 
-[node name="StoneWall1" parent="Board/Walls" index="0" instance=ExtResource("4_wemap")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, -7)
-metadata/_edit_group_ = true
+[node name="StoneWall1" parent="Board/Walls" index="0" instance=ExtResource("4_dl8mf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -7)
 
 [node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall1" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -603,9 +605,8 @@ collision_mask = 54
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall1/WallBody1" index="0"]
 shape = SubResource("BoxShape3D_dl8mf")
 
-[node name="StoneWall2" parent="Board/Walls" index="1" instance=ExtResource("4_wemap")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -7)
-metadata/_edit_group_ = true
+[node name="StoneWall2" parent="Board/Walls" index="1" instance=ExtResource("4_dl8mf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, -7)
 
 [node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall2" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -614,9 +615,8 @@ collision_mask = 54
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall2/WallBody1" index="0"]
 shape = SubResource("BoxShape3D_dl8mf")
 
-[node name="StoneWall3" parent="Board/Walls" index="2" instance=ExtResource("4_wemap")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, -7)
-metadata/_edit_group_ = true
+[node name="StoneWall3" parent="Board/Walls" index="2" instance=ExtResource("4_dl8mf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, -7)
 
 [node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall3" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -625,9 +625,38 @@ collision_mask = 54
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall3/WallBody1" index="0"]
 shape = SubResource("BoxShape3D_dl8mf")
 
-[node name="StoneWall7" parent="Board/Walls" index="3" instance=ExtResource("4_wemap")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 9, 0, -2)
-metadata/_edit_group_ = true
+[node name="StoneWall4" parent="Board/Walls" index="3" instance=ExtResource("4_dl8mf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, -7)
+
+[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall4" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+collision_mask = 54
+
+[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall4/WallBody1" index="0"]
+shape = SubResource("BoxShape3D_dl8mf")
+
+[node name="StoneWall5" parent="Board/Walls" index="4" instance=ExtResource("4_dl8mf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, -7)
+
+[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall5" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+collision_mask = 54
+
+[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall5/WallBody1" index="0"]
+shape = SubResource("BoxShape3D_dl8mf")
+
+[node name="StoneWall6" parent="Board/Walls" index="5" instance=ExtResource("4_dl8mf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, -7)
+
+[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall6" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+collision_mask = 54
+
+[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall6/WallBody1" index="0"]
+shape = SubResource("BoxShape3D_dl8mf")
+
+[node name="StoneWall7" parent="Board/Walls" index="6" instance=ExtResource("4_dl8mf")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 9, 0, -4)
 
 [node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall7" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -636,9 +665,8 @@ collision_mask = 54
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall7/WallBody1" index="0"]
 shape = SubResource("BoxShape3D_dl8mf")
 
-[node name="StoneWall8" parent="Board/Walls" index="4" instance=ExtResource("4_wemap")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 9, 0, 0)
-metadata/_edit_group_ = true
+[node name="StoneWall8" parent="Board/Walls" index="7" instance=ExtResource("4_dl8mf")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 9, 0, -2)
 
 [node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall8" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -647,9 +675,8 @@ collision_mask = 54
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall8/WallBody1" index="0"]
 shape = SubResource("BoxShape3D_dl8mf")
 
-[node name="StoneWall9" parent="Board/Walls" index="5" instance=ExtResource("4_wemap")]
+[node name="StoneWall9" parent="Board/Walls" index="8" instance=ExtResource("4_dl8mf")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 9, 0, 2)
-metadata/_edit_group_ = true
 
 [node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall9" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -658,9 +685,8 @@ collision_mask = 54
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall9/WallBody1" index="0"]
 shape = SubResource("BoxShape3D_dl8mf")
 
-[node name="StoneWall10" parent="Board/Walls" index="6" instance=ExtResource("4_wemap")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3, 0, -2)
-metadata/_edit_group_ = true
+[node name="StoneWall10" parent="Board/Walls" index="9" instance=ExtResource("4_dl8mf")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 9, 0, 4)
 
 [node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall10" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -669,31 +695,8 @@ collision_mask = 54
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall10/WallBody1" index="0"]
 shape = SubResource("BoxShape3D_dl8mf")
 
-[node name="StoneWall14" parent="Board/Walls" index="7" instance=ExtResource("4_wemap")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3, 0, 0)
-metadata/_edit_group_ = true
-
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall14" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall14/WallBody1" index="0"]
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall15" parent="Board/Walls" index="8" instance=ExtResource("4_wemap")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3, 0, 2)
-metadata/_edit_group_ = true
-
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall15" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall15/WallBody1" index="0"]
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall11" parent="Board/Walls" index="9" instance=ExtResource("4_wemap")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 2, 0, 7)
-metadata/_edit_group_ = true
+[node name="StoneWall11" parent="Board/Walls" index="10" instance=ExtResource("4_dl8mf")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 6, 0, 7)
 
 [node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall11" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -702,9 +705,8 @@ collision_mask = 54
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall11/WallBody1" index="0"]
 shape = SubResource("BoxShape3D_dl8mf")
 
-[node name="StoneWall12" parent="Board/Walls" index="10" instance=ExtResource("4_wemap")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0, 7)
-metadata/_edit_group_ = true
+[node name="StoneWall12" parent="Board/Walls" index="11" instance=ExtResource("4_dl8mf")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 4, 0, 7)
 
 [node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall12" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -713,9 +715,8 @@ collision_mask = 54
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall12/WallBody1" index="0"]
 shape = SubResource("BoxShape3D_dl8mf")
 
-[node name="StoneWall13" parent="Board/Walls" index="11" instance=ExtResource("4_wemap")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -2, 0, 7)
-metadata/_edit_group_ = true
+[node name="StoneWall13" parent="Board/Walls" index="12" instance=ExtResource("4_dl8mf")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 2, 0, 7)
 
 [node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall13" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -724,9 +725,38 @@ collision_mask = 54
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall13/WallBody1" index="0"]
 shape = SubResource("BoxShape3D_dl8mf")
 
-[node name="StoneWall17" parent="Board/Walls" index="12" instance=ExtResource("4_wemap")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -9, 0, 2)
-metadata/_edit_group_ = true
+[node name="StoneWall14" parent="Board/Walls" index="13" instance=ExtResource("4_dl8mf")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -2, 0, 7)
+
+[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall14" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+collision_mask = 54
+
+[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall14/WallBody1" index="0"]
+shape = SubResource("BoxShape3D_dl8mf")
+
+[node name="StoneWall15" parent="Board/Walls" index="14" instance=ExtResource("4_dl8mf")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4, 0, 7)
+
+[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall15" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+collision_mask = 54
+
+[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall15/WallBody1" index="0"]
+shape = SubResource("BoxShape3D_dl8mf")
+
+[node name="StoneWall16" parent="Board/Walls" index="15" instance=ExtResource("4_dl8mf")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -6, 0, 7)
+
+[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall16" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+collision_mask = 54
+
+[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall16/WallBody1" index="0"]
+shape = SubResource("BoxShape3D_dl8mf")
+
+[node name="StoneWall17" parent="Board/Walls" index="16" instance=ExtResource("4_dl8mf")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -9, 0, 4)
 
 [node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall17" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -735,9 +765,8 @@ collision_mask = 54
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall17/WallBody1" index="0"]
 shape = SubResource("BoxShape3D_dl8mf")
 
-[node name="StoneWall18" parent="Board/Walls" index="13" instance=ExtResource("4_wemap")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -9, 0, 0)
-metadata/_edit_group_ = true
+[node name="StoneWall18" parent="Board/Walls" index="17" instance=ExtResource("4_dl8mf")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -9, 0, 2)
 
 [node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall18" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -746,9 +775,8 @@ collision_mask = 54
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall18/WallBody1" index="0"]
 shape = SubResource("BoxShape3D_dl8mf")
 
-[node name="StoneWall19" parent="Board/Walls" index="14" instance=ExtResource("4_wemap")]
+[node name="StoneWall19" parent="Board/Walls" index="18" instance=ExtResource("4_dl8mf")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -9, 0, -2)
-metadata/_edit_group_ = true
 
 [node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall19" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -757,9 +785,8 @@ collision_mask = 54
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall19/WallBody1" index="0"]
 shape = SubResource("BoxShape3D_dl8mf")
 
-[node name="StoneWall20" parent="Board/Walls" index="15" instance=ExtResource("4_wemap")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -3, 0, 2)
-metadata/_edit_group_ = true
+[node name="StoneWall20" parent="Board/Walls" index="19" instance=ExtResource("4_dl8mf")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -9, 0, -4)
 
 [node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall20" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -768,561 +795,540 @@ collision_mask = 54
 [node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall20/WallBody1" index="0"]
 shape = SubResource("BoxShape3D_dl8mf")
 
-[node name="StoneWall21" parent="Board/Walls" index="16" instance=ExtResource("4_wemap")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -3, 0, 0)
-metadata/_edit_group_ = true
-
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall21" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall21/WallBody1" index="0"]
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall22" parent="Board/Walls" index="17" instance=ExtResource("4_wemap")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -3, 0, -2)
-metadata/_edit_group_ = true
-
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall22" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall22/WallBody1" index="0"]
-shape = SubResource("BoxShape3D_dl8mf")
-
 [node name="WaterRow1" type="Node3D" parent="Board/Water" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, -10)
-script = ExtResource("5_w58g5")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, -12)
+script = ExtResource("6_qg0tc")
 
-[node name="Water1" parent="Board/Water/WaterRow1" index="0" instance=ExtResource("6_8glmb")]
+[node name="Water1" parent="Board/Water/WaterRow1" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 
-[node name="Water2" parent="Board/Water/WaterRow1" index="1" instance=ExtResource("6_8glmb")]
+[node name="Water2" parent="Board/Water/WaterRow1" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
 
-[node name="Water3" parent="Board/Water/WaterRow1" index="2" instance=ExtResource("6_8glmb")]
+[node name="Water3" parent="Board/Water/WaterRow1" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 
-[node name="Water4" parent="Board/Water/WaterRow1" index="3" instance=ExtResource("6_8glmb")]
+[node name="Water4" parent="Board/Water/WaterRow1" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
 
-[node name="Water5" parent="Board/Water/WaterRow1" index="4" instance=ExtResource("6_8glmb")]
+[node name="Water5" parent="Board/Water/WaterRow1" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 
-[node name="Water6" parent="Board/Water/WaterRow1" index="5" instance=ExtResource("6_8glmb")]
+[node name="Water6" parent="Board/Water/WaterRow1" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 
-[node name="Water7" parent="Board/Water/WaterRow1" index="6" instance=ExtResource("6_8glmb")]
+[node name="Water7" parent="Board/Water/WaterRow1" index="6" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 
-[node name="Water8" parent="Board/Water/WaterRow1" index="7" instance=ExtResource("6_8glmb")]
+[node name="Water8" parent="Board/Water/WaterRow1" index="7" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
-[node name="Water9" parent="Board/Water/WaterRow1" index="8" instance=ExtResource("6_8glmb")]
+[node name="Water9" parent="Board/Water/WaterRow1" index="8" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 
-[node name="Water10" parent="Board/Water/WaterRow1" index="9" instance=ExtResource("6_8glmb")]
+[node name="Water10" parent="Board/Water/WaterRow1" index="9" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 
-[node name="Water11" parent="Board/Water/WaterRow1" index="10" instance=ExtResource("6_8glmb")]
+[node name="Water11" parent="Board/Water/WaterRow1" index="10" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
 
-[node name="Water12" parent="Board/Water/WaterRow1" index="11" instance=ExtResource("6_8glmb")]
+[node name="Water12" parent="Board/Water/WaterRow1" index="11" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 
-[node name="Water13" parent="Board/Water/WaterRow1" index="12" instance=ExtResource("6_8glmb")]
+[node name="Water13" parent="Board/Water/WaterRow1" index="12" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 
-[node name="Water14" parent="Board/Water/WaterRow1" index="13" instance=ExtResource("6_8glmb")]
+[node name="Water14" parent="Board/Water/WaterRow1" index="13" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
-[node name="Water15" parent="Board/Water/WaterRow1" index="14" instance=ExtResource("6_8glmb")]
+[node name="Water15" parent="Board/Water/WaterRow1" index="14" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 
-[node name="Water16" parent="Board/Water/WaterRow1" index="15" instance=ExtResource("6_8glmb")]
+[node name="Water16" parent="Board/Water/WaterRow1" index="15" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
 
-[node name="Water17" parent="Board/Water/WaterRow1" index="16" instance=ExtResource("6_8glmb")]
+[node name="Water17" parent="Board/Water/WaterRow1" index="16" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 
-[node name="Water18" parent="Board/Water/WaterRow1" index="17" instance=ExtResource("6_8glmb")]
+[node name="Water18" parent="Board/Water/WaterRow1" index="17" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
 
-[node name="Water19" parent="Board/Water/WaterRow1" index="18" instance=ExtResource("6_8glmb")]
+[node name="Water19" parent="Board/Water/WaterRow1" index="18" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 
-[node name="Water20" parent="Board/Water/WaterRow1" index="19" instance=ExtResource("6_8glmb")]
+[node name="Water20" parent="Board/Water/WaterRow1" index="19" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 
-[node name="Water21" parent="Board/Water/WaterRow1" index="20" instance=ExtResource("6_8glmb")]
+[node name="Water21" parent="Board/Water/WaterRow1" index="20" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 
-[node name="Water22" parent="Board/Water/WaterRow1" index="21" instance=ExtResource("6_8glmb")]
+[node name="Water22" parent="Board/Water/WaterRow1" index="21" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
-[node name="Water23" parent="Board/Water/WaterRow1" index="22" instance=ExtResource("6_8glmb")]
+[node name="Water23" parent="Board/Water/WaterRow1" index="22" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 
-[node name="Water24" parent="Board/Water/WaterRow1" index="23" instance=ExtResource("6_8glmb")]
+[node name="Water24" parent="Board/Water/WaterRow1" index="23" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 
-[node name="Water25" parent="Board/Water/WaterRow1" index="24" instance=ExtResource("6_8glmb")]
+[node name="Water25" parent="Board/Water/WaterRow1" index="24" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
 
-[node name="Water26" parent="Board/Water/WaterRow1" index="25" instance=ExtResource("6_8glmb")]
+[node name="Water26" parent="Board/Water/WaterRow1" index="25" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 
-[node name="Water27" parent="Board/Water/WaterRow1" index="26" instance=ExtResource("6_8glmb")]
+[node name="Water27" parent="Board/Water/WaterRow1" index="26" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 
-[node name="Water28" parent="Board/Water/WaterRow1" index="27" instance=ExtResource("6_8glmb")]
+[node name="Water28" parent="Board/Water/WaterRow1" index="27" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
 [node name="WaterRow2" type="Node3D" parent="Board/Water" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, -8)
-script = ExtResource("5_w58g5")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, -10)
+script = ExtResource("6_qg0tc")
 
-[node name="Water1" parent="Board/Water/WaterRow2" index="0" instance=ExtResource("6_8glmb")]
+[node name="Water1" parent="Board/Water/WaterRow2" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 
-[node name="Water2" parent="Board/Water/WaterRow2" index="1" instance=ExtResource("6_8glmb")]
+[node name="Water2" parent="Board/Water/WaterRow2" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
 
-[node name="Water3" parent="Board/Water/WaterRow2" index="2" instance=ExtResource("6_8glmb")]
+[node name="Water3" parent="Board/Water/WaterRow2" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 
-[node name="Water4" parent="Board/Water/WaterRow2" index="3" instance=ExtResource("6_8glmb")]
+[node name="Water4" parent="Board/Water/WaterRow2" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
 
-[node name="Water5" parent="Board/Water/WaterRow2" index="4" instance=ExtResource("6_8glmb")]
+[node name="Water5" parent="Board/Water/WaterRow2" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 
-[node name="Water6" parent="Board/Water/WaterRow2" index="5" instance=ExtResource("6_8glmb")]
+[node name="Water6" parent="Board/Water/WaterRow2" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 
-[node name="Water7" parent="Board/Water/WaterRow2" index="6" instance=ExtResource("6_8glmb")]
+[node name="Water7" parent="Board/Water/WaterRow2" index="6" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 
-[node name="Water8" parent="Board/Water/WaterRow2" index="7" instance=ExtResource("6_8glmb")]
+[node name="Water8" parent="Board/Water/WaterRow2" index="7" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
-[node name="Water9" parent="Board/Water/WaterRow2" index="8" instance=ExtResource("6_8glmb")]
+[node name="Water9" parent="Board/Water/WaterRow2" index="8" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 
-[node name="Water10" parent="Board/Water/WaterRow2" index="9" instance=ExtResource("6_8glmb")]
+[node name="Water10" parent="Board/Water/WaterRow2" index="9" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 
-[node name="Water11" parent="Board/Water/WaterRow2" index="10" instance=ExtResource("6_8glmb")]
+[node name="Water11" parent="Board/Water/WaterRow2" index="10" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
 
-[node name="Water12" parent="Board/Water/WaterRow2" index="11" instance=ExtResource("6_8glmb")]
+[node name="Water12" parent="Board/Water/WaterRow2" index="11" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 
-[node name="Water13" parent="Board/Water/WaterRow2" index="12" instance=ExtResource("6_8glmb")]
+[node name="Water13" parent="Board/Water/WaterRow2" index="12" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 
-[node name="Water14" parent="Board/Water/WaterRow2" index="13" instance=ExtResource("6_8glmb")]
+[node name="Water14" parent="Board/Water/WaterRow2" index="13" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
-[node name="Water15" parent="Board/Water/WaterRow2" index="14" instance=ExtResource("6_8glmb")]
+[node name="Water15" parent="Board/Water/WaterRow2" index="14" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 
-[node name="Water16" parent="Board/Water/WaterRow2" index="15" instance=ExtResource("6_8glmb")]
+[node name="Water16" parent="Board/Water/WaterRow2" index="15" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
 
-[node name="Water17" parent="Board/Water/WaterRow2" index="16" instance=ExtResource("6_8glmb")]
+[node name="Water17" parent="Board/Water/WaterRow2" index="16" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 
-[node name="Water18" parent="Board/Water/WaterRow2" index="17" instance=ExtResource("6_8glmb")]
+[node name="Water18" parent="Board/Water/WaterRow2" index="17" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
 
-[node name="Water19" parent="Board/Water/WaterRow2" index="18" instance=ExtResource("6_8glmb")]
+[node name="Water19" parent="Board/Water/WaterRow2" index="18" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 
-[node name="Water20" parent="Board/Water/WaterRow2" index="19" instance=ExtResource("6_8glmb")]
+[node name="Water20" parent="Board/Water/WaterRow2" index="19" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 
-[node name="Water21" parent="Board/Water/WaterRow2" index="20" instance=ExtResource("6_8glmb")]
+[node name="Water21" parent="Board/Water/WaterRow2" index="20" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 
-[node name="Water22" parent="Board/Water/WaterRow2" index="21" instance=ExtResource("6_8glmb")]
+[node name="Water22" parent="Board/Water/WaterRow2" index="21" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
-[node name="Water23" parent="Board/Water/WaterRow2" index="22" instance=ExtResource("6_8glmb")]
+[node name="Water23" parent="Board/Water/WaterRow2" index="22" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 
-[node name="Water24" parent="Board/Water/WaterRow2" index="23" instance=ExtResource("6_8glmb")]
+[node name="Water24" parent="Board/Water/WaterRow2" index="23" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 
-[node name="Water25" parent="Board/Water/WaterRow2" index="24" instance=ExtResource("6_8glmb")]
+[node name="Water25" parent="Board/Water/WaterRow2" index="24" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
 
-[node name="Water26" parent="Board/Water/WaterRow2" index="25" instance=ExtResource("6_8glmb")]
+[node name="Water26" parent="Board/Water/WaterRow2" index="25" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 
-[node name="Water27" parent="Board/Water/WaterRow2" index="26" instance=ExtResource("6_8glmb")]
+[node name="Water27" parent="Board/Water/WaterRow2" index="26" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 
-[node name="Water28" parent="Board/Water/WaterRow2" index="27" instance=ExtResource("6_8glmb")]
+[node name="Water28" parent="Board/Water/WaterRow2" index="27" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
 [node name="WaterRow3" type="Node3D" parent="Board/Water" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, -6)
-script = ExtResource("5_w58g5")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, -8)
+script = ExtResource("6_qg0tc")
 
-[node name="Water1" parent="Board/Water/WaterRow3" index="0" instance=ExtResource("6_8glmb")]
+[node name="Water1" parent="Board/Water/WaterRow3" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 
-[node name="Water2" parent="Board/Water/WaterRow3" index="1" instance=ExtResource("6_8glmb")]
+[node name="Water2" parent="Board/Water/WaterRow3" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
 
-[node name="Water3" parent="Board/Water/WaterRow3" index="2" instance=ExtResource("6_8glmb")]
+[node name="Water3" parent="Board/Water/WaterRow3" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 
-[node name="Water26" parent="Board/Water/WaterRow3" index="3" instance=ExtResource("6_8glmb")]
+[node name="Water26" parent="Board/Water/WaterRow3" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 
-[node name="Water27" parent="Board/Water/WaterRow3" index="4" instance=ExtResource("6_8glmb")]
+[node name="Water27" parent="Board/Water/WaterRow3" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 
-[node name="Water28" parent="Board/Water/WaterRow3" index="5" instance=ExtResource("6_8glmb")]
+[node name="Water28" parent="Board/Water/WaterRow3" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
 [node name="WaterRow4" type="Node3D" parent="Board/Water" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, -4)
-script = ExtResource("5_w58g5")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, -6)
+script = ExtResource("6_qg0tc")
 
-[node name="Water1" parent="Board/Water/WaterRow4" index="0" instance=ExtResource("6_8glmb")]
+[node name="Water1" parent="Board/Water/WaterRow4" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 
-[node name="Water2" parent="Board/Water/WaterRow4" index="1" instance=ExtResource("6_8glmb")]
+[node name="Water2" parent="Board/Water/WaterRow4" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
 
-[node name="Water3" parent="Board/Water/WaterRow4" index="2" instance=ExtResource("6_8glmb")]
+[node name="Water3" parent="Board/Water/WaterRow4" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 
-[node name="Water26" parent="Board/Water/WaterRow4" index="3" instance=ExtResource("6_8glmb")]
+[node name="Water26" parent="Board/Water/WaterRow4" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 
-[node name="Water27" parent="Board/Water/WaterRow4" index="4" instance=ExtResource("6_8glmb")]
+[node name="Water27" parent="Board/Water/WaterRow4" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 
-[node name="Water28" parent="Board/Water/WaterRow4" index="5" instance=ExtResource("6_8glmb")]
+[node name="Water28" parent="Board/Water/WaterRow4" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
 [node name="WaterRow5" type="Node3D" parent="Board/Water" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, -2)
-script = ExtResource("5_w58g5")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, -4)
+script = ExtResource("6_qg0tc")
 
-[node name="Water1" parent="Board/Water/WaterRow5" index="0" instance=ExtResource("6_8glmb")]
+[node name="Water1" parent="Board/Water/WaterRow5" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 
-[node name="Water2" parent="Board/Water/WaterRow5" index="1" instance=ExtResource("6_8glmb")]
+[node name="Water2" parent="Board/Water/WaterRow5" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
 
-[node name="Water3" parent="Board/Water/WaterRow5" index="2" instance=ExtResource("6_8glmb")]
+[node name="Water3" parent="Board/Water/WaterRow5" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 
-[node name="Water26" parent="Board/Water/WaterRow5" index="3" instance=ExtResource("6_8glmb")]
+[node name="Water26" parent="Board/Water/WaterRow5" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 
-[node name="Water27" parent="Board/Water/WaterRow5" index="4" instance=ExtResource("6_8glmb")]
+[node name="Water27" parent="Board/Water/WaterRow5" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 
-[node name="Water28" parent="Board/Water/WaterRow5" index="5" instance=ExtResource("6_8glmb")]
+[node name="Water28" parent="Board/Water/WaterRow5" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
 [node name="WaterRow6" type="Node3D" parent="Board/Water" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
-script = ExtResource("5_w58g5")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, -2)
+script = ExtResource("6_qg0tc")
 
-[node name="Water1" parent="Board/Water/WaterRow6" index="0" instance=ExtResource("6_8glmb")]
+[node name="Water1" parent="Board/Water/WaterRow6" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 
-[node name="Water2" parent="Board/Water/WaterRow6" index="1" instance=ExtResource("6_8glmb")]
+[node name="Water2" parent="Board/Water/WaterRow6" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
 
-[node name="Water3" parent="Board/Water/WaterRow6" index="2" instance=ExtResource("6_8glmb")]
+[node name="Water3" parent="Board/Water/WaterRow6" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 
-[node name="Water26" parent="Board/Water/WaterRow6" index="3" instance=ExtResource("6_8glmb")]
+[node name="Water26" parent="Board/Water/WaterRow6" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 
-[node name="Water27" parent="Board/Water/WaterRow6" index="4" instance=ExtResource("6_8glmb")]
+[node name="Water27" parent="Board/Water/WaterRow6" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 
-[node name="Water28" parent="Board/Water/WaterRow6" index="5" instance=ExtResource("6_8glmb")]
+[node name="Water28" parent="Board/Water/WaterRow6" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
 [node name="WaterRow7" type="Node3D" parent="Board/Water" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 2)
-script = ExtResource("5_w58g5")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, 0)
+script = ExtResource("6_qg0tc")
 
-[node name="Water1" parent="Board/Water/WaterRow7" index="0" instance=ExtResource("6_8glmb")]
+[node name="Water1" parent="Board/Water/WaterRow7" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 
-[node name="Water2" parent="Board/Water/WaterRow7" index="1" instance=ExtResource("6_8glmb")]
+[node name="Water2" parent="Board/Water/WaterRow7" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
 
-[node name="Water3" parent="Board/Water/WaterRow7" index="2" instance=ExtResource("6_8glmb")]
+[node name="Water3" parent="Board/Water/WaterRow7" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 
-[node name="Water26" parent="Board/Water/WaterRow7" index="3" instance=ExtResource("6_8glmb")]
+[node name="Water26" parent="Board/Water/WaterRow7" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 
-[node name="Water27" parent="Board/Water/WaterRow7" index="4" instance=ExtResource("6_8glmb")]
+[node name="Water27" parent="Board/Water/WaterRow7" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 
-[node name="Water28" parent="Board/Water/WaterRow7" index="5" instance=ExtResource("6_8glmb")]
+[node name="Water28" parent="Board/Water/WaterRow7" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
 [node name="WaterRow8" type="Node3D" parent="Board/Water" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 4)
-script = ExtResource("5_w58g5")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, 2)
+script = ExtResource("6_qg0tc")
 
-[node name="Water1" parent="Board/Water/WaterRow8" index="0" instance=ExtResource("6_8glmb")]
+[node name="Water1" parent="Board/Water/WaterRow8" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 
-[node name="Water2" parent="Board/Water/WaterRow8" index="1" instance=ExtResource("6_8glmb")]
+[node name="Water2" parent="Board/Water/WaterRow8" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
 
-[node name="Water3" parent="Board/Water/WaterRow8" index="2" instance=ExtResource("6_8glmb")]
+[node name="Water3" parent="Board/Water/WaterRow8" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 
-[node name="Water26" parent="Board/Water/WaterRow8" index="3" instance=ExtResource("6_8glmb")]
+[node name="Water26" parent="Board/Water/WaterRow8" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 
-[node name="Water27" parent="Board/Water/WaterRow8" index="4" instance=ExtResource("6_8glmb")]
+[node name="Water27" parent="Board/Water/WaterRow8" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 
-[node name="Water28" parent="Board/Water/WaterRow8" index="5" instance=ExtResource("6_8glmb")]
+[node name="Water28" parent="Board/Water/WaterRow8" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
 [node name="WaterRow9" type="Node3D" parent="Board/Water" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 6)
-script = ExtResource("5_w58g5")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, 4)
+script = ExtResource("6_qg0tc")
 
-[node name="Water1" parent="Board/Water/WaterRow9" index="0" instance=ExtResource("6_8glmb")]
+[node name="Water1" parent="Board/Water/WaterRow9" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 
-[node name="Water2" parent="Board/Water/WaterRow9" index="1" instance=ExtResource("6_8glmb")]
+[node name="Water2" parent="Board/Water/WaterRow9" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
 
-[node name="Water3" parent="Board/Water/WaterRow9" index="2" instance=ExtResource("6_8glmb")]
+[node name="Water3" parent="Board/Water/WaterRow9" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 
-[node name="Water26" parent="Board/Water/WaterRow9" index="3" instance=ExtResource("6_8glmb")]
+[node name="Water26" parent="Board/Water/WaterRow9" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 
-[node name="Water27" parent="Board/Water/WaterRow9" index="4" instance=ExtResource("6_8glmb")]
+[node name="Water27" parent="Board/Water/WaterRow9" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 
-[node name="Water28" parent="Board/Water/WaterRow9" index="5" instance=ExtResource("6_8glmb")]
+[node name="Water28" parent="Board/Water/WaterRow9" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
 [node name="WaterRow10" type="Node3D" parent="Board/Water" index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 6)
-script = ExtResource("5_w58g5")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, 4)
+script = ExtResource("6_qg0tc")
 
-[node name="Water1" parent="Board/Water/WaterRow10" index="0" instance=ExtResource("6_8glmb")]
+[node name="Water1" parent="Board/Water/WaterRow10" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 
-[node name="Water2" parent="Board/Water/WaterRow10" index="1" instance=ExtResource("6_8glmb")]
+[node name="Water2" parent="Board/Water/WaterRow10" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
 
-[node name="Water3" parent="Board/Water/WaterRow10" index="2" instance=ExtResource("6_8glmb")]
+[node name="Water3" parent="Board/Water/WaterRow10" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 
-[node name="Water26" parent="Board/Water/WaterRow10" index="3" instance=ExtResource("6_8glmb")]
+[node name="Water26" parent="Board/Water/WaterRow10" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 
-[node name="Water27" parent="Board/Water/WaterRow10" index="4" instance=ExtResource("6_8glmb")]
+[node name="Water27" parent="Board/Water/WaterRow10" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 
-[node name="Water28" parent="Board/Water/WaterRow10" index="5" instance=ExtResource("6_8glmb")]
+[node name="Water28" parent="Board/Water/WaterRow10" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
 [node name="WaterRow11" type="Node3D" parent="Board/Water" index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 8)
-script = ExtResource("5_w58g5")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, 6)
+visible = false
+script = ExtResource("6_qg0tc")
 
-[node name="Water1" parent="Board/Water/WaterRow11" index="0" instance=ExtResource("6_8glmb")]
+[node name="Water1" parent="Board/Water/WaterRow11" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 
-[node name="Water2" parent="Board/Water/WaterRow11" index="1" instance=ExtResource("6_8glmb")]
+[node name="Water2" parent="Board/Water/WaterRow11" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
 
-[node name="Water3" parent="Board/Water/WaterRow11" index="2" instance=ExtResource("6_8glmb")]
+[node name="Water3" parent="Board/Water/WaterRow11" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 
-[node name="Water4" parent="Board/Water/WaterRow11" index="3" instance=ExtResource("6_8glmb")]
+[node name="Water4" parent="Board/Water/WaterRow11" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
 
-[node name="Water5" parent="Board/Water/WaterRow11" index="4" instance=ExtResource("6_8glmb")]
+[node name="Water5" parent="Board/Water/WaterRow11" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 
-[node name="Water6" parent="Board/Water/WaterRow11" index="5" instance=ExtResource("6_8glmb")]
+[node name="Water6" parent="Board/Water/WaterRow11" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 
-[node name="Water7" parent="Board/Water/WaterRow11" index="6" instance=ExtResource("6_8glmb")]
+[node name="Water7" parent="Board/Water/WaterRow11" index="6" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 
-[node name="Water8" parent="Board/Water/WaterRow11" index="7" instance=ExtResource("6_8glmb")]
+[node name="Water8" parent="Board/Water/WaterRow11" index="7" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
-[node name="Water9" parent="Board/Water/WaterRow11" index="8" instance=ExtResource("6_8glmb")]
+[node name="Water9" parent="Board/Water/WaterRow11" index="8" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 
-[node name="Water10" parent="Board/Water/WaterRow11" index="9" instance=ExtResource("6_8glmb")]
+[node name="Water10" parent="Board/Water/WaterRow11" index="9" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 
-[node name="Water11" parent="Board/Water/WaterRow11" index="10" instance=ExtResource("6_8glmb")]
+[node name="Water11" parent="Board/Water/WaterRow11" index="10" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
 
-[node name="Water12" parent="Board/Water/WaterRow11" index="11" instance=ExtResource("6_8glmb")]
+[node name="Water12" parent="Board/Water/WaterRow11" index="11" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 
-[node name="Water13" parent="Board/Water/WaterRow11" index="12" instance=ExtResource("6_8glmb")]
+[node name="Water13" parent="Board/Water/WaterRow11" index="12" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 
-[node name="Water14" parent="Board/Water/WaterRow11" index="13" instance=ExtResource("6_8glmb")]
+[node name="Water14" parent="Board/Water/WaterRow11" index="13" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
-[node name="Water15" parent="Board/Water/WaterRow11" index="14" instance=ExtResource("6_8glmb")]
+[node name="Water15" parent="Board/Water/WaterRow11" index="14" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 
-[node name="Water16" parent="Board/Water/WaterRow11" index="15" instance=ExtResource("6_8glmb")]
+[node name="Water16" parent="Board/Water/WaterRow11" index="15" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
 
-[node name="Water17" parent="Board/Water/WaterRow11" index="16" instance=ExtResource("6_8glmb")]
+[node name="Water17" parent="Board/Water/WaterRow11" index="16" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 
-[node name="Water18" parent="Board/Water/WaterRow11" index="17" instance=ExtResource("6_8glmb")]
+[node name="Water18" parent="Board/Water/WaterRow11" index="17" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
 
-[node name="Water19" parent="Board/Water/WaterRow11" index="18" instance=ExtResource("6_8glmb")]
+[node name="Water19" parent="Board/Water/WaterRow11" index="18" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 
-[node name="Water20" parent="Board/Water/WaterRow11" index="19" instance=ExtResource("6_8glmb")]
+[node name="Water20" parent="Board/Water/WaterRow11" index="19" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 
-[node name="Water21" parent="Board/Water/WaterRow11" index="20" instance=ExtResource("6_8glmb")]
+[node name="Water21" parent="Board/Water/WaterRow11" index="20" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 
-[node name="Water22" parent="Board/Water/WaterRow11" index="21" instance=ExtResource("6_8glmb")]
+[node name="Water22" parent="Board/Water/WaterRow11" index="21" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
-[node name="Water23" parent="Board/Water/WaterRow11" index="22" instance=ExtResource("6_8glmb")]
+[node name="Water23" parent="Board/Water/WaterRow11" index="22" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 
-[node name="Water24" parent="Board/Water/WaterRow11" index="23" instance=ExtResource("6_8glmb")]
+[node name="Water24" parent="Board/Water/WaterRow11" index="23" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 
-[node name="Water25" parent="Board/Water/WaterRow11" index="24" instance=ExtResource("6_8glmb")]
+[node name="Water25" parent="Board/Water/WaterRow11" index="24" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
 
-[node name="Water26" parent="Board/Water/WaterRow11" index="25" instance=ExtResource("6_8glmb")]
+[node name="Water26" parent="Board/Water/WaterRow11" index="25" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 
-[node name="Water27" parent="Board/Water/WaterRow11" index="26" instance=ExtResource("6_8glmb")]
+[node name="Water27" parent="Board/Water/WaterRow11" index="26" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 
-[node name="Water28" parent="Board/Water/WaterRow11" index="27" instance=ExtResource("6_8glmb")]
+[node name="Water28" parent="Board/Water/WaterRow11" index="27" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
 [node name="WaterRow12" type="Node3D" parent="Board/Water" index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 10)
-script = ExtResource("5_w58g5")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 8)
+script = ExtResource("6_qg0tc")
 
-[node name="Water1" parent="Board/Water/WaterRow12" index="0" instance=ExtResource("6_8glmb")]
+[node name="Water1" parent="Board/Water/WaterRow12" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 
-[node name="Water2" parent="Board/Water/WaterRow12" index="1" instance=ExtResource("6_8glmb")]
+[node name="Water2" parent="Board/Water/WaterRow12" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
 
-[node name="Water3" parent="Board/Water/WaterRow12" index="2" instance=ExtResource("6_8glmb")]
+[node name="Water3" parent="Board/Water/WaterRow12" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 
-[node name="Water4" parent="Board/Water/WaterRow12" index="3" instance=ExtResource("6_8glmb")]
+[node name="Water4" parent="Board/Water/WaterRow12" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
 
-[node name="Water5" parent="Board/Water/WaterRow12" index="4" instance=ExtResource("6_8glmb")]
+[node name="Water5" parent="Board/Water/WaterRow12" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 
-[node name="Water6" parent="Board/Water/WaterRow12" index="5" instance=ExtResource("6_8glmb")]
+[node name="Water6" parent="Board/Water/WaterRow12" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 
-[node name="Water7" parent="Board/Water/WaterRow12" index="6" instance=ExtResource("6_8glmb")]
+[node name="Water7" parent="Board/Water/WaterRow12" index="6" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 
-[node name="Water8" parent="Board/Water/WaterRow12" index="7" instance=ExtResource("6_8glmb")]
+[node name="Water8" parent="Board/Water/WaterRow12" index="7" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
-[node name="Water9" parent="Board/Water/WaterRow12" index="8" instance=ExtResource("6_8glmb")]
+[node name="Water9" parent="Board/Water/WaterRow12" index="8" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 
-[node name="Water10" parent="Board/Water/WaterRow12" index="9" instance=ExtResource("6_8glmb")]
+[node name="Water10" parent="Board/Water/WaterRow12" index="9" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 
-[node name="Water11" parent="Board/Water/WaterRow12" index="10" instance=ExtResource("6_8glmb")]
+[node name="Water11" parent="Board/Water/WaterRow12" index="10" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
 
-[node name="Water12" parent="Board/Water/WaterRow12" index="11" instance=ExtResource("6_8glmb")]
+[node name="Water12" parent="Board/Water/WaterRow12" index="11" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 
-[node name="Water13" parent="Board/Water/WaterRow12" index="12" instance=ExtResource("6_8glmb")]
+[node name="Water13" parent="Board/Water/WaterRow12" index="12" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 
-[node name="Water14" parent="Board/Water/WaterRow12" index="13" instance=ExtResource("6_8glmb")]
+[node name="Water14" parent="Board/Water/WaterRow12" index="13" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
-[node name="Water15" parent="Board/Water/WaterRow12" index="14" instance=ExtResource("6_8glmb")]
+[node name="Water15" parent="Board/Water/WaterRow12" index="14" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 
-[node name="Water16" parent="Board/Water/WaterRow12" index="15" instance=ExtResource("6_8glmb")]
+[node name="Water16" parent="Board/Water/WaterRow12" index="15" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
 
-[node name="Water17" parent="Board/Water/WaterRow12" index="16" instance=ExtResource("6_8glmb")]
+[node name="Water17" parent="Board/Water/WaterRow12" index="16" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 
-[node name="Water18" parent="Board/Water/WaterRow12" index="17" instance=ExtResource("6_8glmb")]
+[node name="Water18" parent="Board/Water/WaterRow12" index="17" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
 
-[node name="Water19" parent="Board/Water/WaterRow12" index="18" instance=ExtResource("6_8glmb")]
+[node name="Water19" parent="Board/Water/WaterRow12" index="18" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 
-[node name="Water20" parent="Board/Water/WaterRow12" index="19" instance=ExtResource("6_8glmb")]
+[node name="Water20" parent="Board/Water/WaterRow12" index="19" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 
-[node name="Water21" parent="Board/Water/WaterRow12" index="20" instance=ExtResource("6_8glmb")]
+[node name="Water21" parent="Board/Water/WaterRow12" index="20" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 
-[node name="Water22" parent="Board/Water/WaterRow12" index="21" instance=ExtResource("6_8glmb")]
+[node name="Water22" parent="Board/Water/WaterRow12" index="21" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
-[node name="Water23" parent="Board/Water/WaterRow12" index="22" instance=ExtResource("6_8glmb")]
+[node name="Water23" parent="Board/Water/WaterRow12" index="22" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 
-[node name="Water24" parent="Board/Water/WaterRow12" index="23" instance=ExtResource("6_8glmb")]
+[node name="Water24" parent="Board/Water/WaterRow12" index="23" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 
-[node name="Water25" parent="Board/Water/WaterRow12" index="24" instance=ExtResource("6_8glmb")]
+[node name="Water25" parent="Board/Water/WaterRow12" index="24" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
 
-[node name="Water26" parent="Board/Water/WaterRow12" index="25" instance=ExtResource("6_8glmb")]
+[node name="Water26" parent="Board/Water/WaterRow12" index="25" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 
-[node name="Water27" parent="Board/Water/WaterRow12" index="26" instance=ExtResource("6_8glmb")]
+[node name="Water27" parent="Board/Water/WaterRow12" index="26" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 
-[node name="Water28" parent="Board/Water/WaterRow12" index="27" instance=ExtResource("6_8glmb")]
+[node name="Water28" parent="Board/Water/WaterRow12" index="27" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
 [node name="Characters" parent="." index="4" node_paths=PackedStringArray("ground", "player")]
 ground = NodePath("../Board/Ground")
 player = NodePath("Player")
 
-[node name="Player" parent="Characters" index="0" instance=ExtResource("7_2bx7r")]
+[node name="Player" parent="Characters" index="0" instance=ExtResource("10_8ubki")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6, 0, -6)
 
 [node name="PickUps" parent="." index="5"]

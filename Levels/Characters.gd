@@ -5,8 +5,10 @@ const RESPAWN_DELAY := Vector2(2.0, 6.0)
 
 var player_ := load("res://Player/Player.tscn")
 var enemy_ := load("res://Enemies/Enemy.tscn")
+var spawn_hole_ := load("res://Levels/SpawnHole.tscn")
 
 @export var level : Node3D
+@export var ground : CSGMesh3D
 @export var player : CharacterBody3D
 @export var num_enemies := 5
 var enemies : Array[Enemy]
@@ -32,9 +34,13 @@ func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 			egg_square = egg_squares.pick_random()
 			
 		var enemy = enemy_.instantiate()
-		enemy.position = Vector3(egg_square.global_position.x, -2, \
+		var spawn_hole = spawn_hole_.instantiate()
+		var spawn_pos = Vector3(egg_square.global_position.x, -2, \
 														egg_square.global_position.z)
+		enemy.position = spawn_pos
+		spawn_hole.position = Vector3(spawn_pos.x, -0.8, spawn_pos.z)
 		add_child(enemy, true)
+		ground.add_child(spawn_hole, true)
 		enemies.append(enemy)
 		enemy.characters = self
 		enemy.rotation.y = PI
@@ -48,10 +54,14 @@ func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 
 func _respawn_enemy() -> void:
 		var enemy = enemy_.instantiate()
+		var spawn_hole = spawn_hole_.instantiate()
 		var free_square : Node3D = level.get_rand_free_square()
-		enemy.position = Vector3(free_square.global_position.x, -2, \
+		var spawn_pos := Vector3(free_square.global_position.x, -2, \
 														free_square.global_position.z)
+		enemy.position = spawn_pos
+		spawn_hole.position = Vector3(spawn_pos.x, -0.8, spawn_pos.z)
 		add_child(enemy, true)
+		ground.add_child(spawn_hole, true)
 		enemies.append(enemy)
 		enemy.characters = self
 		enemy.rotation.y = PI

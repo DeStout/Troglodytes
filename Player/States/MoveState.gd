@@ -179,8 +179,7 @@ func _slerp_to_dirp(stop := false) -> void:
 	
 	var tween = create_tween()
 	tween.tween_method(func(weight : float):
-		character.basis = character.basis.slerp(new_basis, weight), 
-																0.0, 1.0, 0.20)
+		character.basis = character.basis.slerp(new_basis, weight), 0.0, 1.0, 0.20)
 	await tween.finished
 	if !character.state_machine.current_state is AttackState:
 		character.anim_player.play("Walk")
