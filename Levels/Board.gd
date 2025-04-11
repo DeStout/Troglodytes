@@ -22,8 +22,7 @@ func _add_home_squares() -> void:
 
 
 func level_complete_clean_up() -> void:
-	if !Engine.is_editor_hint():
-		for egg_square in get_tree().get_nodes_in_group("EggSquares"):
-			egg_square.remove_from_group("EggSquares")
-		for home_square in get_tree().get_nodes_in_group("HomeSquares"):
-			home_square.remove_from_group("HomeSquares")
+	for egg_square in get_tree().get_nodes_in_group("EggSquares"):
+		egg_square.remove_from_group("EggSquares")
+	for home_square in get_tree().get_nodes_in_group("HomeSquares"):
+		home_square.remove_from_group("HomeSquares")

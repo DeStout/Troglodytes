@@ -38,5 +38,5 @@ func _body_collided(body : Node3D) -> void:
 		queue_free()
 
 
-func _off_screen() -> void:
+func _despawn() -> void:
 	queue_free()

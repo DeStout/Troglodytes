@@ -72,8 +72,9 @@ func attack() -> void:
 		hit_sfx.pitch_scale = randf_range(0.95, 1.05)
 		hit_sfx.play()
 		for collision in attack_cast.collision_result:
-			if collision.collider is Enemy:
-				collision.collider.attacked(move_dir)
+			if !collision.collider is Enemy:
+				return
+			collision.collider.attacked(move_dir)
 
 
 func _attack_ended() -> void:

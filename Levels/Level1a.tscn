@@ -1344,6 +1344,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 [node name="Characters" parent="." index="4" node_paths=PackedStringArray("ground", "player")]
 ground = NodePath("../Board/Ground")
 player = NodePath("Player")
+num_enemies = 7
 
 [node name="Player" parent="Characters" index="0" instance=ExtResource("10_8ubki")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6, 0, -6)

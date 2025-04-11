@@ -16,6 +16,7 @@ normal_texture = ExtResource("3_klbso")
 [node name="Hole" type="CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
 operation = 2
+calculate_tangents = false
 radius = 0.001
 sides = 12
 cone = true
