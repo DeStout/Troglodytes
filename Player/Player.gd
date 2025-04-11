@@ -87,11 +87,12 @@ func attacked() -> void:
 
 
 func respawn() -> void:
-	Globals.add_to_player_lives(-1)
-	if Globals.player_lives == -1:
+	if Globals.player_lives - 1 == -1:
 		Globals.reset_game()
 		# Signal to Level.game_over()
 		game_over.emit()
+		return
+	Globals.add_to_player_lives(-1)
 	
 	speed = (MAX_SPEED + MIN_SPEED) / 2
 	anim_speed = 1.0
