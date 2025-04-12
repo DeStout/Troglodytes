@@ -16,6 +16,7 @@ var free_squares : Array[Node3D] = []
 
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_set_up()
 
 

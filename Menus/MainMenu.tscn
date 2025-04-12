@@ -1,7 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba8xg6j0dfk0i"]
+[gd_scene load_steps=11 format=3 uid="uid://ba8xg6j0dfk0i"]
 
 [ext_resource type="Script" uid="uid://b5anrmu3ul3w8" path="res://Menus/MainMenu.gd" id="1_i26rj"]
 [ext_resource type="Script" uid="uid://dqolwe002khq0" path="res://Menus/OptionsMenu.gd" id="2_r8dbq"]
+[ext_resource type="FontFile" uid="uid://dhw1gc0ml3wen" path="res://Menus/Fonts/Dinofans.ttf" id="3_5ncg0"]
+[ext_resource type="PackedScene" uid="uid://bd5xr5rspbutp" path="res://Menus/MainBG.tscn" id="3_7ihqj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6o36"]
+bg_color = Color(0, 0.165733, 0.324219, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color(0, 0.165733, 0.324219, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ncg0"]
+bg_color = Color(0, 0.349868, 0.691406, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m16r1"]
+bg_color = Color(0, 0.506024, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xbyl"]
+bg_color = Color(0, 0.165733, 0.324219, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color(0, 0.165733, 0.324219, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1txdl"]
+bg_color = Color(0, 0.349868, 0.691406, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ju15h"]
+bg_color = Color(0, 0.506024, 1, 1)
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("main_menu", "options_menu")]
 layout_mode = 3
@@ -13,48 +49,122 @@ grow_vertical = 2
 script = ExtResource("1_i26rj")
 main_menu = NodePath("MainMenu")
 options_menu = NodePath("Options")
+metadata/_edit_vertical_guides_ = [660.0]
 
-[node name="MainMenu" type="CenterContainer" parent="."]
+[node name="BG" type="SubViewportContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="BG"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="MenuWorld" parent="BG/SubViewport" instance=ExtResource("3_7ihqj")]
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+anchor_right = 0.573
+anchor_bottom = 1.0
+offset_left = 54.0
+offset_top = 51.0
+offset_right = 57.904
+offset_bottom = -504.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_colors/font_outline_color = Color(0, 0.349868, 0.691406, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 100
+text = "Troglodytes"
+
+[node name="MainMenu" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.573
+anchor_bottom = 1.0
+offset_top = 144.0
+offset_right = -0.0960083
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBox" type="VBoxContainer" parent="MainMenu"]
 layout_mode = 2
-theme_override_constants/separation = 10
 
-[node name="Play" type="Button" parent="MainMenu/VBox"]
+[node name="Single Player" type="Button" parent="MainMenu/VBox"]
 custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 61
-text = "Play"
+theme_override_colors/font_hover_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 75
+text = "Single Player"
+flat = true
+alignment = 0
+
+[node name="Multiplayer" type="Button" parent="MainMenu/VBox"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_hover_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 75
+disabled = true
+text = "Multiplayer"
+flat = true
+alignment = 0
 
 [node name="Options" type="Button" parent="MainMenu/VBox"]
 custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 61
+theme_override_colors/font_hover_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 75
 text = "Options"
+flat = true
+alignment = 0
 
 [node name="Quit" type="Button" parent="MainMenu/VBox"]
 custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 61
+theme_override_colors/font_hover_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 75
 text = "Quit"
+flat = true
+alignment = 0
 
 [node name="Options" type="MarginContainer" parent="." node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider")]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_right = 0.573
 anchor_bottom = 1.0
+offset_top = 144.0
+offset_right = -0.0960083
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 75
-theme_override_constants/margin_top = 105
-theme_override_constants/margin_right = 75
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
 script = ExtResource("2_r8dbq")
 master_slider = NodePath("VLayout/Master/VLayout/MasterSlider")
 music_slider = NodePath("VLayout/Music/VLayout/MusicSlider")
@@ -62,9 +172,10 @@ sfx_slider = NodePath("VLayout/SFX/VLayout/SFXSlider")
 
 [node name="VLayout" type="VBoxContainer" parent="Options"]
 layout_mode = 2
-theme_override_constants/separation = 160
+alignment = 2
 
 [node name="Master" type="Control" parent="Options/VLayout"]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 
 [node name="VLayout" type="VBoxContainer" parent="Options/VLayout/Master"]
@@ -72,24 +183,34 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = -48.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="Options/VLayout/Master/VLayout"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
 theme_override_font_sizes/font_size = 48
 text = "Master Volume"
 
 [node name="MasterSlider" type="HSlider" parent="Options/VLayout/Master/VLayout"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_n6o36")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_5ncg0")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_m16r1")
 value = 50.0
 rounded = true
 tick_count = 5
 ticks_on_borders = true
 
 [node name="Music" type="Control" parent="Options/VLayout"]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 
 [node name="VLayout" type="VBoxContainer" parent="Options/VLayout/Music"]
@@ -97,24 +218,33 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -48.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="Options/VLayout/Music/VLayout"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
 theme_override_font_sizes/font_size = 48
 text = "Music Volume"
 
 [node name="MusicSlider" type="HSlider" parent="Options/VLayout/Music/VLayout"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_n6o36")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_5ncg0")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_m16r1")
 value = 50.0
 rounded = true
 tick_count = 5
 ticks_on_borders = true
 
 [node name="SFX" type="Control" parent="Options/VLayout"]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 
 [node name="VLayout" type="VBoxContainer" parent="Options/VLayout/SFX"]
@@ -122,38 +252,60 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -48.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="Options/VLayout/SFX/VLayout"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
 theme_override_font_sizes/font_size = 48
 text = "SFX Volume"
 
 [node name="SFXSlider" type="HSlider" parent="Options/VLayout/SFX/VLayout"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_0xbyl")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_1txdl")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_ju15h")
 value = 50.0
 rounded = true
 tick_count = 5
 ticks_on_borders = true
 
-[node name="MarginContainer" type="MarginContainer" parent="Options/VLayout"]
+[node name="Control" type="Control" parent="Options/VLayout"]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
-theme_override_constants/margin_left = 775
-theme_override_constants/margin_top = -55
-theme_override_constants/margin_bottom = -25
 
-[node name="Back" type="Button" parent="Options/VLayout/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Options/VLayout/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 462.0
+offset_bottom = -92.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back" type="Button" parent="Options/VLayout/Control/MarginContainer"]
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
 theme_override_font_sizes/font_size = 36
 text = "Back"
+flat = true
 
-[connection signal="button_down" from="MainMenu/VBox/Play" to="." method="_play_button"]
+[connection signal="button_down" from="MainMenu/VBox/Single Player" to="." method="_play_button"]
 [connection signal="button_down" from="MainMenu/VBox/Options" to="." method="_options_button"]
 [connection signal="button_down" from="MainMenu/VBox/Quit" to="." method="_quit_button"]
 [connection signal="value_changed" from="Options/VLayout/Master/VLayout/MasterSlider" to="Options" method="_master_volume_changed"]
 [connection signal="value_changed" from="Options/VLayout/Music/VLayout/MusicSlider" to="Options" method="_music_volume_changed"]
 [connection signal="value_changed" from="Options/VLayout/SFX/VLayout/SFXSlider" to="Options" method="_sfx_volume_changed"]
-[connection signal="button_down" from="Options/VLayout/MarginContainer/Back" to="." method="_options_back_button"]
+[connection signal="button_down" from="Options/VLayout/Control/MarginContainer/Back" to="." method="_options_back_button"]

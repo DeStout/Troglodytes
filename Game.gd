@@ -1,4 +1,4 @@
-extends Node
+class_name Game extends Node
 
 
 @export var main_menu : Control

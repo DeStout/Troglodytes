@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ce2swcu7afa84"]
+[gd_scene load_steps=4 format=3 uid="uid://ce2swcu7afa84"]
 
 [ext_resource type="Script" uid="uid://cwf6dntlanjof" path="res://Utilities/Autoloads/Pause.gd" id="1_ni8ss"]
 [ext_resource type="Script" uid="uid://dqolwe002khq0" path="res://Menus/OptionsMenu.gd" id="2_wyn1i"]
+[ext_resource type="FontFile" uid="uid://dhw1gc0ml3wen" path="res://Menus/Fonts/Dinofans.ttf" id="3_wcgje"]
 
 [node name="PauseMenu" type="Control" node_paths=PackedStringArray("options")]
 process_mode = 3
@@ -40,7 +41,7 @@ anchor_bottom = 1.0
 offset_left = 64.0
 offset_top = 64.0
 offset_right = -64.0
-offset_bottom = -64.0
+offset_bottom = -71.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.185, 0.255917, 0.37, 0.968627)
@@ -78,6 +79,9 @@ theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="BG/Options/VLayout/Master/VLayout"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_fonts/font = ExtResource("3_wcgje")
 theme_override_font_sizes/font_size = 48
 text = "Master Volume"
 
@@ -103,6 +107,9 @@ theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="BG/Options/VLayout/Music/VLayout"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_fonts/font = ExtResource("3_wcgje")
 theme_override_font_sizes/font_size = 48
 text = "Music Volume"
 
@@ -128,6 +135,9 @@ theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="BG/Options/VLayout/SFX/VLayout"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_fonts/font = ExtResource("3_wcgje")
 theme_override_font_sizes/font_size = 48
 text = "SFX Volume"
 
