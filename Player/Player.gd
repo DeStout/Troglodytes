@@ -24,6 +24,7 @@ var anim_speed := 1.0
 var move_dir : DIRECTIONS = DIRECTIONS.DOWN
 var target_square : Vector2
 
+const START_INV_TIME := 5.0
 const INVINCIBLE_TIME := 8.0
 const INV_FLASH_TIME := 1.5
 const FIRE_POWER_TIME := 10.0
@@ -100,7 +101,7 @@ func respawn() -> void:
 		
 	if !invincible_timer.time_left:
 		Globals.add_to_player_lives(-1)
-		set_invincible()
+		set_invincible(START_INV_TIME)
 	
 	speed = (MAX_SPEED + MIN_SPEED) / 2
 	anim_speed = 1.0
@@ -121,10 +122,10 @@ func effect_speed(speed_effect : float) -> void:
 	speed = clamp(speed, MIN_SPEED, MAX_SPEED)
 
 
-func set_invincible() -> void:
+func set_invincible(inv_time := INVINCIBLE_TIME) -> void:
 	halo.visible = true
-	invincible_timer.start(INVINCIBLE_TIME)
-	var flash_timer = get_tree().create_timer(INVINCIBLE_TIME - INV_FLASH_TIME)
+	invincible_timer.start(inv_time)
+	var flash_timer = get_tree().create_timer(inv_time - INV_FLASH_TIME)
 	flash_timer.timeout.connect(flash_halo.bind(0.0))
 
 

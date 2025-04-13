@@ -46,7 +46,7 @@ func _set_type(new_effect) -> void:
 			var cube := MeshInstance3D.new()
 			cube.mesh = BoxMesh.new()
 			cube.mesh.size = Vector3(0.8, 0.8, 0.8)
-			var mat = load("res://Player/PlayerMat.tres")
+			var mat = load("res://Player/Player_Mat.tres")
 			cube.set_surface_override_material(0, mat)
 			_add_mesh(cube)
 			cube.position.y = 1.0

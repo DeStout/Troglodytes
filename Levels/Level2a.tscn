@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=4 uid="uid://cgshxa54xrlbo"]
 
 [ext_resource type="PackedScene" uid="uid://c7f7rd7ltauxf" path="res://Levels/Level.tscn" id="1_j4kl7"]
-[ext_resource type="Texture2D" uid="uid://1qlh1cc6v26q" path="res://Levels/Materials/Sand1.png" id="2_i18uy"]
-[ext_resource type="Texture2D" uid="uid://bb1exretsg64u" path="res://Levels/Materials/Sand1_N.png" id="3_6dcgh"]
+[ext_resource type="Texture2D" uid="uid://xr27pg1088pa" path="res://Levels/Materials/Sand1.png" id="2_i18uy"]
+[ext_resource type="Texture2D" uid="uid://c8j6cokt48337" path="res://Levels/Materials/Sand1_N.png" id="3_6dcgh"]
 [ext_resource type="PackedScene" uid="uid://bxn2pdir8kpwt" path="res://Levels/Props/Stone1.blend" id="4_bg3ly"]
 [ext_resource type="PackedScene" uid="uid://dumpw4kef7jpk" path="res://Levels/Props/StoneWall.tscn" id="5_j4kl7"]
 [ext_resource type="Script" uid="uid://cl8s8e71ch3go" path="res://Levels/Props/Water.gd" id="6_0jbot"]
@@ -1836,7 +1836,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8, 0,
 
 [node name="PickUps" parent="." index="5"]
 num_pick_ups = 5
-level_pick_ups = Array[int]([0, 1, 3])
+level_pick_ups = Array[int]([0, 1, 3, 4])
 
 [node name="PlayArea" parent="." index="8"]
 visible = false

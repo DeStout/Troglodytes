@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb1exretsg64u"
+uid="uid://c8j6cokt48337"
 path.s3tc="res://.godot/imported/Sand1_N.png-d39895ded47d84c4ab79ecfe4fc08270.s3tc.ctex"
 path.etc2="res://.godot/imported/Sand1_N.png-d39895ded47d84c4ab79ecfe4fc08270.etc2.ctex"
 metadata={
@@ -25,8 +25,8 @@ compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://Levels/Sand1_N.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

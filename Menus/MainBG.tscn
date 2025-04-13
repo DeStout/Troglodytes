@@ -1,28 +1,23 @@
-[gd_scene load_steps=17 format=4 uid="uid://bd5xr5rspbutp"]
+[gd_scene load_steps=16 format=4 uid="uid://bd5xr5rspbutp"]
 
 [ext_resource type="PackedScene" uid="uid://bfuiiibm4ogfg" path="res://PickUps/Egg.tscn" id="1_5tsjt"]
+[ext_resource type="Texture2D" uid="uid://xr27pg1088pa" path="res://Levels/Materials/Sand1.png" id="1_y84t4"]
 [ext_resource type="Texture2D" uid="uid://gieddughtokc" path="res://PickUps/Egg_A.png" id="2_oilmi"]
-[ext_resource type="Texture2D" uid="uid://bb1exretsg64u" path="res://Levels/Materials/Sand1_N.png" id="3_nuj0n"]
+[ext_resource type="Texture2D" uid="uid://c8j6cokt48337" path="res://Levels/Materials/Sand1_N.png" id="3_nuj0n"]
 [ext_resource type="Texture2D" uid="uid://de4hw084r38s8" path="res://PickUps/Egg_H.png" id="3_y84t4"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_nqg6k"]
 lightmap_size_hint = Vector2i(1, 1)
 size = Vector2(5, 5)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oilmi"]
-load_path = "res://.godot/imported/Sand1.png-48daf3ff8fbf349af29da0706a4838eb.s3tc.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nuj0n"]
-load_path = "res://.godot/imported/Sand1_N.png-8a0d3f2dc7dba302f354a07442816e11.s3tc.ctex"
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y84t4"]
 resource_name = "Material"
 cull_mode = 2
-albedo_texture = SubResource("CompressedTexture2D_oilmi")
+albedo_texture = ExtResource("1_y84t4")
 roughness = 0.5
 normal_enabled = true
 normal_scale = 1.6
-normal_texture = SubResource("CompressedTexture2D_nuj0n")
+normal_texture = ExtResource("3_nuj0n")
 uv1_scale = Vector3(5, 5, 5)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5tsjt"]
