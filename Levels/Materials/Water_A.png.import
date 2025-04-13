@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1qlh1cc6v26q"
-path.s3tc="res://.godot/imported/Sand1.png-48daf3ff8fbf349af29da0706a4838eb.s3tc.ctex"
-path.etc2="res://.godot/imported/Sand1.png-48daf3ff8fbf349af29da0706a4838eb.etc2.ctex"
+uid="uid://by8dt3gr4lpj4"
+path.s3tc="res://.godot/imported/Water_A.png-ae04a3d304f69af3c685e77a54358a75.s3tc.ctex"
+path.etc2="res://.godot/imported/Water_A.png-ae04a3d304f69af3c685e77a54358a75.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://Levels/Sand1.png"
-dest_files=["res://.godot/imported/Sand1.png-48daf3ff8fbf349af29da0706a4838eb.s3tc.ctex", "res://.godot/imported/Sand1.png-48daf3ff8fbf349af29da0706a4838eb.etc2.ctex"]
+source_file="res://Levels/Materials/Water_A.png"
+dest_files=["res://.godot/imported/Water_A.png-ae04a3d304f69af3c685e77a54358a75.s3tc.ctex", "res://.godot/imported/Water_A.png-ae04a3d304f69af3c685e77a54358a75.etc2.ctex"]
 
 [params]
 

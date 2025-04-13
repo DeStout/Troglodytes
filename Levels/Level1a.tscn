@@ -1,12 +1,12 @@
-[gd_scene load_steps=14 format=4 uid="uid://cfxflxfqt2ahi"]
+[gd_scene load_steps=13 format=4 uid="uid://cfxflxfqt2ahi"]
 
 [ext_resource type="PackedScene" uid="uid://c7f7rd7ltauxf" path="res://Levels/Level.tscn" id="1_dl8mf"]
-[ext_resource type="Texture2D" uid="uid://1qlh1cc6v26q" path="res://Levels/Sand1.png" id="2_5g41i"]
-[ext_resource type="Texture2D" uid="uid://bb1exretsg64u" path="res://Levels/Sand1_N.png" id="3_7fl83"]
-[ext_resource type="PackedScene" uid="uid://y4p6vg7hixip" path="res://Levels/StoneWall1.blend" id="4_dl8mf"]
-[ext_resource type="PackedScene" uid="uid://bxn2pdir8kpwt" path="res://Levels/Stone1.blend" id="5_gmnjr"]
-[ext_resource type="Script" uid="uid://cl8s8e71ch3go" path="res://Levels/Water.gd" id="6_qg0tc"]
-[ext_resource type="PackedScene" uid="uid://hld77c0k73eb" path="res://Levels/Water1.blend" id="7_13mt1"]
+[ext_resource type="Texture2D" uid="uid://1qlh1cc6v26q" path="res://Levels/Materials/Sand1.png" id="2_5g41i"]
+[ext_resource type="Texture2D" uid="uid://bb1exretsg64u" path="res://Levels/Materials/Sand1_N.png" id="3_7fl83"]
+[ext_resource type="PackedScene" uid="uid://dumpw4kef7jpk" path="res://Levels/Props/StoneWall.tscn" id="5_bcif4"]
+[ext_resource type="PackedScene" uid="uid://bxn2pdir8kpwt" path="res://Levels/Props/Stone1.blend" id="5_gmnjr"]
+[ext_resource type="Script" uid="uid://cl8s8e71ch3go" path="res://Levels/Props/Water.gd" id="6_qg0tc"]
+[ext_resource type="PackedScene" uid="uid://hld77c0k73eb" path="res://Levels/Props/Water1.blend" id="7_13mt1"]
 [ext_resource type="PackedScene" uid="uid://b2iwuk2gndgr4" path="res://Player/Player.tscn" id="10_8ubki"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nb207"]
@@ -50,9 +50,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xcayt")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_dl8mf"]
-size = Vector3(2, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xcayt"]
 size = Vector3(18, 1, 14)
@@ -592,581 +589,496 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 7)
 [node name="Stone80" parent="Board/Stones" index="79" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 7)
 
-[node name="StoneWall1" parent="Board/Walls" index="0" instance=ExtResource("4_dl8mf")]
+[node name="StoneWall1" parent="Board/Walls" index="0" instance=ExtResource("5_bcif4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -7)
 
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall1" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall1/WallBody1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall2" parent="Board/Walls" index="1" instance=ExtResource("4_dl8mf")]
+[node name="StoneWall2" parent="Board/Walls" index="1" instance=ExtResource("5_bcif4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, -7)
 
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall2" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall2/WallBody1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall3" parent="Board/Walls" index="2" instance=ExtResource("4_dl8mf")]
+[node name="StoneWall3" parent="Board/Walls" index="2" instance=ExtResource("5_bcif4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, -7)
 
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall3" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall3/WallBody1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall4" parent="Board/Walls" index="3" instance=ExtResource("4_dl8mf")]
+[node name="StoneWall4" parent="Board/Walls" index="3" instance=ExtResource("5_bcif4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, -7)
 
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall4" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall4/WallBody1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall5" parent="Board/Walls" index="4" instance=ExtResource("4_dl8mf")]
+[node name="StoneWall5" parent="Board/Walls" index="4" instance=ExtResource("5_bcif4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, -7)
 
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall5" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall5/WallBody1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall6" parent="Board/Walls" index="5" instance=ExtResource("4_dl8mf")]
+[node name="StoneWall6" parent="Board/Walls" index="5" instance=ExtResource("5_bcif4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, -7)
 
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall6" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall6/WallBody1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall7" parent="Board/Walls" index="6" instance=ExtResource("4_dl8mf")]
+[node name="StoneWall7" parent="Board/Walls" index="6" instance=ExtResource("5_bcif4")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 9, 0, -4)
 
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall7" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall7/WallBody1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall8" parent="Board/Walls" index="7" instance=ExtResource("4_dl8mf")]
+[node name="StoneWall8" parent="Board/Walls" index="7" instance=ExtResource("5_bcif4")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 9, 0, -2)
 
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall8" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall8/WallBody1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall9" parent="Board/Walls" index="8" instance=ExtResource("4_dl8mf")]
+[node name="StoneWall9" parent="Board/Walls" index="8" instance=ExtResource("5_bcif4")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 9, 0, 2)
 
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall9" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall9/WallBody1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall10" parent="Board/Walls" index="9" instance=ExtResource("4_dl8mf")]
+[node name="StoneWall10" parent="Board/Walls" index="9" instance=ExtResource("5_bcif4")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 9, 0, 4)
 
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall10" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall10/WallBody1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall11" parent="Board/Walls" index="10" instance=ExtResource("4_dl8mf")]
+[node name="StoneWall11" parent="Board/Walls" index="10" instance=ExtResource("5_bcif4")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 6, 0, 7)
 
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall11" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall11/WallBody1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall12" parent="Board/Walls" index="11" instance=ExtResource("4_dl8mf")]
+[node name="StoneWall12" parent="Board/Walls" index="11" instance=ExtResource("5_bcif4")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 4, 0, 7)
 
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall12" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall12/WallBody1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall13" parent="Board/Walls" index="12" instance=ExtResource("4_dl8mf")]
+[node name="StoneWall13" parent="Board/Walls" index="12" instance=ExtResource("5_bcif4")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 2, 0, 7)
 
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall13" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall13/WallBody1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall14" parent="Board/Walls" index="13" instance=ExtResource("4_dl8mf")]
+[node name="StoneWall14" parent="Board/Walls" index="13" instance=ExtResource("5_bcif4")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -2, 0, 7)
 
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall14" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall14/WallBody1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall15" parent="Board/Walls" index="14" instance=ExtResource("4_dl8mf")]
+[node name="StoneWall15" parent="Board/Walls" index="14" instance=ExtResource("5_bcif4")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4, 0, 7)
 
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall15" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall15/WallBody1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall16" parent="Board/Walls" index="15" instance=ExtResource("4_dl8mf")]
+[node name="StoneWall16" parent="Board/Walls" index="15" instance=ExtResource("5_bcif4")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -6, 0, 7)
 
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall16" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall16/WallBody1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall17" parent="Board/Walls" index="16" instance=ExtResource("4_dl8mf")]
+[node name="StoneWall17" parent="Board/Walls" index="16" instance=ExtResource("5_bcif4")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -9, 0, 4)
 
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall17" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall17/WallBody1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall18" parent="Board/Walls" index="17" instance=ExtResource("4_dl8mf")]
+[node name="StoneWall18" parent="Board/Walls" index="17" instance=ExtResource("5_bcif4")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -9, 0, 2)
 
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall18" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall18/WallBody1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall19" parent="Board/Walls" index="18" instance=ExtResource("4_dl8mf")]
+[node name="StoneWall19" parent="Board/Walls" index="18" instance=ExtResource("5_bcif4")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -9, 0, -2)
 
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall19" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall19/WallBody1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_dl8mf")
-
-[node name="StoneWall20" parent="Board/Walls" index="19" instance=ExtResource("4_dl8mf")]
+[node name="StoneWall20" parent="Board/Walls" index="19" instance=ExtResource("5_bcif4")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -9, 0, -4)
 
-[node name="WallBody1" type="StaticBody3D" parent="Board/Walls/StoneWall20" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-collision_mask = 54
-
-[node name="Collision" type="CollisionShape3D" parent="Board/Walls/StoneWall20/WallBody1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_dl8mf")
-
 [node name="WaterRow1" type="Node3D" parent="Board/Water" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, -10)
 script = ExtResource("6_qg0tc")
 
 [node name="Water1" parent="Board/Water/WaterRow1" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water2" parent="Board/Water/WaterRow1" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water3" parent="Board/Water/WaterRow1" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water4" parent="Board/Water/WaterRow1" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water5" parent="Board/Water/WaterRow1" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water6" parent="Board/Water/WaterRow1" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water7" parent="Board/Water/WaterRow1" index="6" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water8" parent="Board/Water/WaterRow1" index="7" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water9" parent="Board/Water/WaterRow1" index="8" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water10" parent="Board/Water/WaterRow1" index="9" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water11" parent="Board/Water/WaterRow1" index="10" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water12" parent="Board/Water/WaterRow1" index="11" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water13" parent="Board/Water/WaterRow1" index="12" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water14" parent="Board/Water/WaterRow1" index="13" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water15" parent="Board/Water/WaterRow1" index="14" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water16" parent="Board/Water/WaterRow1" index="15" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water17" parent="Board/Water/WaterRow1" index="16" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water18" parent="Board/Water/WaterRow1" index="17" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water19" parent="Board/Water/WaterRow1" index="18" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water20" parent="Board/Water/WaterRow1" index="19" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water21" parent="Board/Water/WaterRow1" index="20" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water22" parent="Board/Water/WaterRow1" index="21" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water23" parent="Board/Water/WaterRow1" index="22" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water24" parent="Board/Water/WaterRow1" index="23" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water25" parent="Board/Water/WaterRow1" index="24" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water26" parent="Board/Water/WaterRow1" index="25" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water27" parent="Board/Water/WaterRow1" index="26" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water28" parent="Board/Water/WaterRow1" index="27" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+sorting_offset = -16.0
 
 [node name="WaterRow2" type="Node3D" parent="Board/Water" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, -8)
 script = ExtResource("6_qg0tc")
 
 [node name="Water1" parent="Board/Water/WaterRow2" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water2" parent="Board/Water/WaterRow2" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water3" parent="Board/Water/WaterRow2" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water4" parent="Board/Water/WaterRow2" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water5" parent="Board/Water/WaterRow2" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water6" parent="Board/Water/WaterRow2" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water7" parent="Board/Water/WaterRow2" index="6" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water8" parent="Board/Water/WaterRow2" index="7" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water9" parent="Board/Water/WaterRow2" index="8" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water10" parent="Board/Water/WaterRow2" index="9" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water11" parent="Board/Water/WaterRow2" index="10" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water12" parent="Board/Water/WaterRow2" index="11" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water13" parent="Board/Water/WaterRow2" index="12" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water14" parent="Board/Water/WaterRow2" index="13" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water15" parent="Board/Water/WaterRow2" index="14" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water16" parent="Board/Water/WaterRow2" index="15" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water17" parent="Board/Water/WaterRow2" index="16" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water18" parent="Board/Water/WaterRow2" index="17" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water19" parent="Board/Water/WaterRow2" index="18" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water20" parent="Board/Water/WaterRow2" index="19" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water21" parent="Board/Water/WaterRow2" index="20" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water22" parent="Board/Water/WaterRow2" index="21" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water23" parent="Board/Water/WaterRow2" index="22" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water24" parent="Board/Water/WaterRow2" index="23" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water25" parent="Board/Water/WaterRow2" index="24" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water26" parent="Board/Water/WaterRow2" index="25" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water27" parent="Board/Water/WaterRow2" index="26" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water28" parent="Board/Water/WaterRow2" index="27" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+sorting_offset = -16.0
 
 [node name="WaterRow3" type="Node3D" parent="Board/Water" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, -6)
 script = ExtResource("6_qg0tc")
 
 [node name="Water1" parent="Board/Water/WaterRow3" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water2" parent="Board/Water/WaterRow3" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water3" parent="Board/Water/WaterRow3" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water26" parent="Board/Water/WaterRow3" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water27" parent="Board/Water/WaterRow3" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water28" parent="Board/Water/WaterRow3" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+sorting_offset = -16.0
 
 [node name="WaterRow4" type="Node3D" parent="Board/Water" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, -4)
 script = ExtResource("6_qg0tc")
 
 [node name="Water1" parent="Board/Water/WaterRow4" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water2" parent="Board/Water/WaterRow4" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water3" parent="Board/Water/WaterRow4" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water26" parent="Board/Water/WaterRow4" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water27" parent="Board/Water/WaterRow4" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water28" parent="Board/Water/WaterRow4" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+sorting_offset = -16.0
 
 [node name="WaterRow5" type="Node3D" parent="Board/Water" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, -2)
 script = ExtResource("6_qg0tc")
 
 [node name="Water1" parent="Board/Water/WaterRow5" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water2" parent="Board/Water/WaterRow5" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water3" parent="Board/Water/WaterRow5" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water26" parent="Board/Water/WaterRow5" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water27" parent="Board/Water/WaterRow5" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water28" parent="Board/Water/WaterRow5" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+sorting_offset = -16.0
 
 [node name="WaterRow6" type="Node3D" parent="Board/Water" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
 script = ExtResource("6_qg0tc")
 
 [node name="Water1" parent="Board/Water/WaterRow6" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water2" parent="Board/Water/WaterRow6" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water3" parent="Board/Water/WaterRow6" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water26" parent="Board/Water/WaterRow6" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water27" parent="Board/Water/WaterRow6" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water28" parent="Board/Water/WaterRow6" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+sorting_offset = -16.0
 
 [node name="WaterRow7" type="Node3D" parent="Board/Water" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 2)
 script = ExtResource("6_qg0tc")
 
 [node name="Water1" parent="Board/Water/WaterRow7" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water2" parent="Board/Water/WaterRow7" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water3" parent="Board/Water/WaterRow7" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water26" parent="Board/Water/WaterRow7" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water27" parent="Board/Water/WaterRow7" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water28" parent="Board/Water/WaterRow7" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+sorting_offset = -16.0
 
 [node name="WaterRow8" type="Node3D" parent="Board/Water" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 4)
 script = ExtResource("6_qg0tc")
 
 [node name="Water1" parent="Board/Water/WaterRow8" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water2" parent="Board/Water/WaterRow8" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water3" parent="Board/Water/WaterRow8" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water26" parent="Board/Water/WaterRow8" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water27" parent="Board/Water/WaterRow8" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water28" parent="Board/Water/WaterRow8" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+sorting_offset = -16.0
 
-[node name="WaterRow9" type="Node3D" parent="Board/Water" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, 4)
-script = ExtResource("6_qg0tc")
-
-[node name="Water1" parent="Board/Water/WaterRow9" index="0" instance=ExtResource("7_13mt1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
-
-[node name="Water2" parent="Board/Water/WaterRow9" index="1" instance=ExtResource("7_13mt1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
-
-[node name="Water3" parent="Board/Water/WaterRow9" index="2" instance=ExtResource("7_13mt1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
-
-[node name="Water26" parent="Board/Water/WaterRow9" index="3" instance=ExtResource("7_13mt1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
-
-[node name="Water27" parent="Board/Water/WaterRow9" index="4" instance=ExtResource("7_13mt1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
-
-[node name="Water28" parent="Board/Water/WaterRow9" index="5" instance=ExtResource("7_13mt1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
-
-[node name="WaterRow10" type="Node3D" parent="Board/Water" index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, 4)
+[node name="WaterRow10" type="Node3D" parent="Board/Water" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 6)
 script = ExtResource("6_qg0tc")
 
 [node name="Water1" parent="Board/Water/WaterRow10" index="0" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water2" parent="Board/Water/WaterRow10" index="1" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water3" parent="Board/Water/WaterRow10" index="2" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water26" parent="Board/Water/WaterRow10" index="3" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water27" parent="Board/Water/WaterRow10" index="4" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+sorting_offset = -16.0
 
 [node name="Water28" parent="Board/Water/WaterRow10" index="5" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+sorting_offset = -16.0
 
-[node name="WaterRow11" type="Node3D" parent="Board/Water" index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, 6)
-visible = false
+[node name="WaterRow11" type="Node3D" parent="Board/Water" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 8)
 script = ExtResource("6_qg0tc")
 
 [node name="Water1" parent="Board/Water/WaterRow11" index="0" instance=ExtResource("7_13mt1")]
@@ -1253,8 +1165,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 [node name="Water28" parent="Board/Water/WaterRow11" index="27" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
-[node name="WaterRow12" type="Node3D" parent="Board/Water" index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 8)
+[node name="WaterRow12" type="Node3D" parent="Board/Water" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 10)
 script = ExtResource("6_qg0tc")
 
 [node name="Water1" parent="Board/Water/WaterRow12" index="0" instance=ExtResource("7_13mt1")]

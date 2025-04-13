@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bagbcmhxw6tvd"]
+
+[ext_resource type="Texture2D" uid="uid://by8dt3gr4lpj4" path="res://Levels/Materials/Water_A.png" id="1_r2gw3"]
+
+[resource]
+resource_name = "Material"
+render_priority = -1
+cull_mode = 2
+albedo_texture = ExtResource("1_r2gw3")
+roughness = 0.5

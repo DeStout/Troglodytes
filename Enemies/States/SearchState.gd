@@ -69,9 +69,12 @@ func _slerp_to_dirp() -> void:
 	
 	turning = true
 	var new_basis = character.basis.looking_at(Vector3(target_dir.x, 0, target_dir.y))
+	var new_rot := new_basis.get_rotation_quaternion()
 	tween = create_tween()
 	tween.tween_method(func(weight : float):
-		character.basis = character.basis.slerp(new_basis, weight), 0.0, 1.0, 0.15)
+		var temp_rot := character.quaternion.slerp(new_rot, weight)
+		character.rotation = snapped(temp_rot.get_euler(), Vector3(PI/4, PI/4, PI/4)),
+		0.0, 1.0, 0.25)
 	await tween.finished
 	turning = false
 	return

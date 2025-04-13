@@ -2,18 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by8dt3gr4lpj4"
-path.s3tc="res://.godot/imported/Water_A.png-e8a6c98b2aa5f1f44af1d0b317758f3f.s3tc.ctex"
-path.etc2="res://.godot/imported/Water_A.png-e8a6c98b2aa5f1f44af1d0b317758f3f.etc2.ctex"
+uid="uid://oltn3lw7o3hu"
+path.s3tc="res://.godot/imported/StoneWall1_Image.png-0a19d147943a850cc539cdce881ec16b.s3tc.ctex"
+path.etc2="res://.godot/imported/StoneWall1_Image.png-0a19d147943a850cc539cdce881ec16b.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "8597d4e7e65352a302b63e07bc01a7da"
+}
 
 [deps]
 
-source_file="res://Levels/Water_A.png"
-dest_files=["res://.godot/imported/Water_A.png-e8a6c98b2aa5f1f44af1d0b317758f3f.s3tc.ctex", "res://.godot/imported/Water_A.png-e8a6c98b2aa5f1f44af1d0b317758f3f.etc2.ctex"]
+source_file="res://Levels/Props/StoneWall1_Image.png"
+dest_files=["res://.godot/imported/StoneWall1_Image.png-0a19d147943a850cc539cdce881ec16b.s3tc.ctex", "res://.godot/imported/StoneWall1_Image.png-0a19d147943a850cc539cdce881ec16b.etc2.ctex"]
 
 [params]
 

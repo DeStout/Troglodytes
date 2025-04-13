@@ -5,7 +5,7 @@ const RESPAWN_DELAY := Vector2(2.0, 6.0)
 
 var player_ := load("res://Player/Player.tscn")
 var enemy_ := load("res://Enemies/Enemy.tscn")
-var spawn_hole_ := load("res://Levels/SpawnHole.tscn")
+var spawn_hole_ := load("res://Levels/Props/SpawnHole.tscn")
 
 @export var level : Node3D
 @export var ground : CSGMesh3D

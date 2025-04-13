@@ -2,7 +2,7 @@ class_name Level extends Node3D
 
 
 var egg_ := load("res://PickUps/Egg.tscn")
-var home_ := load("res://Levels/Home.tscn")
+var home_ := load("res://Levels/Props/Home.tscn")
 
 var game : Node
 @export var board : Node3D

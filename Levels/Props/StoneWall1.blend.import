@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://y4p6vg7hixip"
-path="res://.godot/imported/StoneWall1.blend-7c40227c9982b361f1af9538244e11e0.scn"
+path="res://.godot/imported/StoneWall1.blend-60e4c21d615d2e82bb10222b49033566.scn"
 
 [deps]
 
-source_file="res://Levels/StoneWall1.blend"
-dest_files=["res://.godot/imported/StoneWall1.blend-7c40227c9982b361f1af9538244e11e0.scn"]
+source_file="res://Levels/Props/StoneWall1.blend"
+dest_files=["res://.godot/imported/StoneWall1.blend-60e4c21d615d2e82bb10222b49033566.scn"]
 
 [params]
 
@@ -32,7 +32,14 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"@MATERIAL:0": {
+"use_external/enabled": true,
+"use_external/path": "uid://b2v7fps52g5do"
+}
+}
+}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true
@@ -46,7 +53,7 @@ blender/meshes/export_geometry_nodes_instances=false
 blender/meshes/tangents=true
 blender/meshes/skins=2
 blender/meshes/export_bones_deforming_mesh_only=false
-blender/materials/unpack_enabled=true
+blender/materials/unpack_enabled=false
 blender/materials/export_materials=1
 blender/animation/limit_playback=true
 blender/animation/always_sample=true

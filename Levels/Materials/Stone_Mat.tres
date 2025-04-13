@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://b2v7fps52g5do"]
+
+[ext_resource type="Texture2D" uid="uid://cphychd42il0k" path="res://Levels/Materials/Rock054_A.jpg" id="1_kan1c"]
+[ext_resource type="Texture2D" uid="uid://c246sf8w2fgwd" path="res://Levels/Materials/Rock054_R.jpg" id="2_x2enj"]
+[ext_resource type="Texture2D" uid="uid://dn010di32lpmb" path="res://Levels/Materials/Rock054_N.jpg" id="3_olns0"]
+
+[resource]
+resource_name = "Rock054"
+render_priority = 2
+cull_mode = 2
+albedo_texture = ExtResource("1_kan1c")
+metallic_texture = ExtResource("2_x2enj")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_x2enj")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_scale = 5.0
+normal_texture = ExtResource("3_olns0")

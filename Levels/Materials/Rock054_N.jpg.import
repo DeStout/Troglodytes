@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dn010di32lpmb"
-path.s3tc="res://.godot/imported/Stone1_Rock054_1K-JPG_NormalGL.jpg-7d4c89d2854ad0934e51137fae5cfa24.s3tc.ctex"
-path.etc2="res://.godot/imported/Stone1_Rock054_1K-JPG_NormalGL.jpg-7d4c89d2854ad0934e51137fae5cfa24.etc2.ctex"
+path.s3tc="res://.godot/imported/Rock054_N.jpg-96a357f178740871b7b0bab494e49849.s3tc.ctex"
+path.etc2="res://.godot/imported/Rock054_N.jpg-96a357f178740871b7b0bab494e49849.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -15,8 +15,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Levels/Stone1_Rock054_1K-JPG_NormalGL.jpg"
-dest_files=["res://.godot/imported/Stone1_Rock054_1K-JPG_NormalGL.jpg-7d4c89d2854ad0934e51137fae5cfa24.s3tc.ctex", "res://.godot/imported/Stone1_Rock054_1K-JPG_NormalGL.jpg-7d4c89d2854ad0934e51137fae5cfa24.etc2.ctex"]
+source_file="res://Levels/Materials/Rock054_N.jpg"
+dest_files=["res://.godot/imported/Rock054_N.jpg-96a357f178740871b7b0bab494e49849.s3tc.ctex", "res://.godot/imported/Rock054_N.jpg-96a357f178740871b7b0bab494e49849.etc2.ctex"]
 
 [params]
 

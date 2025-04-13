@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://ba8xg6j0dfk0i"]
+[gd_scene load_steps=12 format=3 uid="uid://ba8xg6j0dfk0i"]
 
 [ext_resource type="Script" uid="uid://b5anrmu3ul3w8" path="res://Menus/MainMenu.gd" id="1_i26rj"]
 [ext_resource type="Script" uid="uid://dqolwe002khq0" path="res://Menus/OptionsMenu.gd" id="2_r8dbq"]
 [ext_resource type="FontFile" uid="uid://dhw1gc0ml3wen" path="res://Menus/Fonts/Dinofans.ttf" id="3_5ncg0"]
 [ext_resource type="PackedScene" uid="uid://bd5xr5rspbutp" path="res://Menus/MainBG.tscn" id="3_7ihqj"]
+[ext_resource type="AudioStream" uid="uid://b2adamdl3fce5" path="res://Menus/BeachWaves.ogg" id="5_5ncg0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6o36"]
 bg_color = Color(0, 0.165733, 0.324219, 1)
@@ -301,6 +302,13 @@ theme_override_fonts/font = ExtResource("3_5ncg0")
 theme_override_font_sizes/font_size = 36
 text = "Back"
 flat = true
+
+[node name="Waves" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_5ncg0")
+volume_db = -15.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [connection signal="button_down" from="MainMenu/VBox/Single Player" to="." method="_play_button"]
 [connection signal="button_down" from="MainMenu/VBox/Options" to="." method="_options_button"]

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bxn2pdir8kpwt"
-path="res://.godot/imported/Stone1.blend-b6e5c40b52a11ded3c47a13f9eacece5.scn"
+uid="uid://hld77c0k73eb"
+path="res://.godot/imported/Water1.blend-7c23280175d6241dbf52752d92cc4dd0.scn"
 
 [deps]
 
-source_file="res://Levels/Stone1.blend"
-dest_files=["res://.godot/imported/Stone1.blend-b6e5c40b52a11ded3c47a13f9eacece5.scn"]
+source_file="res://Levels/Props/Water1.blend"
+dest_files=["res://.godot/imported/Water1.blend-7c23280175d6241dbf52752d92cc4dd0.scn"]
 
 [params]
 
@@ -34,9 +34,9 @@ animation/import_rest_as_RESET=false
 import_script/path="uid://bwjtvoj5ffoja"
 _subresources={
 "materials": {
-"Rock054": {
+"Material": {
 "use_external/enabled": true,
-"use_external/path": ""
+"use_external/path": "uid://bagbcmhxw6tvd"
 }
 }
 }

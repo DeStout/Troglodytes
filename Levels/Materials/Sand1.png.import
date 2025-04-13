@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb1exretsg64u"
-path.s3tc="res://.godot/imported/Sand1_N.png-8a0d3f2dc7dba302f354a07442816e11.s3tc.ctex"
-path.etc2="res://.godot/imported/Sand1_N.png-8a0d3f2dc7dba302f354a07442816e11.etc2.ctex"
+uid="uid://1qlh1cc6v26q"
+path.s3tc="res://.godot/imported/Sand1.png-64e88ca3428c489de4263a1f45ac8c58.s3tc.ctex"
+path.etc2="res://.godot/imported/Sand1.png-64e88ca3428c489de4263a1f45ac8c58.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://Levels/Sand1_N.png"
-dest_files=["res://.godot/imported/Sand1_N.png-8a0d3f2dc7dba302f354a07442816e11.s3tc.ctex", "res://.godot/imported/Sand1_N.png-8a0d3f2dc7dba302f354a07442816e11.etc2.ctex"]
+source_file="res://Levels/Materials/Sand1.png"
+dest_files=["res://.godot/imported/Sand1.png-64e88ca3428c489de4263a1f45ac8c58.s3tc.ctex", "res://.godot/imported/Sand1.png-64e88ca3428c489de4263a1f45ac8c58.etc2.ctex"]
 
 [params]
 
@@ -21,12 +21,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://Levels/Sand1_N.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

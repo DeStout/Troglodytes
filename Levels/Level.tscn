@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c7f7rd7ltauxf"]
+[gd_scene load_steps=15 format=3 uid="uid://c7f7rd7ltauxf"]
 
 [ext_resource type="Script" uid="uid://dwbxnol5sxdj" path="res://Levels/Level.gd" id="1_bwnv0"]
 [ext_resource type="Script" uid="uid://c2kw3luipogux" path="res://Levels/Board.gd" id="2_ah0qf"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bs3n8adc3cmnt" path="res://Levels/FX.gd" id="8_hbkgd"]
 [ext_resource type="AudioStream" uid="uid://2e7xr16nfjex" path="res://Music/ASassySituation.mp3" id="9_fbd0n"]
 [ext_resource type="AudioStream" uid="uid://cuij1no40h8sf" path="res://Music/CartoonMischief.mp3" id="10_myk7f"]
+[ext_resource type="AudioStream" uid="uid://b2adamdl3fce5" path="res://Menus/BeachWaves.ogg" id="10_n6v67"]
 [ext_resource type="AudioStream" uid="uid://c1ibrkbrrcdwv" path="res://PickUps/IceUnfreeze.ogg" id="11_je7y7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bcbcq"]
@@ -104,5 +105,12 @@ bus = &"Music"
 [node name="UnfreezeSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_je7y7")
 volume_db = -10.0
+
+[node name="EnvSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_n6v67")
+volume_db = -30.0
+autoplay = true
+bus = &"SFX"
+parameters/looping = true
 
 [connection signal="body_exited" from="PlayArea" to="Characters" method="character_exited"]

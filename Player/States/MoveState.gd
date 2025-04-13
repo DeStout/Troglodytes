@@ -163,7 +163,7 @@ func _slerp_to_dirp(stop := false) -> void:
 		return
 	
 	turning = stop
-	var new_basis = character.basis.looking_at(Vector3(target_dir.x, 0, target_dir.y))
+	var new_basis : Basis = character.basis.looking_at(Vector3(target_dir.x, 0, target_dir.y))
 	
 	var turn_dir = -character.basis.z.signed_angle_to(-new_basis.z, Vector3.UP)
 	if turn_dir > 0:
@@ -175,11 +175,13 @@ func _slerp_to_dirp(stop := false) -> void:
 			character.anim_player.play("TurnLeft")
 		else:
 			character.anim_player.play("TurnRight")
-			
 	
+	var new_rot := new_basis.get_rotation_quaternion()
 	var tween = create_tween()
 	tween.tween_method(func(weight : float):
-		character.basis = character.basis.slerp(new_basis, weight), 0.0, 1.0, 0.20)
+		var temp_rot := character.quaternion.slerp(new_rot, weight)
+		character.rotation = snapped(temp_rot.get_euler(), Vector3(PI/4, PI/4, PI/4)),
+		0.0, 1.0, 0.25)
 	await tween.finished
 	if !character.state_machine.current_state is AttackState:
 		character.anim_player.play("Walk")
