@@ -1,32 +1,21 @@
 extends Node3D
 
 
-enum DIRECTIONS { UP, DOWN, LEFT, RIGHT }
-
 const SPEED := 16.0
 
 var emitter : Player
-var move_dir : DIRECTIONS
+var move_dir : Utilities.DIRECTIONS
+
+
+func align_to_dir() -> void:
+	var target_dir := Utilities.get_move_dir_vect(move_dir)
+	basis = basis.looking_at(Vector3(target_dir.x, 0, target_dir.y))
 
 
 func _physics_process(delta: float) -> void:
-	var dir2 := _get_move_dir_vect()
+	var dir2 := Utilities.get_move_dir_vect(move_dir)
 	var dir3 := Vector3(dir2.x, 0, dir2.y)
 	position += dir3 * SPEED * delta
-
-
-func _get_move_dir_vect() -> Vector2:
-	var target_dir : Vector2
-	match move_dir:
-		DIRECTIONS.UP:
-			target_dir = Vector2.UP
-		DIRECTIONS.DOWN:
-			target_dir = Vector2.DOWN
-		DIRECTIONS.LEFT:
-			target_dir = Vector2.LEFT
-		DIRECTIONS.RIGHT:
-			target_dir = Vector2.RIGHT
-	return target_dir
 
 
 func _body_collided(body : Node3D) -> void:

@@ -32,7 +32,7 @@ func physics_update(delta) -> void:
 
 
 func _move(delta : float) -> void:
-	var move_dir := _get_move_dir_vect()
+	var move_dir := Utilities.get_move_dir_vect(character.move_dir)
 	character.velocity.x = move_toward(character.velocity.x, \
 				move_dir.x * character.speed, character.ACCEL * delta)
 	character.velocity.z = move_toward(character.velocity.z, \
@@ -47,22 +47,9 @@ func _is_at_target() -> bool:
 	return false
 
 
-func _get_move_dir_vect() -> Vector2:
-	var target_dir : Vector2
-	match character.move_dir:
-		character.DIRECTIONS.UP:
-			target_dir = Vector2.UP
-		character.DIRECTIONS.DOWN:
-			target_dir = Vector2.DOWN
-		character.DIRECTIONS.LEFT:
-			target_dir = Vector2.LEFT
-		character.DIRECTIONS.RIGHT:
-			target_dir = Vector2.RIGHT
-	return target_dir
-
 
 func _slerp_to_dirp() -> void:
-	var target_dir := _get_move_dir_vect()
+	var target_dir := Utilities.get_move_dir_vect(character.move_dir)
 	# Do nothing if already facing the correct direction
 	if target_dir == Utilities.v3_to_v2(-character.basis.z):
 		return

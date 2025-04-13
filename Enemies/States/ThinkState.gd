@@ -20,7 +20,7 @@ func _choose_action() -> String:
 
 
 func _set_search_target() -> void:
-	character.move_dir = randi() % character.DIRECTIONS.size()
+	character.move_dir = randi() % Utilities.DIRECTIONS.size()
 	var move_dist_vect : Vector2 = character.get_move_dir_vect(character.move_dir)
 	move_dist_vect *= randi_range(1, 6) * 2
 	var v3_square := Vector3(move_dist_vect.x, 0, move_dist_vect.y)

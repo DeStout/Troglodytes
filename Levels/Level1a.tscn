@@ -349,9 +349,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4)
 [node name="HomeSquare32" type="Node3D" parent="Board/Squares/HomeSquares" index="31"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -6)
 
-[node name="Stones" parent="Board" index="2"]
-visible = false
-
 [node name="Stone1" parent="Board/Stones" index="0" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -7)
 
@@ -592,9 +589,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 7)
 [node name="Stone80" parent="Board/Stones" index="79" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 7)
 
-[node name="Walls" parent="Board" index="3"]
-visible = false
-
 [node name="StoneWall1" parent="Board/Walls" index="0" instance=ExtResource("5_bcif4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -7)
 
@@ -654,9 +648,6 @@ transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -9, 0, -
 
 [node name="StoneWall20" parent="Board/Walls" index="19" instance=ExtResource("5_bcif4")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -9, 0, -4)
-
-[node name="Water" parent="Board" index="4"]
-visible = false
 
 [node name="WaterRow1" type="Node3D" parent="Board/Water" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, -10)

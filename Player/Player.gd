@@ -7,8 +7,6 @@ signal game_over
 signal freeze_pick_up
 signal spawn_fire_ball
 
-enum DIRECTIONS { UP, DOWN, LEFT, RIGHT }
-
 @onready var attack_cast := $AttackCast
 @onready var attack_sfx := $AttackSFX
 @onready var hit_sfx := $HitSFX
@@ -21,7 +19,7 @@ const MIN_SPEED := 1.5
 @onready var wall_check := $WallCheck
 var speed := 3.0
 var anim_speed := 1.0
-var move_dir : DIRECTIONS = DIRECTIONS.DOWN
+var move_dir : Utilities.DIRECTIONS = Utilities.DIRECTIONS.DOWN
 var target_square : Vector2
 
 const START_INV_TIME := 5.0
@@ -38,7 +36,7 @@ func get_prev_state() -> String:
 	return state_machine.prev_state.name.to_lower()
 
 
-func ray_check(check_dir : DIRECTIONS) -> bool:
+func ray_check(check_dir : Utilities.DIRECTIONS) -> bool:
 	var local_dir : Vector3
 	match check_dir:
 		-1:
@@ -112,7 +110,7 @@ func respawn() -> void:
 	velocity = Vector3.ZERO
 	state_machine.current_state.respawn()
 	target_square = Vector2(position.x, position.z)
-	move_dir = DIRECTIONS.DOWN
+	move_dir = Utilities.DIRECTIONS.DOWN
 
 
 func effect_speed(speed_effect : float) -> void:

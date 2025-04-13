@@ -1,22 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://dk3hna54702v6"]
+[gd_scene load_steps=8 format=3 uid="uid://dk3hna54702v6"]
 
 [ext_resource type="Script" uid="uid://dwkq0uelyudar" path="res://Player/FireBall.gd" id="1_avl5a"]
 [ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://Enemies/EnemyMat.tres" id="1_lwaqw"]
+[ext_resource type="Shader" uid="uid://d4klim8n4q2qv" path="res://PickUps/Flame.gdshader" id="3_kxsq1"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_toymk"]
 radius = 0.25
 height = 0.5
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_kxsq1"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lwaqw"]
 radius = 0.35
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ufx1"]
+shader = ExtResource("3_kxsq1")
+shader_parameter/fire_color = Color(1, 0.33, 0.068, 1)
+shader_parameter/fire_power_factor = 2.0
+shader_parameter/fire_intensity = 3.0
+shader_parameter/fire_start = 1.0
+shader_parameter/ball_size = 1.0
+shader_parameter/roughness = 0.675
+shader_parameter/detail = 6
+shader_parameter/scale = 4.0
+shader_parameter/lacunarity = 2.0
 
 [node name="FireBall" type="Node3D"]
 script = ExtResource("1_avl5a")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 mesh = SubResource("SphereMesh_toymk")
 surface_material_override/0 = ExtResource("1_lwaqw")
+
+[node name="Flame" type="Sprite3D" parent="."]
+transform = Transform3D(3.73275e-15, -9.64387e-30, 1, 8.53953e-08, 1.32082, 3.55271e-15, -1.95362, 5.77348e-08, 1.91069e-15, 0, 0.998009, 2.16935)
+shaded = true
+double_sided = false
+texture = SubResource("ViewportTexture_kxsq1")
+
+[node name="Flame2" type="Sprite3D" parent="."]
+transform = Transform3D(-8.53953e-08, -1.32082, -4.37114e-08, 0, -5.77348e-08, 1, -1.95362, 5.77348e-08, 1.91069e-15, 0, 0.998009, 2.16935)
+shaded = true
+double_sided = false
+texture = SubResource("ViewportTexture_kxsq1")
 
 [node name="Area" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -30,6 +59,18 @@ shape = SubResource("CylinderShape3D_lwaqw")
 wait_time = 5.0
 one_shot = true
 autostart = true
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport"]
+material = SubResource("ShaderMaterial_2ufx1")
+custom_minimum_size = Vector2(256, 256)
+offset_right = 256.0
+offset_bottom = 256.0
 
 [connection signal="body_entered" from="Area" to="." method="_body_collided"]
 [connection signal="timeout" from="DespawnTimer" to="." method="_despawn"]

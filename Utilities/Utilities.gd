@@ -1,6 +1,9 @@
 extends Node
 
 
+enum DIRECTIONS { UP, DOWN, LEFT, RIGHT }
+
+
 func get_closest_egg_square(pos : Vector3) -> Node3D:
 	var egg_squares = get_tree().get_nodes_in_group("EggSquares")
 	var min_dist := 9999.9
@@ -16,3 +19,17 @@ func get_closest_egg_square(pos : Vector3) -> Node3D:
 
 func v3_to_v2(pos3 : Vector3) -> Vector2:
 	return Vector2(pos3.x, pos3.z)
+
+
+func get_move_dir_vect(move_dir : DIRECTIONS) -> Vector2:
+	var target_dir : Vector2
+	match move_dir:
+		DIRECTIONS.UP:
+			target_dir = Vector2.UP
+		DIRECTIONS.DOWN:
+			target_dir = Vector2.DOWN
+		DIRECTIONS.LEFT:
+			target_dir = Vector2.LEFT
+		DIRECTIONS.RIGHT:
+			target_dir = Vector2.RIGHT
+	return target_dir

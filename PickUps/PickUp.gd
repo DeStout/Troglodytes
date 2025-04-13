@@ -16,6 +16,7 @@ var mesh : Node3D = null
 @export var speed_up_sfx : AudioStreamPlayer
 @export var slow_down_sfx : AudioStreamPlayer
 @export var freeze_sfx : AudioStreamPlayer
+@export var fire_vfx : Sprite3D
 @export var fire_sfx : AudioStreamPlayer
 @export var inv_sfx : AudioStreamPlayer
 
@@ -35,13 +36,17 @@ func _set_type(new_effect) -> void:
 		EFFECTS.SLOW_DOWN:
 			_add_mesh(slow_down_.instantiate())
 		EFFECTS.FIRE_POWER:
-			var cube := MeshInstance3D.new()
-			cube.mesh = BoxMesh.new()
-			cube.mesh.size = Vector3(0.8, 0.25, 0.25)
+			var sphere := MeshInstance3D.new()
+			sphere.mesh = SphereMesh.new()
+			sphere.mesh.radius = 0.22
+			sphere.mesh.height = 0.44
+			sphere.mesh.radial_segments = 8
+			sphere.mesh.rings = 8
 			var mat = load("res://Enemies/EnemyMat.tres")
-			cube.set_surface_override_material(0, mat)
-			_add_mesh(cube)
-			cube.position.y = 1.0
+			sphere.set_surface_override_material(0, mat)
+			_add_mesh(sphere)
+			sphere.position.y = 1.0
+			fire_vfx.visible = true
 		EFFECTS.FREEZE:
 			var cube := MeshInstance3D.new()
 			cube.mesh = BoxMesh.new()
@@ -81,6 +86,7 @@ func _collected(body : CharacterBody3D) -> void:
 		Globals.add_to_score(SCORE_VALUE)
 		var sfx := _apply_effect(body)
 		mesh.visible = false
+		fire_vfx.visible = false
 		collision.call_deferred("set_disabled", true)
 		if sfx:
 			await sfx.finished

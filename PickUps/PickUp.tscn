@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://jwxh6mbhxdij"]
+[gd_scene load_steps=16 format=3 uid="uid://jwxh6mbhxdij"]
 
 [ext_resource type="Script" uid="uid://cjhfr764nj21f" path="res://PickUps/PickUp.gd" id="1_3hj2f"]
 [ext_resource type="AudioStream" uid="uid://x06ccerbknan" path="res://PickUps/SpeedUp.ogg" id="2_38vqf"]
+[ext_resource type="Shader" uid="uid://d4klim8n4q2qv" path="res://PickUps/Flame.gdshader" id="3_40prp"]
 [ext_resource type="AudioStream" uid="uid://cxi86u32usgd1" path="res://PickUps/SlowDown.ogg" id="3_le7pk"]
 [ext_resource type="AudioStream" uid="uid://cvoyjtcnlid4a" path="res://PickUps/IceFreeze.ogg" id="4_le7pk"]
 [ext_resource type="AudioStream" uid="uid://ciqx0wcnvc2c1" path="res://PickUps/FirePickUp.ogg" id="5_byf2i"]
@@ -26,6 +27,9 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("4_le7pk")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_0js6q"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0js6q"]
 random_pitch = 1.1
 streams_count = 1
@@ -36,12 +40,25 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("5_ebm5d")
 
-[node name="PickUp1" type="Node3D" node_paths=PackedStringArray("collision", "speed_up_sfx", "slow_down_sfx", "freeze_sfx", "fire_sfx", "inv_sfx", "despawn_timer")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1a6s"]
+shader = ExtResource("3_40prp")
+shader_parameter/fire_color = Color(1, 0.33, 0.068, 1)
+shader_parameter/fire_power_factor = 2.0
+shader_parameter/fire_intensity = 3.0
+shader_parameter/fire_start = 1.0
+shader_parameter/ball_size = 1.0
+shader_parameter/roughness = 0.675
+shader_parameter/detail = 6
+shader_parameter/scale = 4.0
+shader_parameter/lacunarity = 2.0
+
+[node name="PickUp1" type="Node3D" node_paths=PackedStringArray("collision", "speed_up_sfx", "slow_down_sfx", "freeze_sfx", "fire_vfx", "fire_sfx", "inv_sfx", "despawn_timer")]
 script = ExtResource("1_3hj2f")
 collision = NodePath("Area/Collision")
 speed_up_sfx = NodePath("SpeedUpSFX")
 slow_down_sfx = NodePath("SlowDownSFX")
 freeze_sfx = NodePath("FreezeSFX")
+fire_vfx = NodePath("FireSprite")
 fire_sfx = NodePath("FireSFX")
 inv_sfx = NodePath("InvincibleSFX")
 despawn_timer = NodePath("Despawn")
@@ -72,6 +89,13 @@ stream = SubResource("AudioStreamRandomizer_38vqf")
 volume_db = -10.0
 bus = &"SFX"
 
+[node name="FireSprite" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 2.59422, 0)
+visible = false
+billboard = 2
+texture = SubResource("ViewportTexture_0js6q")
+region_rect = Rect2(0, 0, 128, 128)
+
 [node name="FireSFX" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_0js6q")
 volume_db = -10.0
@@ -81,6 +105,21 @@ bus = &"SFX"
 stream = SubResource("AudioStreamRandomizer_byf2i")
 volume_db = -20.0
 bus = &"SFX"
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport"]
+material = SubResource("ShaderMaterial_r1a6s")
+custom_minimum_size = Vector2(256, 256)
+offset_left = 256.0
+offset_top = 2.0
+offset_right = 512.0
+offset_bottom = 258.0
+rotation = 1.5708
 
 [connection signal="body_entered" from="Area" to="." method="_collected"]
 [connection signal="timeout" from="Despawn" to="." method="_despawn"]

@@ -42,16 +42,16 @@ func _is_direction_pressed() -> bool:
 
 
 func _is_opp_dir_pressed() -> bool:
-	if character.move_dir == character.DIRECTIONS.UP and \
+	if character.move_dir == Utilities.DIRECTIONS.UP and \
 											Input.is_action_pressed("MoveDown"):
 		return true
-	if character.move_dir == character.DIRECTIONS.DOWN and \
+	if character.move_dir == Utilities.DIRECTIONS.DOWN and \
 											Input.is_action_pressed("MoveUp"):
 		return true
-	if character.move_dir == character.DIRECTIONS.LEFT and \
+	if character.move_dir == Utilities.DIRECTIONS.LEFT and \
 											Input.is_action_pressed("MoveRight"):
 		return true
-	if character.move_dir == character.DIRECTIONS.RIGHT and \
+	if character.move_dir == Utilities.DIRECTIONS.RIGHT and \
 											Input.is_action_pressed("MoveLeft"):
 		return true
 	return false
@@ -101,7 +101,7 @@ func _stop_and_snap() -> void:
 
 
 func _move(delta : float) -> void:
-	var move_dir := _get_move_dir_vect()
+	var move_dir := Utilities.get_move_dir_vect(character.move_dir)
 	character.velocity.x = move_toward(character.velocity.x, \
 				move_dir.x * character.speed, character.ACCEL * delta)
 	character.velocity.z = move_toward(character.velocity.z, \
@@ -131,33 +131,18 @@ func _get_num_input() -> int:
 
 func _get_input_dir() -> int:
 	if Input.is_action_pressed("MoveUp"):
-		return character.DIRECTIONS.UP
+		return Utilities.DIRECTIONS.UP
 	if Input.is_action_pressed("MoveDown"):
-		return character.DIRECTIONS.DOWN
+		return Utilities.DIRECTIONS.DOWN
 	if Input.is_action_pressed("MoveLeft"):
-		return character.DIRECTIONS.LEFT
+		return Utilities.DIRECTIONS.LEFT
 	if Input.is_action_pressed("MoveRight"):
-		return character.DIRECTIONS.RIGHT
+		return Utilities.DIRECTIONS.RIGHT
 	return -1
-	
-
-
-func _get_move_dir_vect() -> Vector2:
-	var target_dir : Vector2
-	match character.move_dir:
-		character.DIRECTIONS.UP:
-			target_dir = Vector2.UP
-		character.DIRECTIONS.DOWN:
-			target_dir = Vector2.DOWN
-		character.DIRECTIONS.LEFT:
-			target_dir = Vector2.LEFT
-		character.DIRECTIONS.RIGHT:
-			target_dir = Vector2.RIGHT
-	return target_dir
 
 
 func _slerp_to_dirp(stop := false) -> void:
-	var target_dir := _get_move_dir_vect()
+	var target_dir := Utilities.get_move_dir_vect(character.move_dir)
 	# Do nothing if already facing the correct direction
 	if target_dir == Utilities.v3_to_v2(-character.basis.z):
 		return
@@ -194,7 +179,8 @@ func _set_target_square() -> void:
 	var min_dist := 9999
 	for egg_square in get_tree().get_nodes_in_group("EggSquares"):
 		var egg_pos := Utilities.v3_to_v2(egg_square.global_position)
-		if char_pos.direction_to(egg_pos).dot(_get_move_dir_vect()) <= 0:
+		if char_pos.direction_to(egg_pos) \
+						.dot(Utilities.get_move_dir_vect(character.move_dir)) <= 0:
 			continue
 		if char_pos.distance_squared_to(egg_pos) < min_dist:
 			min_dist = char_pos.distance_squared_to(egg_pos)

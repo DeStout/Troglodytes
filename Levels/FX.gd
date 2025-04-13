@@ -11,4 +11,5 @@ func spawn_fire_ball(player : Player) -> void:
 	fire_ball.emitter = player
 	fire_ball.move_dir = player.move_dir
 	add_child(fire_ball)
+	fire_ball.align_to_dir()
 	fire_ball.position = player.global_position
