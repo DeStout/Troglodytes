@@ -34,7 +34,7 @@ func start_new_game() -> void:
 		level.queue_free()
 	
 	var new_level : Node3D = load(levels[level_num]).instantiate()
-	#var new_level : Node3D = load(levels[4]).instantiate()
+	#var new_level : Node3D = load(levels[1]).instantiate()
 	new_level.game = self
 	add_child(new_level, true)
 	level = new_level

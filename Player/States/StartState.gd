@@ -1,11 +1,18 @@
-class_name IdleState extends State
+class_name StartState extends State
+
+
+@export var start_timer : Timer 
 
 
 func enter() -> void:
-	#print("Enter IdleState")
-	if character.anim_player:
-		character.anim_player.speed_scale = 1.0
-		character.anim_player.play("Idle")
+	await character.ready
+	character.set_invincible()
+	character.anim_player.speed_scale = 1.0
+	character.anim_player.play("Idle")
+
+
+func _start_finished() -> void:
+	transition.emit(self, "MoveState")
 
 
 func _input(event: InputEvent) -> void:
@@ -17,9 +24,6 @@ func _input(event: InputEvent) -> void:
 			if character.ray_check(_get_input_dir(event)):
 				return
 			_set_move_dir(event)
-			transition.emit(self, "MoveState")
-		elif event.is_action_pressed("Attack"):
-			transition.emit(self, "AttackState")
 
 
 func _is_direction_pressed(event : InputEvent) -> bool:
@@ -55,7 +59,6 @@ func _set_move_dir(event : InputEvent):
 
 # Keep this, please
 func respawn() -> void: pass
-	#transition.emit(self, "StartState")
 
 
 #func exit() -> void: pass

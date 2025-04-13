@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cfanycyrikuxq"]
 
-[ext_resource type="Material" uid="uid://vyxvhhf0hon" path="res://Player/PlayerMat.tres" id="1_hf3nf"]
+[ext_resource type="Material" uid="uid://vyxvhhf0hon" path="res://Player/Player_Mat.tres" id="1_hf3nf"]
 [ext_resource type="Script" uid="uid://cb0eoph2pfe50" path="res://Levels/Props/Home.gd" id="2_maaha"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mxnmf"]

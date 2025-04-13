@@ -19,7 +19,7 @@ func bash() -> void:
 	attack_cast.force_shapecast_update()
 	if attack_cast.is_colliding():
 		for collision in attack_cast.collision_result:
-			if !collision.collider is Player:
+			if !collision.collider is Player or collision.collider.is_invincible():
 				return
 				
 			if randi() % 25 == 0:

@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://b2iwuk2gndgr4"]
+[gd_scene load_steps=22 format=3 uid="uid://b2iwuk2gndgr4"]
 
 [ext_resource type="Script" uid="uid://bsebhi65dqn0d" path="res://Player/Player.gd" id="1_cxr5p"]
+[ext_resource type="Script" uid="uid://bxxodi12mj8h5" path="res://Player/States/StartState.gd" id="3_5wa8t"]
 [ext_resource type="Script" uid="uid://oh5umyrnpcif" path="res://addons/StateMachine/StateMachine/state_machine.gd" id="3_dtqjt"]
 [ext_resource type="Script" uid="uid://ofgysyk2gry1" path="res://Player/States/IdleState.gd" id="4_5ncpa"]
 [ext_resource type="Script" uid="uid://bxtyxib10gxlu" path="res://Player/States/MoveState.gd" id="5_wi0c6"]
@@ -11,12 +12,19 @@
 [ext_resource type="Texture2D" uid="uid://co50iju1pilq6" path="res://Player/Player1_A.png" id="8_5wa8t"]
 [ext_resource type="AudioStream" uid="uid://jk1e673eyin2" path="res://Player/Hit2.ogg" id="8_s1rgi"]
 [ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://Enemies/EnemyMat.tres" id="9_j23h2"]
+[ext_resource type="Material" uid="uid://ct7eou206ijtc" path="res://Player/Halo_Mat.tres" id="9_p7tob"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_js7pq"]
 radius = 0.35
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7tob"]
 albedo_texture = ExtResource("8_5wa8t")
+
+[sub_resource type="TorusMesh" id="TorusMesh_v0k0e"]
+inner_radius = 0.18
+outer_radius = 0.28
+rings = 10
+ring_segments = 4
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_s1rgi"]
 radius = 0.6
@@ -39,19 +47,24 @@ stream_0/stream = ExtResource("8_s1rgi")
 [sub_resource type="BoxMesh" id="BoxMesh_s1rgi"]
 size = Vector3(1, 0.1, 1)
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("debug_target", "fire_sfx", "state_machine", "wall_check")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("debug_target")]
 collision_layer = 2
 collision_mask = 57
 script = ExtResource("1_cxr5p")
 debug_target = NodePath("DebugTarget")
-fire_sfx = NodePath("FireSFX")
-state_machine = NodePath("StateMachine")
-wall_check = NodePath("WallCheck")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "character")]
 script = ExtResource("3_dtqjt")
-initial_state = NodePath("IdleState")
+initial_state = NodePath("StartState")
 character = NodePath("..")
+
+[node name="StartState" type="Node" parent="StateMachine" node_paths=PackedStringArray("start_timer")]
+script = ExtResource("3_5wa8t")
+start_timer = NodePath("StartTimer")
+
+[node name="StartTimer" type="Timer" parent="StateMachine/StartState"]
+one_shot = true
+autostart = true
 
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("4_5ncpa")
@@ -80,6 +93,19 @@ autoplay = "Idle"
 
 [node name="FirePowerTimer" type="Timer" parent="."]
 wait_time = 10.0
+one_shot = true
+
+[node name="Halo" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.052, -0.103702)
+cast_shadow = 0
+mesh = SubResource("TorusMesh_v0k0e")
+surface_material_override/0 = ExtResource("9_p7tob")
+
+[node name="Light" type="OmniLight3D" parent="Halo"]
+omni_range = 0.5
+
+[node name="InvincibleTimer" type="Timer" parent="."]
+wait_time = 5.0
 one_shot = true
 
 [node name="AttackCast" type="ShapeCast3D" parent="."]
@@ -112,5 +138,7 @@ visible = false
 mesh = SubResource("BoxMesh_s1rgi")
 skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("9_j23h2")
+
+[connection signal="timeout" from="StateMachine/StartState/StartTimer" to="StateMachine/StartState" method="_start_finished"]
 
 [editable path="Player1"]

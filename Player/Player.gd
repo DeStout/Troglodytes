@@ -7,9 +7,8 @@ signal game_over
 signal freeze_pick_up
 signal spawn_fire_ball
 
-@onready var anim_player: AnimationPlayer = $Player1/AnimationPlayer
-#@onready var anim_player := $AnimPlayer
-@onready var fire_power_timer := $FirePowerTimer
+enum DIRECTIONS { UP, DOWN, LEFT, RIGHT }
+
 @onready var attack_cast := $AttackCast
 @onready var attack_sfx := $AttackSFX
 @onready var hit_sfx := $HitSFX
@@ -17,16 +16,21 @@ signal spawn_fire_ball
 const ACCEL := 15.0
 const MAX_SPEED := 4.5
 const MIN_SPEED := 1.5
+@onready var state_machine := $StateMachine
+@onready var anim_player: AnimationPlayer = $Player1/AnimationPlayer
+@onready var wall_check := $WallCheck
 var speed := 3.0
 var anim_speed := 1.0
-const FIRE_POWER_TIME := 10.0
-@export var fire_sfx : AudioStreamPlayer
-
-@export var state_machine : StateMachine
-enum DIRECTIONS { UP, DOWN, LEFT, RIGHT }
 var move_dir : DIRECTIONS = DIRECTIONS.DOWN
-@export var wall_check : RayCast3D
 var target_square : Vector2
+
+const INVINCIBLE_TIME := 8.0
+const INV_FLASH_TIME := 1.5
+const FIRE_POWER_TIME := 10.0
+@onready var invincible_timer := $InvincibleTimer
+@onready var halo := $Halo
+@onready var fire_power_timer := $FirePowerTimer
+@onready var fire_sfx := $FireSFX
 
 
 func get_prev_state() -> String:
@@ -83,7 +87,8 @@ func _attack_ended() -> void:
 
 
 func attacked() -> void:
-	respawn()
+	if !invincible_timer.time_left:
+		respawn()
 
 
 func respawn() -> void:
@@ -92,7 +97,10 @@ func respawn() -> void:
 		# Signal to Level.game_over()
 		game_over.emit()
 		return
-	Globals.add_to_player_lives(-1)
+		
+	if !invincible_timer.time_left:
+		Globals.add_to_player_lives(-1)
+		set_invincible()
 	
 	speed = (MAX_SPEED + MIN_SPEED) / 2
 	anim_speed = 1.0
@@ -111,6 +119,30 @@ func effect_speed(speed_effect : float) -> void:
 	anim_speed += sign(speed_effect) * 0.2
 	anim_player.speed_scale = anim_speed
 	speed = clamp(speed, MIN_SPEED, MAX_SPEED)
+
+
+func set_invincible() -> void:
+	halo.visible = true
+	invincible_timer.start(INVINCIBLE_TIME)
+	var flash_timer = get_tree().create_timer(INVINCIBLE_TIME - INV_FLASH_TIME)
+	flash_timer.timeout.connect(flash_halo.bind(0.0))
+
+
+func is_invincible() -> bool:
+	return bool(invincible_timer.time_left)
+
+
+func flash_halo(vis_time : float) -> void:
+	if !invincible_timer.time_left or invincible_timer.time_left > INV_FLASH_TIME:
+		halo.visible = invincible_timer.time_left
+		return
+	
+	halo.visible = !halo.visible
+	vis_time = vis_time * (2.0 / 3.0) if bool(vis_time) else 0.3
+	vis_time = max(vis_time, 0.05)
+	var flash_time = vis_time if halo.visible else 0.05
+	var flash_timer = get_tree().create_timer(flash_time)
+	flash_timer.timeout.connect(flash_halo.bind(vis_time))
 
 
 func give_fire_power() -> void:

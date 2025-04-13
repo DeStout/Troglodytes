@@ -17,6 +17,7 @@ var mesh : Node3D = null
 @export var slow_down_sfx : AudioStreamPlayer
 @export var freeze_sfx : AudioStreamPlayer
 @export var fire_sfx : AudioStreamPlayer
+@export var inv_sfx : AudioStreamPlayer
 
 const DESPAWN_RANGE := Vector2(9.0, 14.0)
 @export var despawn_timer : Timer
@@ -50,7 +51,22 @@ func _set_type(new_effect) -> void:
 			_add_mesh(cube)
 			cube.position.y = 1.0
 		EFFECTS.INVINCIBLE:
-			pass
+			var halo := MeshInstance3D.new()
+			halo.mesh = TorusMesh.new()
+			halo.mesh.inner_radius = 0.3
+			halo.mesh.outer_radius = 0.42
+			halo.mesh.rings = 12
+			halo.mesh.ring_segments = 5
+			halo.transparency = 0.5
+			var mat = load("res://Player/Halo_Mat.tres")
+			halo.set_surface_override_material(0, mat)
+			halo.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+			_add_mesh(halo)
+			halo.position.y = 0.5
+			halo.rotation_degrees.z = 0
+			var light := OmniLight3D.new()
+			light.omni_range = 0.75
+			halo.add_child(light)
 		EFFECTS.PINEAPPLE:
 			pass
 
@@ -87,7 +103,8 @@ func _apply_effect(player : Player) -> AudioStreamPlayer:
 			sfx = freeze_sfx
 			player.apply_freeze()
 		EFFECTS.INVINCIBLE:
-			pass
+			sfx = inv_sfx
+			player.set_invincible()
 		EFFECTS.PINEAPPLE:
 			pass
 	if sfx:
