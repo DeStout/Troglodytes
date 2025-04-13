@@ -26,7 +26,7 @@ var target_square : Vector2
 
 const START_INV_TIME := 5.0
 const INVINCIBLE_TIME := 8.0
-const INV_FLASH_TIME := 1.5
+const INV_FLASH_TIME := 1.25
 const FIRE_POWER_TIME := 10.0
 @onready var invincible_timer := $InvincibleTimer
 @onready var halo := $Halo
@@ -125,25 +125,26 @@ func effect_speed(speed_effect : float) -> void:
 func set_invincible(inv_time := INVINCIBLE_TIME) -> void:
 	halo.visible = true
 	invincible_timer.start(inv_time)
-	var flash_timer = get_tree().create_timer(inv_time - INV_FLASH_TIME)
+	var flash_timer = get_tree().create_timer(inv_time - INV_FLASH_TIME, false)
 	flash_timer.timeout.connect(flash_halo.bind(0.0))
 
 
-func is_invincible() -> bool:
-	return bool(invincible_timer.time_left)
-
-
 func flash_halo(vis_time : float) -> void:
-	if !invincible_timer.time_left or invincible_timer.time_left > INV_FLASH_TIME:
+	var inv_time_left = snappedf(invincible_timer.time_left, 0.01)
+	if !invincible_timer.time_left or inv_time_left > INV_FLASH_TIME:
 		halo.visible = invincible_timer.time_left
 		return
 	
 	halo.visible = !halo.visible
-	vis_time = vis_time * (2.0 / 3.0) if bool(vis_time) else 0.3
+	vis_time = vis_time * (2.0 / 3.0) if bool(vis_time) else 0.4
 	vis_time = max(vis_time, 0.05)
 	var flash_time = vis_time if halo.visible else 0.05
-	var flash_timer = get_tree().create_timer(flash_time)
+	var flash_timer = get_tree().create_timer(flash_time, false)
 	flash_timer.timeout.connect(flash_halo.bind(vis_time))
+
+
+func is_invincible() -> bool:
+	return bool(invincible_timer.time_left)
 
 
 func give_fire_power() -> void:

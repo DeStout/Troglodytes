@@ -5,6 +5,7 @@ class_name StartState extends State
 
 
 func enter() -> void:
+	#print("Enter StartState")
 	await character.ready
 	character.set_invincible(character.START_INV_TIME)
 	character.anim_player.speed_scale = 1.0

@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=4 uid="uid://cfxflxfqt2ahi"]
 
 [ext_resource type="PackedScene" uid="uid://c7f7rd7ltauxf" path="res://Levels/Level.tscn" id="1_dl8mf"]
-[ext_resource type="Texture2D" uid="uid://1qlh1cc6v26q" path="res://Levels/Materials/Sand1.png" id="2_5g41i"]
-[ext_resource type="Texture2D" uid="uid://bb1exretsg64u" path="res://Levels/Materials/Sand1_N.png" id="3_7fl83"]
+[ext_resource type="Texture2D" uid="uid://xr27pg1088pa" path="res://Levels/Materials/Sand1.png" id="2_5g41i"]
+[ext_resource type="Texture2D" uid="uid://c8j6cokt48337" path="res://Levels/Materials/Sand1_N.png" id="3_7fl83"]
 [ext_resource type="PackedScene" uid="uid://dumpw4kef7jpk" path="res://Levels/Props/StoneWall.tscn" id="5_bcif4"]
 [ext_resource type="PackedScene" uid="uid://bxn2pdir8kpwt" path="res://Levels/Props/Stone1.blend" id="5_gmnjr"]
 [ext_resource type="Script" uid="uid://cl8s8e71ch3go" path="res://Levels/Props/Water.gd" id="6_qg0tc"]
@@ -349,6 +349,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4)
 [node name="HomeSquare32" type="Node3D" parent="Board/Squares/HomeSquares" index="31"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -6)
 
+[node name="Stones" parent="Board" index="2"]
+visible = false
+
 [node name="Stone1" parent="Board/Stones" index="0" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -7)
 
@@ -589,6 +592,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 7)
 [node name="Stone80" parent="Board/Stones" index="79" instance=ExtResource("5_gmnjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 7)
 
+[node name="Walls" parent="Board" index="3"]
+visible = false
+
 [node name="StoneWall1" parent="Board/Walls" index="0" instance=ExtResource("5_bcif4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -7)
 
@@ -648,6 +654,9 @@ transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -9, 0, -
 
 [node name="StoneWall20" parent="Board/Walls" index="19" instance=ExtResource("5_bcif4")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -9, 0, -4)
+
+[node name="Water" parent="Board" index="4"]
+visible = false
 
 [node name="WaterRow1" type="Node3D" parent="Board/Water" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, -10)
