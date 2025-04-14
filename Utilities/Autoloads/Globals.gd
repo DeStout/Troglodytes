@@ -10,9 +10,7 @@ func add_and_set_score(new_score : int) -> void:
 
 
 func add_and_set_lives(new_lives : int) -> void:
-	print(game.player_lives[0])
-	game.player_lives[0] += new_lives
-	print(game.player_lives[0],"\n")
+	game.player_lives[0] = min(game.player_lives[0] + new_lives, game.MAX_LIVES)
 	
 	if game.player_lives[0] == -1:
 		_reset_game()
