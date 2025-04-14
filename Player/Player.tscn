@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b2iwuk2gndgr4"]
+[gd_scene load_steps=26 format=3 uid="uid://b2iwuk2gndgr4"]
 
 [ext_resource type="Script" uid="uid://bsebhi65dqn0d" path="res://Player/Player.gd" id="1_cxr5p"]
 [ext_resource type="Script" uid="uid://bxxodi12mj8h5" path="res://Player/States/StartState.gd" id="3_5wa8t"]
@@ -7,18 +7,28 @@
 [ext_resource type="Script" uid="uid://bxtyxib10gxlu" path="res://Player/States/MoveState.gd" id="5_wi0c6"]
 [ext_resource type="Script" uid="uid://f8hyo1x33o6j" path="res://Player/States/AttackState.gd" id="6_tdg3f"]
 [ext_resource type="PackedScene" uid="uid://b8finywqxy7il" path="res://Player/Player1.blend" id="6_v0k0e"]
+[ext_resource type="Script" uid="uid://bckj4fk1qx02a" path="res://Player/States/StunState.gd" id="7_dm7nj"]
 [ext_resource type="AudioStream" uid="uid://b6kdy1orqnwqu" path="res://Player/Whoosh.ogg" id="7_j23h2"]
 [ext_resource type="AudioStream" uid="uid://bwynnhmvnxykb" path="res://PickUps/FireShoot.ogg" id="8_0j2ni"]
 [ext_resource type="Texture2D" uid="uid://co50iju1pilq6" path="res://Player/Player1_A.png" id="8_5wa8t"]
 [ext_resource type="AudioStream" uid="uid://jk1e673eyin2" path="res://Player/Hit2.ogg" id="8_s1rgi"]
 [ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://Enemies/EnemyMat.tres" id="9_j23h2"]
 [ext_resource type="Material" uid="uid://ct7eou206ijtc" path="res://Player/Halo_Mat.tres" id="9_p7tob"]
+[ext_resource type="PackedScene" uid="uid://lf4ugwuydp4l" path="res://Player/Stars.blend" id="11_3mea3"]
+[ext_resource type="Script" uid="uid://dkrsbvh5qnx5j" path="res://Player/Stars.gd" id="12_7v5gs"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_js7pq"]
 radius = 0.35
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7tob"]
 albedo_texture = ExtResource("8_5wa8t")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7v5gs"]
+albedo_color = Color(0.93179, 1, 0.45012, 1)
+emission_enabled = true
+emission = Color(1, 0.881024, 0, 1)
+emission_energy_multiplier = 64.0
+backlight = Color(1, 1, 1, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_v0k0e"]
 inner_radius = 0.18
@@ -58,13 +68,11 @@ script = ExtResource("3_dtqjt")
 initial_state = NodePath("StartState")
 character = NodePath("..")
 
-[node name="StartState" type="Node" parent="StateMachine" node_paths=PackedStringArray("start_timer")]
+[node name="StartState" type="Node" parent="StateMachine"]
 script = ExtResource("3_5wa8t")
-start_timer = NodePath("StartTimer")
 
 [node name="StartTimer" type="Timer" parent="StateMachine/StartState"]
 one_shot = true
-autostart = true
 
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("4_5ncpa")
@@ -74,6 +82,12 @@ script = ExtResource("5_wi0c6")
 
 [node name="AttackState" type="Node" parent="StateMachine"]
 script = ExtResource("6_tdg3f")
+
+[node name="StunState" type="Node" parent="StateMachine"]
+script = ExtResource("7_dm7nj")
+
+[node name="StunTimer" type="Timer" parent="StateMachine/StunState"]
+one_shot = true
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -89,7 +103,7 @@ target_position = Vector3(0, 0, -1)
 surface_material_override/0 = SubResource("StandardMaterial3D_p7tob")
 
 [node name="LeftFootBone" type="BoneAttachment3D" parent="Player1/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.999607, 0.0226562, -0.0165027, 0.0230167, -0.327497, 0.944572, 0.0159957, -0.944581, -0.327889, -0.203534, 0.0606611, 0.176944)
+transform = Transform3D(1, 2.98023e-07, -6.33299e-08, -1.30385e-07, -0.213362, 0.976973, 2.30968e-07, -0.976973, -0.213362, -0.234641, 0.0659985, 0.0538339)
 bone_name = "Toes.L"
 bone_idx = 49
 
@@ -97,14 +111,26 @@ bone_idx = 49
 transform = Transform3D(1, 0, 5.58794e-09, 0, 1, -5.96046e-08, 1.39698e-08, -2.98023e-08, 1, -0.00635646, 0.0610968, -0.0355091)
 
 [node name="RightFootBone" type="BoneAttachment3D" parent="Player1/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.998478, -0.0426305, 0.034994, -0.0360405, -0.024034, 0.999061, -0.0417492, -0.998802, -0.0255341, 0.238467, 0.24829, -0.414007)
+transform = Transform3D(1, -2.98023e-07, 6.33299e-08, 1.30385e-07, -0.213362, 0.976973, -2.30968e-07, -0.976973, -0.213362, 0.234641, 0.0659985, 0.0538339)
 bone_name = "Toes.R"
 bone_idx = 61
 
 [node name="RightFoot" type="Node3D" parent="Player1/Armature/Skeleton3D/RightFootBone"]
 transform = Transform3D(1, 0, 5.58794e-09, 0, 1, -5.96046e-08, 1.39698e-08, -2.98023e-08, 1, -0.00635646, 0.0610968, -0.0355091)
 
-[node name="AnimationPlayer" parent="Player1" index="6"]
+[node name="HeadBone" type="BoneAttachment3D" parent="Player1/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 1.05865e-16, -2.68614e-17, -2.68612e-17, 0.476771, 0.879027, 1.05865e-16, -0.879027, 0.476771, -1.0408e-17, 1.50707, 0.0876817)
+bone_name = "Head"
+bone_idx = 5
+
+[node name="Stars" parent="Player1/Armature/Skeleton3D/HeadBone" instance=ExtResource("11_3mea3")]
+transform = Transform3D(1, 0, 0, 0, 0.660094, -0.751184, 0, 0.751184, 0.660093, 2.23839e-17, 0.442895, 0.245478)
+rotation_order = 0
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_7v5gs")
+script = ExtResource("12_7v5gs")
+
+[node name="AnimationPlayer" parent="Player1" index="1"]
 autoplay = "Idle"
 
 [node name="FirePowerTimer" type="Timer" parent="."]
@@ -113,6 +139,7 @@ one_shot = true
 
 [node name="Halo" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.052, -0.103702)
+visible = false
 cast_shadow = 0
 mesh = SubResource("TorusMesh_v0k0e")
 surface_material_override/0 = ExtResource("9_p7tob")
@@ -156,5 +183,6 @@ skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("9_j23h2")
 
 [connection signal="timeout" from="StateMachine/StartState/StartTimer" to="StateMachine/StartState" method="_start_finished"]
+[connection signal="timeout" from="StateMachine/StunState/StunTimer" to="StateMachine/StunState" method="_die"]
 
 [editable path="Player1"]

@@ -35,5 +35,6 @@ func attack_finished() -> void:
 	transition.emit(self, character.get_prev_state())
 
 
-func respawn() -> void:
-	transition.emit(self, "IdleState")
+func attacked() -> void:
+	if !character.invincible_timer.time_left:
+		transition.emit(self, "StunState")

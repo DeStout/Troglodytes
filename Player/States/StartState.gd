@@ -1,12 +1,14 @@
 class_name StartState extends State
 
 
-@export var start_timer : Timer 
+const START_TIME := 1.0
+
+@onready var start_timer := $StartTimer
 
 
 func enter() -> void:
 	#print("Enter StartState")
-	await character.ready
+	start_timer.start(START_TIME)
 	character.set_invincible(character.START_INV_TIME)
 	character.anim_player.speed_scale = 1.0
 	character.anim_player.play("Idle")
@@ -14,7 +16,9 @@ func enter() -> void:
 	character._footstep(false)
 
 
+# called from start_timer.timeout
 func _start_finished() -> void:
+	print("move")
 	transition.emit(self, "MoveState")
 
 
@@ -58,10 +62,6 @@ func _set_move_dir(event : InputEvent):
 		character.move_dir = Utilities.DIRECTIONS.LEFT
 	elif event.is_action_pressed("MoveRight"):
 		character.move_dir = Utilities.DIRECTIONS.RIGHT
-
-
-# Keep this, please
-func respawn() -> void: pass
 
 
 #func exit() -> void: pass

@@ -171,6 +171,8 @@ func _slerp_to_dirp(stop := false) -> void:
 		character.rotation = snapped(temp_rot.get_euler(), Vector3(PI/4, PI/4, PI/4)),
 		0.0, 1.0, 0.25)
 	await tween.finished
+	if !active:
+		return
 	if !character.state_machine.current_state is AttackState:
 		character.anim_player.play("Walk")
 	turning = false
@@ -194,14 +196,9 @@ func _set_target_square() -> void:
 	character.debug_target.global_position = Vector3(target.x, 0.05, target.y)
 
 
-func respawn() -> void:
-	character.velocity = Vector3.ZERO
-	transition.emit(self, "IdleState")
-	character.target_square = Utilities.v3_to_v2(character.global_position)
-	
-	# Debug
-	character.debug_target.global_position = \
-				Vector3(character.target_square.x, 0.05, character.target_square.y)
+func attacked() -> void:
+	if !character.invincible_timer.time_left:
+		transition.emit(self, "StunState")
 
 
 #func exit() -> void: pass

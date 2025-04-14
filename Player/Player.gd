@@ -8,6 +8,10 @@ signal spawn_footprint
 signal freeze_pick_up
 signal spawn_fire_ball
 
+const INIT_LIVES := 2
+const MAX_LIVES := 3
+var num_lives := INIT_LIVES
+
 @onready var attack_cast := $AttackCast
 @onready var attack_sfx := $AttackSFX
 @onready var hit_sfx := $HitSFX
@@ -34,6 +38,7 @@ const FIRE_POWER_TIME := 10.0
 @onready var halo := $Halo
 @onready var fire_power_timer := $FirePowerTimer
 @onready var fire_sfx := $FireSFX
+@onready var stars := $Player1/Armature/Skeleton3D/HeadBone/Stars
 
 
 func get_prev_state() -> String:
@@ -93,34 +98,6 @@ func _attack_ended() -> void:
 		state_machine.current_state.attack_finished()
 
 
-func attacked() -> void:
-	if !invincible_timer.time_left:
-		respawn()
-
-
-func respawn() -> void:
-	if Globals.player_lives - 1 == -1:
-		Globals.reset_game()
-		# Signal to Level.game_over()
-		game_over.emit()
-		return
-		
-	if !invincible_timer.time_left:
-		Globals.add_to_player_lives(-1)
-		set_invincible(START_INV_TIME)
-	
-	speed = (MAX_SPEED + MIN_SPEED) / 2
-	anim_speed = 1.0
-	fire_power_timer.stop()
-	var respawn_pos = Utilities.get_closest_egg_square(global_position).global_position
-	position = Vector3(respawn_pos.x, 0, respawn_pos.z)
-	rotation = Vector3(0, PI, 0)
-	velocity = Vector3.ZERO
-	state_machine.current_state.respawn()
-	target_square = Vector2(position.x, position.z)
-	move_dir = Utilities.DIRECTIONS.DOWN
-
-
 func effect_speed(speed_effect : float) -> void:
 	speed += speed_effect
 	anim_speed += sign(speed_effect) * 0.2
@@ -160,3 +137,38 @@ func give_fire_power() -> void:
 func apply_freeze() -> void:
 	# Signal to Characters.freeze_enemies()
 	freeze_pick_up.emit()
+
+
+func attacked() -> void:
+	if state_machine.current_state.has_method("attacked"):
+		state_machine.current_state.attacked()
+
+
+func show_stars(show : bool) -> void:
+	stars.set_process(show)
+	stars.visible = show
+
+
+func add_lives(num : int ) -> void:
+	num_lives = min(MAX_LIVES, num_lives + num)
+
+
+func die() -> void:
+	num_lives -= 1
+	if num_lives == -1:
+		Globals.reset_game()
+		# Signal to Level.game_over()
+		game_over.emit()
+		return
+	respawn()
+
+
+func respawn() -> void:
+	speed = (MAX_SPEED + MIN_SPEED) / 2
+	fire_power_timer.stop()
+	var respawn_pos = Utilities.get_closest_egg_square(global_position).global_position
+	position = Vector3(respawn_pos.x, 0, respawn_pos.z)
+	rotation = Vector3(0, PI, 0)
+	velocity = Vector3.ZERO
+	target_square = Vector2(position.x, position.z)
+	move_dir = Utilities.DIRECTIONS.DOWN

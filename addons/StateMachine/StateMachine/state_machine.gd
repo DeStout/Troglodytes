@@ -22,6 +22,7 @@ func _ready() -> void:
 		state.transition.connect(on_state_transitioned)
 		state.character = character
 	
+	await character.ready
 	current_state.enter()
 	current_state.active = true
 

@@ -58,9 +58,9 @@ func _set_move_dir(event : InputEvent):
 		character.move_dir = Utilities.DIRECTIONS.RIGHT
 
 
-# Keep this, please
-func respawn() -> void: pass
-	#transition.emit(self, "StartState")
+func attacked() -> void:
+	if !character.invincible_timer.time_left:
+		transition.emit(self, "StunState")
 
 
 #func exit() -> void: pass
