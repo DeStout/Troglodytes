@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvqetsr6wjvid"]
+
+[ext_resource type="Script" uid="uid://3isfp0jcfkfs" path="res://Levels/FX/FootPrint.gd" id="1_wjndw"]
+
+[node name="FootPrint1" type="Decal"]
+size = Vector3(0.4, 0.25, 0.4)
+normal_fade = 0.5
+script = ExtResource("1_wjndw")

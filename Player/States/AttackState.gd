@@ -5,6 +5,8 @@ func enter() -> void:
 	#print("Enter AttackState")
 	character.anim_player.speed_scale = 1.0
 	character.attack()
+	character._footstep(true)
+	character._footstep(false)
 
 
 func exit() -> void:
@@ -16,6 +18,8 @@ func _input(event: InputEvent) -> void:
 		return
 		
 	if event is InputEventKey and event.is_action_pressed("Attack"):
+		character.attack()
+	elif event is InputEventMouseButton and event.is_action_pressed("Attack"):
 		character.attack()
 
 

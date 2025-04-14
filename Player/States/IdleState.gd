@@ -6,6 +6,8 @@ func enter() -> void:
 	if character.anim_player:
 		character.anim_player.speed_scale = 1.0
 		character.anim_player.play("Idle")
+	character._footstep(true)
+	character._footstep(false)
 
 
 func _input(event: InputEvent) -> void:
@@ -19,6 +21,9 @@ func _input(event: InputEvent) -> void:
 			_set_move_dir(event)
 			transition.emit(self, "MoveState")
 		elif event.is_action_pressed("Attack"):
+			transition.emit(self, "AttackState")
+	elif event is InputEventMouseButton:
+		if event.is_action_pressed("Attack"):
 			transition.emit(self, "AttackState")
 
 

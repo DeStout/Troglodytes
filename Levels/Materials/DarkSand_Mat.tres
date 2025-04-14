@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dba2wq2pbc7ep"]
+
+[ext_resource type="Texture2D" uid="uid://xr27pg1088pa" path="res://Levels/Materials/Sand1.png" id="1_7womq"]
+[ext_resource type="Texture2D" uid="uid://c8j6cokt48337" path="res://Levels/Materials/Sand1_N.png" id="2_kq7ev"]
+
+[resource]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.957031, 0.847954, 0.819166, 1)
+albedo_texture = ExtResource("1_7womq")
+roughness = 0.5
+normal_enabled = true
+normal_texture = ExtResource("2_kq7ev")

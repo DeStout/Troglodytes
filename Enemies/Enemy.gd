@@ -1,12 +1,16 @@
 class_name Enemy extends CharacterBody3D
 
 
+signal spawn_footprint
+
 const SCORE_VALUE := 1000
 
 @export var characters : Node3D
 @export var body : MeshInstance3D
-@export var anim_player : AnimationPlayer
 @export var state_machine : Node
+@export var anim_player : AnimationPlayer
+@export var right_foot : Node3D
+@export var left_foot : Node3D
 
 const ACCEL := 15.0
 var speed := 3.0
@@ -29,22 +33,6 @@ func get_prev_state() -> String:
 	return state_machine.prev_state.name.to_lower()
 
 
-#func ray_check(check_dir : DIRECTIONS) -> bool:
-	#var local_dir : Vector3
-	#match check_dir:
-		#0:
-			#local_dir = Vector3(0, 0, -1) + wall_check.global_position
-		#1:
-			#local_dir = Vector3(0, 0, 1) + wall_check.global_position
-		#2:
-			#local_dir = Vector3(-1, 0, 0) + wall_check.global_position
-		#3:
-			#local_dir = Vector3(1, 0, 0) + wall_check.global_position
-	#wall_check.target_position = wall_check.to_local(local_dir)
-	#wall_check.force_raycast_update()
-	#return wall_check.is_colliding()
-
-
 func get_move_dir_vect(move_dir : int) -> Vector2:
 	var target_dir : Vector2
 	match move_dir:
@@ -57,6 +45,10 @@ func get_move_dir_vect(move_dir : int) -> Vector2:
 		3:
 			target_dir = Vector2.RIGHT
 	return target_dir
+
+
+func _footstep(foot_down : bool) -> void:
+	spawn_footprint.emit(self, foot_down)
 
 
 func _body_attackable(character : CharacterBody3D) -> void:

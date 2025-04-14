@@ -8,6 +8,7 @@
 resource_name = "Rock054"
 render_priority = 2
 cull_mode = 2
+albedo_color = Color(0.34375, 0.304599, 0.136336, 1)
 albedo_texture = ExtResource("1_kan1c")
 metallic_texture = ExtResource("2_x2enj")
 metallic_texture_channel = 2

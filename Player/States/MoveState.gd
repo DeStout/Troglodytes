@@ -27,6 +27,9 @@ func _input(event: InputEvent) -> void:
 			await _slerp_to_dirp(true)
 		elif event.is_action_pressed("Attack"):
 			transition.emit(self, "AttackState")
+	elif event is InputEventMouseButton:
+		if event.is_action_pressed("Attack"):
+			transition.emit(self, "AttackState")
 
 
 func _is_turn_around() -> bool:

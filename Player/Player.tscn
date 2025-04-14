@@ -88,6 +88,22 @@ target_position = Vector3(0, 0, -1)
 [node name="PlayerBody" parent="Player1/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_p7tob")
 
+[node name="LeftFootBone" type="BoneAttachment3D" parent="Player1/Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, -4.47035e-08, -8.19564e-08, 4.47035e-08, -0.213362, 0.976973, -2.16067e-07, -0.976973, -0.213362, -0.234641, 0.065998, 0.0538339)
+bone_name = "Toes.L"
+bone_idx = 49
+
+[node name="LeftFoot" type="Node3D" parent="Player1/Armature/Skeleton3D/LeftFootBone"]
+transform = Transform3D(1, 0, 5.58794e-09, 0, 1, -5.96046e-08, 1.39698e-08, -2.98023e-08, 1, -0.00635646, 0.0610968, -0.0355091)
+
+[node name="RightFootBone" type="BoneAttachment3D" parent="Player1/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 4.47035e-08, 8.19564e-08, -4.47035e-08, -0.213362, 0.976973, 2.16067e-07, -0.976973, -0.213362, 0.234641, 0.065998, 0.0538339)
+bone_name = "Toes.R"
+bone_idx = 61
+
+[node name="RightFoot" type="Node3D" parent="Player1/Armature/Skeleton3D/RightFootBone"]
+transform = Transform3D(1, 0, 5.58794e-09, 0, 1, -5.96046e-08, 1.39698e-08, -2.98023e-08, 1, -0.00635646, 0.0610968, -0.0355091)
+
 [node name="AnimationPlayer" parent="Player1" index="6"]
 autoplay = "Idle"
 

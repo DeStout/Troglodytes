@@ -4,6 +4,7 @@ class_name Player extends CharacterBody3D
 @export var debug_target : MeshInstance3D
 
 signal game_over
+signal spawn_footprint
 signal freeze_pick_up
 signal spawn_fire_ball
 
@@ -15,12 +16,15 @@ const ACCEL := 15.0
 const MAX_SPEED := 4.5
 const MIN_SPEED := 1.5
 @onready var state_machine := $StateMachine
-@onready var anim_player: AnimationPlayer = $Player1/AnimationPlayer
+@onready var anim_player : AnimationPlayer = $Player1/AnimationPlayer
+@onready var right_foot := $Player1/Armature/Skeleton3D/RightFootBone/RightFoot
+@onready var left_foot := $Player1/Armature/Skeleton3D/LeftFootBone/LeftFoot
 @onready var wall_check := $WallCheck
 var speed := 3.0
 var anim_speed := 1.0
 var move_dir : Utilities.DIRECTIONS = Utilities.DIRECTIONS.DOWN
 var target_square : Vector2
+
 
 const START_INV_TIME := 5.0
 const INVINCIBLE_TIME := 8.0
@@ -52,6 +56,10 @@ func ray_check(check_dir : Utilities.DIRECTIONS) -> bool:
 	wall_check.target_position = wall_check.to_local(local_dir)
 	wall_check.force_raycast_update()
 	return wall_check.is_colliding()
+
+
+func _footstep(foot_down : bool) -> void:
+	spawn_footprint.emit(self, foot_down)
 
 
 func attack() -> void:

@@ -23,6 +23,7 @@ func _ready() -> void:
 func _set_up() -> void:
 	characters.player.game_over.connect(game_over)
 	characters.player.freeze_pick_up.connect(characters.freeze_enemies)
+	characters.player.spawn_footprint.connect(spawn_footprint)
 	characters.player.spawn_fire_ball.connect(spawn_fire_ball)
 	
 	var used_squares : Array[Node3D] = []
@@ -55,6 +56,10 @@ func get_rand_free_square(use_square := true) -> Node3D:
 	if use_square:
 		free_squares.erase(free_square)
 	return free_square
+
+
+func spawn_footprint(character : CharacterBody3D, foot_down : bool) -> void:
+	fx.spawn_footprint(character, foot_down)
 
 
 func spawn_fire_ball(player) -> void:

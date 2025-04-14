@@ -42,6 +42,7 @@ func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 		enemy.position = spawn_pos
 		enemy.spawn_hole = spawn_hole
 		spawn_hole.open_finished.connect(_add_enemy.bind(enemy))
+		enemy.spawn_footprint.connect(level.spawn_footprint)
 		
 		egg_squares.erase(egg_square)
 		used_squares.append(egg_square)
@@ -61,6 +62,7 @@ func _respawn_enemy() -> void:
 		enemy.position = spawn_pos
 		enemy.spawn_hole = spawn_hole
 		spawn_hole.open_finished.connect(_add_enemy.bind(enemy))
+		enemy.spawn_footprint.connect(level.spawn_footprint)
 
 
 func _add_enemy(new_enemy : Enemy) -> void:

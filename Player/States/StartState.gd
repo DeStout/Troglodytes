@@ -10,6 +10,8 @@ func enter() -> void:
 	character.set_invincible(character.START_INV_TIME)
 	character.anim_player.speed_scale = 1.0
 	character.anim_player.play("Idle")
+	character._footstep(true)
+	character._footstep(false)
 
 
 func _start_finished() -> void:
