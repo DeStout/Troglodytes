@@ -23,7 +23,7 @@ albedo_texture = ExtResource("8_5wa8t")
 [sub_resource type="TorusMesh" id="TorusMesh_v0k0e"]
 inner_radius = 0.18
 outer_radius = 0.28
-rings = 10
+rings = 12
 ring_segments = 4
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_s1rgi"]
@@ -89,7 +89,7 @@ target_position = Vector3(0, 0, -1)
 surface_material_override/0 = SubResource("StandardMaterial3D_p7tob")
 
 [node name="LeftFootBone" type="BoneAttachment3D" parent="Player1/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, -4.47035e-08, -8.19564e-08, 4.47035e-08, -0.213362, 0.976973, -2.16067e-07, -0.976973, -0.213362, -0.234641, 0.065998, 0.0538339)
+transform = Transform3D(0.999607, 0.0226562, -0.0165027, 0.0230167, -0.327497, 0.944572, 0.0159957, -0.944581, -0.327889, -0.203534, 0.0606611, 0.176944)
 bone_name = "Toes.L"
 bone_idx = 49
 
@@ -97,7 +97,7 @@ bone_idx = 49
 transform = Transform3D(1, 0, 5.58794e-09, 0, 1, -5.96046e-08, 1.39698e-08, -2.98023e-08, 1, -0.00635646, 0.0610968, -0.0355091)
 
 [node name="RightFootBone" type="BoneAttachment3D" parent="Player1/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 4.47035e-08, 8.19564e-08, -4.47035e-08, -0.213362, 0.976973, 2.16067e-07, -0.976973, -0.213362, 0.234641, 0.065998, 0.0538339)
+transform = Transform3D(0.998478, -0.0426305, 0.034994, -0.0360405, -0.024034, 0.999061, -0.0417492, -0.998802, -0.0255341, 0.238467, 0.24829, -0.414007)
 bone_name = "Toes.R"
 bone_idx = 61
 

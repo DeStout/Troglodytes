@@ -66,6 +66,7 @@ func _respawn_enemy() -> void:
 
 
 func _add_enemy(new_enemy : Enemy) -> void:
+	Utilities.anims_to_constant(new_enemy)
 	add_child(new_enemy, true)
 	enemies.append(new_enemy)
 	new_enemy.characters = self

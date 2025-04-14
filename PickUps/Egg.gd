@@ -4,12 +4,13 @@ extends Node3D
 signal collected
 
 const SCORE_VALUE := 250
-const ROTATION_SPEED := 1.0
+const ROTATION_SPEED := 60.0
 const AMPLITUDE := 0.1
 
 @onready var mesh := $Mesh
 @onready var pos_offset : float = mesh.position.y
 @onready var time_offset := randf() * TAU
+var rot := rad_to_deg(randf() * TAU)
 var time := 0.0
 
 
@@ -17,14 +18,12 @@ var time := 0.0
 @onready var pick_up_sfx := $PickUpSFX
 
 
-func _ready() -> void:
-	rotation.y = randf() * TAU
-
-
 func _process(delta: float) -> void:
-	rotation.y += ROTATION_SPEED * delta
-	mesh.position.y = pos_offset + AMPLITUDE * sin(time + time_offset)
 	time += delta
+	rot = fmod(rot + (ROTATION_SPEED * delta), 360)
+	if is_zero_approx(snapped(fmod(time, 0.25), 0.05)):
+		rotation_degrees.y = rot
+		mesh.position.y = pos_offset + AMPLITUDE * sin(time + time_offset)
 
 
 func _collected(body : CharacterBody3D) -> void:

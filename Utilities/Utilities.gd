@@ -4,6 +4,14 @@ extends Node
 enum DIRECTIONS { UP, DOWN, LEFT, RIGHT }
 
 
+func anims_to_constant(character : CharacterBody3D) -> void:
+	var anim_list : Array = character.anim_player.get_animation_list()
+	for anim_name in anim_list:
+		var anim = character.anim_player.get_animation(anim_name)
+		for track in anim.get_track_count():
+			anim.track_set_interpolation_type(track, Animation.INTERPOLATION_NEAREST)
+
+
 func get_closest_egg_square(pos : Vector3) -> Node3D:
 	var egg_squares = get_tree().get_nodes_in_group("EggSquares")
 	var min_dist := 9999.9

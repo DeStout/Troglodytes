@@ -31,7 +31,7 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=true
-import_script/path=""
+import_script/path="uid://vxr0lvvsjtnx"
 _subresources={
 "animations": {
 "Attack": {

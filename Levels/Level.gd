@@ -25,6 +25,7 @@ func _set_up() -> void:
 	characters.player.freeze_pick_up.connect(characters.freeze_enemies)
 	characters.player.spawn_footprint.connect(spawn_footprint)
 	characters.player.spawn_fire_ball.connect(spawn_fire_ball)
+	Utilities.anims_to_constant(characters.player)
 	
 	var used_squares : Array[Node3D] = []
 	used_squares = characters.spawn_enemies(used_squares)
