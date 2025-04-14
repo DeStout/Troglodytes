@@ -29,14 +29,71 @@ streams_count = 2
 stream_0/stream = ExtResource("9_fbd0n")
 stream_1/stream = ExtResource("10_myk7f")
 
-[node name="Level" type="Node3D" node_paths=PackedStringArray("board", "characters", "pick_ups", "eggs", "fx", "play_area")]
+[node name="Level" type="Node3D" node_paths=PackedStringArray("board", "ui_score", "ui_lives", "characters", "pick_ups", "eggs", "fx", "play_area")]
 script = ExtResource("1_bwnv0")
 board = NodePath("Board")
+ui_score = NodePath("UIBoard1/UIBoard2/Score")
+ui_lives = NodePath("UIBoard1/UIBoard2/Lives")
 characters = NodePath("Characters")
 pick_ups = NodePath("PickUps")
 eggs = NodePath("Eggs")
 fx = NodePath("FX")
 play_area = NodePath("PlayArea")
+
+[node name="UIBoard1" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(256, 76)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 120.0
+offset_top = 557.0
+offset_right = -776.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.121094, 0.121094, 0.121094, 1)
+
+[node name="UIBoard2" type="ColorRect" parent="UIBoard1"]
+custom_minimum_size = Vector2(244, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.753906, 0.616073, 0.493017, 1)
+
+[node name="Score" type="Label" parent="UIBoard1/UIBoard2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 6.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Score: 0"
+
+[node name="Lives" type="Label" parent="UIBoard1/UIBoard2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 35.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Lives: 2"
+vertical_alignment = 2
 
 [node name="Env" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_eu7l1")

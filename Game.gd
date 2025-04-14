@@ -11,16 +11,12 @@ var levels : Array[String] = [ "res://Levels/Level1a.tscn",
 								"res://Levels/Level3b.tscn" ]
 @export var level : Node3D
 var level_num : int = 0
-@export var score_label : Label
-@export var lives_label : Label
 
+const INIT_LIVES := 2
+const MAX_LIVES := 4
 
-func set_score(new_score : int) -> void:
-	score_label.text = "Score: " + str(new_score)
-
-
-func set_lives(new_lives : int) -> void:
-	lives_label.text = "Lives: " + str(new_lives)
+var score := 0
+var player_lives : Array[int] = [INIT_LIVES]
 
 
 func start_game() -> void:
@@ -38,7 +34,6 @@ func start_new_game() -> void:
 	new_level.game = self
 	add_child(new_level, true)
 	level = new_level
-	$UIBoard1.visible = true
 
 
 func load_next_level() -> void:
@@ -49,4 +44,3 @@ func load_next_level() -> void:
 	new_level.game = self
 	add_child(new_level, true)
 	level = new_level
-	$UIBoard1.visible = true

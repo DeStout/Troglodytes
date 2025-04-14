@@ -201,5 +201,9 @@ func attacked() -> void:
 		transition.emit(self, "StunState")
 
 
+func exit_stage() -> void:
+	transition.emit(self, "StartState")
+
+
 #func exit() -> void: pass
 #func update(delta) -> void: pass

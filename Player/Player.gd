@@ -3,14 +3,9 @@ class_name Player extends CharacterBody3D
 
 @export var debug_target : MeshInstance3D
 
-signal game_over
 signal spawn_footprint
 signal freeze_pick_up
 signal spawn_fire_ball
-
-const INIT_LIVES := 2
-const MAX_LIVES := 3
-var num_lives := INIT_LIVES
 
 @onready var attack_cast := $AttackCast
 @onready var attack_sfx := $AttackSFX
@@ -30,7 +25,7 @@ var move_dir : Utilities.DIRECTIONS = Utilities.DIRECTIONS.DOWN
 var target_square : Vector2
 
 
-const START_INV_TIME := 5.0
+const START_INV_TIME := 4.0
 const INVINCIBLE_TIME := 8.0
 const INV_FLASH_TIME := 1.25
 const FIRE_POWER_TIME := 10.0
@@ -149,17 +144,17 @@ func show_stars(show : bool) -> void:
 	stars.visible = show
 
 
-func add_lives(num : int ) -> void:
-	num_lives = min(MAX_LIVES, num_lives + num)
+func exit_stage() -> void:
+	if !invincible_timer.time_left:
+		die()
+	else:
+		respawn()
+	if state_machine.current_state.has_method("exit_stage"):
+		state_machine.current_state.exit_stage()
 
 
 func die() -> void:
-	num_lives -= 1
-	if num_lives == -1:
-		Globals.reset_game()
-		# Signal to Level.game_over()
-		game_over.emit()
-		return
+	Globals.add_and_set_lives(-1)
 	respawn()
 
 

@@ -6,6 +6,8 @@ var home_ := load("res://Levels/Props/Home.tscn")
 
 var game : Node
 @export var board : Node3D
+@export var ui_score : Label
+@export var ui_lives : Label
 @export var characters : Node3D
 @export var pick_ups : Node3D
 @export var eggs : Node3D
@@ -21,7 +23,10 @@ func _ready() -> void:
 
 
 func _set_up() -> void:
-	characters.player.game_over.connect(game_over)
+	Globals.add_and_set_lives(0)
+	Globals.add_and_set_score(0)
+	
+	#characters.player.game_over.connect(game_over)
 	characters.player.freeze_pick_up.connect(characters.freeze_enemies)
 	characters.player.spawn_footprint.connect(spawn_footprint)
 	characters.player.spawn_fire_ball.connect(spawn_fire_ball)
@@ -88,18 +93,13 @@ func _spawn_home() -> void:
 	home.position = Vector3(home_pos.x, 0.5, home_pos.z)
 
 
-func level_clean_up() -> void:
-	for connection in play_area.body_exited.get_connections():
-		play_area.body_exited.disconnect(connection["callable"])
-	board.level_complete_clean_up()
-
-
 func level_complete() -> void:
-	characters.player.add_lives(1)
+	Globals.add_and_set_lives(1)
 	level_clean_up()
 	game.load_next_level()
 
 
-func game_over() -> void:
-	level_clean_up()
-	game.start_new_game()
+func level_clean_up() -> void:
+	for connection in play_area.body_exited.get_connections():
+		play_area.body_exited.disconnect(connection["callable"])
+	board.level_complete_clean_up()

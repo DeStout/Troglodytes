@@ -111,7 +111,7 @@ func enemy_defeated(enemy : Enemy) -> void:
 
 func character_exited(character : CharacterBody3D) -> void:
 	if character is Player:
-		player.respawn()
+		player.exit_stage()
 	elif character is Enemy:
 		if character.state_machine.current_state is DeathState:
 			return
