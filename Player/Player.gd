@@ -113,7 +113,7 @@ func set_invincible(inv_time := INVINCIBLE_TIME) -> void:
 
 
 func flash_halo(vis_time : float) -> void:
-	var inv_time_left = snappedf(invincible_timer.time_left, 0.01)
+	var inv_time_left = snappedf(invincible_timer.time_left, 0.05)
 	if !invincible_timer.time_left or inv_time_left > INV_FLASH_TIME:
 		halo.visible = invincible_timer.time_left
 		return

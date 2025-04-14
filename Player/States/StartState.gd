@@ -18,7 +18,6 @@ func enter() -> void:
 
 # called from start_timer.timeout
 func _start_finished() -> void:
-	print("move")
 	transition.emit(self, "MoveState")
 
 
