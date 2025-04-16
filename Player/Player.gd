@@ -14,6 +14,8 @@ signal spawn_fire_ball
 const ACCEL := 15.0
 const MAX_SPEED := 4.5
 const MIN_SPEED := 1.5
+const MAX_ANIM_SPEED := 1.6
+const MIN_ANIM_SPEED := 0.4
 @onready var state_machine := $StateMachine
 @onready var anim_player : AnimationPlayer = $Player1/AnimationPlayer
 @onready var right_foot := $Player1/Armature/Skeleton3D/RightFootBone/RightFoot
@@ -96,6 +98,7 @@ func _attack_ended() -> void:
 func effect_speed(speed_effect : float) -> void:
 	speed += speed_effect
 	anim_speed += sign(speed_effect) * 0.2
+	anim_speed = clamp(anim_speed, MIN_ANIM_SPEED, MAX_ANIM_SPEED)
 	anim_player.speed_scale = anim_speed
 	speed = clamp(speed, MIN_SPEED, MAX_SPEED)
 
@@ -160,6 +163,9 @@ func die() -> void:
 
 func respawn() -> void:
 	speed = (MAX_SPEED + MIN_SPEED) / 2
+	anim_speed = (MAX_ANIM_SPEED + MIN_ANIM_SPEED) / 2
+	anim_player.speed_scale = anim_speed
+	
 	fire_power_timer.stop()
 	var respawn_pos = Utilities.get_closest_egg_square(global_position).global_position
 	position = Vector3(respawn_pos.x, 0, respawn_pos.z)
