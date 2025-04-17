@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bd5xr5rspbutp"]
+[gd_scene load_steps=13 format=4 uid="uid://bd5xr5rspbutp"]
 
 [ext_resource type="PackedScene" uid="uid://bfuiiibm4ogfg" path="res://PickUps/Egg.tscn" id="1_5tsjt"]
 [ext_resource type="Texture2D" uid="uid://xr27pg1088pa" path="res://Levels/Materials/Sand1.png" id="1_y84t4"]
@@ -19,23 +19,6 @@ normal_enabled = true
 normal_scale = 1.6
 normal_texture = ExtResource("3_nuj0n")
 uv1_scale = Vector3(5, 5, 5)
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5tsjt"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-
-[sub_resource type="Sky" id="Sky_nqg6k"]
-sky_material = SubResource("ProceduralSkyMaterial_5tsjt")
-
-[sub_resource type="Environment" id="Environment_oilmi"]
-background_mode = 2
-sky = SubResource("Sky_nqg6k")
-tonemap_mode = 3
-ssao_enabled = true
-ssao_radius = 1.87
-ssao_intensity = 3.07
-ssao_power = 2.89781
-glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wq44"]
 resource_name = "Material"
@@ -103,7 +86,6 @@ mesh = SubResource("QuadMesh_nqg6k")
 surface_material_override/0 = SubResource("StandardMaterial3D_y84t4")
 
 [node name="Env" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_oilmi")
 
 [node name="SpotLight" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.784084, 0.620655, 0, -0.620655, 0.784084, 0, 2.52711, 3.19254)

@@ -53,6 +53,7 @@ options_menu = NodePath("Options")
 metadata/_edit_vertical_guides_ = [660.0]
 
 [node name="BG" type="SubViewportContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,7 +64,7 @@ grow_vertical = 2
 [node name="SubViewport" type="SubViewport" parent="BG"]
 handle_input_locally = false
 size = Vector2i(1152, 648)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="MenuWorld" parent="BG/SubViewport" instance=ExtResource("3_7ihqj")]
 
@@ -116,14 +117,12 @@ alignment = 0
 [node name="Multiplayer" type="Button" parent="MainMenu/VBox"]
 custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
-mouse_filter = 2
 theme_override_colors/font_hover_color = Color(0, 0.506024, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
 theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_5ncg0")
 theme_override_font_sizes/font_size = 75
-disabled = true
 text = "Multiplayer"
 flat = true
 alignment = 0
@@ -306,11 +305,11 @@ flat = true
 [node name="Waves" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_5ncg0")
 volume_db = -15.0
-autoplay = true
 bus = &"Music"
 parameters/looping = true
 
 [connection signal="button_down" from="MainMenu/VBox/Single Player" to="." method="_play_button"]
+[connection signal="pressed" from="MainMenu/VBox/Multiplayer" to="." method="_mult_button"]
 [connection signal="button_down" from="MainMenu/VBox/Options" to="." method="_options_button"]
 [connection signal="button_down" from="MainMenu/VBox/Quit" to="." method="_quit_button"]
 [connection signal="value_changed" from="Options/VLayout/Master/VLayout/MasterSlider" to="Options" method="_master_volume_changed"]

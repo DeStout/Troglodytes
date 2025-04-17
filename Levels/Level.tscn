@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c7f7rd7ltauxf"]
+[gd_scene load_steps=12 format=3 uid="uid://c7f7rd7ltauxf"]
 
 [ext_resource type="Script" uid="uid://dwbxnol5sxdj" path="res://Levels/Level.gd" id="1_bwnv0"]
 [ext_resource type="Script" uid="uid://c2kw3luipogux" path="res://Levels/Board.gd" id="2_ah0qf"]
@@ -10,18 +10,6 @@
 [ext_resource type="AudioStream" uid="uid://cuij1no40h8sf" path="res://Music/CartoonMischief.mp3" id="10_myk7f"]
 [ext_resource type="AudioStream" uid="uid://b2adamdl3fce5" path="res://Menus/BeachWaves.ogg" id="10_n6v67"]
 [ext_resource type="AudioStream" uid="uid://c1ibrkbrrcdwv" path="res://PickUps/IceUnfreeze.ogg" id="11_je7y7"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bcbcq"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-
-[sub_resource type="Sky" id="Sky_js7pq"]
-sky_material = SubResource("ProceduralSkyMaterial_bcbcq")
-
-[sub_resource type="Environment" id="Environment_eu7l1"]
-background_mode = 2
-sky = SubResource("Sky_js7pq")
-tonemap_mode = 2
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rjnlo"]
 playback_mode = 2
@@ -96,7 +84,6 @@ text = "Lives: 2"
 vertical_alignment = 2
 
 [node name="Env" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_eu7l1")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.83998, -0.469921, 0.271309, -1.01783e-08, 0.499999, 0.866026, -0.542617, -0.727445, 0.41999, 0, 0, 0)

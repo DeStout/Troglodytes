@@ -68,7 +68,7 @@ size = Vector3(20, 1, 4)
 
 [node name="Level3a" instance=ExtResource("1_xb24h")]
 
-[node name="Camera" parent="." index="2" node_paths=PackedStringArray("player")]
+[node name="Camera" parent="." index="3" node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -11, 10, -4)
 size = 13.5
 player = NodePath("../Characters/Player")
@@ -2820,7 +2820,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 0)
 [node name="OnScreenEnable" type="VisibleOnScreenEnabler3D" parent="Board/Water/WaterRow23" index="24"]
 aabb = AABB(-25, -1.67, -0.125, 48, 2.7, 0.25)
 
-[node name="Characters" parent="." index="4" node_paths=PackedStringArray("ground", "player")]
+[node name="Characters" parent="." index="5" node_paths=PackedStringArray("ground", "player")]
 ground = NodePath("../Board/Ground")
 player = NodePath("Player")
 num_enemies = 7
@@ -2828,11 +2828,11 @@ num_enemies = 7
 [node name="Player" parent="Characters" index="0" instance=ExtResource("4_8eiv4")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0, -13)
 
-[node name="PickUps" parent="." index="5"]
+[node name="PickUps" parent="." index="6"]
 num_pick_ups = 7
 level_pick_ups = Array[int]([0, 1, 3, 2, 4])
 
-[node name="PlayArea" parent="." index="8"]
+[node name="PlayArea" parent="." index="9"]
 visible = false
 
 [node name="Collision1" type="CollisionShape3D" parent="PlayArea" index="0"]
