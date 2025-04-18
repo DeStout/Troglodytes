@@ -1,10 +1,29 @@
-[gd_scene load_steps=12 format=3 uid="uid://ba8xg6j0dfk0i"]
+[gd_scene load_steps=16 format=3 uid="uid://ba8xg6j0dfk0i"]
 
 [ext_resource type="Script" uid="uid://b5anrmu3ul3w8" path="res://Menus/MainMenu.gd" id="1_i26rj"]
 [ext_resource type="Script" uid="uid://dqolwe002khq0" path="res://Menus/OptionsMenu.gd" id="2_r8dbq"]
 [ext_resource type="FontFile" uid="uid://dhw1gc0ml3wen" path="res://Menus/Fonts/Dinofans.ttf" id="3_5ncg0"]
 [ext_resource type="PackedScene" uid="uid://bd5xr5rspbutp" path="res://Menus/MainBG.tscn" id="3_7ihqj"]
+[ext_resource type="Script" uid="uid://dathsvtvdv2dk" path="res://Menus/Multiplayer/MultiplayerMenu.gd" id="4_0xbyl"]
+[ext_resource type="Script" uid="uid://naykg338a57q" path="res://Menus/Multiplayer/LobbyListMenu.gd" id="5_1txdl"]
 [ext_resource type="AudioStream" uid="uid://b2adamdl3fce5" path="res://Menus/BeachWaves.ogg" id="5_5ncg0"]
+[ext_resource type="Script" uid="uid://cpqtmj6wsgai5" path="res://Menus/LobbyMenu.gd" id="6_m16r1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0bjyp"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0, 0.506024, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.349868, 0.691406, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6o36"]
 bg_color = Color(0, 0.165733, 0.324219, 1)
@@ -40,7 +59,7 @@ bg_color = Color(0, 0.349868, 0.691406, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ju15h"]
 bg_color = Color(0, 0.506024, 1, 1)
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("main_menu", "options_menu")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("main_menu", "mult_menu", "options_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -49,8 +68,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i26rj")
 main_menu = NodePath("MainMenu")
-options_menu = NodePath("Options")
-metadata/_edit_vertical_guides_ = [660.0]
+mult_menu = NodePath("MultMenu")
+options_menu = NodePath("OptionsMenu")
+metadata/_edit_vertical_guides_ = [660.0, 54.0]
 
 [node name="BG" type="SubViewportContainer" parent="."]
 visible = false
@@ -110,6 +130,7 @@ theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_5ncg0")
 theme_override_font_sizes/font_size = 75
+disabled = true
 text = "Single Player"
 flat = true
 alignment = 0
@@ -153,7 +174,279 @@ text = "Quit"
 flat = true
 alignment = 0
 
-[node name="Options" type="MarginContainer" parent="." node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider")]
+[node name="MultMenu" type="CenterContainer" parent="." node_paths=PackedStringArray("host_join_menu", "lobby_list_menu", "lobby_menu", "lobby_join_button")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.573
+anchor_bottom = 1.0
+offset_top = 144.0
+offset_right = 2.90399
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_0xbyl")
+host_join_menu = NodePath("HostJoinMenu")
+lobby_list_menu = NodePath("LobbyListMenu")
+lobby_menu = NodePath("LobbyMenu")
+lobby_join_button = NodePath("LobbyMenu/VBoxContainer/Buttons/Start")
+
+[node name="HostJoinMenu" type="VBoxContainer" parent="MultMenu"]
+layout_mode = 2
+
+[node name="Host" type="Button" parent="MultMenu/HostJoinMenu"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 75
+text = "Host"
+flat = true
+alignment = 0
+
+[node name="Join" type="Button" parent="MultMenu/HostJoinMenu"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 75
+text = "Join"
+flat = true
+alignment = 0
+
+[node name="_" type="Button" parent="MultMenu/HostJoinMenu"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_hover_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 75
+disabled = true
+text = " "
+flat = true
+alignment = 0
+
+[node name="Back" type="Button" parent="MultMenu/HostJoinMenu"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 75
+text = "Back"
+flat = true
+alignment = 0
+
+[node name="LobbyListMenu" type="MarginContainer" parent="MultMenu" node_paths=PackedStringArray("lobby_list", "refresh_button")]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_right = 0
+script = ExtResource("5_1txdl")
+lobby_list = NodePath("VBoxContainer/ScrollContainer/LobbyList")
+refresh_button = NodePath("VBoxContainer/Buttons/Refresh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MultMenu/LobbyListMenu"]
+layout_mode = 2
+
+[node name="LobbiesLabel" type="Label" parent="MultMenu/LobbyListMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_colors/font_outline_color = Color(0, 0.349868, 0.691406, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 50
+text = "Lobbies"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MultMenu/LobbyListMenu/VBoxContainer"]
+custom_minimum_size = Vector2(550, 350)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0bjyp")
+horizontal_scroll_mode = 0
+
+[node name="LobbyList" type="VBoxContainer" parent="MultMenu/LobbyListMenu/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Buttons" type="Control" parent="MultMenu/LobbyListMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="Refresh" type="Button" parent="MultMenu/LobbyListMenu/VBoxContainer/Buttons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 268.055
+offset_right = -117.945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 36
+text = "Refresh"
+flat = true
+
+[node name="Back" type="Button" parent="MultMenu/LobbyListMenu/VBoxContainer/Buttons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 449.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 36
+text = "Back"
+flat = true
+
+[node name="LobbyMenu" type="MarginContainer" parent="MultMenu" node_paths=PackedStringArray("lobby_name", "players")]
+visible = false
+layout_mode = 2
+script = ExtResource("6_m16r1")
+lobby_name = NodePath("VBoxContainer/Control/LobbyLabel")
+players = [NodePath("VBoxContainer/ScrollContainer/VBoxContainer/Player1"), NodePath("VBoxContainer/ScrollContainer/VBoxContainer/Player2"), NodePath("VBoxContainer/ScrollContainer/VBoxContainer/Player3"), NodePath("VBoxContainer/ScrollContainer/VBoxContainer/Player4")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MultMenu/LobbyMenu"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MultMenu/LobbyMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="LobbyLabel" type="Label" parent="MultMenu/LobbyMenu/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.074
+anchor_right = 1.0
+offset_left = 1.9
+offset_top = -30.0
+offset_right = 50.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_colors/font_outline_color = Color(0, 0.349868, 0.691406, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 50
+text = "Bob Loblaw's Lobby"
+
+[node name="ScrollContainer" type="Control" parent="MultMenu/LobbyMenu/VBoxContainer"]
+custom_minimum_size = Vector2(650, 350)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MultMenu/LobbyMenu/VBoxContainer/ScrollContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.009
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 53.85
+offset_top = 26.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Player1" type="Label" parent="MultMenu/LobbyMenu/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 36
+text = "Player 1: Bob"
+
+[node name="Player2" type="Label" parent="MultMenu/LobbyMenu/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.787182, 0.8125, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 36
+text = "Player 2:"
+
+[node name="Player3" type="Label" parent="MultMenu/LobbyMenu/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.925781, 0.254206, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 36
+text = "Player 3:"
+
+[node name="Player4" type="Label" parent="MultMenu/LobbyMenu/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0.6954, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 36
+text = "Player 4:"
+
+[node name="Buttons" type="Control" parent="MultMenu/LobbyMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="Start" type="Button" parent="MultMenu/LobbyMenu/VBoxContainer/Buttons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 245.0
+offset_right = -185.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 36
+text = "Start"
+flat = true
+
+[node name="Disconnect" type="Button" parent="MultMenu/LobbyMenu/VBoxContainer/Buttons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 431.735
+offset_right = -3.26501
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 36
+text = "Disconnect"
+flat = true
+
+[node name="OptionsMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -170,15 +463,15 @@ master_slider = NodePath("VLayout/Master/VLayout/MasterSlider")
 music_slider = NodePath("VLayout/Music/VLayout/MusicSlider")
 sfx_slider = NodePath("VLayout/SFX/VLayout/SFXSlider")
 
-[node name="VLayout" type="VBoxContainer" parent="Options"]
+[node name="VLayout" type="VBoxContainer" parent="OptionsMenu"]
 layout_mode = 2
 alignment = 2
 
-[node name="Master" type="Control" parent="Options/VLayout"]
+[node name="Master" type="Control" parent="OptionsMenu/VLayout"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 
-[node name="VLayout" type="VBoxContainer" parent="Options/VLayout/Master"]
+[node name="VLayout" type="VBoxContainer" parent="OptionsMenu/VLayout/Master"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -189,7 +482,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Options/VLayout/Master/VLayout"]
+[node name="Label" type="Label" parent="OptionsMenu/VLayout/Master/VLayout"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.506024, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.165733, 0.324219, 1)
@@ -198,7 +491,7 @@ theme_override_fonts/font = ExtResource("3_5ncg0")
 theme_override_font_sizes/font_size = 48
 text = "Master Volume"
 
-[node name="MasterSlider" type="HSlider" parent="Options/VLayout/Master/VLayout"]
+[node name="MasterSlider" type="HSlider" parent="OptionsMenu/VLayout/Master/VLayout"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 theme_override_styles/slider = SubResource("StyleBoxFlat_n6o36")
@@ -209,11 +502,11 @@ rounded = true
 tick_count = 5
 ticks_on_borders = true
 
-[node name="Music" type="Control" parent="Options/VLayout"]
+[node name="Music" type="Control" parent="OptionsMenu/VLayout"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 
-[node name="VLayout" type="VBoxContainer" parent="Options/VLayout/Music"]
+[node name="VLayout" type="VBoxContainer" parent="OptionsMenu/VLayout/Music"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -223,7 +516,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Options/VLayout/Music/VLayout"]
+[node name="Label" type="Label" parent="OptionsMenu/VLayout/Music/VLayout"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.506024, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.165733, 0.324219, 1)
@@ -232,7 +525,7 @@ theme_override_fonts/font = ExtResource("3_5ncg0")
 theme_override_font_sizes/font_size = 48
 text = "Music Volume"
 
-[node name="MusicSlider" type="HSlider" parent="Options/VLayout/Music/VLayout"]
+[node name="MusicSlider" type="HSlider" parent="OptionsMenu/VLayout/Music/VLayout"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 theme_override_styles/slider = SubResource("StyleBoxFlat_n6o36")
@@ -243,11 +536,11 @@ rounded = true
 tick_count = 5
 ticks_on_borders = true
 
-[node name="SFX" type="Control" parent="Options/VLayout"]
+[node name="SFX" type="Control" parent="OptionsMenu/VLayout"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 
-[node name="VLayout" type="VBoxContainer" parent="Options/VLayout/SFX"]
+[node name="VLayout" type="VBoxContainer" parent="OptionsMenu/VLayout/SFX"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -257,7 +550,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Options/VLayout/SFX/VLayout"]
+[node name="Label" type="Label" parent="OptionsMenu/VLayout/SFX/VLayout"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.506024, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.165733, 0.324219, 1)
@@ -266,7 +559,7 @@ theme_override_fonts/font = ExtResource("3_5ncg0")
 theme_override_font_sizes/font_size = 48
 text = "SFX Volume"
 
-[node name="SFXSlider" type="HSlider" parent="Options/VLayout/SFX/VLayout"]
+[node name="SFXSlider" type="HSlider" parent="OptionsMenu/VLayout/SFX/VLayout"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 theme_override_styles/slider = SubResource("StyleBoxFlat_0xbyl")
@@ -277,11 +570,11 @@ rounded = true
 tick_count = 5
 ticks_on_borders = true
 
-[node name="Control" type="Control" parent="Options/VLayout"]
+[node name="Button" type="Control" parent="OptionsMenu/VLayout"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Options/VLayout/Control"]
+[node name="MargContainer" type="MarginContainer" parent="OptionsMenu/VLayout/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -291,7 +584,7 @@ offset_bottom = -92.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Back" type="Button" parent="Options/VLayout/Control/MarginContainer"]
+[node name="Back" type="Button" parent="OptionsMenu/VLayout/Button/MargContainer"]
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0.506024, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
@@ -312,7 +605,12 @@ parameters/looping = true
 [connection signal="pressed" from="MainMenu/VBox/Multiplayer" to="." method="_mult_button"]
 [connection signal="button_down" from="MainMenu/VBox/Options" to="." method="_options_button"]
 [connection signal="button_down" from="MainMenu/VBox/Quit" to="." method="_quit_button"]
-[connection signal="value_changed" from="Options/VLayout/Master/VLayout/MasterSlider" to="Options" method="_master_volume_changed"]
-[connection signal="value_changed" from="Options/VLayout/Music/VLayout/MusicSlider" to="Options" method="_music_volume_changed"]
-[connection signal="value_changed" from="Options/VLayout/SFX/VLayout/SFXSlider" to="Options" method="_sfx_volume_changed"]
-[connection signal="button_down" from="Options/VLayout/Control/MarginContainer/Back" to="." method="_options_back_button"]
+[connection signal="pressed" from="MultMenu/HostJoinMenu/Host" to="MultMenu" method="host_button"]
+[connection signal="pressed" from="MultMenu/HostJoinMenu/Join" to="MultMenu" method="join_button"]
+[connection signal="pressed" from="MultMenu/HostJoinMenu/Back" to="." method="_back_button"]
+[connection signal="pressed" from="MultMenu/LobbyListMenu/VBoxContainer/Buttons/Back" to="MultMenu" method="back_button"]
+[connection signal="pressed" from="MultMenu/LobbyMenu/VBoxContainer/Buttons/Disconnect" to="MultMenu" method="back_button"]
+[connection signal="value_changed" from="OptionsMenu/VLayout/Master/VLayout/MasterSlider" to="OptionsMenu" method="_master_volume_changed"]
+[connection signal="value_changed" from="OptionsMenu/VLayout/Music/VLayout/MusicSlider" to="OptionsMenu" method="_music_volume_changed"]
+[connection signal="value_changed" from="OptionsMenu/VLayout/SFX/VLayout/SFXSlider" to="OptionsMenu" method="_sfx_volume_changed"]
+[connection signal="button_down" from="OptionsMenu/VLayout/Button/MargContainer/Back" to="." method="_back_button"]

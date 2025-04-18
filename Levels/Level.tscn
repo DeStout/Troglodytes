@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7f7rd7ltauxf"]
+[gd_scene load_steps=13 format=3 uid="uid://c7f7rd7ltauxf"]
 
 [ext_resource type="Script" uid="uid://dwbxnol5sxdj" path="res://Levels/Level.gd" id="1_bwnv0"]
+[ext_resource type="Environment" uid="uid://bsgowgj65v2n4" path="res://Utilities/GEnv.tres" id="2_345ms"]
 [ext_resource type="Script" uid="uid://c2kw3luipogux" path="res://Levels/Board.gd" id="2_ah0qf"]
 [ext_resource type="Script" uid="uid://dh6svpcicndr1" path="res://Levels/Camera.gd" id="2_ht8ui"]
 [ext_resource type="Script" uid="uid://cd8sd1n0dx8dh" path="res://Levels/Characters.gd" id="6_wuvkx"]
@@ -84,6 +85,7 @@ text = "Lives: 2"
 vertical_alignment = 2
 
 [node name="Env" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_345ms")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.83998, -0.469921, 0.271309, -1.01783e-08, 0.499999, 0.866026, -0.542617, -0.727445, 0.41999, 0, 0, 0)

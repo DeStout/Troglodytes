@@ -9,3 +9,4 @@ main_menu = NodePath("MainMenu")
 
 [node name="MainMenu" parent="." node_paths=PackedStringArray("game") instance=ExtResource("2_xkndl")]
 game = NodePath("..")
+metadata/_edit_vertical_guides_ = [660.0]

@@ -3,6 +3,7 @@ extends Control
 
 @export var game : Node
 @export var main_menu : Control
+@export var mult_menu : Control
 @export var options_menu : Control
 
 
@@ -12,10 +13,8 @@ func _play_button() -> void:
 
 
 func _mult_button() -> void:
-	var ip := IP.get_local_addresses()[1]
-	var encoded = Utilities.encode_ip(ip)
-	print(encoded)
-	print(Utilities.decode_ip(encoded)+"\n")
+	main_menu.visible = false
+	mult_menu.visible = true
 
 
 func _options_button() -> void:
@@ -23,8 +22,11 @@ func _options_button() -> void:
 	options_menu.visible = true
 
 
-func _options_back_button() -> void:
+func _back_button() -> void:
+	if Network.steam_init:
+		Network.shutdown_steam()
 	main_menu.visible = true
+	mult_menu.visible = false
 	options_menu.visible = false
 
 

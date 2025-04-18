@@ -78,6 +78,9 @@ func decode_ip(encoded : String) -> String:
 				splitters.append(index)
 	splitters.sort()
 	
+	if splitters.size() < 3:
+		return "Invalid"
+	
 	# Pull substrings using stored indices, convert from hex, recombine into valid ip
 	var ip := ""
 	var from = 0
