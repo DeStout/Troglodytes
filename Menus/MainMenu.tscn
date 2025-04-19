@@ -608,6 +608,8 @@ parameters/looping = true
 [connection signal="pressed" from="MultMenu/HostJoinMenu/Host" to="MultMenu" method="host_button"]
 [connection signal="pressed" from="MultMenu/HostJoinMenu/Join" to="MultMenu" method="join_button"]
 [connection signal="pressed" from="MultMenu/HostJoinMenu/Back" to="." method="_back_button"]
+[connection signal="lobby_selected" from="MultMenu/LobbyListMenu" to="MultMenu" method="lobby_selected"]
+[connection signal="pressed" from="MultMenu/LobbyListMenu/VBoxContainer/Buttons/Refresh" to="MultMenu/LobbyListMenu" method="refresh_lobby_list"]
 [connection signal="pressed" from="MultMenu/LobbyListMenu/VBoxContainer/Buttons/Back" to="MultMenu" method="back_button"]
 [connection signal="pressed" from="MultMenu/LobbyMenu/VBoxContainer/Buttons/Disconnect" to="MultMenu" method="back_button"]
 [connection signal="value_changed" from="OptionsMenu/VLayout/Master/VLayout/MasterSlider" to="OptionsMenu" method="_master_volume_changed"]

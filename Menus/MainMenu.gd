@@ -23,8 +23,6 @@ func _options_button() -> void:
 
 
 func _back_button() -> void:
-	if Network.steam_init:
-		Network.shutdown_steam()
 	main_menu.visible = true
 	mult_menu.visible = false
 	options_menu.visible = false
