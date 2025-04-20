@@ -319,12 +319,12 @@ theme_override_font_sizes/font_size = 36
 text = "Back"
 flat = true
 
-[node name="LobbyMenu" type="MarginContainer" parent="MultMenu" node_paths=PackedStringArray("lobby_name", "players")]
+[node name="LobbyMenu" type="MarginContainer" parent="MultMenu" node_paths=PackedStringArray("lobby_name", "player_names")]
 visible = false
 layout_mode = 2
 script = ExtResource("6_m16r1")
 lobby_name = NodePath("VBoxContainer/Control/LobbyLabel")
-players = [NodePath("VBoxContainer/ScrollContainer/VBoxContainer/Player1"), NodePath("VBoxContainer/ScrollContainer/VBoxContainer/Player2"), NodePath("VBoxContainer/ScrollContainer/VBoxContainer/Player3"), NodePath("VBoxContainer/ScrollContainer/VBoxContainer/Player4")]
+player_names = [NodePath("VBoxContainer/ScrollContainer/VBoxContainer/Player1"), NodePath("VBoxContainer/ScrollContainer/VBoxContainer/Player2"), NodePath("VBoxContainer/ScrollContainer/VBoxContainer/Player3"), NodePath("VBoxContainer/ScrollContainer/VBoxContainer/Player4")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MultMenu/LobbyMenu"]
 layout_mode = 2
@@ -377,7 +377,7 @@ theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_5ncg0")
 theme_override_font_sizes/font_size = 36
-text = "Player 1: Bob"
+text = "Player 1:"
 
 [node name="Player2" type="Label" parent="MultMenu/LobbyMenu/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2

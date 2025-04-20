@@ -142,9 +142,9 @@ func attacked() -> void:
 		state_machine.current_state.attacked()
 
 
-func show_stars(show : bool) -> void:
-	stars.set_process(show)
-	stars.visible = show
+func show_stars(is_show : bool) -> void:
+	stars.set_process(is_show)
+	stars.visible = is_show
 
 
 func exit_stage() -> void:
