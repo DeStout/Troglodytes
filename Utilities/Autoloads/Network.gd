@@ -12,6 +12,7 @@ const DEFAULT_PORT := 36963
 const MAX_PEERS := 4
 const AWAIT_PEERS_TIME := 10.0
 const CHECK_PEERS_TIME := 0.25
+const MAX_CON_ATTEMPTS := 5
 
 var steam_init : Dictionary
 var steam_id : int
@@ -20,6 +21,7 @@ var steam_username : String
 var peers : Dictionary[int, Dictionary] = {}
 var peer : SteamMultiplayerPeer
 var peer_id : int
+var connection_attemps := 0
 
 var lobby_id : int
 var lobby_name : String
@@ -40,11 +42,15 @@ func _ready() -> void:
 			get_tree().quit()
 	
 	Steam.lobby_joined.connect(_lobby_joined)
-	Steam.network_messages_session_failed.connect(_session_failed)
+	Steam.network_messages_session_failed.connect(_steam_session_failed)
 	Steam.persona_state_change.connect(_persona_state_change)
 	
 	# Can't tell if these are working
+	multiplayer.connected_to_server
 	multiplayer.connection_failed.connect(_connection_failed)
+	multiplayer.peer_connected
+	multiplayer.peer_disconnected
+	multiplayer.server_disconnected
 	
 	# This doesn't seem to work correctly
 	#Steam.lobby_created.connect(_lobby_created)
@@ -86,6 +92,7 @@ func create_lobby() -> void:
 
 
 func join_lobby(new_lobby_id : int) -> void:
+	lobby_id = new_lobby_id
 	peer = SteamMultiplayerPeer.new()
 	peer.connect_lobby(new_lobby_id)
 	multiplayer.multiplayer_peer = peer
@@ -95,23 +102,30 @@ func join_lobby(new_lobby_id : int) -> void:
 
 func _connect_signals() -> void:
 	peer.lobby_created.connect(_lobby_created)
+	# This doesn't seem to work with Steam
+	peer.lobby_joined.connect(_lobby_joined)
 	peer.peer_connected.connect(_peer_connected)
 	peer.peer_disconnected.connect(_peer_disconnected)
+	peer.network_session_failed.connect(_session_failed)
+	peer.debug_data.connect(Debug.network_debug_data)
 	
-	# This doesn't seem to work or something
-	#peer.lobby_joined.connect(_lobby_joined)
 
 
 func _disconnect_signals() -> void:
 	peer.lobby_created.disconnect(_lobby_created)
+	peer.lobby_joined.disconnect(_lobby_joined)
 	peer.peer_connected.disconnect(_peer_connected)
 	peer.peer_disconnected.disconnect(_peer_disconnected)
+	peer.network_session_failed.connect(_session_failed)
+	peer.debug_data.disconnect(Debug.network_debug_data)
 
 
-func _session_failed(reason: int, remote_steam_id: int, \
+# Called by Steam.network_messages_session_failed signal
+func _steam_session_failed(reason: int, remote_steam_id: int, \
 							connection_state: int, debug_message: String) -> void:
-	print("\n~~ Session Failed ~~\nReason: %s\nRemote Steam ID: %s\nConnection State: %s\nDebug Message: %s\n" \
-						% [reason, remote_steam_id, connection_state, debug_message])
+	print("\n~~ Steam Session Failed ~~\nReason: %s\nRemote Steam ID: %s\n",
+									"Connection State: %s\nDebug Message: %s\n" \
+					% [reason, remote_steam_id, connection_state, debug_message])
 
 
 func _lobby_created(status : int, new_lobby_id : int) -> void:
@@ -141,10 +155,24 @@ func _lobby_joined(lobby: int, permissions: int, locked: bool, response: int) ->
 		connection_failed.emit()
 
 
+# Called by MultiplayerAPI.connection_failed
 func _connection_failed() -> void:
-	print("Network - Server Connection Failed")
+	print("Network (MultiplayerAPI) - Server Connection Failed % " % peer_id)
 	_disconnect_signals()
 	connection_failed.emit()
+
+
+# Reason - https://partner.steamgames.com/doc/api/steamnetworkingtypes#ESteamNetConnectionEnd
+# State -  https://partner.steamgames.com/doc/api/steamnetworkingtypes#ESteamNetworkingConnectionState
+# Called by SteamPeer.network_session_failed signal
+func _session_failed(steam_id: int, reason: int, connection_state: int) -> void:
+	print("Network (SteamPeer) - Server Connection Failed % " % peer_id)
+	if connection_attemps < MAX_CON_ATTEMPTS:
+		peer.connect_lobby(lobby_id)
+		connection_attemps += 1
+		return
+	_disconnect_signals()
+	server_disconnected.emit()
 
 
 func _server_disconnected() -> void:
