@@ -10,14 +10,16 @@ signal peers_updated
 
 const DEFAULT_PORT := 36963
 const MAX_PEERS := 4
-
-var peers : Dictionary[int, Dictionary] = {}
-var peer : SteamMultiplayerPeer
-var peer_id : int
+const AWAIT_PEERS_TIME := 10.0
+const CHECK_PEERS_TIME := 0.25
 
 var steam_init : Dictionary
 var steam_id : int
 var steam_username : String
+
+var peers : Dictionary[int, Dictionary] = {}
+var peer : SteamMultiplayerPeer
+var peer_id : int
 
 var lobby_id : int
 var lobby_name : String
@@ -25,6 +27,7 @@ var lobby_name : String
 
 
 func _ready() -> void:
+	_reorder_peers()
 	var init_attempts := 5
 	for i in range(init_attempts):
 		var init_success := initialize_steam()
@@ -162,29 +165,10 @@ func _peer_connected(new_peer_id : int) -> void:
 			var new_steam_name = \
 						Steam.getFriendPersonaName(peers[new_peer_id]["steam_id"])
 			peers[new_peer_id]["steam_name"] = new_steam_name
+		_reorder_peers()
 		peers_updated.emit()
 	else:
-		var temp_peers = peers
-		var break_timer = get_tree().create_timer(10.0)
-		while temp_peers == peers:
-			request_peers.rpc_id(1)
-			await get_tree().create_timer(0.25).timeout
-			if !break_timer.time_left:
-				push_error("Peer set time exceded - Peers out of date")
-				break
-		print("Peer set loop broken")
-
-
-@rpc("any_peer", "call_remote", "reliable")
-func request_peers() -> void:
-	if multiplayer.is_server():
-		_set_peers.rpc_id(multiplayer.get_remote_sender_id(), peers)
-
-
-@rpc("call_remote", "reliable")
-func _set_peers(new_peers : Dictionary) -> void:
-	peers = new_peers
-	peers_updated.emit()
+		_await_new_peers()
 
 
 func _peer_disconnected(dead_peer_id : int) -> void:
@@ -194,17 +178,45 @@ func _peer_disconnected(dead_peer_id : int) -> void:
 		
 	if multiplayer.is_server():
 		peers.erase(dead_peer_id)
+		_reorder_peers()
 		peers_updated.emit()
 	else:
+		_await_new_peers()
+
+
+func _reorder_peers() -> void:
+	#var peers := {1: {"steam_id": 1, "steam_name": "blah1", "player_num": 1},
+					#3452345345: {"steam_id": 567456756475674567, "steam_name": "blah2", "player_num": 4}}
+	var temp_peers : Dictionary[int, int] = {}
+	for i in range(1, peers.size()):
+		temp_peers[peers[peers.keys()[i]]["player_num"]] = peers.keys()[i]
+	temp_peers.sort()
+	for i in range(temp_peers.keys().size()):
+		peers[temp_peers[temp_peers.keys()[i]]]["player_num"] = i+2
+
+
+func _await_new_peers() -> void:
 		var temp_peers = peers
-		var break_timer = get_tree().create_timer(10.0)
+		var break_timer = get_tree().create_timer(AWAIT_PEERS_TIME)
 		while temp_peers == peers:
 			request_peers.rpc_id(1)
-			await get_tree().create_timer(0.25).timeout
+			await get_tree().create_timer(CHECK_PEERS_TIME).timeout
 			if !break_timer.time_left:
 				push_error("Set peers time exceded - Peers out of date")
 				break
 		print("Set peers loop broken")
+
+
+@rpc("any_peer", "call_remote")
+func request_peers() -> void:
+	if multiplayer.is_server():
+		_set_peers.rpc_id(multiplayer.get_remote_sender_id(), peers)
+
+
+@rpc("call_remote", "reliable")
+func _set_peers(new_peers : Dictionary) -> void:
+	peers = new_peers
+	peers_updated.emit()
 
 
 # flags PersonaChange:
