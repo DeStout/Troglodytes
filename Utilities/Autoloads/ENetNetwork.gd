@@ -1,6 +1,7 @@
 extends Node
 
 
+signal upnp_finished
 signal server_joined
 signal lobby_code_set
 signal connection_failed
@@ -8,7 +9,7 @@ signal server_disconnected
 signal peers_updated
 signal peers_ready
 
-const TEST_IP = "127.0.0.1"
+const TEST_IP := "127.0.0.1"
 const DEFAULT_PORT := 36963
 const MAX_PEERS := 3
 
@@ -17,8 +18,14 @@ var peer : MultiplayerPeer
 var peer_id : int
 var peers : Dictionary[int, Dictionary] = {}
 
+var upnp_thread : Thread
+
 
 func _ready() -> void:
+	upnp_finished.connect(_close_upnp_thread)
+	upnp_thread = Thread.new()
+	upnp_thread.start(_set_up_upnp)
+
 	# These two signal to clients only
 	#multiplayer.peer_connected.connect(_peer_connected)
 	#multiplayer.peer_disconnected.connect(_peer_disconnected)
@@ -26,6 +33,19 @@ func _ready() -> void:
 	multiplayer.connected_to_server.connect(_server_joined)
 	multiplayer.connection_failed.connect(_connect_failed)
 	multiplayer.server_disconnected.connect(_server_disconnected)
+
+
+func _set_up_upnp() -> void:
+	var upnp := UPNP.new()
+	var upnp_result : UPNP.UPNPResult = upnp.discover()
+	print("ENetNetwork - UPNP Result: %s" % upnp_result)
+	if !upnp_result:
+		upnp.add_port_mapping(DEFAULT_PORT)
+	upnp_finished.emit.call_deferred()
+
+
+func _close_upnp_thread() -> void:
+	upnp_thread.wait_to_finish()
 
 
 func create_server() -> void:
@@ -37,8 +57,6 @@ func create_server() -> void:
 		return
 	print("ENetNetwork - Server Created: %s" % response)
 	
-	lobby_code = Utilities.encode_ip(IP.get_local_addresses()[1])
-	lobby_code_set.emit(lobby_code)
 	multiplayer.multiplayer_peer = peer
 	# These two signal to the server only
 	peer.peer_connected.connect(_peer_connected)
@@ -78,6 +96,8 @@ func join_server(join_address : String) -> void:
 
 
 func _server_joined() -> void:
+	var enet_peer = peer.get_peer(1)
+	print("Remote Address: %s" % enet_peer.get_remote_address())
 	server_joined.emit(true, false)
 
 
