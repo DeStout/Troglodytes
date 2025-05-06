@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c320mood1d0f3"]
+[gd_scene load_steps=4 format=3 uid="uid://c320mood1d0f3"]
 
 [ext_resource type="Script" uid="uid://7xrixgba1i1x" path="res://Game.gd" id="1_xkndl"]
 [ext_resource type="PackedScene" uid="uid://ba8xg6j0dfk0i" path="res://Menus/MainMenu.tscn" id="2_xkndl"]
+[ext_resource type="Script" uid="uid://ndbrd6wkb2c" path="res://Utilities/SetWindowPos.gd" id="3_u44n3"]
 
 [node name="Game" type="Node" node_paths=PackedStringArray("main_menu")]
 script = ExtResource("1_xkndl")
@@ -10,3 +11,6 @@ main_menu = NodePath("MainMenu")
 [node name="MainMenu" parent="." node_paths=PackedStringArray("game") instance=ExtResource("2_xkndl")]
 game = NodePath("..")
 metadata/_edit_vertical_guides_ = [660.0]
+
+[node name="SetWindowPos" type="Node" parent="."]
+script = ExtResource("3_u44n3")

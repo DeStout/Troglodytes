@@ -23,7 +23,7 @@ config/icon="res://icon.svg"
 
 Debug="*res://Utilities/Autoloads/Debug.tscn"
 Utilities="*res://Utilities/Utilities.gd"
-Network="*res://Utilities/Autoloads/Network.gd"
+ENetNetwork="*res://Utilities/Autoloads/ENetNetwork.gd"
 Globals="*res://Utilities/Autoloads/Globals.gd"
 Pause="*res://Utilities/Autoloads/Pause.tscn"
 

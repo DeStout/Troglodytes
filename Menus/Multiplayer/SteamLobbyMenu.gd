@@ -6,14 +6,14 @@ extends MarginContainer
 
 
 func _ready() -> void:
-	Network.peers_updated.connect(update_players)
-	Network.peer_disconnected.connect(remove_dead_peer)
+	SteamNetwork.peers_updated.connect(update_players)
+	SteamNetwork.peer_disconnected.connect(remove_dead_peer)
 
 
 func set_up() -> void:
-	lobby_name.text = Network.lobby_name
+	lobby_name.text = SteamNetwork.lobby_name
 	if multiplayer.is_server():
-		player_names[0].text = "Player 1: " + Network.steam_username
+		player_names[0].text = "Player 1: " + SteamNetwork.steam_username
 
 
 func remove_dead_peer(dead_peer_player_num : int) -> void:
@@ -22,7 +22,7 @@ func remove_dead_peer(dead_peer_player_num : int) -> void:
 
 
 func update_players() -> void:
-	var peers = Network.peers
+	var peers = SteamNetwork.peers
 	for i in range(1, 5):
 		player_names[i-1].text = "Player %s:" % i
 	for peer in peers:

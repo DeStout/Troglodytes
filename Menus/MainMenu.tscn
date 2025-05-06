@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://dqolwe002khq0" path="res://Menus/OptionsMenu.gd" id="2_r8dbq"]
 [ext_resource type="FontFile" uid="uid://dhw1gc0ml3wen" path="res://Menus/Fonts/Dinofans.ttf" id="3_5ncg0"]
 [ext_resource type="PackedScene" uid="uid://bd5xr5rspbutp" path="res://Menus/MainBG.tscn" id="3_7ihqj"]
-[ext_resource type="Script" uid="uid://dathsvtvdv2dk" path="res://Menus/Multiplayer/MultiplayerMenu.gd" id="4_0xbyl"]
-[ext_resource type="Script" uid="uid://naykg338a57q" path="res://Menus/Multiplayer/LobbyListMenu.gd" id="5_1txdl"]
+[ext_resource type="Script" uid="uid://c4a5ux0g66isr" path="res://Menus/Multiplayer/ENetMultiplayerMenu.gd" id="4_1txdl"]
 [ext_resource type="AudioStream" uid="uid://b2adamdl3fce5" path="res://Menus/BeachWaves.ogg" id="5_5ncg0"]
-[ext_resource type="Script" uid="uid://cpqtmj6wsgai5" path="res://Menus/LobbyMenu.gd" id="6_m16r1"]
+[ext_resource type="Script" uid="uid://7rdhyuclrgxp" path="res://Menus/Multiplayer/ENetLobbyMenu.gd" id="6_ju15h"]
+[ext_resource type="Theme" uid="uid://csp5gvg4q0sb4" path="res://Utilities/MainTheme.tres" id="6_m16r1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0bjyp"]
 content_margin_left = 15.0
@@ -73,7 +73,6 @@ options_menu = NodePath("OptionsMenu")
 metadata/_edit_vertical_guides_ = [660.0, 54.0]
 
 [node name="BG" type="SubViewportContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,7 +83,7 @@ grow_vertical = 2
 [node name="SubViewport" type="SubViewport" parent="BG"]
 handle_input_locally = false
 size = Vector2i(1152, 648)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="MenuWorld" parent="BG/SubViewport" instance=ExtResource("3_7ihqj")]
 
@@ -109,6 +108,7 @@ theme_override_font_sizes/font_size = 100
 text = "Troglodytes"
 
 [node name="MainMenu" type="CenterContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.573
@@ -174,8 +174,7 @@ text = "Quit"
 flat = true
 alignment = 0
 
-[node name="MultMenu" type="CenterContainer" parent="." node_paths=PackedStringArray("host_join_menu", "lobby_list_menu", "lobby_menu", "lobby_join_button")]
-visible = false
+[node name="MultMenu" type="CenterContainer" parent="." node_paths=PackedStringArray("host_join_menu", "join_address", "lobby_menu", "lobby_start_button", "lobby_ready_button")]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.573
@@ -184,11 +183,12 @@ offset_top = 144.0
 offset_right = 2.90399
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_0xbyl")
+script = ExtResource("4_1txdl")
 host_join_menu = NodePath("HostJoinMenu")
-lobby_list_menu = NodePath("LobbyListMenu")
-lobby_menu = NodePath("LobbyMenu")
-lobby_join_button = NodePath("LobbyMenu/VBoxContainer/Buttons/Start")
+join_address = NodePath("HostJoinMenu/Join/JoinAddress")
+lobby_menu = NodePath("ENetLobbyMenu")
+lobby_start_button = NodePath("ENetLobbyMenu/VBoxContainer/Buttons/Start")
+lobby_ready_button = NodePath("ENetLobbyMenu/VBoxContainer/Buttons/Ready")
 
 [node name="HostJoinMenu" type="VBoxContainer" parent="MultMenu"]
 layout_mode = 2
@@ -219,6 +219,24 @@ text = "Join"
 flat = true
 alignment = 0
 
+[node name="JoinAddress" type="TextEdit" parent="MultMenu/HostJoinMenu/Join"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.051
+anchor_right = 1.143
+anchor_bottom = 0.949
+offset_top = 11.022
+offset_right = -4.216
+offset_bottom = -15.022
+theme = ExtResource("6_m16r1")
+placeholder_text = "Join Address"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+virtual_keyboard_enabled = false
+
 [node name="_" type="Button" parent="MultMenu/HostJoinMenu"]
 custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
@@ -247,13 +265,10 @@ text = "Back"
 flat = true
 alignment = 0
 
-[node name="LobbyListMenu" type="MarginContainer" parent="MultMenu" node_paths=PackedStringArray("lobby_list", "refresh_button")]
+[node name="LobbyListMenu" type="MarginContainer" parent="MultMenu"]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_right = 0
-script = ExtResource("5_1txdl")
-lobby_list = NodePath("VBoxContainer/ScrollContainer/LobbyList")
-refresh_button = NodePath("VBoxContainer/Buttons/Refresh")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MultMenu/LobbyListMenu"]
 layout_mode = 2
@@ -319,20 +334,152 @@ theme_override_font_sizes/font_size = 36
 text = "Back"
 flat = true
 
-[node name="LobbyMenu" type="MarginContainer" parent="MultMenu" node_paths=PackedStringArray("lobby_name", "player_names")]
+[node name="ENetLobbyMenu" type="MarginContainer" parent="MultMenu" node_paths=PackedStringArray("lobby_code", "player_labels", "start_button", "ready_button")]
 visible = false
 layout_mode = 2
-script = ExtResource("6_m16r1")
-lobby_name = NodePath("VBoxContainer/Control/LobbyLabel")
-player_names = [NodePath("VBoxContainer/ScrollContainer/VBoxContainer/Player1"), NodePath("VBoxContainer/ScrollContainer/VBoxContainer/Player2"), NodePath("VBoxContainer/ScrollContainer/VBoxContainer/Player3"), NodePath("VBoxContainer/ScrollContainer/VBoxContainer/Player4")]
+script = ExtResource("6_ju15h")
+lobby_code = NodePath("VBoxContainer/Control/LobbyCode")
+player_labels = [NodePath("VBoxContainer/PlayerContainer/VBoxContainer/Player1"), NodePath("VBoxContainer/PlayerContainer/VBoxContainer/Player2"), NodePath("VBoxContainer/PlayerContainer/VBoxContainer/Player3"), NodePath("VBoxContainer/PlayerContainer/VBoxContainer/Player4")]
+start_button = NodePath("VBoxContainer/Buttons/Start")
+ready_button = NodePath("VBoxContainer/Buttons/Ready")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MultMenu/LobbyMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MultMenu/ENetLobbyMenu"]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="MultMenu/LobbyMenu/VBoxContainer"]
+[node name="Control" type="Control" parent="MultMenu/ENetLobbyMenu/VBoxContainer"]
 layout_mode = 2
 
-[node name="LobbyLabel" type="Label" parent="MultMenu/LobbyMenu/VBoxContainer/Control"]
+[node name="LobbyCode" type="Label" parent="MultMenu/ENetLobbyMenu/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.074
+anchor_right = 1.0
+offset_left = 1.9
+offset_top = -30.0
+offset_right = 50.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_colors/font_outline_color = Color(0, 0.349868, 0.691406, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 50
+text = "Lobby Code:"
+
+[node name="PlayerContainer" type="Control" parent="MultMenu/ENetLobbyMenu/VBoxContainer"]
+custom_minimum_size = Vector2(650, 350)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MultMenu/ENetLobbyMenu/VBoxContainer/PlayerContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.009
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 53.85
+offset_top = 26.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Player1" type="Label" parent="MultMenu/ENetLobbyMenu/VBoxContainer/PlayerContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 36
+text = "Player 1 - Not Ready"
+
+[node name="Player2" type="Label" parent="MultMenu/ENetLobbyMenu/VBoxContainer/PlayerContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.787182, 0.8125, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 36
+text = "Player 2 - Not Ready"
+
+[node name="Player3" type="Label" parent="MultMenu/ENetLobbyMenu/VBoxContainer/PlayerContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.925781, 0.254206, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 36
+text = "Player 3 - Not Ready"
+
+[node name="Player4" type="Label" parent="MultMenu/ENetLobbyMenu/VBoxContainer/PlayerContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0.6954, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 36
+text = "Player 4 - Not Ready"
+
+[node name="Buttons" type="Control" parent="MultMenu/ENetLobbyMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="Start" type="Button" parent="MultMenu/ENetLobbyMenu/VBoxContainer/Buttons"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 245.0
+offset_right = -185.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m16r1")
+disabled = true
+text = "Start"
+flat = true
+
+[node name="Ready" type="Button" parent="MultMenu/ENetLobbyMenu/VBoxContainer/Buttons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 245.0
+offset_right = -185.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m16r1")
+toggle_mode = true
+text = "Ready"
+flat = true
+
+[node name="Disconnect" type="Button" parent="MultMenu/ENetLobbyMenu/VBoxContainer/Buttons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 431.735
+offset_right = -3.26501
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m16r1")
+text = "Disconnect"
+flat = true
+
+[node name="SteamLobbyMenu" type="MarginContainer" parent="MultMenu"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MultMenu/SteamLobbyMenu"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MultMenu/SteamLobbyMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="LobbyLabel" type="Label" parent="MultMenu/SteamLobbyMenu/VBoxContainer/Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.074
@@ -353,11 +500,11 @@ theme_override_fonts/font = ExtResource("3_5ncg0")
 theme_override_font_sizes/font_size = 50
 text = "Bob Loblaw's Lobby"
 
-[node name="ScrollContainer" type="Control" parent="MultMenu/LobbyMenu/VBoxContainer"]
+[node name="ScrollContainer" type="Control" parent="MultMenu/SteamLobbyMenu/VBoxContainer"]
 custom_minimum_size = Vector2(650, 350)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MultMenu/LobbyMenu/VBoxContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MultMenu/SteamLobbyMenu/VBoxContainer/ScrollContainer"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.009
@@ -370,7 +517,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
 
-[node name="Player1" type="Label" parent="MultMenu/LobbyMenu/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Player1" type="Label" parent="MultMenu/SteamLobbyMenu/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
 theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
@@ -379,7 +526,7 @@ theme_override_fonts/font = ExtResource("3_5ncg0")
 theme_override_font_sizes/font_size = 36
 text = "Player 1:"
 
-[node name="Player2" type="Label" parent="MultMenu/LobbyMenu/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Player2" type="Label" parent="MultMenu/SteamLobbyMenu/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.787182, 0.8125, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
@@ -388,7 +535,7 @@ theme_override_fonts/font = ExtResource("3_5ncg0")
 theme_override_font_sizes/font_size = 36
 text = "Player 2:"
 
-[node name="Player3" type="Label" parent="MultMenu/LobbyMenu/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Player3" type="Label" parent="MultMenu/SteamLobbyMenu/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.925781, 0.254206, 1)
 theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
@@ -397,7 +544,7 @@ theme_override_fonts/font = ExtResource("3_5ncg0")
 theme_override_font_sizes/font_size = 36
 text = "Player 3:"
 
-[node name="Player4" type="Label" parent="MultMenu/LobbyMenu/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Player4" type="Label" parent="MultMenu/SteamLobbyMenu/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0.6954, 1)
 theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
@@ -406,11 +553,11 @@ theme_override_fonts/font = ExtResource("3_5ncg0")
 theme_override_font_sizes/font_size = 36
 text = "Player 4:"
 
-[node name="Buttons" type="Control" parent="MultMenu/LobbyMenu/VBoxContainer"]
+[node name="Buttons" type="Control" parent="MultMenu/SteamLobbyMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 
-[node name="Start" type="Button" parent="MultMenu/LobbyMenu/VBoxContainer/Buttons"]
+[node name="Start" type="Button" parent="MultMenu/SteamLobbyMenu/VBoxContainer/Buttons"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -428,7 +575,7 @@ theme_override_font_sizes/font_size = 36
 text = "Start"
 flat = true
 
-[node name="Disconnect" type="Button" parent="MultMenu/LobbyMenu/VBoxContainer/Buttons"]
+[node name="Disconnect" type="Button" parent="MultMenu/SteamLobbyMenu/VBoxContainer/Buttons"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -608,10 +755,11 @@ parameters/looping = true
 [connection signal="pressed" from="MultMenu/HostJoinMenu/Host" to="MultMenu" method="host_button"]
 [connection signal="pressed" from="MultMenu/HostJoinMenu/Join" to="MultMenu" method="join_button"]
 [connection signal="pressed" from="MultMenu/HostJoinMenu/Back" to="." method="_back_button"]
-[connection signal="lobby_selected" from="MultMenu/LobbyListMenu" to="MultMenu" method="lobby_selected"]
 [connection signal="pressed" from="MultMenu/LobbyListMenu/VBoxContainer/Buttons/Refresh" to="MultMenu/LobbyListMenu" method="refresh_lobby_list"]
 [connection signal="pressed" from="MultMenu/LobbyListMenu/VBoxContainer/Buttons/Back" to="MultMenu" method="back_button"]
-[connection signal="pressed" from="MultMenu/LobbyMenu/VBoxContainer/Buttons/Disconnect" to="MultMenu" method="back_button"]
+[connection signal="toggled" from="MultMenu/ENetLobbyMenu/VBoxContainer/Buttons/Ready" to="MultMenu/ENetLobbyMenu" method="_ready_toggled"]
+[connection signal="pressed" from="MultMenu/ENetLobbyMenu/VBoxContainer/Buttons/Disconnect" to="MultMenu" method="back_button"]
+[connection signal="pressed" from="MultMenu/SteamLobbyMenu/VBoxContainer/Buttons/Disconnect" to="MultMenu" method="back_button"]
 [connection signal="value_changed" from="OptionsMenu/VLayout/Master/VLayout/MasterSlider" to="OptionsMenu" method="_master_volume_changed"]
 [connection signal="value_changed" from="OptionsMenu/VLayout/Music/VLayout/MusicSlider" to="OptionsMenu" method="_music_volume_changed"]
 [connection signal="value_changed" from="OptionsMenu/VLayout/SFX/VLayout/SFXSlider" to="OptionsMenu" method="_sfx_volume_changed"]

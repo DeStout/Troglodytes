@@ -29,6 +29,7 @@ var lobby_name : String
 
 
 func _ready() -> void:
+	return
 	_reorder_peers()
 	var init_attempts := 5
 	for i in range(init_attempts):
@@ -56,7 +57,7 @@ func _ready() -> void:
 	#Steam.lobby_created.connect(_lobby_created)
 
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	Steam.run_callbacks()
 
 
