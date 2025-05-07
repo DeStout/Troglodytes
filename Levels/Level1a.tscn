@@ -1269,7 +1269,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
 [node name="Characters" parent="." index="5" node_paths=PackedStringArray("ground")]
 ground = NodePath("../Board/Ground")
-num_enemies = 0
 
 [node name="PickUps" parent="." index="6"]
 level_pick_ups = Array[int]([0, 1])

@@ -25,7 +25,7 @@ var spawn_hole : CSGCylinder3D
 
 
 func spawn_finished() -> void:
-	spawn_hole.close()
+	#spawn_hole.close()
 	characters.enemy_finished_spawning(Utilities.get_closest_egg_square(global_position))
 
 

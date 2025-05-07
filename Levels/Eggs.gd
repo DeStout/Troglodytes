@@ -10,5 +10,5 @@ func _ready() -> void:
 
 func _spawn_egg(new_pos : Vector3) -> Node3D:
 	var egg = egg_.instantiate()
-	egg.global_position = new_pos
+	egg.set_deferred("global_position", new_pos)
 	return egg

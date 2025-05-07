@@ -3,7 +3,7 @@ extends MultiplayerSpawner
 
 const RESPAWN_DELAY := Vector2(2.0, 6.0)
 
-#var player_ := load("res://Player/Player.tscn")
+var player_ := load("res://Player/Player.tscn")
 var enemy_ := load("res://Enemies/Enemy.tscn")
 var spawn_hole_ := load("res://Levels/Props/SpawnHole.tscn")
 
@@ -25,11 +25,29 @@ func _process(delta: float) -> void:
 			_unfreeze_enemies()
 
 
-func spawn_players() -> void:
-	pass
+func _spawn_player() -> Player:
+	return Player.new()
+
+
+func _spawn_enemy(spawn_hole) -> Enemy:
+	var enemy = enemy_.instantiate()
+	Utilities.anims_to_constant(enemy)
+	enemy.position = Vector3(spawn_hole.position.x, 0, spawn_hole.position.z)
+	enemy.spawn_hole = spawn_hole
+	enemy.spawn_footprint.connect(level.spawn_footprint)
+	enemies.append(enemy)
+	enemy.characters = self
+	enemy.rotation.y = PI
+	return enemy
+
+
+func spawn_players() -> Node:
+	return Node.new()
 
 
 func spawn_enemies(used_squares : Array[Node3D]) -> Array:
+	spawn_function = _spawn_enemy
+	
 	var egg_squares := get_tree().get_nodes_in_group("EggSquares")
 	for i in range(num_enemies):
 		var egg_square : Node3D = egg_squares.pick_random()
@@ -37,17 +55,11 @@ func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 			egg_squares.erase(egg_square)
 			egg_square = egg_squares.pick_random()
 			
-		var enemy = enemy_.instantiate()
-		#var enemy = get_spawnable_scene(1)
 		var spawn_hole = spawn_hole_.instantiate()
-		var spawn_pos = Vector3(egg_square.global_position.x, 0, \
+		spawn_hole.position = Vector3(egg_square.global_position.x, -0.8, \
 														egg_square.global_position.z)
-		spawn_hole.position = Vector3(spawn_pos.x, -0.8, spawn_pos.z)
+		spawn_hole.open_finished.connect(spawn.bind(spawn_hole))
 		ground.add_child(spawn_hole, true)
-		enemy.position = spawn_pos
-		enemy.spawn_hole = spawn_hole
-		spawn_hole.open_finished.connect(_add_enemy.bind(enemy))
-		enemy.spawn_footprint.connect(level.spawn_footprint)
 		
 		egg_squares.erase(egg_square)
 		used_squares.append(egg_square)
@@ -57,8 +69,7 @@ func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 
 
 func _respawn_enemy() -> void:
-		#var enemy = enemy_.instantiate()
-		var enemy = get_spawnable_scene(1)
+		var enemy = enemy_.instantiate()
 		var spawn_hole = spawn_hole_.instantiate()
 		var free_square : Node3D = level.get_rand_free_square()
 		var spawn_pos := Vector3(free_square.global_position.x, 0, \
@@ -71,16 +82,16 @@ func _respawn_enemy() -> void:
 		ground.add_child(spawn_hole, true)
 		enemy.position = spawn_pos
 		enemy.spawn_hole = spawn_hole
-		spawn_hole.open_finished.connect(_add_enemy.bind(enemy))
+		#spawn_hole.open_finished.connect(_add_enemy.bind(enemy))
 		enemy.spawn_footprint.connect(level.spawn_footprint)
 
 
-func _add_enemy(new_enemy : Enemy) -> void:
-	Utilities.anims_to_constant(new_enemy)
-	add_child(new_enemy, true)
-	enemies.append(new_enemy)
-	new_enemy.characters = self
-	new_enemy.rotation.y = PI
+#func _add_enemy(new_enemy : Enemy) -> void:
+	#Utilities.anims_to_constant(new_enemy)
+	#add_child(new_enemy, true)
+	#enemies.append(new_enemy)
+	#new_enemy.characters = self
+	#new_enemy.rotation.y = PI
 
 
 func enemy_finished_spawning(spawn_square : Node3D) -> void:
