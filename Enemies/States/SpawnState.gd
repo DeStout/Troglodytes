@@ -5,6 +5,8 @@ class_name SpawnState extends State
 
 
 func enter() -> void:
+	if !multiplayer.is_server():
+		return
 	#print("Enter SpawnState")
 	anim_player.animation_finished.connect(_spawn_finished)
 	anim_player.play("Spawn")

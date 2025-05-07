@@ -67,6 +67,10 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 size = 13.5
 margin_perc = Vector2(1, 1)
 
+[node name="Board" parent="." index="4"]
+_spawnable_scenes = PackedStringArray("uid://dbpkd8ys2yxyr")
+spawn_path = NodePath("Ground")
+
 [node name="Ground" type="CSGMesh3D" parent="Board" index="0"]
 mesh = SubResource("ArrayMesh_p5226")
 
@@ -1266,9 +1270,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 
 [node name="Water28" parent="Board/Water/WaterRow12" index="27" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
-
-[node name="Characters" parent="." index="5" node_paths=PackedStringArray("ground")]
-ground = NodePath("../Board/Ground")
 
 [node name="PickUps" parent="." index="6"]
 level_pick_ups = Array[int]([0, 1])

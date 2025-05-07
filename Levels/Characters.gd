@@ -8,7 +8,7 @@ var enemy_ := load("res://Enemies/Enemy.tscn")
 var spawn_hole_ := load("res://Levels/Props/SpawnHole.tscn")
 
 @export var level : Node3D
-@export var ground : CSGMesh3D
+@export var board : MultiplayerSpawner
 @export var players : Array[Player]
 @export var num_enemies := 5
 var enemies : Array[Enemy]
@@ -30,10 +30,13 @@ func _spawn_player() -> Player:
 
 
 func _spawn_enemy(spawn_hole) -> Enemy:
-	var enemy = enemy_.instantiate()
+	var enemy : Enemy = enemy_.instantiate()
 	Utilities.anims_to_constant(enemy)
-	enemy.position = Vector3(spawn_hole.position.x, 0, spawn_hole.position.z)
-	enemy.spawn_hole = spawn_hole
+	if multiplayer.is_server():
+		var new_pos := Vector3(spawn_hole.global_position.x, 0, spawn_hole.global_position.z)
+		enemy.spawn_hole = spawn_hole
+		#enemy.set_deferred("global_position", new_pos)
+		enemy.position = new_pos
 	enemy.spawn_footprint.connect(level.spawn_footprint)
 	enemies.append(enemy)
 	enemy.characters = self
@@ -54,12 +57,8 @@ func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 		while(_any_player_within_dist(egg_square.global_position, 3.0)):
 			egg_squares.erase(egg_square)
 			egg_square = egg_squares.pick_random()
-			
-		var spawn_hole = spawn_hole_.instantiate()
-		spawn_hole.position = Vector3(egg_square.global_position.x, -0.8, \
-														egg_square.global_position.z)
-		spawn_hole.open_finished.connect(spawn.bind(spawn_hole))
-		ground.add_child(spawn_hole, true)
+		
+		board.spawn(egg_square.global_position)
 		
 		egg_squares.erase(egg_square)
 		used_squares.append(egg_square)
@@ -79,7 +78,7 @@ func _respawn_enemy() -> void:
 			spawn_pos = Vector3(free_square.global_position.x, 0, \
 														free_square.global_position.z)
 		spawn_hole.position = Vector3(spawn_pos.x, -0.8, spawn_pos.z)
-		ground.add_child(spawn_hole, true)
+		#ground.add_child(spawn_hole, true)
 		enemy.position = spawn_pos
 		enemy.spawn_hole = spawn_hole
 		#spawn_hole.open_finished.connect(_add_enemy.bind(enemy))
