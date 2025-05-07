@@ -750,7 +750,7 @@ volume_db = -15.0
 bus = &"Music"
 parameters/looping = true
 
-[connection signal="button_down" from="MainMenu/VBox/Single Player" to="." method="_play_button"]
+[connection signal="button_down" from="MainMenu/VBox/Single Player" to="." method="_single_player_button"]
 [connection signal="pressed" from="MainMenu/VBox/Multiplayer" to="." method="_mult_button"]
 [connection signal="button_down" from="MainMenu/VBox/Options" to="." method="_options_button"]
 [connection signal="button_down" from="MainMenu/VBox/Quit" to="." method="_quit_button"]
@@ -759,6 +759,7 @@ parameters/looping = true
 [connection signal="pressed" from="MultMenu/HostJoinMenu/Back" to="." method="_back_button"]
 [connection signal="pressed" from="MultMenu/LobbyListMenu/VBoxContainer/Buttons/Refresh" to="MultMenu/LobbyListMenu" method="refresh_lobby_list"]
 [connection signal="pressed" from="MultMenu/LobbyListMenu/VBoxContainer/Buttons/Back" to="MultMenu" method="back_button"]
+[connection signal="pressed" from="MultMenu/ENetLobbyMenu/VBoxContainer/Buttons/Start" to="MultMenu/ENetLobbyMenu" method="_start_button_pressed"]
 [connection signal="toggled" from="MultMenu/ENetLobbyMenu/VBoxContainer/Buttons/Ready" to="MultMenu/ENetLobbyMenu" method="_ready_toggled"]
 [connection signal="pressed" from="MultMenu/ENetLobbyMenu/VBoxContainer/Buttons/Disconnect" to="MultMenu" method="back_button"]
 [connection signal="pressed" from="MultMenu/SteamLobbyMenu/VBoxContainer/Buttons/Disconnect" to="MultMenu" method="back_button"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7f7rd7ltauxf"]
+[gd_scene load_steps=14 format=3 uid="uid://c7f7rd7ltauxf"]
 
 [ext_resource type="Script" uid="uid://dwbxnol5sxdj" path="res://Levels/Level.gd" id="1_bwnv0"]
 [ext_resource type="Environment" uid="uid://bsgowgj65v2n4" path="res://Utilities/GEnv.tres" id="2_345ms"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dh6svpcicndr1" path="res://Levels/Camera.gd" id="2_ht8ui"]
 [ext_resource type="Script" uid="uid://cd8sd1n0dx8dh" path="res://Levels/Characters.gd" id="6_wuvkx"]
 [ext_resource type="Script" uid="uid://dianiwfctiy1j" path="res://Levels/PickUps.gd" id="7_jjge0"]
+[ext_resource type="Script" uid="uid://gbhkfnslacek" path="res://Levels/Eggs.gd" id="7_rjnlo"]
 [ext_resource type="Script" uid="uid://bs3n8adc3cmnt" path="res://Levels/FX.gd" id="8_hbkgd"]
 [ext_resource type="AudioStream" uid="uid://2e7xr16nfjex" path="res://Music/ASassySituation.mp3" id="9_fbd0n"]
 [ext_resource type="AudioStream" uid="uid://cuij1no40h8sf" path="res://Music/CartoonMischief.mp3" id="10_myk7f"]
@@ -30,6 +31,7 @@ fx = NodePath("FX")
 play_area = NodePath("PlayArea")
 
 [node name="UIBoard1" type="ColorRect" parent="."]
+visible = false
 custom_minimum_size = Vector2(256, 76)
 anchors_preset = 15
 anchor_right = 1.0
@@ -122,18 +124,26 @@ walls = NodePath("Walls")
 
 [node name="Water" type="Node3D" parent="Board"]
 
-[node name="Characters" type="Node3D" parent="." node_paths=PackedStringArray("level", "unfreeze_sfx")]
+[node name="Characters" type="MultiplayerSpawner" parent="." node_paths=PackedStringArray("level", "unfreeze_sfx")]
+_spawnable_scenes = PackedStringArray("uid://b2iwuk2gndgr4", "uid://ddgvecm4ml23n")
+spawn_path = NodePath(".")
 script = ExtResource("6_wuvkx")
 level = NodePath("..")
 unfreeze_sfx = NodePath("../UnfreezeSFX")
 
-[node name="PickUps" type="Node3D" parent="." node_paths=PackedStringArray("level")]
+[node name="PickUps" type="MultiplayerSpawner" parent="." node_paths=PackedStringArray("level")]
+_spawnable_scenes = PackedStringArray("uid://jwxh6mbhxdij")
+spawn_path = NodePath(".")
 script = ExtResource("7_jjge0")
 level = NodePath("..")
 
-[node name="Eggs" type="Node3D" parent="."]
+[node name="Eggs" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://bfuiiibm4ogfg")
+spawn_path = NodePath(".")
+script = ExtResource("7_rjnlo")
 
-[node name="FX" type="Node3D" parent="."]
+[node name="FX" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath(".")
 script = ExtResource("8_hbkgd")
 
 [node name="PlayArea" type="Area3D" parent="."]

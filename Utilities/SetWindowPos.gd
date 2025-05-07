@@ -2,7 +2,8 @@
 # and move them accordingly. Up to 4 max. Why? I only have a 1080p monitor.
 extends Node
 
-@export var show_on_main_screen : bool = true
+@export var set_window_positions := true
+@export var show_on_main_screen := true
 
 var main_tl : Vector2 = Vector2(0, 32)
 var main_tr : Vector2 = Vector2(960, 32)
@@ -16,6 +17,8 @@ var second_br : Vector2 = Vector2(2880, 540+10)
 
 
 func _ready() -> void:
+	if !set_window_positions:
+		return
 	if not OS.has_feature("editor"):
 		print("This is exported build, do not run the local testing stuff")
 		return

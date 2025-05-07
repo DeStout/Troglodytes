@@ -8,7 +8,7 @@ extends Control
 @export var options_menu : Control
 
 
-func _play_button() -> void:
+func _single_player_button() -> void:
 	Pause.update()
 	game.start_game()
 

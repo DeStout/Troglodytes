@@ -5,7 +5,7 @@ signal spawn_footprint
 
 const SCORE_VALUE := 1000
 
-@export var characters : Node3D
+@export var characters : MultiplayerSpawner
 @export var body : MeshInstance3D
 @export var state_machine : Node
 @export var anim_player : AnimationPlayer

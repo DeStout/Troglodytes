@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://dxvqt64c1qtn8"]
+[gd_scene load_steps=17 format=4 uid="uid://dxvqt64c1qtn8"]
 
 [ext_resource type="PackedScene" uid="uid://c7f7rd7ltauxf" path="res://Levels/Level.tscn" id="1_obvqt"]
 [ext_resource type="Texture2D" uid="uid://xr27pg1088pa" path="res://Levels/Materials/Sand1.png" id="2_2k0qe"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://cl8s8e71ch3go" path="res://Levels/Props/Water.gd" id="5_7nefw"]
 [ext_resource type="PackedScene" uid="uid://hld77c0k73eb" path="res://Levels/Props/Water1.blend" id="6_338d3"]
 [ext_resource type="PackedScene" uid="uid://dumpw4kef7jpk" path="res://Levels/Props/StoneWall.tscn" id="6_a5b2j"]
-[ext_resource type="PackedScene" uid="uid://b2iwuk2gndgr4" path="res://Player/Player.tscn" id="7_7qylj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4tww"]
 resource_name = "Sand_Mat"
@@ -68,9 +67,9 @@ size = Vector3(20, 1, 4)
 
 [node name="Level3b" instance=ExtResource("1_obvqt")]
 
-[node name="Camera" parent="." index="2" node_paths=PackedStringArray("player")]
+[node name="Camera" parent="." index="3" node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -11, 10, -4)
-player = NodePath("../Characters/Player")
+player = NodePath("")
 
 [node name="Ground" type="CSGMesh3D" parent="Board" index="0"]
 mesh = SubResource("ArrayMesh_jtdut")
@@ -2790,19 +2789,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 0)
 [node name="OnScreenEnable" type="VisibleOnScreenEnabler3D" parent="Board/Water/WaterRow23" index="24"]
 aabb = AABB(-25, -1.67, -0.125, 48, 2.7, 0.25)
 
-[node name="Characters" parent="." index="4" node_paths=PackedStringArray("ground", "player")]
+[node name="Characters" parent="." index="5" node_paths=PackedStringArray("ground")]
 ground = NodePath("../Board/Ground")
-player = NodePath("Player")
 num_enemies = 7
 
-[node name="Player" parent="Characters" index="0" instance=ExtResource("7_7qylj")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0, -13)
-
-[node name="PickUps" parent="." index="5"]
+[node name="PickUps" parent="." index="6"]
 num_pick_ups = 7
 level_pick_ups = Array[int]([0, 1, 3, 2, 4])
 
-[node name="PlayArea" parent="." index="8"]
+[node name="PlayArea" parent="." index="9"]
 visible = false
 
 [node name="Collision1" type="CollisionShape3D" parent="PlayArea" index="0"]

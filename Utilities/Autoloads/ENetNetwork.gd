@@ -19,6 +19,7 @@ var peer_id : int
 var peers : Dictionary[int, Dictionary] = {}
 
 var upnp_thread : Thread
+var game : Game
 
 
 func _ready() -> void:
@@ -159,6 +160,16 @@ func _check_peers_ready() -> void:
 			peers_ready.emit(false)
 			return
 		peers_ready.emit(true)
+
+
+func start_pressed() -> void:
+	start_game.rpc()
+
+
+@rpc("authority", "call_local", "reliable")
+func start_game() -> void:
+	print("%s - Starting Game" % peer_id)
+	game.start_game()
 
 
 func reset_peer() -> void:

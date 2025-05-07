@@ -1,4 +1,4 @@
-extends Node3D
+extends MultiplayerSpawner
 
 
 var footprint_ := load("res://Levels/FX/Footprint.tscn")

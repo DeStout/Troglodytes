@@ -12,9 +12,9 @@ func _ready() -> void:
 	h_margins = Vector2((1.0 - margin_perc.y) * viewport_size.y, margin_perc.y * viewport_size.y)
 
 
-func _process(delta: float) -> void:
-	var viewport_pos := unproject_position(player.global_position)
-	if w_margins.x > viewport_pos.x or w_margins.y < viewport_pos.x:
-		position.x += player.speed * sign(viewport_pos.x - viewport_size.x / 2) * delta
-	if h_margins.x > viewport_pos.y or h_margins.y < viewport_pos.y:
-		position.z += player.speed * sign(viewport_pos.y - viewport_size.y / 2) * delta
+#func _process(delta: float) -> void:
+	#var viewport_pos := unproject_position(player.global_position)
+	#if w_margins.x > viewport_pos.x or w_margins.y < viewport_pos.x:
+		#position.x += player.speed * sign(viewport_pos.x - viewport_size.x / 2) * delta
+	#if h_margins.x > viewport_pos.y or h_margins.y < viewport_pos.y:
+		#position.z += player.speed * sign(viewport_pos.y - viewport_size.y / 2) * delta

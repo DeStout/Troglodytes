@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b2iwuk2gndgr4"]
+[gd_scene load_steps=27 format=3 uid="uid://b2iwuk2gndgr4"]
 
 [ext_resource type="Script" uid="uid://bsebhi65dqn0d" path="res://Player/Player.gd" id="1_cxr5p"]
 [ext_resource type="Script" uid="uid://bxxodi12mj8h5" path="res://Player/States/StartState.gd" id="3_5wa8t"]
@@ -16,6 +16,26 @@
 [ext_resource type="Material" uid="uid://ct7eou206ijtc" path="res://Player/Halo_Mat.tres" id="9_p7tob"]
 [ext_resource type="PackedScene" uid="uid://lf4ugwuydp4l" path="res://Player/Stars.blend" id="11_3mea3"]
 [ext_resource type="Script" uid="uid://dkrsbvh5qnx5j" path="res://Player/Stars.gd" id="12_7v5gs"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_7v5gs"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Player1/AnimationPlayer:current_animation")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath("Player1/AnimationPlayer:speed_scale")
+properties/3/spawn = true
+properties/3/replication_mode = 2
+properties/4/path = NodePath("Player1/Armature/Skeleton3D/HeadBone/Stars:visible")
+properties/4/spawn = true
+properties/4/replication_mode = 2
+properties/5/path = NodePath("Player1/Armature/Skeleton3D/HeadBone/Stars:process_mode")
+properties/5/spawn = true
+properties/5/replication_mode = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_js7pq"]
 radius = 0.35
@@ -62,6 +82,9 @@ collision_layer = 2
 collision_mask = 57
 script = ExtResource("1_cxr5p")
 debug_target = NodePath("DebugTarget")
+
+[node name="Synchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_7v5gs")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "character")]
 script = ExtResource("3_dtqjt")

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://gieddughtokc" path="res://PickUps/Egg_A.png" id="3_32dvn"]
 [ext_resource type="AudioStream" uid="uid://ds6yki4qhf2rh" path="res://PickUps/EggPickUp.mp3" id="3_56cbk"]
 [ext_resource type="PackedScene" uid="uid://cn0w3m48ib2d4" path="res://PickUps/Egg1.blend" id="3_cnj8b"]
-[ext_resource type="Texture2D" uid="uid://bb1exretsg64u" path="res://Levels/Materials/Sand1_N.png" id="4_7m588"]
+[ext_resource type="Texture2D" uid="uid://c8j6cokt48337" path="res://Levels/Materials/Sand1_N.png" id="4_7m588"]
 [ext_resource type="Texture2D" uid="uid://de4hw084r38s8" path="res://PickUps/Egg_H.png" id="4_32dvn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7m588"]

@@ -7,13 +7,15 @@ extends Node3D
 
 
 func _ready() -> void:
-	_add_egg_squares()
-	_add_home_squares()
+	if multiplayer.is_server():
+		_add_egg_squares()
+		_add_home_squares()
 
 
 func _add_egg_squares() -> void:
 	for square in egg_squares.get_children():
-		square.add_to_group("EggSquares", true)
+		if !square.is_in_group("PlayerSquares"):
+			square.add_to_group("EggSquares", true)
 
 
 func _add_home_squares() -> void:

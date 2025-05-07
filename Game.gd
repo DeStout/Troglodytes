@@ -3,6 +3,7 @@ class_name Game extends Node
 
 @export var main_menu : Control
 
+@export var level_spawner : MultiplayerSpawner
 var levels : Array[String] = [ "res://Levels/Level1a.tscn",
 								"res://Levels/Level1b.tscn",
 								"res://Levels/Level2a.tscn",
@@ -19,9 +20,14 @@ var score := 0
 var player_lives : Array[int] = [INIT_LIVES]
 
 
+func _ready() -> void:
+	ENetNetwork.game = self
+
+
 func start_game() -> void:
 	remove_child(main_menu)
-	start_new_game()
+	if multiplayer.is_server():
+		start_new_game()
 
 
 func start_new_game() -> void:
@@ -29,11 +35,12 @@ func start_new_game() -> void:
 		level_num = 0
 		level.queue_free()
 	
-	var new_level := load(levels[level_num])
-	#var new_level : Node3D = load(levels[4])
+	var new_level : PackedScene
+	new_level = load(levels[level_num])
+	#new_level = load(levels[2])
 	level = new_level.instantiate()
 	level.game = self
-	add_child(level, true)
+	level_spawner.add_child(level)
 
 
 func load_next_level() -> void:
@@ -43,4 +50,4 @@ func load_next_level() -> void:
 	var new_level := load(levels[level_num])
 	level = new_level.instantiate()
 	level.game = self
-	add_child(level, true)
+	level_spawner.add_child(level)

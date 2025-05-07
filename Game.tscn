@@ -4,13 +4,18 @@
 [ext_resource type="PackedScene" uid="uid://ba8xg6j0dfk0i" path="res://Menus/MainMenu.tscn" id="2_xkndl"]
 [ext_resource type="Script" uid="uid://ndbrd6wkb2c" path="res://Utilities/SetWindowPos.gd" id="3_u44n3"]
 
-[node name="Game" type="Node" node_paths=PackedStringArray("main_menu")]
+[node name="Game" type="Node" node_paths=PackedStringArray("main_menu", "level_spawner")]
 script = ExtResource("1_xkndl")
 main_menu = NodePath("MainMenu")
+level_spawner = NodePath("LevelSpawner")
 
 [node name="MainMenu" parent="." node_paths=PackedStringArray("game") instance=ExtResource("2_xkndl")]
 game = NodePath("..")
 metadata/_edit_vertical_guides_ = [660.0]
+
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://cfxflxfqt2ahi", "uid://ccd4v8q3jtyd5", "uid://cgshxa54xrlbo", "uid://c6hrhhp1o1mju", "uid://bc784uf1ftns6", "uid://dxvqt64c1qtn8")
+spawn_path = NodePath(".")
 
 [node name="SetWindowPos" type="Node" parent="."]
 script = ExtResource("3_u44n3")

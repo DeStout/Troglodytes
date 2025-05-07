@@ -9,7 +9,7 @@ var speed_up_ := load("res://PickUps/FastArrow.tscn")
 var slow_down_ := load("res://PickUps/SlowArrow.tscn")
 
 enum EFFECTS { SPEED_UP, SLOW_DOWN, FIRE_POWER, FREEZE, INVINCIBLE, PINEAPPLE }
-var effect : int : set = _set_type
+var effect : int
 var mesh : Node3D = null
 @export var collision : CollisionShape3D
 
@@ -25,10 +25,11 @@ const DESPAWN_RANGE := Vector2(9.0, 14.0)
 
 
 func _ready() -> void:
-	despawn_timer.start(randf_range(DESPAWN_RANGE.x, DESPAWN_RANGE.y))
+	if multiplayer.is_server():
+		despawn_timer.start(randf_range(DESPAWN_RANGE.x, DESPAWN_RANGE.y))
 
 
-func _set_type(new_effect) -> void:
+func set_type(new_effect) -> void:
 	effect = new_effect
 	match effect:
 		EFFECTS.SPEED_UP:

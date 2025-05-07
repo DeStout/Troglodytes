@@ -11,6 +11,8 @@ func _ready() -> void:
 	ENetNetwork.lobby_code_set.connect(set_lobby_code)
 	ENetNetwork.peers_updated.connect(update_peers)
 	ENetNetwork.peers_ready.connect(enable_start)
+	
+	start_button.pressed.connect(ENetNetwork.start_pressed)
 
 
 func set_lobby_code(new_lobby_code : String) -> void:
