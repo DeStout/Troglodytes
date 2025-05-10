@@ -19,8 +19,8 @@ func _ready() -> void:
 
 func _add_egg_squares() -> void:
 	for square in egg_squares.get_children():
-		if !square.is_in_group("PlayerSquares"):
-			square.add_to_group("EggSquares", true)
+		#if !square.is_in_group("PlayerSquares"):
+		square.add_to_group("EggSquares", true)
 
 
 func _add_home_squares() -> void:
@@ -30,7 +30,6 @@ func _add_home_squares() -> void:
 
 func _add_spawn_hole(new_pos : Vector3) -> CSGCylinder3D:
 	var spawn_hole : CSGCylinder3D = spawn_hole_.instantiate()
-	#spawn_hole.set_deferred("global_position", Vector3(new_pos.x, -0.8, new_pos.z))
 	spawn_hole.position = Vector3(new_pos.x, -0.8, new_pos.z)
 	characters.spawn_function = characters._spawn_enemy
 	spawn_hole.open_finished.connect(characters.spawn.bind(spawn_hole))

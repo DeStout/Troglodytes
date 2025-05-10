@@ -73,9 +73,9 @@ func attack() -> void:
 		return
 		
 	if anim_player.current_animation == "Attack":
-		anim_player.seek(0.0)
-	else:
-		anim_player.play("Attack")
+		anim_player.stop()
+	await get_tree().physics_frame
+	anim_player.play("Attack")
 	
 	attack_sfx.pitch_scale = randf_range(0.95, 1.05)
 	attack_sfx.play()

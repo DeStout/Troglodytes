@@ -60,11 +60,13 @@ size = Vector3(10, 1, 10)
 [node name="Sun" parent="." index="2"]
 transform = Transform3D(0.83998, -0.469921, 0.271308, -1.01783e-08, 0.499999, 0.866026, -0.542617, -0.727445, 0.419989, 0, 7.81542, 3.05087)
 
-[node name="Camera" parent="." index="3" node_paths=PackedStringArray("player")]
+[node name="Camera" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -8, 8, -2.5)
 visible = false
 margin_perc = Vector2(0.7, 0.6)
-player = NodePath("")
+
+[node name="Board" parent="." index="4"]
+spawn_path = NodePath("Ground")
 
 [node name="Ground" type="CSGMesh3D" parent="Board" index="0"]
 operation = 2
@@ -1825,8 +1827,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
 [node name="Water34" parent="Board/Water/WaterRow19" index="20" instance=ExtResource("7_mjgdc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
-[node name="Characters" parent="." index="5" node_paths=PackedStringArray("ground")]
-ground = NodePath("../Board/Ground")
+[node name="Characters" parent="." index="5"]
 num_enemies = 6
 
 [node name="PickUps" parent="." index="6"]

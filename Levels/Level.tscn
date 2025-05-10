@@ -19,8 +19,9 @@ streams_count = 2
 stream_0/stream = ExtResource("9_fbd0n")
 stream_1/stream = ExtResource("10_myk7f")
 
-[node name="Level" type="Node3D" node_paths=PackedStringArray("ui_score", "ui_lives", "characters", "pick_ups", "eggs", "fx", "play_area")]
+[node name="Level" type="Node3D" node_paths=PackedStringArray("board", "ui_score", "ui_lives", "characters", "pick_ups", "eggs", "fx", "play_area")]
 script = ExtResource("1_bwnv0")
+board = NodePath("Board")
 ui_score = NodePath("UIBoard1/UIBoard2/Score")
 ui_lives = NodePath("UIBoard1/UIBoard2/Lives")
 characters = NodePath("Characters")
@@ -106,6 +107,7 @@ far = 50.0
 script = ExtResource("2_ht8ui")
 
 [node name="Board" type="MultiplayerSpawner" parent="." node_paths=PackedStringArray("characters", "egg_squares", "home_squares", "walls")]
+_spawnable_scenes = PackedStringArray("uid://dbpkd8ys2yxyr")
 script = ExtResource("2_ah0qf")
 characters = NodePath("../Characters")
 egg_squares = NodePath("Squares/EggSquares")

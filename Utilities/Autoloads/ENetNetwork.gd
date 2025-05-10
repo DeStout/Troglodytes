@@ -122,6 +122,10 @@ func _peer_connected(new_peer_id : int) -> void:
 		_check_peers_ready()
 
 
+func add_local_peer() -> void:
+	peers[1] = {"is_ready" : true}
+
+
 func _peer_disconnected(dead_peer_id : int) -> void:
 	if multiplayer.is_server():
 		print("Server - Peer Disconnected: %s" % dead_peer_id)

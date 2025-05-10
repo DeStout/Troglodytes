@@ -26,6 +26,8 @@ func _ready() -> void:
 
 func start_game() -> void:
 	remove_child(main_menu)
+	if !ENetNetwork.peers.size():
+		ENetNetwork.add_local_peer()
 	if multiplayer.is_server():
 		start_new_game()
 
@@ -35,19 +37,11 @@ func start_new_game() -> void:
 		level_num = 0
 		level.queue_free()
 	
-	var new_level : PackedScene
-	new_level = load(levels[level_num])
-	#new_level = load(levels[2])
-	level = new_level.instantiate()
-	level.game = self
-	level_spawner.add_child(level)
+	level_spawner.spawn(level_num)
+	#level_spawner.spawn(2)
 
 
 func load_next_level() -> void:
 	level.queue_free()
 	level_num = min(levels.size() - 1, level_num + 1)
-	
-	var new_level := load(levels[level_num])
-	level = new_level.instantiate()
-	level.game = self
-	level_spawner.add_child(level)
+	level_spawner.spawn(level_num)

@@ -18,6 +18,10 @@ var freeze_time := 0.0
 @export var unfreeze_sfx : AudioStreamPlayer
 
 
+func _ready() -> void:
+	spawn_function = _spawn_player
+
+
 func _process(delta: float) -> void:
 	if freeze_time:
 		freeze_time = max(freeze_time - delta, 0.0)
@@ -25,8 +29,15 @@ func _process(delta: float) -> void:
 			_unfreeze_enemies()
 
 
-func _spawn_player() -> Player:
-	return Player.new()
+func _spawn_player(player_num : int) -> Player:
+	var player = player_.instantiate()
+	player.set_multiplayer_authority(ENetNetwork.peers.keys()[player_num], true)
+	var spawn_square = get_tree().get_nodes_in_group("PlayerSquares")[player_num]
+	player.set_deferred("global_position", spawn_square.global_position)
+	player.rotation = spawn_square.rotation
+	players.append(player)
+	
+	return player
 
 
 func _spawn_enemy(spawn_hole) -> Enemy:
@@ -44,8 +55,14 @@ func _spawn_enemy(spawn_hole) -> Enemy:
 	return enemy
 
 
-func spawn_players() -> Node:
-	return Node.new()
+func spawn_players() -> void:
+	spawn_function = _spawn_player
+	
+	var player_squares := get_tree().get_nodes_in_group("PlayerSquares")
+	for square_i in range(0, player_squares.size()):
+		if square_i + 1 <= ENetNetwork.peers.size():
+			player_squares[square_i].remove_from_group("EggSquares")
+			spawn(square_i)
 
 
 func spawn_enemies(used_squares : Array[Node3D]) -> Array:
@@ -68,8 +85,8 @@ func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 
 
 func _respawn_enemy() -> void:
-		var enemy = enemy_.instantiate()
-		var spawn_hole = spawn_hole_.instantiate()
+		#var enemy = enemy_.instantiate()
+		#var spawn_hole = spawn_hole_.instantiate()
 		var free_square : Node3D = level.get_rand_free_square()
 		var spawn_pos := Vector3(free_square.global_position.x, 0, \
 														free_square.global_position.z)
@@ -77,20 +94,8 @@ func _respawn_enemy() -> void:
 			free_square = level.get_rand_free_square()
 			spawn_pos = Vector3(free_square.global_position.x, 0, \
 														free_square.global_position.z)
-		spawn_hole.position = Vector3(spawn_pos.x, -0.8, spawn_pos.z)
-		#ground.add_child(spawn_hole, true)
-		enemy.position = spawn_pos
-		enemy.spawn_hole = spawn_hole
-		#spawn_hole.open_finished.connect(_add_enemy.bind(enemy))
-		enemy.spawn_footprint.connect(level.spawn_footprint)
-
-
-#func _add_enemy(new_enemy : Enemy) -> void:
-	#Utilities.anims_to_constant(new_enemy)
-	#add_child(new_enemy, true)
-	#enemies.append(new_enemy)
-	#new_enemy.characters = self
-	#new_enemy.rotation.y = PI
+		
+		board.spawn(free_square.global_position)
 
 
 func enemy_finished_spawning(spawn_square : Node3D) -> void:
@@ -126,20 +131,22 @@ func _unfreeze_enemies() -> void:
 
 func enemy_defeated(enemy : Enemy) -> void:
 	enemies.erase(enemy)
-	var tween = create_tween()
-	respawn_tweens.append(tween)
-	tween.tween_interval(randf_range(RESPAWN_DELAY.x, RESPAWN_DELAY.y))
-	if freeze_time:
-		tween.pause()
-	await tween.finished
-	respawn_tweens.erase(tween)
-	_respawn_enemy()
+	if multiplayer.is_server():
+		var tween = create_tween()
+		respawn_tweens.append(tween)
+		tween.tween_interval(randf_range(RESPAWN_DELAY.x, RESPAWN_DELAY.y))
+		if freeze_time:
+			tween.pause()
+		await tween.finished
+		respawn_tweens.erase(tween)
+		_respawn_enemy()
 
 
 func character_exited(character : CharacterBody3D) -> void:
-	if character is Player:
-		character.exit_stage()
-	elif character is Enemy:
-		if character.state_machine.current_state is DeathState:
-			return
-		character.die()
+	if multiplayer.is_server():
+		if character is Player:
+			character.exit_stage()
+		elif character is Enemy:
+			if character.state_machine.current_state is DeathState:
+				return
+			character.die()

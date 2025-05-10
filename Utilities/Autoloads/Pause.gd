@@ -12,10 +12,11 @@ func _input(event: InputEvent) -> void:
 	if !Globals.game is Game or !Globals.game.level:
 		return
 	if Input.is_action_just_pressed("Pause"):
-		get_tree().paused = !get_tree().paused
-		visible = get_tree().paused
+		if !ENetNetwork.peers.size() > 1:
+			get_tree().paused = !get_tree().paused
+		visible = !visible
 		
-		match get_tree().paused:
+		match visible:
 			true:
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			false:

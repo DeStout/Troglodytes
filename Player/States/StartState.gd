@@ -2,8 +2,21 @@ class_name StartState extends State
 
 
 const START_TIME := 1.0
-
 @onready var start_timer := $StartTimer
+
+@export var input_sync : MultiplayerSynchronizer
+var player_input : Dictionary[String, Variant] = {"dir_input" : Vector2i.ZERO,
+												"attack_input" : false}
+
+
+func _ready() -> void:
+	input_sync.input_update.connect(_update_input)
+
+
+func _update_input(new_input : Dictionary[String, Variant]) -> void:
+	if active:
+		player_input = new_input
+		print("StartState - Update Input - %s" % player_input)
 
 
 func enter() -> void:

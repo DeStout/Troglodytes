@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://b2iwuk2gndgr4"]
+[gd_scene load_steps=29 format=3 uid="uid://b2iwuk2gndgr4"]
 
 [ext_resource type="Script" uid="uid://bsebhi65dqn0d" path="res://Player/Player.gd" id="1_cxr5p"]
+[ext_resource type="Script" uid="uid://cqrkr7tiyb2ee" path="res://Player/PlayerInput.gd" id="2_8sa4y"]
 [ext_resource type="Script" uid="uid://bxxodi12mj8h5" path="res://Player/States/StartState.gd" id="3_5wa8t"]
 [ext_resource type="Script" uid="uid://oh5umyrnpcif" path="res://addons/StateMachine/StateMachine/state_machine.gd" id="3_dtqjt"]
 [ext_resource type="Script" uid="uid://ofgysyk2gry1" path="res://Player/States/IdleState.gd" id="4_5ncpa"]
@@ -36,6 +37,8 @@ properties/4/replication_mode = 2
 properties/5/path = NodePath("Player1/Armature/Skeleton3D/HeadBone/Stars:process_mode")
 properties/5/spawn = true
 properties/5/replication_mode = 2
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3nb2p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_js7pq"]
 radius = 0.35
@@ -86,25 +89,33 @@ debug_target = NodePath("DebugTarget")
 [node name="Synchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_7v5gs")
 
+[node name="PlayerInput" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_3nb2p")
+script = ExtResource("2_8sa4y")
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "character")]
 script = ExtResource("3_dtqjt")
 initial_state = NodePath("StartState")
 character = NodePath("..")
 
-[node name="StartState" type="Node" parent="StateMachine"]
+[node name="StartState" type="Node" parent="StateMachine" node_paths=PackedStringArray("input_sync")]
 script = ExtResource("3_5wa8t")
+input_sync = NodePath("../../PlayerInput")
 
 [node name="StartTimer" type="Timer" parent="StateMachine/StartState"]
 one_shot = true
 
-[node name="IdleState" type="Node" parent="StateMachine"]
+[node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("input_sync")]
 script = ExtResource("4_5ncpa")
+input_sync = NodePath("../../PlayerInput")
 
-[node name="MoveState" type="Node" parent="StateMachine"]
+[node name="MoveState" type="Node" parent="StateMachine" node_paths=PackedStringArray("input_sync")]
 script = ExtResource("5_wi0c6")
+input_sync = NodePath("../../PlayerInput")
 
-[node name="AttackState" type="Node" parent="StateMachine"]
+[node name="AttackState" type="Node" parent="StateMachine" node_paths=PackedStringArray("input_sync")]
 script = ExtResource("6_tdg3f")
+input_sync = NodePath("../../PlayerInput")
 
 [node name="StunState" type="Node" parent="StateMachine"]
 script = ExtResource("7_dm7nj")

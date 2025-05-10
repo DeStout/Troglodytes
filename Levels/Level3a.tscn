@@ -67,10 +67,12 @@ size = Vector3(20, 1, 4)
 
 [node name="Level3a" instance=ExtResource("1_xb24h")]
 
-[node name="Camera" parent="." index="3" node_paths=PackedStringArray("player")]
+[node name="Camera" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -11, 10, -4)
 size = 13.5
-player = NodePath("")
+
+[node name="Board" parent="." index="4"]
+spawn_path = NodePath("Ground")
 
 [node name="Ground" type="CSGMesh3D" parent="Board" index="0"]
 calculate_tangents = false
@@ -2819,8 +2821,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 0)
 [node name="OnScreenEnable" type="VisibleOnScreenEnabler3D" parent="Board/Water/WaterRow23" index="24"]
 aabb = AABB(-25, -1.67, -0.125, 48, 2.7, 0.25)
 
-[node name="Characters" parent="." index="5" node_paths=PackedStringArray("ground")]
-ground = NodePath("../Board/Ground")
+[node name="Characters" parent="." index="5"]
 num_enemies = 7
 
 [node name="PickUps" parent="." index="6"]

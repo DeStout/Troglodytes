@@ -1,6 +1,15 @@
 class_name IdleState extends State
 
 
+@export var input_sync : MultiplayerSynchronizer
+var player_input : Dictionary[String, Variant] = {"dir_input" : Vector2i.ZERO,
+												"attack_input" : false}
+
+
+func _ready() -> void:
+	input_sync.input_update.connect(_update_input)
+
+
 func enter() -> void:
 	#print("Enter IdleState")
 	if character.anim_player:
@@ -8,6 +17,12 @@ func enter() -> void:
 		character.anim_player.play("Idle")
 	character._footstep(true)
 	character._footstep(false)
+
+
+func _update_input(new_input : Dictionary[String, Variant]) -> void:
+	if active:
+		player_input = new_input
+		print("IdleState - Update Input - %s" % player_input)
 
 
 func _input(event: InputEvent) -> void:

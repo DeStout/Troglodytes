@@ -3,7 +3,14 @@ class_name MoveState extends State
 
 const SNAP_TOL := 0.007
 
+@export var input_sync : MultiplayerSynchronizer
+var player_input : Dictionary[String, Variant] = {"dir_input" : Vector2i.ZERO,
+												"attack_input" : false}
 var turning := false
+
+
+func _ready() -> void:
+	input_sync.input_update.connect(_update_input)
 
 
 func enter() -> void:
@@ -14,6 +21,12 @@ func enter() -> void:
 		_turn_around()
 	_set_target_square()
 	await _slerp_to_dirp()
+
+
+func _update_input(new_input : Dictionary[String, Variant]) -> void:
+	if active:
+		player_input = new_input
+		print("MoveState - Update Input - %s" % player_input)
 
 
 func _input(event: InputEvent) -> void:

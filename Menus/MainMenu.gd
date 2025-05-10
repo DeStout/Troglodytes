@@ -1,7 +1,7 @@
 extends Control
 
 
-@export var game : Node
+@export var game : Game
 @export var main_menu : Control
 @export var mult_button : Button
 @export var mult_menu : Control

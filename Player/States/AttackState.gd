@@ -1,6 +1,15 @@
 class_name AttackState extends State
 
 
+@export var input_sync : MultiplayerSynchronizer
+var player_input : Dictionary[String, Variant] = {"dir_input" : Vector2i.ZERO,
+												"attack_input" : false}
+
+
+func _ready() -> void:
+	input_sync.input_update.connect(_update_input)
+
+
 func enter() -> void:
 	#print("Enter AttackState")
 	character.anim_player.speed_scale = 1.0
@@ -9,8 +18,10 @@ func enter() -> void:
 	character._footstep(false)
 
 
-func exit() -> void:
-	pass
+func _update_input(new_input : Dictionary[String, Variant]) -> void:
+	if active:
+		player_input = new_input
+		print("AttackState - Update Input - %s" % player_input)
 
 
 func _input(event: InputEvent) -> void:
@@ -38,3 +49,6 @@ func attack_finished() -> void:
 func attacked() -> void:
 	if !character.invincible_timer.time_left:
 		transition.emit(self, "StunState")
+
+
+#func exit() -> void: pass

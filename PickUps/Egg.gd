@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 
 
 func _collected(body : CharacterBody3D) -> void:
-	if body is Player:
+	if body is Player and multiplayer.is_server():
 		pick_up_sfx.play()
 		mesh.visible = false
 		collision.call_deferred("set_disabled", true)

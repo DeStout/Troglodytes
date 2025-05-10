@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c320mood1d0f3"]
+[gd_scene load_steps=5 format=3 uid="uid://c320mood1d0f3"]
 
 [ext_resource type="Script" uid="uid://7xrixgba1i1x" path="res://Game.gd" id="1_xkndl"]
 [ext_resource type="PackedScene" uid="uid://ba8xg6j0dfk0i" path="res://Menus/MainMenu.tscn" id="2_xkndl"]
+[ext_resource type="Script" uid="uid://doakgvtvsf3ty" path="res://LevelSpawner.gd" id="3_sb48q"]
 [ext_resource type="Script" uid="uid://ndbrd6wkb2c" path="res://Utilities/SetWindowPos.gd" id="3_u44n3"]
 
 [node name="Game" type="Node" node_paths=PackedStringArray("main_menu", "level_spawner")]
@@ -13,9 +14,11 @@ level_spawner = NodePath("LevelSpawner")
 game = NodePath("..")
 metadata/_edit_vertical_guides_ = [660.0]
 
-[node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="." node_paths=PackedStringArray("game")]
 _spawnable_scenes = PackedStringArray("uid://cfxflxfqt2ahi", "uid://ccd4v8q3jtyd5", "uid://cgshxa54xrlbo", "uid://c6hrhhp1o1mju", "uid://bc784uf1ftns6", "uid://dxvqt64c1qtn8")
 spawn_path = NodePath(".")
+script = ExtResource("3_sb48q")
+game = NodePath("..")
 
 [node name="SetWindowPos" type="Node" parent="."]
 script = ExtResource("3_u44n3")

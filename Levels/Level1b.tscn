@@ -82,13 +82,16 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 size = 13.5
 margin_perc = Vector2(1, 1)
 
+[node name="Board" parent="." index="4"]
+spawn_path = NodePath("Ground")
+
 [node name="Ground" type="CSGMesh3D" parent="Board" index="0"]
 mesh = SubResource("ArrayMesh_w58g5")
 
 [node name="EggSquare1" type="Node3D" parent="Board/Squares/EggSquares" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -6)
 
-[node name="Player" type="Node3D" parent="Board/Squares/EggSquares" index="1" groups=["PlayerSquares"]]
+[node name="Player1" type="Node3D" parent="Board/Squares/EggSquares" index="1" groups=["PlayerSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
 
 [node name="EggSquare2" type="Node3D" parent="Board/Squares/EggSquares" index="2"]
@@ -106,7 +109,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
 [node name="EggSquare6" type="Node3D" parent="Board/Squares/EggSquares" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -6)
 
-[node name="EggSquare7" type="Node3D" parent="Board/Squares/EggSquares" index="7"]
+[node name="Player2" type="Node3D" parent="Board/Squares/EggSquares" index="7" groups=["PlayerSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -6)
 
 [node name="EggSquare8" type="Node3D" parent="Board/Squares/EggSquares" index="8"]
@@ -249,7 +252,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
 [node name="EggSquare54" type="Node3D" parent="Board/Squares/EggSquares" index="54"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 6)
 
-[node name="EggSquare55" type="Node3D" parent="Board/Squares/EggSquares" index="55"]
+[node name="Player3" type="Node3D" parent="Board/Squares/EggSquares" index="55"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6)
 
 [node name="EggSquare56" type="Node3D" parent="Board/Squares/EggSquares" index="56"]
@@ -267,7 +270,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
 [node name="EggSquare60" type="Node3D" parent="Board/Squares/EggSquares" index="60"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 6)
 
-[node name="EggSquare61" type="Node3D" parent="Board/Squares/EggSquares" index="61"]
+[node name="Player4" type="Node3D" parent="Board/Squares/EggSquares" index="61"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
 
 [node name="EggSquare62" type="Node3D" parent="Board/Squares/EggSquares" index="62"]
@@ -1199,9 +1202,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 
 [node name="Water28" parent="Board/Water/WaterRow12" index="27" instance=ExtResource("6_8glmb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
-
-[node name="Characters" parent="." index="5" node_paths=PackedStringArray("ground")]
-ground = NodePath("../Board/Ground")
 
 [node name="PickUps" parent="." index="6"]
 level_pick_ups = Array[int]([0, 1, 4])

@@ -4,7 +4,7 @@ class_name Level extends Node3D
 var home_ := load("res://Levels/Props/Home.tscn")
 
 var game : Node
-@export var board : Node3D
+@export var board : MultiplayerSpawner
 @export var ui_score : Label
 @export var ui_lives : Label
 @export var characters : MultiplayerSpawner
@@ -28,6 +28,7 @@ func _set_up() -> void:
 	Globals.add_and_set_score(0)
 	
 	var used_squares : Array[Node3D] = []
+	characters.spawn_players()
 	used_squares = characters.spawn_enemies(used_squares)
 	used_squares = pick_ups.spawn_pick_ups(used_squares)
 	_spawn_eggs(used_squares)
