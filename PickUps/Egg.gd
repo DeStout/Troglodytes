@@ -18,6 +18,10 @@ var time := 0.0
 @onready var pick_up_sfx := $PickUpSFX
 
 
+func _ready() -> void:
+	collision.disabled = !multiplayer.is_server()
+
+
 func _process(delta: float) -> void:
 	time += delta
 	rot = fmod(rot + (ROTATION_SPEED * delta), 360)

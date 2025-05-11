@@ -25,6 +25,7 @@ const DESPAWN_RANGE := Vector2(9.0, 14.0)
 
 
 func _ready() -> void:
+	collision.disabled = !multiplayer.is_server()
 	if multiplayer.is_server():
 		despawn_timer.start(randf_range(DESPAWN_RANGE.x, DESPAWN_RANGE.y))
 

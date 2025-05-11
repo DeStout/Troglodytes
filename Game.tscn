@@ -22,3 +22,4 @@ game = NodePath("..")
 
 [node name="SetWindowPos" type="Node" parent="."]
 script = ExtResource("3_u44n3")
+show_on_main_screen = false

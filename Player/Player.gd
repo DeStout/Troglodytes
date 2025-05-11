@@ -9,6 +9,7 @@ signal spawn_fire_ball
 
 @export var player_input : MultiplayerSynchronizer
 
+@onready var collision := $Collision
 @onready var attack_cast := $AttackCast
 @onready var attack_sfx := $AttackSFX
 @onready var hit_sfx := $HitSFX
@@ -38,6 +39,11 @@ const FIRE_POWER_TIME := 10.0
 @onready var fire_power_timer := $FirePowerTimer
 @onready var fire_sfx := $FireSFX
 @onready var stars := $Player1/Armature/Skeleton3D/HeadBone/Stars
+
+
+func _ready() -> void:
+	collision.disabled = !multiplayer.is_server()
+	attack_cast.enabled = multiplayer.is_server()
 
 
 func set_input_auth(auth_id : int) -> void:

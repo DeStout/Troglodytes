@@ -7,6 +7,8 @@ const SCORE_VALUE := 1000
 
 @export var characters : MultiplayerSpawner
 @export var body : MeshInstance3D
+@export var collision : CollisionShape3D
+@export var attack_collision : CollisionShape3D
 @export var state_machine : Node
 @export var anim_player : AnimationPlayer
 @export var right_foot : Node3D
@@ -22,6 +24,11 @@ var death_dir : DIRECTIONS
 var target_square : Vector2
 
 var spawn_hole : CSGCylinder3D
+
+
+func _ready() -> void:
+	collision.disabled = !multiplayer.is_server()
+	attack_collision.disabled = !multiplayer.is_server()
 
 
 func spawn_finished() -> void:

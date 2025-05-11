@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://jwxh6mbhxdij"]
+[gd_scene load_steps=17 format=3 uid="uid://jwxh6mbhxdij"]
 
 [ext_resource type="Script" uid="uid://cjhfr764nj21f" path="res://PickUps/PickUp.gd" id="1_3hj2f"]
 [ext_resource type="AudioStream" uid="uid://x06ccerbknan" path="res://PickUps/SpeedUp.ogg" id="2_38vqf"]
@@ -7,6 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://cvoyjtcnlid4a" path="res://PickUps/IceFreeze.ogg" id="4_le7pk"]
 [ext_resource type="AudioStream" uid="uid://ciqx0wcnvc2c1" path="res://PickUps/FirePickUp.ogg" id="5_byf2i"]
 [ext_resource type="AudioStream" uid="uid://bkdvqybq1lrhh" path="res://PickUps/Ding.ogg" id="5_ebm5d"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0js6q"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_h8yf4"]
 height = 1.0
@@ -62,6 +64,9 @@ fire_vfx = NodePath("FireSprite")
 fire_sfx = NodePath("FireSFX")
 inv_sfx = NodePath("InvincibleSFX")
 despawn_timer = NodePath("Despawn")
+
+[node name="Synchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_0js6q")
 
 [node name="Area" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
