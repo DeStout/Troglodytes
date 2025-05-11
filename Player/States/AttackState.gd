@@ -2,8 +2,6 @@ class_name AttackState extends State
 
 
 @export var input_sync : MultiplayerSynchronizer
-var player_input : Dictionary[String, Variant] = {"dir_input" : Vector2i.ZERO,
-												"attack_input" : false}
 
 
 func _ready() -> void:
@@ -19,27 +17,10 @@ func enter() -> void:
 
 
 func _update_input(new_input : Dictionary[String, Variant]) -> void:
-	if active:
-		player_input = new_input
-		print("AttackState - Update Input - %s" % player_input)
-
-
-func _input(event: InputEvent) -> void:
 	if !active:
 		return
-		
-	if event is InputEventKey and event.is_action_pressed("Attack"):
+	if new_input["attack_input"]:
 		character.attack()
-	elif event is InputEventMouseButton and event.is_action_pressed("Attack"):
-		character.attack()
-
-
-func update(delta) -> void:
-	pass
-
-
-func physics_update(delta) -> void:
-	pass
 
 
 func attack_finished() -> void:
@@ -52,3 +33,5 @@ func attacked() -> void:
 
 
 #func exit() -> void: pass
+#func update(delta) -> void: pass
+#func physics_update(delta) -> void: pass

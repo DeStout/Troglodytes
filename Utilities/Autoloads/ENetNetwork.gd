@@ -24,8 +24,8 @@ var game : Game
 
 func _ready() -> void:
 	upnp_finished.connect(_close_upnp_thread)
-	upnp_thread = Thread.new()
-	upnp_thread.start(_set_up_upnp)
+	#upnp_thread = Thread.new()
+	#upnp_thread.start(_set_up_upnp)
 
 	# These two signal to clients only
 	#multiplayer.peer_connected.connect(_peer_connected)

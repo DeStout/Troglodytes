@@ -39,6 +39,9 @@ properties/5/spawn = true
 properties/5/replication_mode = 2
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3nb2p"]
+properties/0/path = NodePath("PlayerInput:player_input")
+properties/0/spawn = true
+properties/0/replication_mode = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_js7pq"]
 radius = 0.35
@@ -80,11 +83,12 @@ stream_0/stream = ExtResource("8_s1rgi")
 [sub_resource type="BoxMesh" id="BoxMesh_s1rgi"]
 size = Vector3(1, 0.1, 1)
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("debug_target")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("debug_target", "player_input")]
 collision_layer = 2
 collision_mask = 57
 script = ExtResource("1_cxr5p")
 debug_target = NodePath("DebugTarget")
+player_input = NodePath("PlayerInput")
 
 [node name="Synchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_7v5gs")
@@ -216,6 +220,7 @@ mesh = SubResource("BoxMesh_s1rgi")
 skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("9_j23h2")
 
+[connection signal="delta_synchronized" from="PlayerInput" to="PlayerInput" method="_input_updated"]
 [connection signal="timeout" from="StateMachine/StartState/StartTimer" to="StateMachine/StartState" method="_start_finished"]
 [connection signal="timeout" from="StateMachine/StunState/StunTimer" to="StateMachine/StunState" method="_die"]
 

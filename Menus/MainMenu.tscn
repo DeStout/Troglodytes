@@ -440,7 +440,6 @@ offset_right = -185.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("6_m16r1")
-disabled = true
 text = "Start"
 flat = true
 

@@ -9,7 +9,7 @@ var move_dir : Utilities.DIRECTIONS
 
 func align_to_dir() -> void:
 	var target_dir := Utilities.get_move_dir_vect(move_dir)
-	basis = basis.looking_at(Vector3(target_dir.x, 0, target_dir.y))
+	basis = Basis.looking_at(Vector3(target_dir.x, 0, target_dir.y))
 
 
 func _physics_process(delta: float) -> void:

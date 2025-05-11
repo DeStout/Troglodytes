@@ -2,7 +2,7 @@ class_name IdleState extends State
 
 
 @export var input_sync : MultiplayerSynchronizer
-var player_input : Dictionary[String, Variant] = {"dir_input" : Vector2i.ZERO,
+var player_input : Dictionary[String, Variant] = {"dir_input" : Vector2.ZERO,
 												"attack_input" : false}
 
 
@@ -22,24 +22,23 @@ func enter() -> void:
 func _update_input(new_input : Dictionary[String, Variant]) -> void:
 	if active:
 		player_input = new_input
-		print("IdleState - Update Input - %s" % player_input)
 
 
-func _input(event: InputEvent) -> void:
-	if !active:
-		return
-		
-	if event is InputEventKey:
-		if _is_direction_pressed(event):
-			if character.ray_check(_get_input_dir(event)):
-				return
-			_set_move_dir(event)
-			transition.emit(self, "MoveState")
-		elif event.is_action_pressed("Attack"):
-			transition.emit(self, "AttackState")
-	elif event is InputEventMouseButton:
-		if event.is_action_pressed("Attack"):
-			transition.emit(self, "AttackState")
+#func _input(event: InputEvent) -> void:
+	#if !active:
+		#return
+		#
+	#if event is InputEventKey:
+		#if _is_direction_pressed(event):
+			#if character.ray_check(_get_input_dir(event)):
+				#return
+			#_set_move_dir(event)
+			#transition.emit(self, "MoveState")
+		#elif event.is_action_pressed("Attack"):
+			#transition.emit(self, "AttackState")
+	#elif event is InputEventMouseButton:
+		#if event.is_action_pressed("Attack"):
+			#transition.emit(self, "AttackState")
 
 
 func _is_direction_pressed(event : InputEvent) -> bool:

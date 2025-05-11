@@ -1270,6 +1270,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 [node name="Water28" parent="Board/Water/WaterRow12" index="27" instance=ExtResource("7_13mt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
+[node name="Characters" parent="." index="5"]
+num_enemies = 0
+
 [node name="PickUps" parent="." index="6"]
 level_pick_ups = Array[int]([0, 1])
 

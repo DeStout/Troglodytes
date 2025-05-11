@@ -7,6 +7,8 @@ signal spawn_footprint
 signal freeze_pick_up
 signal spawn_fire_ball
 
+@export var player_input : MultiplayerSynchronizer
+
 @onready var attack_cast := $AttackCast
 @onready var attack_sfx := $AttackSFX
 @onready var hit_sfx := $HitSFX
@@ -36,6 +38,11 @@ const FIRE_POWER_TIME := 10.0
 @onready var fire_power_timer := $FirePowerTimer
 @onready var fire_sfx := $FireSFX
 @onready var stars := $Player1/Armature/Skeleton3D/HeadBone/Stars
+
+
+func set_input_auth(auth_id : int) -> void:
+	player_input.set_multiplayer_authority(auth_id)
+	player_input.set_process_input(ENetNetwork.peer_id == auth_id)
 
 
 func get_prev_state() -> String:

@@ -23,7 +23,7 @@ func bash() -> void:
 				return
 				
 			if randi() % 25 == 0:
-				bonk_sfx.play
+				bonk_sfx.play()
 			else:
 				bash_sfx.play()
 			collision.collider.attacked()

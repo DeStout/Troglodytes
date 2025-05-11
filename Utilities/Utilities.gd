@@ -46,6 +46,20 @@ func get_move_dir_vect(move_dir : DIRECTIONS) -> Vector2:
 	return target_dir
 
 
+func get_move_dir(move_vect : Vector2) -> DIRECTIONS:
+	move_vect = move_vect.normalized()
+	match move_vect:
+		Vector2.UP:
+			return DIRECTIONS.UP
+		Vector2.DOWN:
+			return DIRECTIONS.DOWN
+		Vector2.LEFT:
+			return DIRECTIONS.LEFT
+		Vector2.RIGHT:
+			return DIRECTIONS.RIGHT
+	return -1
+
+
 func encode_ip(ip : String) -> String:
 	if !ip.is_valid_ip_address():
 		return "Invalid"
