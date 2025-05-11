@@ -47,7 +47,7 @@ func get_move_dir_vect(move_dir : DIRECTIONS) -> Vector2:
 
 
 func get_move_dir(move_vect : Vector2) -> DIRECTIONS:
-	move_vect = move_vect.normalized()
+	move_vect = move_vect.normalized() as Vector2i
 	match move_vect:
 		Vector2.UP:
 			return DIRECTIONS.UP

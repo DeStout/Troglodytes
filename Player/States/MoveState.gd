@@ -4,9 +4,7 @@ class_name MoveState extends State
 const SNAP_TOL := 0.007
 
 @export var input_sync : MultiplayerSynchronizer
-var player_input : Dictionary[String, Variant] = {"dir_input" : Vector2.ZERO,
-												"attack_input" : false}
-var dir_buffer
+var dir_buffer : Utilities.DIRECTIONS
 var turning := false
 
 
@@ -14,107 +12,81 @@ func _ready() -> void:
 	input_sync.input_update.connect(_update_input)
 
 
-#func enter() -> void:
-	##print("Enter MoveState")
-	#character.anim_player.speed_scale = character.anim_speed
-	#character.anim_player.play("Walk")
-	#if _is_turn_around():
-		#_turn_around()
-	#_set_target_square()
-	#await _slerp_to_dirp()
+func enter() -> void:
+	#print("Enter MoveState")
+	character.anim_player.speed_scale = character.anim_speed
+	character.anim_player.play("Walk")
+	
+	var dir_input : Vector2 = input_sync.get_player_input()["dir_input"]
+	dir_input = _clear_same_dir_input(dir_input)
+	var move_dir := Utilities.get_move_dir(dir_input)
+	dir_buffer = move_dir if move_dir != -1 else character.move_dir
+	
+	if _is_turn_around():
+		_turn_around()
+	_set_target_square()
+	await _slerp_to_dirp()
 
 
 func _update_input(new_input : Dictionary[String, Variant]) -> void:
 	if !active:
 		return
-		
-	player_input = new_input
 	
-	if player_input["attack_input"]:
+	if new_input["attack_input"]:
 		transition.emit(self, "AttackState")
 		
-	var input_dir = Utilities.get_move_dir(player_input["dir_input"])
+	var dir_input : Vector2 = new_input["dir_input"]
+	dir_input = _clear_same_dir_input(dir_input)
+	var move_dir := Utilities.get_move_dir(dir_input)
+	if move_dir == -1 or move_dir == dir_buffer:
+		return
+	dir_buffer = move_dir
+	
+	if _is_turn_around():
+		_turn_around()
+	_set_target_square()
+	await _slerp_to_dirp()
 
 
-#func _input(event: InputEvent) -> void:
-	#if !active:
-		#return
-		#
-	#if event is InputEventKey:
-		#if _is_turn_around():
-			#_turn_around()
-			#_set_target_square()
-			#await _slerp_to_dirp(true)
-		#elif event.is_action_pressed("Attack"):
-			#transition.emit(self, "AttackState")
-	#elif event is InputEventMouseButton:
-		#if event.is_action_pressed("Attack"):
-			#transition.emit(self, "AttackState")
+func _clear_same_dir_input(dir_input : Vector2) -> Vector2:
+	var move_dir := Utilities.get_move_dir_vect(character.move_dir)
+	if is_equal_approx(move_dir.x, dir_input.x):
+		dir_input.x = 0
+	if is_equal_approx(move_dir.y, dir_input.y):
+		dir_input.y = 0
+	return dir_input
 
 
-#func _is_turn_around() -> bool:
-	#return _is_direction_pressed() and _is_opp_dir_pressed() and _get_num_input() == 1
-
-
-#func _is_direction_pressed() -> bool:
-	#if Input.is_action_pressed("MoveUp") or Input.is_action_pressed("MoveDown") or \
-										#Input.is_action_pressed("MoveLeft") or \
-										#Input.is_action_pressed("MoveRight"):
-		#return true
-	#return false
-
-
-#func _is_opp_dir_pressed() -> bool:
-	#if character.move_dir == Utilities.DIRECTIONS.UP and \
-											#Input.is_action_pressed("MoveDown"):
-		#return true
-	#if character.move_dir == Utilities.DIRECTIONS.DOWN and \
-											#Input.is_action_pressed("MoveUp"):
-		#return true
-	#if character.move_dir == Utilities.DIRECTIONS.LEFT and \
-											#Input.is_action_pressed("MoveRight"):
-		#return true
-	#if character.move_dir == Utilities.DIRECTIONS.RIGHT and \
-											#Input.is_action_pressed("MoveLeft"):
-		#return true
-	#return false
-
-
-#func _turn_around() -> void:
-	#var char_pos := Utilities.v3_to_v2(character.global_position)
-	#character.velocity = Vector3.ZERO
-	#character.move_dir = _get_input_dir()
-
-
-#func physics_update(delta) -> void:
-	#if turning:
-		#return
-		#
-	#_move(delta)
-	#if !_is_at_target():
-		#return
-	#var walls :=[character.ray_check(character.move_dir), \
-											#character.ray_check(_get_input_dir())]
-	#if _get_num_input() == 1 and character.move_dir != _get_input_dir():
-		## Turn if no wall in input direction
-		#if !walls[1]:
-			#_stop_and_snap()
-			#character.move_dir = _get_input_dir()
-			#_set_target_square()
-			#await _slerp_to_dirp()
-			#return
-		## Stop if wall ahead
-		#if walls[0]:
-			#_stop_and_snap()
-			#return
-		## Continue forward if wall in input direction
-		#if walls[1]:
-			#_set_target_square()
-			#
-	#elif walls[0]:
-		#_stop_and_snap()
-		#transition.emit(self, "IdleState")
-	#_set_target_square()
+func physics_update(delta) -> void:
+	if turning:
+		return
+		
+	_move(delta)
+	if !_is_at_target():
+		return
+		
+	# [bool, bool]
+	var walls := [character.ray_check(character.move_dir), \
+											character.ray_check(dir_buffer)]
+	if character.move_dir != dir_buffer:
+		# Turn if no wall in input direction
+		if !walls[1]:
+			_stop_and_snap()
+			character.move_dir = dir_buffer
+			_set_target_square()
+			await _slerp_to_dirp()
+			return
+		# Stop if wall ahead
+		if walls[0]:
+			_stop_and_snap()
+			transition.emit(self, "IdleState")
+		# Continue forward if wall in input direction
+		if walls[1]:
+			_set_target_square()
+	elif walls[0]:
+		_stop_and_snap()
+		transition.emit(self, "IdleState")
+	_set_target_square()
 
 
 func _stop_and_snap() -> void:
@@ -139,29 +111,26 @@ func _is_at_target() -> bool:
 	return false
 
 
-#func _get_num_input() -> int:
-	#var num_input := 0
-	#if Input.is_action_pressed("MoveUp"):
-		#num_input += 1
-	#if Input.is_action_pressed("MoveDown"):
-		#num_input += 1
-	#if Input.is_action_pressed("MoveLeft"):
-		#num_input += 1
-	#if Input.is_action_pressed("MoveRight"):
-		#num_input += 1
-	#return num_input
+func _is_turn_around() -> bool:
+	if dir_buffer == Utilities.DIRECTIONS.UP and \
+									character.move_dir == Utilities.DIRECTIONS.DOWN:
+		return true
+	if dir_buffer == Utilities.DIRECTIONS.DOWN and \
+									character.move_dir == Utilities.DIRECTIONS.UP:
+		return true
+	if dir_buffer == Utilities.DIRECTIONS.LEFT and \
+									character.move_dir == Utilities.DIRECTIONS.RIGHT:
+		return true
+	if dir_buffer == Utilities.DIRECTIONS.RIGHT and \
+									character.move_dir == Utilities.DIRECTIONS.LEFT:
+		return true
+	return false
 
 
-#func _get_input_dir() -> int:
-	#if Input.is_action_pressed("MoveUp"):
-		#return Utilities.DIRECTIONS.UP
-	#if Input.is_action_pressed("MoveDown"):
-		#return Utilities.DIRECTIONS.DOWN
-	#if Input.is_action_pressed("MoveLeft"):
-		#return Utilities.DIRECTIONS.LEFT
-	#if Input.is_action_pressed("MoveRight"):
-		#return Utilities.DIRECTIONS.RIGHT
-	#return -1
+func _turn_around() -> void:
+	var char_pos := Utilities.v3_to_v2(character.global_position)
+	character.velocity = Vector3.ZERO
+	character.move_dir = dir_buffer
 
 
 func _slerp_to_dirp(stop := false) -> void:

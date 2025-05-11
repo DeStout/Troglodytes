@@ -19,6 +19,7 @@ func enter() -> void:
 func _update_input(new_input : Dictionary[String, Variant]) -> void:
 	if !active:
 		return
+		
 	if new_input["attack_input"]:
 		character.attack()
 

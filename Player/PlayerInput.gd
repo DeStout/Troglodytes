@@ -7,6 +7,11 @@ var player_input : Dictionary[String, Variant] = {"dir_input" : Vector2.ZERO,
 															"attack_input" : false}
 
 
+func _ready() -> void:
+	public_visibility = false
+	set_visibility_for(1, true)
+
+
 func _input(event : InputEvent) -> void:
 	if !is_multiplayer_authority():
 		return
@@ -17,6 +22,7 @@ func _input(event : InputEvent) -> void:
 									player_input["attack_input"] == attack_input:
 			return
 		player_input = {"dir_input": dir_input, "attack_input": attack_input}
+		
 		if multiplayer.is_server():
 			_input_updated()
 
@@ -28,3 +34,7 @@ func _input_updated() -> void:
 		return
 	input_update.emit(player_input)
 	player_input["attack_input"] = false
+
+
+func get_player_input() -> Dictionary:
+	return player_input
