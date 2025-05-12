@@ -13,6 +13,9 @@ func _ready() -> void:
 
 func enter() -> void:
 	#print("Enter StartState")
+	if !multiplayer.is_server():
+		return
+	
 	character.anim_player.speed_scale = 1.0
 	character.anim_player.play("Idle")
 	character._footstep(true)

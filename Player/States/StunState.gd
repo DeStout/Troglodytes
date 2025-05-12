@@ -3,6 +3,7 @@ class_name StunState extends State
 
 const STUN_TIME := 3.0
 
+@export var stars : MeshInstance3D
 @onready var stun_timer := $StunTimer
 
 
@@ -11,7 +12,7 @@ func enter() -> void:
 	stun_timer.start(STUN_TIME)
 	character.anim_player.speed_scale = 1.0
 	character.anim_player.play("Stunned")
-	character.show_stars(true)
+	stars.show_stars(true)
 	character.velocity = Vector3.ZERO
 
 
@@ -22,7 +23,7 @@ func _die() -> void:
 
 
 func exit() -> void:
-	character.show_stars(false)
+	stars.show_stars(false)
 	
 	
 #func update(delta) -> void: pass

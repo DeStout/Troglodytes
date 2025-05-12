@@ -37,6 +37,9 @@ properties/4/replication_mode = 2
 properties/5/path = NodePath("Player1/Armature/Skeleton3D/HeadBone/Stars:process_mode")
 properties/5/spawn = true
 properties/5/replication_mode = 2
+properties/6/path = NodePath("Halo:visible")
+properties/6/spawn = true
+properties/6/replication_mode = 2
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3nb2p"]
 properties/0/path = NodePath("PlayerInput:player_input")
@@ -121,8 +124,9 @@ input_sync = NodePath("../../PlayerInput")
 script = ExtResource("6_tdg3f")
 input_sync = NodePath("../../PlayerInput")
 
-[node name="StunState" type="Node" parent="StateMachine"]
+[node name="StunState" type="Node" parent="StateMachine" node_paths=PackedStringArray("stars")]
 script = ExtResource("7_dm7nj")
+stars = NodePath("../../Player1/Armature/Skeleton3D/HeadBone/Stars")
 
 [node name="StunTimer" type="Timer" parent="StateMachine/StunState"]
 one_shot = true

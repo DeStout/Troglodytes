@@ -155,11 +155,6 @@ func attacked() -> void:
 		state_machine.current_state.attacked()
 
 
-func show_stars(is_show : bool) -> void:
-	stars.set_process(is_show)
-	stars.visible = is_show
-
-
 func exit_stage() -> void:
 	if !invincible_timer.time_left:
 		die()
