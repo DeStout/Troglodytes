@@ -85,7 +85,6 @@ func _add_mesh(new_mesh : Node3D) -> void:
 
 func _collected(body : CharacterBody3D) -> void:
 	if body is Player and multiplayer.is_server():
-		Globals.add_and_set_score(SCORE_VALUE)
 		var sfx := _apply_effect(body)
 		mesh.visible = false
 		fire_vfx.visible = false

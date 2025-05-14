@@ -24,11 +24,10 @@ func _ready() -> void:
 
 
 func _set_up() -> void:
-	Globals.add_and_set_lives(0)
-	Globals.add_and_set_score(0)
-	
 	var used_squares : Array[Node3D] = []
 	characters.spawn_players()
+	_connect_player_signals()
+	await get_tree().physics_frame
 	used_squares = characters.spawn_enemies(used_squares)
 	used_squares = pick_ups.spawn_pick_ups(used_squares)
 	_spawn_eggs(used_squares)
@@ -48,7 +47,7 @@ func _spawn_eggs(used_squares : Array[Node3D]) -> void:
 		#if Utilities.v3_to_v2(square.global_position) == \
 							#Utilities.v3_to_v2(characters.player.global_position):
 			#continue
-		if used_squares.has(square):
+		if used_squares.has(square) or square.is_in_group("PlayerSquares"):
 			continue
 		var egg = eggs.spawn(square.global_position + Vector3(0, 0.5, 0))
 		egg.collected.connect(egg_collected)
@@ -76,8 +75,8 @@ func spawn_fire_ball(player) -> void:
 
 func egg_collected(egg : Node3D) -> void:
 	free_squares.append(Utilities.get_closest_egg_square(egg.global_position))
-	if eggs.get_child_count() == 1:
-		_spawn_home()
+	#if eggs.get_child_count() == 1:
+		#_spawn_home()
 
 
 func _spawn_home() -> void:
@@ -96,7 +95,6 @@ func _spawn_home() -> void:
 
 
 func level_complete() -> void:
-	Globals.add_and_set_lives(1)
 	level_clean_up()
 	game.load_next_level()
 

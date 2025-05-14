@@ -10,7 +10,7 @@ signal peers_updated
 signal peers_ready
 
 const TEST_IP := "127.0.0.1"
-const DEFAULT_PORT := 36963
+const DEFAULT_PORT := 34500
 const MAX_PEERS := 3
 
 var lobby_code : String
@@ -78,10 +78,10 @@ func join_server(join_address : String) -> void:
 		ip = ip_port[0]
 		if ip_port.size() > 1:
 			port = int(ip_port[1])
-		if !ip.is_valid_ip_address():
-			push_error("ENetNetwork - Invalid IP Address, returning")
-			connection_failed.emit()
-			return
+		#if !ip.is_valid_ip_address():
+			#push_error("ENetNetwork - Invalid IP Address, returning")
+			#connection_failed.emit()
+			#return
 			
 	#ip = TEST_IP
 	peer = ENetMultiplayerPeer.new()

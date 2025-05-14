@@ -4,7 +4,7 @@ class_name StartState extends State
 const START_TIME := 1.0
 @onready var start_timer := $StartTimer
 
-@export var input_sync : MultiplayerSynchronizer
+@export var input_sync : Node
 
 
 func _ready() -> void:
@@ -13,8 +13,6 @@ func _ready() -> void:
 
 func enter() -> void:
 	#print("Enter StartState")
-	if !multiplayer.is_server():
-		return
 	
 	character.anim_player.speed_scale = 1.0
 	character.anim_player.play("Idle")

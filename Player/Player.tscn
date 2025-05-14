@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b2iwuk2gndgr4"]
+[gd_scene load_steps=28 format=3 uid="uid://b2iwuk2gndgr4"]
 
 [ext_resource type="Script" uid="uid://bsebhi65dqn0d" path="res://Player/Player.gd" id="1_cxr5p"]
 [ext_resource type="Script" uid="uid://cqrkr7tiyb2ee" path="res://Player/PlayerInput.gd" id="2_8sa4y"]
@@ -25,26 +25,18 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
-properties/2/path = NodePath("Player1/AnimationPlayer:current_animation")
+properties/2/path = NodePath("Player/AnimationPlayer:current_animation")
 properties/2/spawn = true
 properties/2/replication_mode = 2
-properties/3/path = NodePath("Player1/AnimationPlayer:speed_scale")
+properties/3/path = NodePath("Player/AnimationPlayer:speed_scale")
 properties/3/spawn = true
 properties/3/replication_mode = 2
-properties/4/path = NodePath("Player1/Armature/Skeleton3D/HeadBone/Stars:visible")
+properties/4/path = NodePath("Player/Armature/Skeleton3D/HeadBone/Stars:visible")
 properties/4/spawn = true
 properties/4/replication_mode = 2
-properties/5/path = NodePath("Player1/Armature/Skeleton3D/HeadBone/Stars:process_mode")
+properties/5/path = NodePath("Player/Armature/Skeleton3D/HeadBone/Stars:process_mode")
 properties/5/spawn = true
 properties/5/replication_mode = 2
-properties/6/path = NodePath("Halo:visible")
-properties/6/spawn = true
-properties/6/replication_mode = 2
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3nb2p"]
-properties/0/path = NodePath("PlayerInput:player_input")
-properties/0/spawn = true
-properties/0/replication_mode = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_js7pq"]
 radius = 0.35
@@ -96,8 +88,7 @@ player_input = NodePath("PlayerInput")
 [node name="Synchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_7v5gs")
 
-[node name="PlayerInput" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_3nb2p")
+[node name="PlayerInput" type="Node" parent="."]
 script = ExtResource("2_8sa4y")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "character")]
@@ -126,7 +117,7 @@ input_sync = NodePath("../../PlayerInput")
 
 [node name="StunState" type="Node" parent="StateMachine" node_paths=PackedStringArray("stars")]
 script = ExtResource("7_dm7nj")
-stars = NodePath("../../Player1/Armature/Skeleton3D/HeadBone/Stars")
+stars = NodePath("../../Player/Armature/Skeleton3D/HeadBone/Stars")
 
 [node name="StunTimer" type="Timer" parent="StateMachine/StunState"]
 one_shot = true
@@ -139,40 +130,40 @@ shape = SubResource("CapsuleShape3D_js7pq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 target_position = Vector3(0, 0, -1)
 
-[node name="Player1" parent="." instance=ExtResource("6_v0k0e")]
+[node name="Player" parent="." instance=ExtResource("6_v0k0e")]
 
-[node name="PlayerBody" parent="Player1/Armature/Skeleton3D" index="0"]
+[node name="PlayerBody" parent="Player/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_p7tob")
 
-[node name="LeftFootBone" type="BoneAttachment3D" parent="Player1/Armature/Skeleton3D" index="1"]
+[node name="LeftFootBone" type="BoneAttachment3D" parent="Player/Armature/Skeleton3D" index="1"]
 transform = Transform3D(1, 2.98023e-07, -6.33299e-08, -1.30385e-07, -0.213362, 0.976973, 2.30968e-07, -0.976973, -0.213362, -0.234641, 0.0659985, 0.0538339)
 bone_name = "Toes.L"
 bone_idx = 49
 
-[node name="LeftFoot" type="Node3D" parent="Player1/Armature/Skeleton3D/LeftFootBone"]
+[node name="LeftFoot" type="Node3D" parent="Player/Armature/Skeleton3D/LeftFootBone"]
 transform = Transform3D(1, 0, 5.58794e-09, 0, 1, -5.96046e-08, 1.39698e-08, -2.98023e-08, 1, -0.00635646, 0.0610968, -0.0355091)
 
-[node name="RightFootBone" type="BoneAttachment3D" parent="Player1/Armature/Skeleton3D" index="2"]
+[node name="RightFootBone" type="BoneAttachment3D" parent="Player/Armature/Skeleton3D" index="2"]
 transform = Transform3D(1, -2.98023e-07, 6.33299e-08, 1.30385e-07, -0.213362, 0.976973, -2.30968e-07, -0.976973, -0.213362, 0.234641, 0.0659985, 0.0538339)
 bone_name = "Toes.R"
 bone_idx = 61
 
-[node name="RightFoot" type="Node3D" parent="Player1/Armature/Skeleton3D/RightFootBone"]
+[node name="RightFoot" type="Node3D" parent="Player/Armature/Skeleton3D/RightFootBone"]
 transform = Transform3D(1, 0, 5.58794e-09, 0, 1, -5.96046e-08, 1.39698e-08, -2.98023e-08, 1, -0.00635646, 0.0610968, -0.0355091)
 
-[node name="HeadBone" type="BoneAttachment3D" parent="Player1/Armature/Skeleton3D" index="3"]
+[node name="HeadBone" type="BoneAttachment3D" parent="Player/Armature/Skeleton3D" index="3"]
 transform = Transform3D(1, 1.05865e-16, -2.68614e-17, -2.68612e-17, 0.476771, 0.879027, 1.05865e-16, -0.879027, 0.476771, -1.0408e-17, 1.50707, 0.0876817)
 bone_name = "Head"
 bone_idx = 5
 
-[node name="Stars" parent="Player1/Armature/Skeleton3D/HeadBone" instance=ExtResource("11_3mea3")]
+[node name="Stars" parent="Player/Armature/Skeleton3D/HeadBone" instance=ExtResource("11_3mea3")]
 transform = Transform3D(1, 0, 0, 0, 0.660094, -0.751184, 0, 0.751184, 0.660093, 2.23839e-17, 0.442895, 0.245478)
 rotation_order = 0
 visible = false
 surface_material_override/0 = SubResource("StandardMaterial3D_7v5gs")
 script = ExtResource("12_7v5gs")
 
-[node name="AnimationPlayer" parent="Player1" index="1"]
+[node name="AnimationPlayer" parent="Player" index="1"]
 autoplay = "Idle"
 
 [node name="FirePowerTimer" type="Timer" parent="."]
@@ -224,8 +215,7 @@ mesh = SubResource("BoxMesh_s1rgi")
 skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("9_j23h2")
 
-[connection signal="delta_synchronized" from="PlayerInput" to="PlayerInput" method="_input_updated"]
 [connection signal="timeout" from="StateMachine/StartState/StartTimer" to="StateMachine/StartState" method="_start_finished"]
 [connection signal="timeout" from="StateMachine/StunState/StunTimer" to="StateMachine/StunState" method="_die"]
 
-[editable path="Player1"]
+[editable path="Player"]

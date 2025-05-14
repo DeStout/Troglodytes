@@ -3,7 +3,7 @@ class_name MoveState extends State
 
 const SNAP_TOL := 0.007
 
-@export var input_sync : MultiplayerSynchronizer
+@export var input_sync : Node
 var dir_buffer : Utilities.DIRECTIONS
 var turning := false
 

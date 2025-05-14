@@ -26,7 +26,7 @@ func bash() -> void:
 				bonk_sfx.play()
 			else:
 				bash_sfx.play()
-			collision.collider.attacked()
+			collision.collider.attacked.rpc()
 
 
 func _attack_finished(_anim_finished : String) -> void:

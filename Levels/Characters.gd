@@ -1,6 +1,8 @@
 extends MultiplayerSpawner
 
 
+const INIT_LIVES := 3
+const MAX_LIVES := 4
 const RESPAWN_DELAY := Vector2(2.0, 6.0)
 
 var player_ := load("res://Player/Player.tscn")
@@ -31,7 +33,7 @@ func _process(delta: float) -> void:
 
 func _spawn_player(player_num : int) -> Player:
 	var player = player_.instantiate()
-	player.set_input_auth(ENetNetwork.peers.keys()[player_num])
+	player.set_multiplayer_authority(ENetNetwork.peers.keys()[player_num])
 	var spawn_square = get_tree().get_nodes_in_group("PlayerSquares")[player_num]
 	player.set_deferred("global_position", spawn_square.global_position)
 	player.rotation = spawn_square.rotation
@@ -62,8 +64,9 @@ func spawn_players() -> void:
 	var player_squares := get_tree().get_nodes_in_group("PlayerSquares")
 	for square_i in range(0, player_squares.size()):
 		if square_i + 1 <= ENetNetwork.peers.size():
-			player_squares[square_i].remove_from_group("EggSquares")
 			spawn(square_i)
+			continue
+		player_squares[square_i].remove_from_group("PlayerSquares")
 
 
 func spawn_enemies(used_squares : Array[Node3D]) -> Array:

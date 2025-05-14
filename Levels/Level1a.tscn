@@ -62,6 +62,9 @@ size = Vector3(18, 1, 14)
 
 [node name="Level1a" instance=ExtResource("1_dl8mf")]
 
+[node name="UIBoard1" parent="." index="0"]
+visible = true
+
 [node name="Camera" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 10.5)
 size = 13.5

@@ -235,7 +235,6 @@ text = "127.0.0.1"
 placeholder_text = "Join Code"
 context_menu_enabled = false
 emoji_menu_enabled = false
-shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 virtual_keyboard_enabled = false
 

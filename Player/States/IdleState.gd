@@ -1,7 +1,7 @@
 class_name IdleState extends State
 
 
-@export var input_sync : MultiplayerSynchronizer
+@export var input_sync : Node
 
 
 func _ready() -> void:

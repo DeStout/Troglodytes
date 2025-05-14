@@ -7,7 +7,7 @@ signal spawn_footprint
 signal freeze_pick_up
 signal spawn_fire_ball
 
-@export var player_input : MultiplayerSynchronizer
+@export var player_input : Node
 
 @onready var collision := $Collision
 @onready var attack_cast := $AttackCast
@@ -20,9 +20,9 @@ const MIN_SPEED := 1.5
 const MAX_ANIM_SPEED := 1.6
 const MIN_ANIM_SPEED := 0.4
 @onready var state_machine := $StateMachine
-@onready var anim_player : AnimationPlayer = $Player1/AnimationPlayer
-@onready var right_foot := $Player1/Armature/Skeleton3D/RightFootBone/RightFoot
-@onready var left_foot := $Player1/Armature/Skeleton3D/LeftFootBone/LeftFoot
+@onready var anim_player : AnimationPlayer = $Player/AnimationPlayer
+@onready var right_foot := $Player/Armature/Skeleton3D/RightFootBone/RightFoot
+@onready var left_foot := $Player/Armature/Skeleton3D/LeftFootBone/LeftFoot
 @onready var wall_check := $WallCheck
 var speed := 3.0
 var anim_speed := 1.0
@@ -38,17 +38,13 @@ const FIRE_POWER_TIME := 10.0
 @onready var halo := $Halo
 @onready var fire_power_timer := $FirePowerTimer
 @onready var fire_sfx := $FireSFX
-@onready var stars := $Player1/Armature/Skeleton3D/HeadBone/Stars
+@onready var stars := $Player/Armature/Skeleton3D/HeadBone/Stars
 
 
 func _ready() -> void:
+	player_input.set_process_input(is_multiplayer_authority())
 	collision.disabled = !multiplayer.is_server()
 	attack_cast.enabled = multiplayer.is_server()
-
-
-func set_input_auth(auth_id : int) -> void:
-	player_input.set_multiplayer_authority(auth_id)
-	player_input.set_process_input(ENetNetwork.peer_id == auth_id)
 
 
 func get_prev_state() -> String:
@@ -150,6 +146,7 @@ func apply_freeze() -> void:
 	freeze_pick_up.emit()
 
 
+@rpc("call_local", "reliable")
 func attacked() -> void:
 	if state_machine.current_state.has_method("attacked"):
 		state_machine.current_state.attacked()
@@ -165,7 +162,6 @@ func exit_stage() -> void:
 
 
 func die() -> void:
-	Globals.add_and_set_lives(-1)
 	respawn()
 
 

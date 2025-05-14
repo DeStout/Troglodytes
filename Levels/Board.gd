@@ -12,14 +12,12 @@ var spawn_hole_ := load("res://Levels/Props/SpawnHole.tscn")
 func _ready() -> void:
 	spawn_function = _add_spawn_hole
 	
-	if multiplayer.is_server():
-		_add_egg_squares()
-		_add_home_squares()
+	_add_egg_squares()
+	_add_home_squares()
 
 
 func _add_egg_squares() -> void:
 	for square in egg_squares.get_children():
-		#if !square.is_in_group("PlayerSquares"):
 		square.add_to_group("EggSquares", true)
 
 

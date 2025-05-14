@@ -13,12 +13,6 @@ var levels : Array[String] = [ "res://Levels/Level1a.tscn",
 @export var level : Node3D
 var level_num : int = 0
 
-const INIT_LIVES := 2
-const MAX_LIVES := 4
-
-var score := 0
-var player_lives : Array[int] = [INIT_LIVES]
-
 
 func _ready() -> void:
 	ENetNetwork.game = self

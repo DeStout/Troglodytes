@@ -17,5 +17,4 @@ func flash() -> void:
 
 func player_entered(player : CharacterBody3D) -> void:
 	if player is Player:
-		Globals.add_and_set_score(SCORE_VALUE)
 		level.level_complete()
