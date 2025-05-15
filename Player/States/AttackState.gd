@@ -21,7 +21,7 @@ func _update_input(new_input : Dictionary[String, Variant]) -> void:
 		return
 		
 	if new_input["attack_input"]:
-		character.attack()
+		character.attack.rpc()
 
 
 func attack_finished() -> void:

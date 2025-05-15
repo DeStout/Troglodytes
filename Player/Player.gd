@@ -44,7 +44,7 @@ const FIRE_POWER_TIME := 10.0
 func _ready() -> void:
 	player_input.set_process_input(is_multiplayer_authority())
 	collision.disabled = !multiplayer.is_server()
-	attack_cast.enabled = multiplayer.is_server()
+	#attack_cast.enabled = multiplayer.is_server()
 
 
 func get_prev_state() -> String:
@@ -73,6 +73,7 @@ func _footstep(foot_down : bool) -> void:
 	spawn_footprint.emit(self, foot_down)
 
 
+@rpc("call_local", "reliable")
 func attack() -> void:
 	if fire_power_timer.time_left:
 		fire_sfx.play()
@@ -146,7 +147,7 @@ func apply_freeze() -> void:
 	freeze_pick_up.emit()
 
 
-@rpc("call_local", "reliable")
+@rpc("any_peer", "call_local", "reliable")
 func attacked() -> void:
 	if state_machine.current_state.has_method("attacked"):
 		state_machine.current_state.attacked()

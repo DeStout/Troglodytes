@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://b26pqv8mkuw6n" path="res://Utilities/Autoloads/Debug.gd" id="1_ef0lw"]
 
-[node name="Debug" type="Node" node_paths=PackedStringArray("fps")]
+[node name="Debug" type="Node" node_paths=PackedStringArray("fps_label", "ping_label")]
 script = ExtResource("1_ef0lw")
-fps = NodePath("Control/MarginContainer/VBoxContainer/FPS")
+fps_label = NodePath("Control/MarginContainer/VBoxContainer/FPS")
+ping_label = NodePath("Control/MarginContainer/VBoxContainer/Ping")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -32,3 +33,8 @@ layout_mode = 2
 [node name="FPS" type="Label" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "FPS: INF"
+
+[node name="Ping" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Ping: INF"

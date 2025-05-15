@@ -17,6 +17,7 @@ var lobby_code : String
 var peer : MultiplayerPeer
 var peer_id : int
 var peers : Dictionary[int, Dictionary] = {}
+var ping : int
 
 var upnp_thread : Thread
 var game : Game
@@ -67,6 +68,8 @@ func create_server() -> void:
 	
 	print("Server - Lobby Code: %s" % lobby_code)
 	server_joined.emit(true, true)
+	
+	Debug.ping_label.visible = true
 
 
 func join_server(join_address : String) -> void:
@@ -100,6 +103,16 @@ func _server_joined() -> void:
 	var enet_peer = peer.get_peer(1)
 	print("Remote Address: %s" % enet_peer.get_remote_address())
 	server_joined.emit(true, false)
+	
+	Debug.ping_label.visible = true
+
+
+func get_ping() -> float:
+	if multiplayer.is_server():
+		return 0.0
+	var server : ENetPacketPeer = peer.get_peer(1)
+	server.ping()
+	return server.get_statistic(ENetPacketPeer.PeerStatistic.PEER_LAST_ROUND_TRIP_TIME)
 
 
 func _connect_failed() -> void:

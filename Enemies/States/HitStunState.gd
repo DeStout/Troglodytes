@@ -20,7 +20,7 @@ func attacked() -> void:
 	stun_timer.start()
 	attacked_num += 1
 	
-	if attacked_num == ATTACKS_TO_KILL:
+	if attacked_num == ATTACKS_TO_KILL and multiplayer.is_server():
 		stun_timer.stop()
 		transition.emit(self, "DeathState")
 	if tween:

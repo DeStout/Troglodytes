@@ -27,7 +27,7 @@ var spawn_hole : CSGCylinder3D
 
 
 func _ready() -> void:
-	collision.disabled = !multiplayer.is_server()
+	#collision.disabled = !multiplayer.is_server()
 	attack_collision.disabled = !multiplayer.is_server()
 
 
