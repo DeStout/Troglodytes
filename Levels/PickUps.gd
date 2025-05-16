@@ -3,8 +3,14 @@ extends MultiplayerSpawner
 
 var pick_up_ := load("res://PickUps/PickUp.tscn")
 
-enum PICK_UPS {SPEED_UP, SLOW_DOWN, FIRE_POWER, FREEZE, INVINCIBLE, PINEAPPLE}
 const RESPAWN_DELAY := Vector2(1.0, 5.0)
+enum PICK_UPS {SPEED_UP, SLOW_DOWN, FIRE_POWER, FREEZE, INVINCIBLE, PINEAPPLE}
+var pick_ups : Dictionary[PICK_UPS, Variant] = {PICK_UPS.SPEED_UP : load("res://PickUps/SpeedUp.tscn"),
+											PICK_UPS.SLOW_DOWN : load("res://PickUps/SlowDown.tscn"),
+											PICK_UPS.FIRE_POWER : load("res://PickUps/FirePower.tscn"),
+											PICK_UPS.FREEZE : load("res://PickUps/Freeze.tscn"),
+											PICK_UPS.INVINCIBLE : load("res://PickUps/Invincible.tscn"),
+											PICK_UPS.PINEAPPLE : ""}
 
 @export var level : Node3D
 @export var num_pick_ups := 4
@@ -16,10 +22,11 @@ func _ready() -> void:
 
 
 func _spawn_pick_up(data : Dictionary) -> PickUp:
-		var pick_up : Node3D = pick_up_.instantiate()
+		var pick_up : PickUp = pick_ups[data["type"]].instantiate()
+		#var pick_up : Node3D = pick_up_.instantiate()
 		var new_pos := Vector3(data["position"].x, 0, data["position"].z)
 		pick_up.set_deferred("global_position", new_pos)
-		pick_up.set_type(data["type"])
+		#pick_up.set_type(data["type"])
 		if multiplayer.is_server():
 			pick_up.despawn.connect(_pick_up_despawned)
 		return pick_up

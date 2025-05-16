@@ -70,6 +70,7 @@ func ray_check(check_dir : Utilities.DIRECTIONS) -> bool:
 
 
 func _footstep(foot_down : bool) -> void:
+	#print(get_multiplayer_authority(), " footstep ", multiplayer.get_unique_id())
 	spawn_footprint.emit(self, foot_down)
 
 
@@ -108,6 +109,7 @@ func _attack_ended() -> void:
 		state_machine.current_state.attack_finished()
 
 
+@rpc("call_local", "any_peer")
 func effect_speed(speed_effect : float) -> void:
 	speed += speed_effect
 	anim_speed += sign(speed_effect) * 0.2
@@ -141,7 +143,9 @@ func is_invincible() -> bool:
 	return bool(invincible_timer.time_left)
 
 
+@rpc("call_local", "any_peer")
 func give_fire_power() -> void:
+	print(multiplayer.get_unique_id(), " fire power ", get_multiplayer_authority())
 	fire_power_timer.start(FIRE_POWER_TIME)
 
 

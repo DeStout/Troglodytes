@@ -11,6 +11,9 @@
 properties/0/path = NodePath("Mesh:visible")
 properties/0/spawn = true
 properties/0/replication_mode = 2
+properties/1/path = NodePath("PickUpSFX:playing")
+properties/1/spawn = true
+properties/1/replication_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7m588"]
 albedo_texture = ExtResource("3_32dvn")

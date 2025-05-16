@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx7c4jm085fh4"]
+
+[ext_resource type="PackedScene" uid="uid://jwxh6mbhxdij" path="res://PickUps/PickUp.tscn" id="1_kdt7l"]
+[ext_resource type="Material" uid="uid://vyxvhhf0hon" path="res://Player/Player_Mat.tres" id="2_7q42o"]
+[ext_resource type="AudioStream" uid="uid://cvoyjtcnlid4a" path="res://PickUps/IceFreeze.ogg" id="3_qtxhs"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_d8llr"]
+size = Vector3(0.8, 0.8, 0.8)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u4kno"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("3_qtxhs")
+
+[node name="PickUp1" node_paths=PackedStringArray("mesh") instance=ExtResource("1_kdt7l")]
+effect = 3
+mesh = NodePath("IceBlock")
+
+[node name="IceBlock" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_d8llr")
+surface_material_override/0 = ExtResource("2_7q42o")
+
+[node name="SFX" parent="." index="2"]
+stream = SubResource("AudioStreamRandomizer_u4kno")

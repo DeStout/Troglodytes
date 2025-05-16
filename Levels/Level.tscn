@@ -146,6 +146,7 @@ spawn_path = NodePath(".")
 script = ExtResource("7_rjnlo")
 
 [node name="FX" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://bvqetsr6wjvid", "uid://dk3hna54702v6")
 spawn_path = NodePath(".")
 script = ExtResource("8_hbkgd")
 

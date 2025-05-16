@@ -5,118 +5,73 @@ signal despawn
 
 const SCORE_VALUE := 50
 
-var speed_up_ := load("res://PickUps/FastArrow.tscn")
-var slow_down_ := load("res://PickUps/SlowArrow.tscn")
-
 enum EFFECTS { SPEED_UP, SLOW_DOWN, FIRE_POWER, FREEZE, INVINCIBLE, PINEAPPLE }
-var effect : int
-var mesh : Node3D = null
+@export var effect : EFFECTS = -1
+@export var mesh : Node3D = null
+@export var sfx : AudioStreamPlayer
 @export var collision : CollisionShape3D
-
-@export var speed_up_sfx : AudioStreamPlayer
-@export var slow_down_sfx : AudioStreamPlayer
-@export var freeze_sfx : AudioStreamPlayer
-@export var fire_vfx : Sprite3D
-@export var fire_sfx : AudioStreamPlayer
-@export var inv_sfx : AudioStreamPlayer
 
 const DESPAWN_RANGE := Vector2(9.0, 14.0)
 @export var despawn_timer : Timer
 
+var apply_effect : Callable
+
 
 func _ready() -> void:
+	_set_type()
 	collision.disabled = !multiplayer.is_server()
 	if multiplayer.is_server():
 		despawn_timer.start(randf_range(DESPAWN_RANGE.x, DESPAWN_RANGE.y))
 
 
-func set_type(new_effect) -> void:
-	effect = new_effect
+func _set_type() -> void:
 	match effect:
 		EFFECTS.SPEED_UP:
-			_add_mesh(speed_up_.instantiate())
+			apply_effect = _effect_speed.bind(0.5)
 		EFFECTS.SLOW_DOWN:
-			_add_mesh(slow_down_.instantiate())
+			apply_effect = _effect_speed.bind(-0.5)
 		EFFECTS.FIRE_POWER:
-			var sphere := MeshInstance3D.new()
-			sphere.mesh = SphereMesh.new()
-			sphere.mesh.radius = 0.22
-			sphere.mesh.height = 0.44
-			sphere.mesh.radial_segments = 8
-			sphere.mesh.rings = 8
-			var mat = load("res://Enemies/EnemyMat.tres")
-			sphere.set_surface_override_material(0, mat)
-			_add_mesh(sphere)
-			sphere.position.y = 1.0
-			fire_vfx.visible = true
+			apply_effect = _give_fire_power
 		EFFECTS.FREEZE:
-			var cube := MeshInstance3D.new()
-			cube.mesh = BoxMesh.new()
-			cube.mesh.size = Vector3(0.8, 0.8, 0.8)
-			var mat = load("res://Player/Player_Mat.tres")
-			cube.set_surface_override_material(0, mat)
-			_add_mesh(cube)
-			cube.position.y = 1.0
+			apply_effect = _apply_freeze
 		EFFECTS.INVINCIBLE:
-			var halo := MeshInstance3D.new()
-			halo.mesh = TorusMesh.new()
-			halo.mesh.inner_radius = 0.3
-			halo.mesh.outer_radius = 0.42
-			halo.mesh.rings = 12
-			halo.mesh.ring_segments = 5
-			halo.transparency = 0.5
-			var mat = load("res://Player/Halo_Mat.tres")
-			halo.set_surface_override_material(0, mat)
-			halo.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-			_add_mesh(halo)
-			halo.position.y = 0.5
-			halo.rotation_degrees.z = 0
-			var light := OmniLight3D.new()
-			light.omni_range = 0.75
-			halo.add_child(light)
+			apply_effect = _set_invincible
 		EFFECTS.PINEAPPLE:
 			pass
-
-
-func _add_mesh(new_mesh : Node3D) -> void:
-	add_child(new_mesh)
-	mesh = new_mesh
+		_:
+			pass
 
 
 func _collected(body : CharacterBody3D) -> void:
 	if body is Player and multiplayer.is_server():
-		var sfx := _apply_effect(body)
-		mesh.visible = false
-		fire_vfx.visible = false
+		_pick_up.rpc()
+		apply_effect.call(body)
 		collision.call_deferred("set_disabled", true)
 		if sfx:
 			await sfx.finished
 		_despawn()
 
 
-func _apply_effect(player : Player) -> AudioStreamPlayer:
-	var sfx : AudioStreamPlayer
-	match effect:
-		EFFECTS.SPEED_UP:
-			sfx = speed_up_sfx
-			player.effect_speed(0.5)
-		EFFECTS.SLOW_DOWN:
-			sfx = slow_down_sfx
-			player.effect_speed(-0.5)
-		EFFECTS.FIRE_POWER:
-			sfx = fire_sfx
-			player.give_fire_power()
-		EFFECTS.FREEZE:
-			sfx = freeze_sfx
-			player.apply_freeze()
-		EFFECTS.INVINCIBLE:
-			sfx = inv_sfx
-			player.set_invincible()
-		EFFECTS.PINEAPPLE:
-			pass
-	if sfx:
-		sfx.play()
-	return sfx
+@rpc("call_local")
+func _pick_up() -> void:
+	mesh.visible = false
+	sfx.play()
+
+
+func _effect_speed(player : Player, speed_affect : float) -> void:
+	player.effect_speed.rpc_id(player.get_multiplayer_authority(), speed_affect)
+
+
+func _give_fire_power(player : Player) -> void:
+	player.give_fire_power.rpc_id(player.get_multiplayer_authority())
+
+
+func _apply_freeze(player : Player) -> void:
+	player.apply_freeze()
+
+
+func _set_invincible(player : Player) -> void:
+	player.set_invincible()
 
 
 func _despawn() -> void:

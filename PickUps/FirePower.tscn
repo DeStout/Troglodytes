@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://dva7kjnufpaa3"]
+
+[ext_resource type="PackedScene" uid="uid://jwxh6mbhxdij" path="res://PickUps/PickUp.tscn" id="1_kaey8"]
+[ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://Enemies/EnemyMat.tres" id="2_almm0"]
+[ext_resource type="Shader" uid="uid://d4klim8n4q2qv" path="res://PickUps/Flame.gdshader" id="2_durqe"]
+[ext_resource type="AudioStream" uid="uid://ciqx0wcnvc2c1" path="res://PickUps/FirePickUp.ogg" id="3_j1oke"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_j1oke"]
+material = ExtResource("2_almm0")
+radius = 0.22
+height = 0.44
+radial_segments = 8
+rings = 8
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_almm0"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fvq7w"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("3_j1oke")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j1oke"]
+shader = ExtResource("2_durqe")
+shader_parameter/fire_color = Color(1, 0.33, 0.068, 1)
+shader_parameter/fire_power_factor = 2.0
+shader_parameter/fire_intensity = 3.0
+shader_parameter/fire_start = 1.0
+shader_parameter/ball_size = 1.0
+shader_parameter/roughness = 0.675
+shader_parameter/detail = 6
+shader_parameter/scale = 4.0
+shader_parameter/lacunarity = 2.0
+
+[node name="PickUp1" node_paths=PackedStringArray("mesh") instance=ExtResource("1_kaey8")]
+effect = 2
+mesh = NodePath("FireBall")
+
+[node name="FireBall" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("SphereMesh_j1oke")
+
+[node name="FireSprite" type="Sprite3D" parent="FireBall" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 1.594, 0)
+billboard = 2
+texture = SubResource("ViewportTexture_almm0")
+region_rect = Rect2(0, 0, 128, 128)
+
+[node name="SFX" parent="." index="2"]
+stream = SubResource("AudioStreamRandomizer_fvq7w")
+
+[node name="SubViewport" type="SubViewport" parent="." index="5"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport" index="0"]
+material = SubResource("ShaderMaterial_j1oke")
+custom_minimum_size = Vector2(256, 256)
+offset_left = 256.0
+offset_top = 2.0
+offset_right = 512.0
+offset_bottom = 258.0
+rotation = 1.5708

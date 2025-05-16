@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7iyytxt1o7jn"]
+
+[ext_resource type="PackedScene" uid="uid://jwxh6mbhxdij" path="res://PickUps/PickUp.tscn" id="1_yas3m"]
+[ext_resource type="AudioStream" uid="uid://x06ccerbknan" path="res://PickUps/SpeedUp.ogg" id="2_t8ry8"]
+[ext_resource type="PackedScene" uid="uid://c0swdoas8jp2n" path="res://PickUps/FastArrow.tscn" id="2_tnwk1"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tnwk1"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("2_t8ry8")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_t8ry8"]
+viewport_path = NodePath("SubViewport")
+
+[node name="PickUp1" node_paths=PackedStringArray("mesh", "sfx") instance=ExtResource("1_yas3m")]
+effect = 0
+mesh = NodePath("FastArrow")
+sfx = NodePath("SFX")
+
+[node name="FastArrow" parent="." index="1" instance=ExtResource("2_tnwk1")]
+
+[node name="SFX" parent="." index="2"]
+stream = SubResource("AudioStreamRandomizer_tnwk1")
+
+[node name="FireSprite" parent="." index="5"]
+texture = SubResource("ViewportTexture_t8ry8")

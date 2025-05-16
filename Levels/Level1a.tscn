@@ -1274,7 +1274,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
 [node name="PickUps" parent="." index="6"]
-level_pick_ups = Array[int]([0, 1])
+level_pick_ups = Array[int]([0, 1, 2, 3, 4])
 
 [node name="Collision" type="CollisionShape3D" parent="PlayArea" index="0"]
 shape = SubResource("BoxShape3D_xcayt")

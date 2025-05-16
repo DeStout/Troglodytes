@@ -22,7 +22,7 @@ func _body_collided(body : Node3D) -> void:
 	if !body is CharacterBody3D:
 		queue_free()
 		return
-	if body != emitter:
+	if !(body is Player):
 		body.burn()
 		queue_free()
 
