@@ -99,7 +99,7 @@ func attack() -> void:
 			if collision.collider is Enemy:
 				collision.collider.attacked(move_dir)
 			elif collisions.has(Enemy):
-				print(collision)
+				print(collision.name)
 				pass
 
 

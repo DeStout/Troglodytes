@@ -37,6 +37,9 @@ properties/4/replication_mode = 2
 properties/5/path = NodePath("Player/Armature/Skeleton3D/HeadBone/Stars:process_mode")
 properties/5/spawn = true
 properties/5/replication_mode = 2
+properties/6/path = NodePath(".:move_dir")
+properties/6/spawn = true
+properties/6/replication_mode = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_js7pq"]
 radius = 0.35
