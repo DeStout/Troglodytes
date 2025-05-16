@@ -4,14 +4,13 @@ class_name AttackState extends State
 @export var input_sync : Node
 
 
-func _ready() -> void:
-	input_sync.input_update.connect(_update_input)
-
-
 func enter() -> void:
 	#print("Enter AttackState")
+	
+	input_sync.input_update.connect(_update_input)
+	
 	character.anim_player.speed_scale = 1.0
-	character.attack()
+	character.attack.rpc()
 	character._footstep(true)
 	character._footstep(false)
 
@@ -19,7 +18,7 @@ func enter() -> void:
 func _update_input(new_input : Dictionary[String, Variant]) -> void:
 	if !active:
 		return
-		
+	
 	if new_input["attack_input"]:
 		character.attack.rpc()
 
@@ -33,6 +32,9 @@ func attacked() -> void:
 		transition.emit(self, "StunState")
 
 
-#func exit() -> void: pass
+func exit() -> void:
+	input_sync.input_update.disconnect(_update_input)
+
+
 #func update(delta) -> void: pass
 #func physics_update(delta) -> void: pass

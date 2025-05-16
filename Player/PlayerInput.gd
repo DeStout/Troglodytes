@@ -27,6 +27,7 @@ func _input(event : InputEvent) -> void:
 func _input_updated() -> void:
 	if !player_input["dir_input"] and !player_input["attack_input"]:
 		return
+	# Signal to Player States
 	input_update.emit(player_input)
 	player_input["attack_input"] = false
 

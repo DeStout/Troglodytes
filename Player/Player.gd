@@ -94,10 +94,13 @@ func attack() -> void:
 	if attack_cast.is_colliding():
 		hit_sfx.pitch_scale = randf_range(0.95, 1.05)
 		hit_sfx.play()
-		for collision in attack_cast.collision_result:
-			if !collision.collider is Enemy:
-				return
-			collision.collider.attacked(move_dir)
+		var collisions : Array = attack_cast.collision_result
+		for collision in collisions:
+			if collision.collider is Enemy:
+				collision.collider.attacked(move_dir)
+			elif collisions.has(Enemy):
+				print(collision)
+				pass
 
 
 func _attack_ended() -> void:

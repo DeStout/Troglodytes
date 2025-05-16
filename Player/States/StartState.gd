@@ -7,12 +7,10 @@ const START_TIME := 1.0
 @export var input_sync : Node
 
 
-func _ready() -> void:
-	input_sync.input_update.connect(_update_input)
-
-
 func enter() -> void:
 	#print("Enter StartState")
+	
+	input_sync.input_update.connect(_update_input)
 	
 	character.anim_player.speed_scale = 1.0
 	character.anim_player.play("Idle")
@@ -46,6 +44,9 @@ func _update_input(new_input : Dictionary[String, Variant]) -> void:
 		transition.emit(self, "AttackState")
 
 
-#func exit() -> void: pass
+func exit() -> void:
+	input_sync.input_update.disconnect(_update_input)
+	
+	
 #func update(delta) -> void: pass
 #func physics_update(delta) -> void: pass

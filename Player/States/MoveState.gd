@@ -8,12 +8,11 @@ var dir_buffer : Utilities.DIRECTIONS
 var turning := false
 
 
-func _ready() -> void:
-	input_sync.input_update.connect(_update_input)
-
-
 func enter() -> void:
 	#print("Enter MoveState")
+	
+	input_sync.input_update.connect(_update_input)
+	
 	character.anim_player.speed_scale = character.anim_speed
 	character.anim_player.play("Walk")
 	
@@ -194,5 +193,8 @@ func exit_stage() -> void:
 	transition.emit(self, "StartState")
 
 
-#func exit() -> void: pass
+func exit() -> void:
+	input_sync.input_update.disconnect(_update_input)
+	
+	
 #func update(delta) -> void: pass

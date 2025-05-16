@@ -4,12 +4,11 @@ class_name IdleState extends State
 @export var input_sync : Node
 
 
-func _ready() -> void:
-	input_sync.input_update.connect(_update_input)
-
-
 func enter() -> void:
 	#print("Enter IdleState")
+	
+	input_sync.input_update.connect(_update_input)
+	
 	character.anim_player.speed_scale = 1.0
 	character.anim_player.play("Idle")
 	character._footstep(true)
@@ -46,6 +45,9 @@ func attacked() -> void:
 		transition.emit(self, "StunState")
 
 
-#func exit() -> void: pass
+func exit() -> void:
+	input_sync.input_update.disconnect(_update_input)
+
+
 #func update(delta) -> void: pass
 #func physics_update(delta) -> void: pass
