@@ -118,6 +118,7 @@ func effect_speed(speed_effect : float) -> void:
 	speed = clamp(speed, MIN_SPEED, MAX_SPEED)
 
 
+@rpc("call_local", "any_peer")
 func set_invincible(inv_time := INVINCIBLE_TIME) -> void:
 	halo.visible = true
 	invincible_timer.start(inv_time)
@@ -160,6 +161,7 @@ func attacked() -> void:
 		state_machine.current_state.attacked()
 
 
+@rpc("call_local", "any_peer")
 func exit_stage() -> void:
 	if !invincible_timer.time_left:
 		die()

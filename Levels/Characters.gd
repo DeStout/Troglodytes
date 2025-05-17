@@ -149,7 +149,7 @@ func enemy_defeated(enemy : Enemy) -> void:
 func character_exited(character : CharacterBody3D) -> void:
 	if multiplayer.is_server():
 		if character is Player:
-			character.exit_stage()
+			character.exit_stage.rpc_id(character.get_multiplayer_authority())
 		elif character is Enemy:
 			if character.state_machine.current_state is DeathState:
 				return

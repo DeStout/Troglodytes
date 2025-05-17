@@ -71,7 +71,7 @@ func _apply_freeze(player : Player) -> void:
 
 
 func _set_invincible(player : Player) -> void:
-	player.set_invincible()
+	player.set_invincible.rpc()
 
 
 func _despawn() -> void:

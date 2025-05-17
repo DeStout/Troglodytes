@@ -15,9 +15,9 @@ func enter() -> void:
 	character.anim_player.speed_scale = 1.0
 	character.anim_player.play("Idle")
 	character._footstep(true)
-	character._footstep(false)
 	
-	character.set_invincible(character.START_INV_TIME)
+	await get_tree().physics_frame
+	character.set_invincible.rpc(character.START_INV_TIME)
 	if start_timer.time_left:
 		start_timer.paused = false
 		return

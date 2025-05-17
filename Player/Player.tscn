@@ -139,7 +139,7 @@ target_position = Vector3(0, 0, -1)
 surface_material_override/0 = SubResource("StandardMaterial3D_p7tob")
 
 [node name="LeftFootBone" type="BoneAttachment3D" parent="Player/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.985592, 0.0501794, -0.161526, 0.168912, -0.341586, 0.924547, -0.00878172, -0.93851, -0.345141, -0.0982915, 0.0381647, 0.195252)
+transform = Transform3D(1, 2.98023e-07, -6.33299e-08, -1.30385e-07, -0.213362, 0.976973, 2.30968e-07, -0.976973, -0.213362, -0.234641, 0.0659985, 0.0538339)
 bone_name = "Toes.L"
 bone_idx = 49
 
@@ -147,7 +147,7 @@ bone_idx = 49
 transform = Transform3D(1, 0, 5.58794e-09, 0, 1, -5.96046e-08, 1.39698e-08, -2.98023e-08, 1, -0.00635646, 0.0610968, -0.0355091)
 
 [node name="RightFootBone" type="BoneAttachment3D" parent="Player/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.991885, -0.059949, -0.112119, 0.109054, -0.0521707, 0.992666, -0.0653586, -0.996837, -0.0452095, 0.298792, 0.275082, -0.409717)
+transform = Transform3D(1, -2.98023e-07, 6.33299e-08, 1.30385e-07, -0.213362, 0.976973, -2.30968e-07, -0.976973, -0.213362, 0.234641, 0.0659985, 0.0538339)
 bone_name = "Toes.R"
 bone_idx = 61
 
@@ -155,7 +155,7 @@ bone_idx = 61
 transform = Transform3D(1, 0, 5.58794e-09, 0, 1, -5.96046e-08, 1.39698e-08, -2.98023e-08, 1, -0.00635646, 0.0610968, -0.0355091)
 
 [node name="HeadBone" type="BoneAttachment3D" parent="Player/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.999703, -0.0220259, 0.0104095, 0.000891855, 0.460089, 0.887872, -0.0243455, -0.887599, 0.459972, -0.0474471, 1.50177, 0.0738069)
+transform = Transform3D(1, 1.05865e-16, -2.68614e-17, -2.68612e-17, 0.476771, 0.879027, 1.05865e-16, -0.879027, 0.476771, -1.0408e-17, 1.50707, 0.0876817)
 bone_name = "Head"
 bone_idx = 5
 
