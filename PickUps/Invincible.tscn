@@ -27,7 +27,7 @@ mesh = SubResource("TorusMesh_160s7")
 surface_material_override/0 = ExtResource("2_a55km")
 
 [node name="Light" type="OmniLight3D" parent="Halo" index="0"]
-omni_range = 0.75
+omni_range = 1.0
 
 [node name="SFX" parent="." index="2"]
 stream = SubResource("AudioStreamRandomizer_160s7")

@@ -21,6 +21,3 @@ sfx = NodePath("SFX")
 
 [node name="SFX" parent="." index="2"]
 stream = SubResource("AudioStreamRandomizer_cqrwk")
-
-[node name="FireSprite" parent="." index="5"]
-texture = SubResource("ViewportTexture_jbcgn")

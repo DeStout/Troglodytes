@@ -19,9 +19,10 @@ streams_count = 2
 stream_0/stream = ExtResource("9_fbd0n")
 stream_1/stream = ExtResource("10_myk7f")
 
-[node name="Level" type="Node3D" node_paths=PackedStringArray("board", "ui_score", "ui_lives", "characters", "pick_ups", "eggs", "fx", "play_area")]
+[node name="Level" type="Node3D" node_paths=PackedStringArray("board", "camera", "ui_score", "ui_lives", "characters", "pick_ups", "eggs", "fx", "play_area")]
 script = ExtResource("1_bwnv0")
 board = NodePath("Board")
+camera = NodePath("Camera")
 ui_score = NodePath("UIBoard1/UIBoard2/Score")
 ui_lives = NodePath("UIBoard1/UIBoard2/Lives")
 characters = NodePath("Characters")
@@ -173,4 +174,5 @@ autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
+[connection signal="spawned" from="Characters" to="Camera" method="set_player"]
 [connection signal="body_exited" from="PlayArea" to="Characters" method="character_exited"]

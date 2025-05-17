@@ -81,7 +81,7 @@ stream_0/stream = ExtResource("8_s1rgi")
 [sub_resource type="BoxMesh" id="BoxMesh_s1rgi"]
 size = Vector3(1, 0.1, 1)
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("debug_target", "player_input")]
+[node name="Player1" type="CharacterBody3D" node_paths=PackedStringArray("debug_target", "player_input")]
 collision_layer = 2
 collision_mask = 57
 script = ExtResource("1_cxr5p")

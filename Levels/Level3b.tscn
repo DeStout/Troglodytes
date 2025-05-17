@@ -78,412 +78,412 @@ mesh = SubResource("ArrayMesh_jtdut")
 
 [node name="Skirt" parent="Board" index="1" instance=ExtResource("4_a5b2j")]
 
-[node name="EggSquare1" type="Node3D" parent="Board/Squares/EggSquares" index="0" groups=["EggSquares"]]
+[node name="EggSquare1" type="Node3D" parent="Board/Squares/EggSquares" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -13)
 
-[node name="EggSquare2" type="Node3D" parent="Board/Squares/EggSquares" index="1" groups=["EggSquares", "PlayerSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -13)
+[node name="Player1" type="Node3D" parent="Board/Squares/EggSquares" index="1" groups=["PlayerSquares"]]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0, -13)
 
-[node name="EggSquare3" type="Node3D" parent="Board/Squares/EggSquares" index="2" groups=["EggSquares"]]
+[node name="EggSquare3" type="Node3D" parent="Board/Squares/EggSquares" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -13)
 
-[node name="EggSquare4" type="Node3D" parent="Board/Squares/EggSquares" index="3" groups=["EggSquares"]]
+[node name="EggSquare4" type="Node3D" parent="Board/Squares/EggSquares" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -13)
 
-[node name="EggSquare5" type="Node3D" parent="Board/Squares/EggSquares" index="4" groups=["EggSquares"]]
+[node name="EggSquare5" type="Node3D" parent="Board/Squares/EggSquares" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -13)
 
-[node name="EggSquare6" type="Node3D" parent="Board/Squares/EggSquares" index="5" groups=["EggSquares"]]
+[node name="EggSquare6" type="Node3D" parent="Board/Squares/EggSquares" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -13)
 
-[node name="EggSquare7" type="Node3D" parent="Board/Squares/EggSquares" index="6" groups=["EggSquares"]]
+[node name="EggSquare7" type="Node3D" parent="Board/Squares/EggSquares" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -13)
 
-[node name="EggSquare8" type="Node3D" parent="Board/Squares/EggSquares" index="7" groups=["EggSquares"]]
+[node name="EggSquare8" type="Node3D" parent="Board/Squares/EggSquares" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -13)
 
-[node name="EggSquare9" type="Node3D" parent="Board/Squares/EggSquares" index="8" groups=["EggSquares"]]
+[node name="EggSquare9" type="Node3D" parent="Board/Squares/EggSquares" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -13)
 
-[node name="EggSquare10" type="Node3D" parent="Board/Squares/EggSquares" index="9" groups=["EggSquares"]]
+[node name="EggSquare10" type="Node3D" parent="Board/Squares/EggSquares" index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -13)
 
-[node name="EggSquare11" type="Node3D" parent="Board/Squares/EggSquares" index="10" groups=["EggSquares"]]
+[node name="EggSquare11" type="Node3D" parent="Board/Squares/EggSquares" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -13)
 
-[node name="EggSquare12" type="Node3D" parent="Board/Squares/EggSquares" index="11" groups=["EggSquares"]]
+[node name="EggSquare12" type="Node3D" parent="Board/Squares/EggSquares" index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -13)
 
-[node name="EggSquare13" type="Node3D" parent="Board/Squares/EggSquares" index="12" groups=["EggSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -13)
+[node name="Player2" type="Node3D" parent="Board/Squares/EggSquares" index="12" groups=["PlayerSquares"]]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 11, 0, -13)
 
-[node name="EggSquare14" type="Node3D" parent="Board/Squares/EggSquares" index="13" groups=["EggSquares"]]
+[node name="EggSquare14" type="Node3D" parent="Board/Squares/EggSquares" index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -13)
 
-[node name="EggSquare15" type="Node3D" parent="Board/Squares/EggSquares" index="14" groups=["EggSquares"]]
+[node name="EggSquare15" type="Node3D" parent="Board/Squares/EggSquares" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -11)
 
-[node name="EggSquare16" type="Node3D" parent="Board/Squares/EggSquares" index="15" groups=["EggSquares"]]
+[node name="EggSquare16" type="Node3D" parent="Board/Squares/EggSquares" index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -11)
 
-[node name="EggSquare17" type="Node3D" parent="Board/Squares/EggSquares" index="16" groups=["EggSquares"]]
+[node name="EggSquare17" type="Node3D" parent="Board/Squares/EggSquares" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -11)
 
-[node name="EggSquare18" type="Node3D" parent="Board/Squares/EggSquares" index="17" groups=["EggSquares"]]
+[node name="EggSquare18" type="Node3D" parent="Board/Squares/EggSquares" index="17"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -11)
 
-[node name="EggSquare19" type="Node3D" parent="Board/Squares/EggSquares" index="18" groups=["EggSquares"]]
+[node name="EggSquare19" type="Node3D" parent="Board/Squares/EggSquares" index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -11)
 
-[node name="EggSquare20" type="Node3D" parent="Board/Squares/EggSquares" index="19" groups=["EggSquares"]]
+[node name="EggSquare20" type="Node3D" parent="Board/Squares/EggSquares" index="19"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -11)
 
-[node name="EggSquare21" type="Node3D" parent="Board/Squares/EggSquares" index="20" groups=["EggSquares"]]
+[node name="EggSquare21" type="Node3D" parent="Board/Squares/EggSquares" index="20"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -11)
 
-[node name="EggSquare22" type="Node3D" parent="Board/Squares/EggSquares" index="21" groups=["EggSquares"]]
+[node name="EggSquare22" type="Node3D" parent="Board/Squares/EggSquares" index="21"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -11)
 
-[node name="EggSquare23" type="Node3D" parent="Board/Squares/EggSquares" index="22" groups=["EggSquares"]]
+[node name="EggSquare23" type="Node3D" parent="Board/Squares/EggSquares" index="22"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -11)
 
-[node name="EggSquare24" type="Node3D" parent="Board/Squares/EggSquares" index="23" groups=["EggSquares"]]
+[node name="EggSquare24" type="Node3D" parent="Board/Squares/EggSquares" index="23"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -11)
 
-[node name="EggSquare25" type="Node3D" parent="Board/Squares/EggSquares" index="24" groups=["EggSquares"]]
+[node name="EggSquare25" type="Node3D" parent="Board/Squares/EggSquares" index="24"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -11)
 
-[node name="EggSquare26" type="Node3D" parent="Board/Squares/EggSquares" index="25" groups=["EggSquares"]]
+[node name="EggSquare26" type="Node3D" parent="Board/Squares/EggSquares" index="25"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -11)
 
-[node name="EggSquare27" type="Node3D" parent="Board/Squares/EggSquares" index="26" groups=["EggSquares"]]
+[node name="EggSquare27" type="Node3D" parent="Board/Squares/EggSquares" index="26"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -11)
 
-[node name="EggSquare28" type="Node3D" parent="Board/Squares/EggSquares" index="27" groups=["EggSquares"]]
+[node name="EggSquare28" type="Node3D" parent="Board/Squares/EggSquares" index="27"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -11)
 
-[node name="EggSquare29" type="Node3D" parent="Board/Squares/EggSquares" index="28" groups=["EggSquares"]]
+[node name="EggSquare29" type="Node3D" parent="Board/Squares/EggSquares" index="28"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -9)
 
-[node name="EggSquare30" type="Node3D" parent="Board/Squares/EggSquares" index="29" groups=["EggSquares"]]
+[node name="EggSquare30" type="Node3D" parent="Board/Squares/EggSquares" index="29"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -9)
 
-[node name="EggSquare31" type="Node3D" parent="Board/Squares/EggSquares" index="30" groups=["EggSquares"]]
+[node name="EggSquare31" type="Node3D" parent="Board/Squares/EggSquares" index="30"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -9)
 
-[node name="EggSquare32" type="Node3D" parent="Board/Squares/EggSquares" index="31" groups=["EggSquares"]]
+[node name="EggSquare32" type="Node3D" parent="Board/Squares/EggSquares" index="31"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -9)
 
-[node name="EggSquare33" type="Node3D" parent="Board/Squares/EggSquares" index="32" groups=["EggSquares"]]
+[node name="EggSquare33" type="Node3D" parent="Board/Squares/EggSquares" index="32"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -9)
 
-[node name="EggSquare34" type="Node3D" parent="Board/Squares/EggSquares" index="33" groups=["EggSquares"]]
+[node name="EggSquare34" type="Node3D" parent="Board/Squares/EggSquares" index="33"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -9)
 
-[node name="EggSquare35" type="Node3D" parent="Board/Squares/EggSquares" index="34" groups=["EggSquares"]]
+[node name="EggSquare35" type="Node3D" parent="Board/Squares/EggSquares" index="34"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -7)
 
-[node name="EggSquare36" type="Node3D" parent="Board/Squares/EggSquares" index="35" groups=["EggSquares"]]
+[node name="EggSquare36" type="Node3D" parent="Board/Squares/EggSquares" index="35"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -7)
 
-[node name="EggSquare37" type="Node3D" parent="Board/Squares/EggSquares" index="36" groups=["EggSquares"]]
+[node name="EggSquare37" type="Node3D" parent="Board/Squares/EggSquares" index="36"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -7)
 
-[node name="EggSquare38" type="Node3D" parent="Board/Squares/EggSquares" index="37" groups=["EggSquares"]]
+[node name="EggSquare38" type="Node3D" parent="Board/Squares/EggSquares" index="37"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7)
 
-[node name="EggSquare39" type="Node3D" parent="Board/Squares/EggSquares" index="38" groups=["EggSquares"]]
+[node name="EggSquare39" type="Node3D" parent="Board/Squares/EggSquares" index="38"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -7)
 
-[node name="EggSquare40" type="Node3D" parent="Board/Squares/EggSquares" index="39" groups=["EggSquares"]]
+[node name="EggSquare40" type="Node3D" parent="Board/Squares/EggSquares" index="39"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -7)
 
-[node name="EggSquare41" type="Node3D" parent="Board/Squares/EggSquares" index="40" groups=["EggSquares"]]
+[node name="EggSquare41" type="Node3D" parent="Board/Squares/EggSquares" index="40"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -5)
 
-[node name="EggSquare42" type="Node3D" parent="Board/Squares/EggSquares" index="41" groups=["EggSquares"]]
+[node name="EggSquare42" type="Node3D" parent="Board/Squares/EggSquares" index="41"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -5)
 
-[node name="EggSquare43" type="Node3D" parent="Board/Squares/EggSquares" index="42" groups=["EggSquares"]]
+[node name="EggSquare43" type="Node3D" parent="Board/Squares/EggSquares" index="42"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
 
-[node name="EggSquare44" type="Node3D" parent="Board/Squares/EggSquares" index="43" groups=["EggSquares"]]
+[node name="EggSquare44" type="Node3D" parent="Board/Squares/EggSquares" index="43"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
 
-[node name="EggSquare45" type="Node3D" parent="Board/Squares/EggSquares" index="44" groups=["EggSquares"]]
+[node name="EggSquare45" type="Node3D" parent="Board/Squares/EggSquares" index="44"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -5)
 
-[node name="EggSquare46" type="Node3D" parent="Board/Squares/EggSquares" index="45" groups=["EggSquares"]]
+[node name="EggSquare46" type="Node3D" parent="Board/Squares/EggSquares" index="45"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -5)
 
-[node name="EggSquare47" type="Node3D" parent="Board/Squares/EggSquares" index="46" groups=["EggSquares"]]
+[node name="EggSquare47" type="Node3D" parent="Board/Squares/EggSquares" index="46"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -3)
 
-[node name="EggSquare48" type="Node3D" parent="Board/Squares/EggSquares" index="47" groups=["EggSquares"]]
+[node name="EggSquare48" type="Node3D" parent="Board/Squares/EggSquares" index="47"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -3)
 
-[node name="EggSquare49" type="Node3D" parent="Board/Squares/EggSquares" index="48" groups=["EggSquares"]]
+[node name="EggSquare49" type="Node3D" parent="Board/Squares/EggSquares" index="48"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
 
-[node name="EggSquare50" type="Node3D" parent="Board/Squares/EggSquares" index="49" groups=["EggSquares"]]
+[node name="EggSquare50" type="Node3D" parent="Board/Squares/EggSquares" index="49"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
 
-[node name="EggSquare51" type="Node3D" parent="Board/Squares/EggSquares" index="50" groups=["EggSquares"]]
+[node name="EggSquare51" type="Node3D" parent="Board/Squares/EggSquares" index="50"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
 
-[node name="EggSquare52" type="Node3D" parent="Board/Squares/EggSquares" index="51" groups=["EggSquares"]]
+[node name="EggSquare52" type="Node3D" parent="Board/Squares/EggSquares" index="51"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
 
-[node name="EggSquare53" type="Node3D" parent="Board/Squares/EggSquares" index="52" groups=["EggSquares"]]
+[node name="EggSquare53" type="Node3D" parent="Board/Squares/EggSquares" index="52"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -3)
 
-[node name="EggSquare54" type="Node3D" parent="Board/Squares/EggSquares" index="53" groups=["EggSquares"]]
+[node name="EggSquare54" type="Node3D" parent="Board/Squares/EggSquares" index="53"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -3)
 
-[node name="EggSquare55" type="Node3D" parent="Board/Squares/EggSquares" index="54" groups=["EggSquares"]]
+[node name="EggSquare55" type="Node3D" parent="Board/Squares/EggSquares" index="54"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -1)
 
-[node name="EggSquare56" type="Node3D" parent="Board/Squares/EggSquares" index="55" groups=["EggSquares"]]
+[node name="EggSquare56" type="Node3D" parent="Board/Squares/EggSquares" index="55"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -1)
 
-[node name="EggSquare57" type="Node3D" parent="Board/Squares/EggSquares" index="56" groups=["EggSquares"]]
+[node name="EggSquare57" type="Node3D" parent="Board/Squares/EggSquares" index="56"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -1)
 
-[node name="EggSquare58" type="Node3D" parent="Board/Squares/EggSquares" index="57" groups=["EggSquares"]]
+[node name="EggSquare58" type="Node3D" parent="Board/Squares/EggSquares" index="57"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -1)
 
-[node name="EggSquare59" type="Node3D" parent="Board/Squares/EggSquares" index="58" groups=["EggSquares"]]
+[node name="EggSquare59" type="Node3D" parent="Board/Squares/EggSquares" index="58"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -1)
 
-[node name="EggSquare60" type="Node3D" parent="Board/Squares/EggSquares" index="59" groups=["EggSquares"]]
+[node name="EggSquare60" type="Node3D" parent="Board/Squares/EggSquares" index="59"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -1)
 
-[node name="EggSquare61" type="Node3D" parent="Board/Squares/EggSquares" index="60" groups=["EggSquares"]]
+[node name="EggSquare61" type="Node3D" parent="Board/Squares/EggSquares" index="60"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 
-[node name="EggSquare62" type="Node3D" parent="Board/Squares/EggSquares" index="61" groups=["EggSquares"]]
+[node name="EggSquare62" type="Node3D" parent="Board/Squares/EggSquares" index="61"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
 
-[node name="EggSquare63" type="Node3D" parent="Board/Squares/EggSquares" index="62" groups=["EggSquares"]]
+[node name="EggSquare63" type="Node3D" parent="Board/Squares/EggSquares" index="62"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1)
 
-[node name="EggSquare64" type="Node3D" parent="Board/Squares/EggSquares" index="63" groups=["EggSquares"]]
+[node name="EggSquare64" type="Node3D" parent="Board/Squares/EggSquares" index="63"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -1)
 
-[node name="EggSquare65" type="Node3D" parent="Board/Squares/EggSquares" index="64" groups=["EggSquares"]]
+[node name="EggSquare65" type="Node3D" parent="Board/Squares/EggSquares" index="64"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -1)
 
-[node name="EggSquare66" type="Node3D" parent="Board/Squares/EggSquares" index="65" groups=["EggSquares"]]
+[node name="EggSquare66" type="Node3D" parent="Board/Squares/EggSquares" index="65"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -1)
 
-[node name="EggSquare67" type="Node3D" parent="Board/Squares/EggSquares" index="66" groups=["EggSquares"]]
+[node name="EggSquare67" type="Node3D" parent="Board/Squares/EggSquares" index="66"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -1)
 
-[node name="EggSquare68" type="Node3D" parent="Board/Squares/EggSquares" index="67" groups=["EggSquares"]]
+[node name="EggSquare68" type="Node3D" parent="Board/Squares/EggSquares" index="67"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -1)
 
-[node name="EggSquare69" type="Node3D" parent="Board/Squares/EggSquares" index="68" groups=["EggSquares"]]
+[node name="EggSquare69" type="Node3D" parent="Board/Squares/EggSquares" index="68"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 1)
 
-[node name="EggSquare70" type="Node3D" parent="Board/Squares/EggSquares" index="69" groups=["EggSquares"]]
+[node name="EggSquare70" type="Node3D" parent="Board/Squares/EggSquares" index="69"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 1)
 
-[node name="EggSquare71" type="Node3D" parent="Board/Squares/EggSquares" index="70" groups=["EggSquares"]]
+[node name="EggSquare71" type="Node3D" parent="Board/Squares/EggSquares" index="70"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 1)
 
-[node name="EggSquare72" type="Node3D" parent="Board/Squares/EggSquares" index="71" groups=["EggSquares"]]
+[node name="EggSquare72" type="Node3D" parent="Board/Squares/EggSquares" index="71"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 1)
 
-[node name="EggSquare73" type="Node3D" parent="Board/Squares/EggSquares" index="72" groups=["EggSquares"]]
+[node name="EggSquare73" type="Node3D" parent="Board/Squares/EggSquares" index="72"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1)
 
-[node name="EggSquare74" type="Node3D" parent="Board/Squares/EggSquares" index="73" groups=["EggSquares"]]
+[node name="EggSquare74" type="Node3D" parent="Board/Squares/EggSquares" index="73"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1)
 
-[node name="EggSquare75" type="Node3D" parent="Board/Squares/EggSquares" index="74" groups=["EggSquares"]]
+[node name="EggSquare75" type="Node3D" parent="Board/Squares/EggSquares" index="74"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
 
-[node name="EggSquare76" type="Node3D" parent="Board/Squares/EggSquares" index="75" groups=["EggSquares"]]
+[node name="EggSquare76" type="Node3D" parent="Board/Squares/EggSquares" index="75"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 
-[node name="EggSquare77" type="Node3D" parent="Board/Squares/EggSquares" index="76" groups=["EggSquares"]]
+[node name="EggSquare77" type="Node3D" parent="Board/Squares/EggSquares" index="76"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1)
 
-[node name="EggSquare78" type="Node3D" parent="Board/Squares/EggSquares" index="77" groups=["EggSquares"]]
+[node name="EggSquare78" type="Node3D" parent="Board/Squares/EggSquares" index="77"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 1)
 
-[node name="EggSquare79" type="Node3D" parent="Board/Squares/EggSquares" index="78" groups=["EggSquares"]]
+[node name="EggSquare79" type="Node3D" parent="Board/Squares/EggSquares" index="78"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 1)
 
-[node name="EggSquare80" type="Node3D" parent="Board/Squares/EggSquares" index="79" groups=["EggSquares"]]
+[node name="EggSquare80" type="Node3D" parent="Board/Squares/EggSquares" index="79"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 1)
 
-[node name="EggSquare81" type="Node3D" parent="Board/Squares/EggSquares" index="80" groups=["EggSquares"]]
+[node name="EggSquare81" type="Node3D" parent="Board/Squares/EggSquares" index="80"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 1)
 
-[node name="EggSquare82" type="Node3D" parent="Board/Squares/EggSquares" index="81" groups=["EggSquares"]]
+[node name="EggSquare82" type="Node3D" parent="Board/Squares/EggSquares" index="81"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 1)
 
-[node name="EggSquare83" type="Node3D" parent="Board/Squares/EggSquares" index="82" groups=["EggSquares"]]
+[node name="EggSquare83" type="Node3D" parent="Board/Squares/EggSquares" index="82"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 3)
 
-[node name="EggSquare84" type="Node3D" parent="Board/Squares/EggSquares" index="83" groups=["EggSquares"]]
+[node name="EggSquare84" type="Node3D" parent="Board/Squares/EggSquares" index="83"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 3)
 
-[node name="EggSquare85" type="Node3D" parent="Board/Squares/EggSquares" index="84" groups=["EggSquares"]]
+[node name="EggSquare85" type="Node3D" parent="Board/Squares/EggSquares" index="84"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
 
-[node name="EggSquare86" type="Node3D" parent="Board/Squares/EggSquares" index="85" groups=["EggSquares"]]
+[node name="EggSquare86" type="Node3D" parent="Board/Squares/EggSquares" index="85"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
 
-[node name="EggSquare87" type="Node3D" parent="Board/Squares/EggSquares" index="86" groups=["EggSquares"]]
+[node name="EggSquare87" type="Node3D" parent="Board/Squares/EggSquares" index="86"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
 
-[node name="EggSquare88" type="Node3D" parent="Board/Squares/EggSquares" index="87" groups=["EggSquares"]]
+[node name="EggSquare88" type="Node3D" parent="Board/Squares/EggSquares" index="87"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3)
 
-[node name="EggSquare89" type="Node3D" parent="Board/Squares/EggSquares" index="88" groups=["EggSquares"]]
+[node name="EggSquare89" type="Node3D" parent="Board/Squares/EggSquares" index="88"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 3)
 
-[node name="EggSquare90" type="Node3D" parent="Board/Squares/EggSquares" index="89" groups=["EggSquares"]]
+[node name="EggSquare90" type="Node3D" parent="Board/Squares/EggSquares" index="89"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 3)
 
-[node name="EggSquare91" type="Node3D" parent="Board/Squares/EggSquares" index="90" groups=["EggSquares"]]
+[node name="EggSquare91" type="Node3D" parent="Board/Squares/EggSquares" index="90"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 5)
 
-[node name="EggSquare92" type="Node3D" parent="Board/Squares/EggSquares" index="91" groups=["EggSquares"]]
+[node name="EggSquare92" type="Node3D" parent="Board/Squares/EggSquares" index="91"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 5)
 
-[node name="EggSquare93" type="Node3D" parent="Board/Squares/EggSquares" index="92" groups=["EggSquares"]]
+[node name="EggSquare93" type="Node3D" parent="Board/Squares/EggSquares" index="92"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5)
 
-[node name="EggSquare94" type="Node3D" parent="Board/Squares/EggSquares" index="93" groups=["EggSquares"]]
+[node name="EggSquare94" type="Node3D" parent="Board/Squares/EggSquares" index="93"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
 
-[node name="EggSquare95" type="Node3D" parent="Board/Squares/EggSquares" index="94" groups=["EggSquares"]]
+[node name="EggSquare95" type="Node3D" parent="Board/Squares/EggSquares" index="94"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 5)
 
-[node name="EggSquare96" type="Node3D" parent="Board/Squares/EggSquares" index="95" groups=["EggSquares"]]
+[node name="EggSquare96" type="Node3D" parent="Board/Squares/EggSquares" index="95"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 5)
 
-[node name="EggSquare97" type="Node3D" parent="Board/Squares/EggSquares" index="96" groups=["EggSquares"]]
+[node name="EggSquare97" type="Node3D" parent="Board/Squares/EggSquares" index="96"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 7)
 
-[node name="EggSquare98" type="Node3D" parent="Board/Squares/EggSquares" index="97" groups=["EggSquares"]]
+[node name="EggSquare98" type="Node3D" parent="Board/Squares/EggSquares" index="97"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 7)
 
-[node name="EggSquare99" type="Node3D" parent="Board/Squares/EggSquares" index="98" groups=["EggSquares"]]
+[node name="EggSquare99" type="Node3D" parent="Board/Squares/EggSquares" index="98"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 7)
 
-[node name="EggSquare100" type="Node3D" parent="Board/Squares/EggSquares" index="99" groups=["EggSquares"]]
+[node name="EggSquare100" type="Node3D" parent="Board/Squares/EggSquares" index="99"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 7)
 
-[node name="EggSquare101" type="Node3D" parent="Board/Squares/EggSquares" index="100" groups=["EggSquares"]]
+[node name="EggSquare101" type="Node3D" parent="Board/Squares/EggSquares" index="100"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 7)
 
-[node name="EggSquare102" type="Node3D" parent="Board/Squares/EggSquares" index="101" groups=["EggSquares"]]
+[node name="EggSquare102" type="Node3D" parent="Board/Squares/EggSquares" index="101"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 7)
 
-[node name="EggSquare103" type="Node3D" parent="Board/Squares/EggSquares" index="102" groups=["EggSquares"]]
+[node name="EggSquare103" type="Node3D" parent="Board/Squares/EggSquares" index="102"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 9)
 
-[node name="EggSquare104" type="Node3D" parent="Board/Squares/EggSquares" index="103" groups=["EggSquares"]]
+[node name="EggSquare104" type="Node3D" parent="Board/Squares/EggSquares" index="103"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 9)
 
-[node name="EggSquare105" type="Node3D" parent="Board/Squares/EggSquares" index="104" groups=["EggSquares"]]
+[node name="EggSquare105" type="Node3D" parent="Board/Squares/EggSquares" index="104"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 9)
 
-[node name="EggSquare106" type="Node3D" parent="Board/Squares/EggSquares" index="105" groups=["EggSquares"]]
+[node name="EggSquare106" type="Node3D" parent="Board/Squares/EggSquares" index="105"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 9)
 
-[node name="EggSquare107" type="Node3D" parent="Board/Squares/EggSquares" index="106" groups=["EggSquares"]]
+[node name="EggSquare107" type="Node3D" parent="Board/Squares/EggSquares" index="106"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 9)
 
-[node name="EggSquare108" type="Node3D" parent="Board/Squares/EggSquares" index="107" groups=["EggSquares"]]
+[node name="EggSquare108" type="Node3D" parent="Board/Squares/EggSquares" index="107"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 9)
 
-[node name="EggSquare109" type="Node3D" parent="Board/Squares/EggSquares" index="108" groups=["EggSquares"]]
+[node name="EggSquare109" type="Node3D" parent="Board/Squares/EggSquares" index="108"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 11)
 
-[node name="EggSquare110" type="Node3D" parent="Board/Squares/EggSquares" index="109" groups=["EggSquares"]]
+[node name="EggSquare110" type="Node3D" parent="Board/Squares/EggSquares" index="109"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 11)
 
-[node name="EggSquare111" type="Node3D" parent="Board/Squares/EggSquares" index="110" groups=["EggSquares"]]
+[node name="EggSquare111" type="Node3D" parent="Board/Squares/EggSquares" index="110"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 11)
 
-[node name="EggSquare112" type="Node3D" parent="Board/Squares/EggSquares" index="111" groups=["EggSquares"]]
+[node name="EggSquare112" type="Node3D" parent="Board/Squares/EggSquares" index="111"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 11)
 
-[node name="EggSquare113" type="Node3D" parent="Board/Squares/EggSquares" index="112" groups=["EggSquares"]]
+[node name="EggSquare113" type="Node3D" parent="Board/Squares/EggSquares" index="112"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 11)
 
-[node name="EggSquare114" type="Node3D" parent="Board/Squares/EggSquares" index="113" groups=["EggSquares"]]
+[node name="EggSquare114" type="Node3D" parent="Board/Squares/EggSquares" index="113"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 11)
 
-[node name="EggSquare115" type="Node3D" parent="Board/Squares/EggSquares" index="114" groups=["EggSquares"]]
+[node name="EggSquare115" type="Node3D" parent="Board/Squares/EggSquares" index="114"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 11)
 
-[node name="EggSquare116" type="Node3D" parent="Board/Squares/EggSquares" index="115" groups=["EggSquares"]]
+[node name="EggSquare116" type="Node3D" parent="Board/Squares/EggSquares" index="115"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 11)
 
-[node name="EggSquare117" type="Node3D" parent="Board/Squares/EggSquares" index="116" groups=["EggSquares"]]
+[node name="EggSquare117" type="Node3D" parent="Board/Squares/EggSquares" index="116"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 11)
 
-[node name="EggSquare118" type="Node3D" parent="Board/Squares/EggSquares" index="117" groups=["EggSquares"]]
+[node name="EggSquare118" type="Node3D" parent="Board/Squares/EggSquares" index="117"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 11)
 
-[node name="EggSquare119" type="Node3D" parent="Board/Squares/EggSquares" index="118" groups=["EggSquares"]]
+[node name="EggSquare119" type="Node3D" parent="Board/Squares/EggSquares" index="118"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 11)
 
-[node name="EggSquare120" type="Node3D" parent="Board/Squares/EggSquares" index="119" groups=["EggSquares"]]
+[node name="EggSquare120" type="Node3D" parent="Board/Squares/EggSquares" index="119"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 11)
 
-[node name="EggSquare121" type="Node3D" parent="Board/Squares/EggSquares" index="120" groups=["EggSquares"]]
+[node name="EggSquare121" type="Node3D" parent="Board/Squares/EggSquares" index="120"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 11)
 
-[node name="EggSquare122" type="Node3D" parent="Board/Squares/EggSquares" index="121" groups=["EggSquares"]]
+[node name="EggSquare122" type="Node3D" parent="Board/Squares/EggSquares" index="121"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 11)
 
-[node name="EggSquare123" type="Node3D" parent="Board/Squares/EggSquares" index="122" groups=["EggSquares"]]
+[node name="EggSquare123" type="Node3D" parent="Board/Squares/EggSquares" index="122"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 13)
 
-[node name="EggSquare124" type="Node3D" parent="Board/Squares/EggSquares" index="123" groups=["EggSquares"]]
+[node name="Player3" type="Node3D" parent="Board/Squares/EggSquares" index="123" groups=["PlayerSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 13)
 
-[node name="EggSquare125" type="Node3D" parent="Board/Squares/EggSquares" index="124" groups=["EggSquares"]]
+[node name="EggSquare125" type="Node3D" parent="Board/Squares/EggSquares" index="124"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 13)
 
-[node name="EggSquare126" type="Node3D" parent="Board/Squares/EggSquares" index="125" groups=["EggSquares"]]
+[node name="EggSquare126" type="Node3D" parent="Board/Squares/EggSquares" index="125"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 13)
 
-[node name="EggSquare127" type="Node3D" parent="Board/Squares/EggSquares" index="126" groups=["EggSquares"]]
+[node name="EggSquare127" type="Node3D" parent="Board/Squares/EggSquares" index="126"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 13)
 
-[node name="EggSquare128" type="Node3D" parent="Board/Squares/EggSquares" index="127" groups=["EggSquares"]]
+[node name="EggSquare128" type="Node3D" parent="Board/Squares/EggSquares" index="127"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 13)
 
-[node name="EggSquare129" type="Node3D" parent="Board/Squares/EggSquares" index="128" groups=["EggSquares"]]
+[node name="EggSquare129" type="Node3D" parent="Board/Squares/EggSquares" index="128"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 13)
 
-[node name="EggSquare130" type="Node3D" parent="Board/Squares/EggSquares" index="129" groups=["EggSquares"]]
+[node name="EggSquare130" type="Node3D" parent="Board/Squares/EggSquares" index="129"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 13)
 
-[node name="EggSquare131" type="Node3D" parent="Board/Squares/EggSquares" index="130" groups=["EggSquares"]]
+[node name="EggSquare131" type="Node3D" parent="Board/Squares/EggSquares" index="130"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 13)
 
-[node name="EggSquare132" type="Node3D" parent="Board/Squares/EggSquares" index="131" groups=["EggSquares"]]
+[node name="EggSquare132" type="Node3D" parent="Board/Squares/EggSquares" index="131"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 13)
 
-[node name="EggSquare133" type="Node3D" parent="Board/Squares/EggSquares" index="132" groups=["EggSquares"]]
+[node name="EggSquare133" type="Node3D" parent="Board/Squares/EggSquares" index="132"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 13)
 
-[node name="EggSquare134" type="Node3D" parent="Board/Squares/EggSquares" index="133" groups=["EggSquares"]]
+[node name="EggSquare134" type="Node3D" parent="Board/Squares/EggSquares" index="133"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 13)
 
-[node name="EggSquare135" type="Node3D" parent="Board/Squares/EggSquares" index="134" groups=["EggSquares"]]
+[node name="Player4" type="Node3D" parent="Board/Squares/EggSquares" index="134" groups=["PlayerSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 13)
 
-[node name="EggSquare136" type="Node3D" parent="Board/Squares/EggSquares" index="135" groups=["EggSquares"]]
+[node name="EggSquare136" type="Node3D" parent="Board/Squares/EggSquares" index="135"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 13)
 
 [node name="HomeSquare1" type="Node3D" parent="Board/Squares/HomeSquares" index="0" groups=["HomeSquares"]]
@@ -2795,8 +2795,8 @@ aabb = AABB(-25, -1.67, -0.125, 48, 2.7, 0.25)
 num_enemies = 7
 
 [node name="PickUps" parent="." index="6"]
-num_pick_ups = 7
-level_pick_ups = Array[int]([0, 1, 3, 2, 4])
+num_pick_ups = 8
+level_pick_ups = Array[int]([0, 1, 4, 3, 2])
 
 [node name="PlayArea" parent="." index="9"]
 visible = false

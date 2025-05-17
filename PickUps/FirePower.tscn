@@ -5,6 +5,11 @@
 [ext_resource type="Shader" uid="uid://d4klim8n4q2qv" path="res://PickUps/Flame.gdshader" id="2_durqe"]
 [ext_resource type="AudioStream" uid="uid://ciqx0wcnvc2c1" path="res://PickUps/FirePickUp.ogg" id="3_j1oke"]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fvq7w"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("3_j1oke")
+
 [sub_resource type="SphereMesh" id="SphereMesh_j1oke"]
 material = ExtResource("2_almm0")
 radius = 0.22
@@ -14,11 +19,6 @@ rings = 8
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_almm0"]
 viewport_path = NodePath("SubViewport")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fvq7w"]
-random_pitch = 1.1
-streams_count = 1
-stream_0/stream = ExtResource("3_j1oke")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j1oke"]
 shader = ExtResource("2_durqe")
@@ -36,20 +36,18 @@ shader_parameter/lacunarity = 2.0
 effect = 2
 mesh = NodePath("FireBall")
 
+[node name="SFX" parent="." index="0"]
+stream = SubResource("AudioStreamRandomizer_fvq7w")
+
 [node name="FireBall" type="MeshInstance3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("SphereMesh_j1oke")
 
 [node name="FireSprite" type="Sprite3D" parent="FireBall" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 1.594, 0)
-billboard = 2
 texture = SubResource("ViewportTexture_almm0")
-region_rect = Rect2(0, 0, 128, 128)
 
-[node name="SFX" parent="." index="2"]
-stream = SubResource("AudioStreamRandomizer_fvq7w")
-
-[node name="SubViewport" type="SubViewport" parent="." index="5"]
+[node name="SubViewport" type="SubViewport" parent="." index="4"]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(256, 256)

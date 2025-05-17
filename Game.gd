@@ -38,4 +38,5 @@ func start_new_game() -> void:
 func load_next_level() -> void:
 	level.queue_free()
 	level_num = min(levels.size() - 1, level_num + 1)
+	await level.tree_exited
 	level_spawner.spawn(level_num)

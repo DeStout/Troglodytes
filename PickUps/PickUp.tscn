@@ -1,11 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://jwxh6mbhxdij"]
+[gd_scene load_steps=4 format=3 uid="uid://jwxh6mbhxdij"]
 
 [ext_resource type="Script" uid="uid://cjhfr764nj21f" path="res://PickUps/PickUp.gd" id="1_3hj2f"]
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0js6q"]
-properties/0/path = NodePath("SFX:playing")
-properties/0/spawn = true
-properties/0/replication_mode = 2
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_le7pk"]
 random_pitch = 1.1
@@ -20,9 +15,6 @@ script = ExtResource("1_3hj2f")
 sfx = NodePath("SFX")
 collision = NodePath("Area/Collision")
 despawn_timer = NodePath("Despawn")
-
-[node name="Synchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_0js6q")
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_le7pk")

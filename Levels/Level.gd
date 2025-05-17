@@ -5,6 +5,7 @@ var home_ := load("res://Levels/Props/Home.tscn")
 
 var game : Node
 @export var board : MultiplayerSpawner
+@export var camera : Camera3D
 @export var ui_score : Label
 @export var ui_lives : Label
 @export var characters : MultiplayerSpawner
@@ -21,6 +22,7 @@ func _ready() -> void:
 	
 	if multiplayer.is_server():
 		_set_up()
+		_spawn_home()
 
 
 func _set_up() -> void:
@@ -40,6 +42,9 @@ func _connect_player_signals() -> void:
 		player.spawn_footprint.connect(spawn_footprint)
 		player.spawn_fire_ball.connect(spawn_fire_ball)
 		Utilities.anims_to_constant(player)
+		
+		if player.is_multiplayer_authority():
+			camera.set_player(player)
 
 
 func _spawn_eggs(used_squares : Array[Node3D]) -> void:
@@ -75,8 +80,8 @@ func spawn_fire_ball(player) -> void:
 
 func egg_collected(egg : Node3D) -> void:
 	free_squares.append(Utilities.get_closest_egg_square(egg.global_position))
-	#if eggs.get_child_count() == 1:
-		#_spawn_home()
+	if eggs.get_child_count() == 1:
+		_spawn_home()
 
 
 func _spawn_home() -> void:

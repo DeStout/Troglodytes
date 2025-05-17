@@ -35,7 +35,7 @@ func _spawn_player(player_num : int) -> Player:
 	var player = player_.instantiate()
 	player.set_multiplayer_authority(ENetNetwork.peers.keys()[player_num])
 	var spawn_square = get_tree().get_nodes_in_group("PlayerSquares")[player_num]
-	player.set_deferred("global_position", spawn_square.global_position)
+	player.position = spawn_square.global_position
 	player.rotation = spawn_square.rotation
 	player.move_dir = Utilities.get_move_dir(Vector2(player.basis.z.x, -player.basis.z.z))
 	players.append(player)

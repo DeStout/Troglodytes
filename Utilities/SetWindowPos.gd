@@ -24,6 +24,7 @@ func _ready() -> void:
 		return
 
 	var launch_args = OS.get_cmdline_args()
+	name = launch_args[1]
 	_set_window_pos(launch_args)
 
 

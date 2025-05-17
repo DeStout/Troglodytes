@@ -80,6 +80,7 @@ size = Vector3(18, 1, 14)
 [node name="Camera" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 10.5)
 size = 13.5
+camera_locked = true
 margin_perc = Vector2(1, 1)
 
 [node name="Board" parent="." index="4"]
@@ -252,7 +253,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
 [node name="EggSquare54" type="Node3D" parent="Board/Squares/EggSquares" index="54"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 6)
 
-[node name="Player3" type="Node3D" parent="Board/Squares/EggSquares" index="55"]
+[node name="Player3" type="Node3D" parent="Board/Squares/EggSquares" index="55" groups=["PlayerSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6)
 
 [node name="EggSquare56" type="Node3D" parent="Board/Squares/EggSquares" index="56"]
@@ -270,7 +271,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
 [node name="EggSquare60" type="Node3D" parent="Board/Squares/EggSquares" index="60"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 6)
 
-[node name="Player4" type="Node3D" parent="Board/Squares/EggSquares" index="61"]
+[node name="Player4" type="Node3D" parent="Board/Squares/EggSquares" index="61" groups=["PlayerSquares"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
 
 [node name="EggSquare62" type="Node3D" parent="Board/Squares/EggSquares" index="62"]
