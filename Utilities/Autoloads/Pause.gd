@@ -1,6 +1,7 @@
 extends Control
 
 
+var game : Game
 @export var options : Control
 
 
@@ -9,9 +10,13 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if !Globals.game is Game or !Globals.game.level:
+	if !game is Game or !game.level:
 		return
 	if Input.is_action_just_pressed("Pause"):
+		_pause()
+
+
+func _pause() -> void:
 		if !ENetNetwork.peers.size() > 1:
 			get_tree().paused = !get_tree().paused
 		visible = !visible
@@ -25,3 +30,13 @@ func _input(event: InputEvent) -> void:
 
 func update() -> void:
 	options.update()
+
+
+func _quit() -> void:
+	get_tree().paused = false
+	visible = false
+	if !game:
+		get_tree().quit()
+		return
+	
+	game.quit_game()

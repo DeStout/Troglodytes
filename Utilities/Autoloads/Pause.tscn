@@ -1,12 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://ce2swcu7afa84"]
+[gd_scene load_steps=5 format=3 uid="uid://ce2swcu7afa84"]
 
 [ext_resource type="Script" uid="uid://cwf6dntlanjof" path="res://Utilities/Autoloads/Pause.gd" id="1_ni8ss"]
 [ext_resource type="Script" uid="uid://dqolwe002khq0" path="res://Menus/OptionsMenu.gd" id="2_wyn1i"]
 [ext_resource type="FontFile" uid="uid://dhw1gc0ml3wen" path="res://Menus/Fonts/Dinofans.ttf" id="3_wcgje"]
+[ext_resource type="Theme" uid="uid://csp5gvg4q0sb4" path="res://Utilities/MainTheme.tres" id="4_k476t"]
 
 [node name="PauseMenu" type="Control" node_paths=PackedStringArray("options")]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,32 +16,11 @@ grow_vertical = 2
 script = ExtResource("1_ni8ss")
 options = NodePath("BG/Options")
 
-[node name="Pause" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.02315
-offset_bottom = -599.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 36
-text = "Paused"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
 [node name="BG" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 64.0
-offset_top = 64.0
-offset_right = -64.0
-offset_bottom = -71.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.185, 0.255917, 0.37, 0.968627)
@@ -51,6 +30,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 64.0
+offset_bottom = 71.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 75
@@ -149,6 +130,69 @@ rounded = true
 tick_count = 5
 ticks_on_borders = true
 
+[node name="Buttons" type="Control" parent="BG/Options/VLayout"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="ApplyContainer" type="MarginContainer" parent="BG/Options/VLayout/Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -1.6
+anchor_right = 1.0
+anchor_bottom = -0.44
+offset_left = 64.0
+offset_top = 36.0
+offset_right = -820.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Close" type="Button" parent="BG/Options/VLayout/Buttons/ApplyContainer"]
+layout_mode = 2
+theme = ExtResource("4_k476t")
+text = "Close"
+flat = true
+
+[node name="QuitContainer" type="MarginContainer" parent="BG/Options/VLayout/Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -1.6
+anchor_right = 1.0
+anchor_bottom = -0.44
+offset_left = 852.0
+offset_top = 36.0
+offset_right = -62.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Quit" type="Button" parent="BG/Options/VLayout/Buttons/QuitContainer"]
+layout_mode = 2
+theme = ExtResource("4_k476t")
+text = "Quit"
+flat = true
+
+[node name="Pause" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.0401235
+anchor_right = 1.0
+anchor_bottom = 1.0679
+offset_bottom = -599.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_wcgje")
+theme_override_font_sizes/font_size = 72
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [connection signal="value_changed" from="BG/Options/VLayout/Master/VLayout/MasterSlider" to="BG/Options" method="_master_volume_changed"]
 [connection signal="value_changed" from="BG/Options/VLayout/Music/VLayout/MusicSlider" to="BG/Options" method="_music_volume_changed"]
 [connection signal="value_changed" from="BG/Options/VLayout/SFX/VLayout/SFXSlider" to="BG/Options" method="_sfx_volume_changed"]
+[connection signal="pressed" from="BG/Options/VLayout/Buttons/ApplyContainer/Close" to="." method="_pause"]
+[connection signal="pressed" from="BG/Options/VLayout/Buttons/QuitContainer/Quit" to="." method="_quit"]

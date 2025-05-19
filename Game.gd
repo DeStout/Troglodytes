@@ -16,6 +16,7 @@ var level_num : int = 0
 
 func _ready() -> void:
 	ENetNetwork.game = self
+	Pause.game = self
 
 
 func start_game() -> void:
@@ -36,3 +37,9 @@ func load_next_level() -> void:
 	level_num = min(levels.size() - 1, level_num + 1)
 	await level.tree_exited
 	level_spawner.spawn(level_num)
+
+
+func quit_game() -> void:
+	level.queue_free()
+	level_num = 0
+	add_child(main_menu)
