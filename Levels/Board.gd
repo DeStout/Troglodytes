@@ -5,7 +5,7 @@ var spawn_hole_ := load("res://Levels/Props/SpawnHole.tscn")
 
 @export var characters : MultiplayerSpawner
 @export var egg_squares : Node3D
-@export var home_squares : Node3D
+@export var home_squares : MultiplayerSpawner
 @export var walls : Node3D
 
 

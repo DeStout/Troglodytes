@@ -30,6 +30,9 @@ func set_player(new_player : CharacterBody3D) -> void:
 
 
 func _process(delta: float) -> void:
+	if !player:
+		return
+		
 	var viewport_pos := unproject_position(player.global_position)
 	if w_margins.x > viewport_pos.x or w_margins.y < viewport_pos.x:
 		position.x += player.speed * sign(viewport_pos.x - viewport_size.x / 2) * delta

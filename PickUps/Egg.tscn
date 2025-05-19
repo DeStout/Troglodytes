@@ -41,11 +41,13 @@ transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.4, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_7m588")
 
 [node name="Area" type="Area3D" parent="."]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_layer = 8
 collision_mask = 2
 
 [node name="Collision" type="CollisionShape3D" parent="Area"]
+process_mode = 1
 shape = SubResource("CylinderShape3D_cp1ha")
 
 [node name="PickUpSFX" type="AudioStreamPlayer" parent="."]

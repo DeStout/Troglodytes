@@ -74,7 +74,6 @@ options_menu = NodePath("OptionsMenu")
 metadata/_edit_vertical_guides_ = [660.0, 54.0]
 
 [node name="BG" type="SubViewportContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,7 +84,7 @@ grow_vertical = 2
 [node name="SubViewport" type="SubViewport" parent="BG"]
 handle_input_locally = false
 size = Vector2i(1152, 648)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="MenuWorld" parent="BG/SubViewport" instance=ExtResource("3_7ihqj")]
 
@@ -745,6 +744,7 @@ flat = true
 [node name="Waves" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_5ncg0")
 volume_db = -15.0
+autoplay = true
 bus = &"Music"
 parameters/looping = true
 

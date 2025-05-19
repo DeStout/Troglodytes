@@ -27,12 +27,8 @@ func start_game() -> void:
 
 
 func start_new_game() -> void:
-	if level:
-		level_num = 0
-		level.queue_free()
-	
-	level_spawner.spawn(level_num)
-	#level_spawner.spawn(2)
+	#level_num = 3
+	level = level_spawner.spawn(level_num)
 
 
 func load_next_level() -> void:

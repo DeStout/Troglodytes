@@ -8,8 +8,8 @@ const START_TIME := 1.0
 
 
 func enter() -> void:
-	if !is_multiplayer_authority():
-		return
+	#if !is_multiplayer_authority():
+		#return
 	#print("Enter StartState")
 	
 	input_sync.input_update.connect(_update_input)

@@ -265,101 +265,101 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
 [node name="EggSquare62" type="Node3D" parent="Board/Squares/EggSquares" index="62"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 6)
 
-[node name="HomeSquare1" type="Node3D" parent="Board/Squares/HomeSquares" index="0" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -7)
+[node name="HomeSquare1" type="Node3D" parent="Board/Squares/HomeSquares" index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8, 0.5, -7)
 
-[node name="HomeSquare2" type="Node3D" parent="Board/Squares/HomeSquares" index="1" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -7)
+[node name="HomeSquare2" type="Node3D" parent="Board/Squares/HomeSquares" index="1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6, 0.5, -7)
 
-[node name="HomeSquare3" type="Node3D" parent="Board/Squares/HomeSquares" index="2" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -7)
+[node name="HomeSquare3" type="Node3D" parent="Board/Squares/HomeSquares" index="2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 0.5, -7)
 
-[node name="HomeSquare4" type="Node3D" parent="Board/Squares/HomeSquares" index="3" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -7)
+[node name="HomeSquare4" type="Node3D" parent="Board/Squares/HomeSquares" index="3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0.5, -7)
 
-[node name="HomeSquare5" type="Node3D" parent="Board/Squares/HomeSquares" index="4" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+[node name="HomeSquare5" type="Node3D" parent="Board/Squares/HomeSquares" index="4"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -7)
 
-[node name="HomeSquare6" type="Node3D" parent="Board/Squares/HomeSquares" index="5" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -7)
+[node name="HomeSquare6" type="Node3D" parent="Board/Squares/HomeSquares" index="5"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, 0.5, -7)
 
-[node name="HomeSquare7" type="Node3D" parent="Board/Squares/HomeSquares" index="6" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -7)
+[node name="HomeSquare7" type="Node3D" parent="Board/Squares/HomeSquares" index="6"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.5, -7)
 
-[node name="HomeSquare8" type="Node3D" parent="Board/Squares/HomeSquares" index="7" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -7)
+[node name="HomeSquare8" type="Node3D" parent="Board/Squares/HomeSquares" index="7"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6, 0.5, -7)
 
-[node name="HomeSquare9" type="Node3D" parent="Board/Squares/HomeSquares" index="8" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -7)
+[node name="HomeSquare9" type="Node3D" parent="Board/Squares/HomeSquares" index="8"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8, 0.5, -7)
 
-[node name="HomeSquare10" type="Node3D" parent="Board/Squares/HomeSquares" index="9" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -6)
+[node name="HomeSquare10" type="Node3D" parent="Board/Squares/HomeSquares" index="9"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9, 0.5, -6)
 
 [node name="HomeSquare11" type="Node3D" parent="Board/Squares/HomeSquares" index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -4)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9, 0.5, -4)
 
 [node name="HomeSquare12" type="Node3D" parent="Board/Squares/HomeSquares" index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -2)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9, 0.5, -2)
 
 [node name="HomeSquare13" type="Node3D" parent="Board/Squares/HomeSquares" index="12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9, 0.5, 0)
 
 [node name="HomeSquare14" type="Node3D" parent="Board/Squares/HomeSquares" index="13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 2)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9, 0.5, 2)
 
 [node name="HomeSquare15" type="Node3D" parent="Board/Squares/HomeSquares" index="14"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 4)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9, 0.5, 4)
 
 [node name="HomeSquare16" type="Node3D" parent="Board/Squares/HomeSquares" index="15"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 6)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9, 0.5, 6)
 
 [node name="HomeSquare17" type="Node3D" parent="Board/Squares/HomeSquares" index="16"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5, 7)
 
 [node name="HomeSquare18" type="Node3D" parent="Board/Squares/HomeSquares" index="17"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, 7)
 
 [node name="HomeSquare19" type="Node3D" parent="Board/Squares/HomeSquares" index="18"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 7)
 
 [node name="HomeSquare20" type="Node3D" parent="Board/Squares/HomeSquares" index="19"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 7)
 
 [node name="HomeSquare21" type="Node3D" parent="Board/Squares/HomeSquares" index="20"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 7)
 
 [node name="HomeSquare22" type="Node3D" parent="Board/Squares/HomeSquares" index="21"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 7)
 
 [node name="HomeSquare23" type="Node3D" parent="Board/Squares/HomeSquares" index="22"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, 7)
 
 [node name="HomeSquare24" type="Node3D" parent="Board/Squares/HomeSquares" index="23"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.5, 7)
 
 [node name="HomeSquare25" type="Node3D" parent="Board/Squares/HomeSquares" index="24"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.5, 7)
 
 [node name="HomeSquare26" type="Node3D" parent="Board/Squares/HomeSquares" index="25"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 6)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 0.5, 6)
 
 [node name="HomeSquare27" type="Node3D" parent="Board/Squares/HomeSquares" index="26"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 4)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 0.5, 4)
 
 [node name="HomeSquare28" type="Node3D" parent="Board/Squares/HomeSquares" index="27"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 2)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 0.5, 2)
 
 [node name="HomeSquare29" type="Node3D" parent="Board/Squares/HomeSquares" index="28"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 0.5, 0)
 
 [node name="HomeSquare30" type="Node3D" parent="Board/Squares/HomeSquares" index="29"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -2)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 0.5, -2)
 
 [node name="HomeSquare31" type="Node3D" parent="Board/Squares/HomeSquares" index="30"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 0.5, -4)
 
 [node name="HomeSquare32" type="Node3D" parent="Board/Squares/HomeSquares" index="31"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -6)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 0.5, -6)
 
 [node name="GrassMounds" parent="Board/Stones" index="0" instance=ExtResource("4_dnya0")]
 surface_material_override/0 = ExtResource("5_4euba")

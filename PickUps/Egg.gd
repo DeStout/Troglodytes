@@ -35,6 +35,6 @@ func _collected(body : CharacterBody3D) -> void:
 		pick_up_sfx.play()
 		mesh.visible = false
 		collision.call_deferred("set_disabled", true)
-		await pick_up_sfx.finished
 		collected.emit(self)
+		await pick_up_sfx.finished
 		queue_free()
