@@ -1,6 +1,10 @@
 class_name Game extends Node
 
 
+@export var set_window_positions := true
+@export var show_on_main_screen := true
+
+
 @export var main_menu : Control
 
 @export var level_spawner : MultiplayerSpawner
@@ -15,11 +19,14 @@ var level_num : int = 0
 
 
 func _ready() -> void:
+	SetWindowPos.set_window_positions(set_window_positions, show_on_main_screen)
+	
 	ENetNetwork.game = self
 	Pause.game = self
 
 
 func start_game() -> void:
+	ENetNetwork.server_disconnected.connect(_server_disconnected)
 	remove_child(main_menu)
 	if !ENetNetwork.peers.size():
 		ENetNetwork.add_local_peer()
@@ -39,7 +46,38 @@ func load_next_level() -> void:
 	level_spawner.spawn(level_num)
 
 
-func quit_game() -> void:
-	level.queue_free()
-	level_num = 0
+func _server_disconnected() -> void:
+	ENetNetwork.server_disconnected.disconnect(_server_disconnected)
+	ENetNetwork.reset_peer()
+	
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Pause.visible = false
+	get_tree().paused = false
+	
+	quit_to_main()
+
+
+func quit_to_lobby() -> void:
+	ENetNetwork.server_disconnected.disconnect(_server_disconnected)
+	level.visible = false
+	if multiplayer.is_server() and level:
+		level.queue_free()
+	
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Pause.visible = false
+	get_tree().paused = false
+	
 	add_child(main_menu)
+	main_menu.mult_menu.lobby_menu.ready_button.button_pressed = false
+
+
+func quit_to_main() -> void:
+	if level:
+		level.queue_free()
+	level_num = 0
+	ENetNetwork.reset_peer()
+	
+	add_child(main_menu)
+	main_menu.mult_menu.back_button()
+	main_menu.mult_menu.visible = false
+	main_menu.main_menu.visible = true

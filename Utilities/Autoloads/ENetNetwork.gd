@@ -8,6 +8,7 @@ signal connection_failed
 signal server_disconnected
 signal peers_updated
 signal peers_ready
+signal peer_disconnected
 
 const TEST_IP := "127.0.0.1"
 const DEFAULT_PORT := 34500
@@ -15,7 +16,7 @@ const MAX_PEERS := 3
 
 var lobby_code : String
 var peer : MultiplayerPeer
-var peer_id : int
+var peer_id : int = 0
 var peers : Dictionary[int, Dictionary] = {}
 var ping : int
 
@@ -122,7 +123,7 @@ func _connect_failed() -> void:
 
 
 func _server_disconnected() -> void:
-	print("Server Disconnected")
+	print("%s: Server Disconnected" % peer_id)
 	server_disconnected.emit()
 
 
@@ -136,15 +137,19 @@ func _peer_connected(new_peer_id : int) -> void:
 
 
 func add_local_peer() -> void:
-	peers[1] = {"is_ready" : true}
+	peer_id = 1
+	peers[peer_id] = {"is_ready" : true}
 
 
 func _peer_disconnected(dead_peer_id : int) -> void:
 	if multiplayer.is_server():
 		print("Server - Peer Disconnected: %s" % dead_peer_id)
 		peers.erase(dead_peer_id)
-		update_peers.rpc(peers)
-		_check_peers_ready()
+		
+		if !game.level:
+			update_peers.rpc(peers)
+			_check_peers_ready()
+		peer_disconnected.emit(dead_peer_id)
 
 
 @rpc("authority", "call_remote")
@@ -154,7 +159,8 @@ func set_lobby_code(new_lobby_code : String) -> void:
 
 
 func set_ready(is_ready : bool) -> void:
-	peer_set_ready.rpc_id(1, is_ready)
+	if peer:
+		peer_set_ready.rpc_id(1, is_ready)
 
 
 @rpc("any_peer", "call_remote")
@@ -179,22 +185,26 @@ func _check_peers_ready() -> void:
 		peers_ready.emit(true)
 
 
-func start_pressed() -> void:
-	start_game.rpc()
-
-
 @rpc("authority", "call_local", "reliable")
 func start_game() -> void:
+	#if multiplayer.is_server():
+	multiplayer.refuse_new_connections = true
 	print("%s - Starting Game" % peer_id)
 	game.start_game()
 
 
+@rpc("authority", "call_local", "reliable")
+func quit_game() -> void:
+	#if multiplayer.is_server():
+	multiplayer.refuse_new_connections = false
+	game.quit_to_lobby()
+
+
 func reset_peer() -> void:
-	if multiplayer.is_server():
-		print("Server - Peer Reset")
-	else:
-		print("Clinet %s - Peer Reset" % [peer_id])
-	peer.close()
-	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
+	print("%s - Peer Reset: %s" % [SetWindowPos.name, peer_id])
+	if peer:
+		peer.close()
+		multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
+	peer = null
 	peer_id = 0
 	peers = {}

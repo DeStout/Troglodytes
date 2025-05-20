@@ -10,7 +10,6 @@ extends CenterContainer
 
 func _ready() -> void:
 	ENetNetwork.server_joined.connect(show_lobby)
-	ENetNetwork.server_disconnected.connect(back_button)
 
 
 func host_button() -> void:
@@ -22,6 +21,8 @@ func join_button() -> void:
 
 
 func show_lobby(success : bool, is_host : bool) -> void:
+	ENetNetwork.server_disconnected.connect(back_button)
+	
 	if success:
 		host_join_menu.visible = false
 		lobby_menu.update_peers()
@@ -37,8 +38,11 @@ func show_lobby(success : bool, is_host : bool) -> void:
 
 # Signaled from ENetNetwork.server_disconnected, Lobby/Disconnect
 func back_button() -> void:
-	if ENetNetwork.peer:
-		ENetNetwork.reset_peer()
+	for connections in ENetNetwork.server_disconnected.get_connections():
+		if connections["callable"] == back_button:
+			ENetNetwork.server_disconnected.disconnect(back_button)
+	
+	ENetNetwork.reset_peer()
 	lobby_menu.reset()
 	
 	host_join_menu.visible = true

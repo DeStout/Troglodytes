@@ -33,10 +33,12 @@ func update() -> void:
 
 
 func _quit() -> void:
-	get_tree().paused = false
-	visible = false
 	if !game:
 		get_tree().quit()
 		return
 	
-	game.quit_game()
+	if multiplayer.is_server():
+		ENetNetwork.quit_game.rpc()
+		return
+	
+	game.quit_to_main()

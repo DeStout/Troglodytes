@@ -21,6 +21,7 @@ var freeze_time := 0.0
 
 
 func _ready() -> void:
+	ENetNetwork.peer_disconnected.connect(_player_disconnected)
 	spawn_function = _spawn_player
 
 
@@ -67,6 +68,14 @@ func spawn_players() -> void:
 			spawn(square_i)
 			continue
 		player_squares[square_i].remove_from_group("PlayerSquares")
+
+
+func _player_disconnected(peer_id : int) -> void:
+	for player in players:
+		if player.get_multiplayer_authority() == peer_id:
+			players.erase(player)
+			player.queue_free()
+			break
 
 
 func spawn_enemies(used_squares : Array[Node3D]) -> Array:
@@ -148,8 +157,9 @@ func enemy_defeated(enemy : Enemy) -> void:
 
 func character_exited(character : CharacterBody3D) -> void:
 	if multiplayer.is_server():
-		if character is Player:
-			character.exit_stage.rpc_id(character.get_multiplayer_authority())
+		var player_id := character.get_multiplayer_authority()
+		if character is Player and multiplayer.get_peers().has(player_id):
+			character.exit_stage.rpc_id(player_id)
 		elif character is Enemy:
 			if character.state_machine.current_state is DeathState:
 				return
