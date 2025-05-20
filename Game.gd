@@ -58,20 +58,26 @@ func _server_disconnected() -> void:
 
 
 func quit_to_lobby() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Pause.visible = false
+	get_tree().paused = false
+	
 	ENetNetwork.server_disconnected.disconnect(_server_disconnected)
 	level.visible = false
 	if multiplayer.is_server() and level:
 		level.queue_free()
-	
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	Pause.visible = false
-	get_tree().paused = false
+	level_num = 0
 	
 	add_child(main_menu)
 	main_menu.mult_menu.lobby_menu.ready_button.button_pressed = false
 
 
 func quit_to_main() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Pause.visible = false
+	get_tree().paused = false
+	
+	ENetNetwork.server_disconnected.disconnect(_server_disconnected)
 	if level:
 		level.queue_free()
 	level_num = 0

@@ -187,7 +187,6 @@ func _check_peers_ready() -> void:
 
 @rpc("authority", "call_local", "reliable")
 func start_game() -> void:
-	#if multiplayer.is_server():
 	multiplayer.refuse_new_connections = true
 	print("%s - Starting Game" % peer_id)
 	game.start_game()
@@ -195,7 +194,8 @@ func start_game() -> void:
 
 @rpc("authority", "call_local", "reliable")
 func quit_game() -> void:
-	#if multiplayer.is_server():
+	if multiplayer.is_server():
+		update_peers.rpc(peers)
 	multiplayer.refuse_new_connections = false
 	game.quit_to_lobby()
 
