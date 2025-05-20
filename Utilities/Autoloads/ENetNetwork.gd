@@ -16,7 +16,7 @@ const MAX_PEERS := 3
 
 var lobby_code : String
 var peer : MultiplayerPeer
-var peer_id : int = 0
+var peer_id : int = 1
 var peers : Dictionary[int, Dictionary] = {}
 var ping : int
 
@@ -206,5 +206,5 @@ func reset_peer() -> void:
 		peer.close()
 		multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
 	peer = null
-	peer_id = 0
+	peer_id = 1
 	peers = {}
