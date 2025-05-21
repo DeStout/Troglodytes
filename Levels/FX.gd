@@ -31,12 +31,8 @@ func spawn_fire_ball(player : Player) -> void:
 
 func _spawn_fire_ball(player_data : Dictionary) -> Node3D:
 	var fire_ball : Node3D = fire_ball_.instantiate()
-	fire_ball.set_deferred("global_position", player_data["pos"])
+	fire_ball.position = player_data["pos"]
 	fire_ball.move_dir = player_data["move_dir"]
 	fire_ball.align_to_dir()
-	#fire_ball.emitter = player
-	#fire_ball.move_dir = player.move_dir
-	#add_child(fire_ball, true)
-	#fire_ball.global_position = player.global_position
 	
 	return fire_ball

@@ -26,8 +26,9 @@ shader_parameter/detail = 6
 shader_parameter/scale = 4.0
 shader_parameter/lacunarity = 2.0
 
-[node name="FireBall" type="Node3D"]
+[node name="FireBall" type="Node3D" node_paths=PackedStringArray("collision")]
 script = ExtResource("1_avl5a")
+collision = NodePath("Area/Collision")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
