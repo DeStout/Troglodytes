@@ -63,7 +63,7 @@ func _effect_speed(player : Player, speed_affect : float) -> void:
 
 
 func _give_fire_power(player : Player) -> void:
-	player.give_fire_power.rpc_id(player.get_multiplayer_authority())
+	player.give_fire_power.rpc()
 
 
 func _apply_freeze(player : Player) -> void:

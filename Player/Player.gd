@@ -76,25 +76,21 @@ func _footstep(foot_down : bool) -> void:
 
 @rpc("call_local", "reliable")
 func attack() -> void:
-	if fire_power_timer.time_left:
-		fire_sfx.play()
-		# Signal to Level.spawn_fire_ball()
-		spawn_fire_ball.emit(self)
-		state_machine.current_state.attack_finished()
+	if !multiplayer.is_server() and !is_multiplayer_authority():
 		return
+	
+	if is_multiplayer_authority():
+		if anim_player.current_animation == "Attack":
+			anim_player.stop()
+		await get_tree().physics_frame
+		anim_player.play("Attack")
+		_play_attack_sfx.rpc(get_path_to(attack_sfx))
 		
-	if anim_player.current_animation == "Attack":
-		anim_player.stop()
-	await get_tree().physics_frame
-	anim_player.play("Attack")
-	
-	attack_sfx.pitch_scale = randf_range(0.95, 1.05)
-	attack_sfx.play()
-	
 	attack_cast.force_shapecast_update()
 	if attack_cast.is_colliding():
-		hit_sfx.pitch_scale = randf_range(0.95, 1.05)
-		hit_sfx.play()
+		if is_multiplayer_authority():
+			_play_attack_sfx.rpc(get_path_to(hit_sfx))
+			
 		var collisions : Array = attack_cast.collision_result
 		for collision in collisions:
 			if collision.collider is Enemy:
@@ -102,6 +98,20 @@ func attack() -> void:
 			elif collisions.has(Enemy):
 				print(collision.name)
 				pass
+
+
+@rpc("call_local", "reliable")
+func fire_power_attack() -> void:
+	if multiplayer.is_server():
+		spawn_fire_ball.emit(self)
+	if is_multiplayer_authority():
+		_play_attack_sfx.rpc(get_path_to(fire_sfx))
+		state_machine.current_state.attack_finished()
+
+
+@rpc("authority", "call_local")
+func _play_attack_sfx(sfx_path : NodePath) -> void:
+	get_node(sfx_path).play()
 
 
 func _attack_ended() -> void:
@@ -144,9 +154,8 @@ func is_invincible() -> bool:
 	return bool(invincible_timer.time_left)
 
 
-@rpc("call_local", "any_peer")
+@rpc("any_peer", "call_local")
 func give_fire_power() -> void:
-	print(multiplayer.get_unique_id(), " fire power ", get_multiplayer_authority())
 	fire_power_timer.start(FIRE_POWER_TIME)
 
 

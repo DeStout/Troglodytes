@@ -40,6 +40,15 @@ properties/5/replication_mode = 2
 properties/6/path = NodePath(".:move_dir")
 properties/6/spawn = true
 properties/6/replication_mode = 2
+properties/7/path = NodePath("AttackSFX:playing")
+properties/7/spawn = true
+properties/7/replication_mode = 2
+properties/8/path = NodePath("FireSFX:playing")
+properties/8/spawn = true
+properties/8/replication_mode = 2
+properties/9/path = NodePath("HitSFX:playing")
+properties/9/spawn = true
+properties/9/replication_mode = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_js7pq"]
 radius = 0.35

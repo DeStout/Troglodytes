@@ -10,7 +10,12 @@ func enter() -> void:
 	input_sync.input_update.connect(_update_input)
 	
 	character.anim_player.speed_scale = 1.0
-	character.attack.rpc()
+	
+	if character.fire_power_timer.time_left:
+		character.fire_power_attack.rpc()
+	else:
+		character.attack.rpc()
+		
 	character._footstep(true)
 	character._footstep(false)
 
@@ -20,7 +25,10 @@ func _update_input(new_input : Dictionary[String, Variant]) -> void:
 		return
 	
 	if new_input["attack_input"]:
-		character.attack.rpc()
+		if character.fire_power_timer.time_left:
+			character.fire_power_attack.rpc()
+		else:
+			character.attack.rpc()
 
 
 func attack_finished() -> void:

@@ -33,7 +33,7 @@ func _update_input(new_input : Dictionary[String, Variant]) -> void:
 	
 	if new_input["attack_input"]:
 		transition.emit(self, "AttackState")
-		
+	
 	var dir_input : Vector2 = new_input["dir_input"]
 	dir_input = _clear_same_dir_input(dir_input)
 	var move_dir := Utilities.get_move_dir(dir_input)
