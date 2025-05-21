@@ -24,7 +24,7 @@ func _ready() -> void:
 func _spawn_pick_up(data : Dictionary) -> PickUp:
 		var pick_up : PickUp = pick_ups[data["type"]].instantiate()
 		var new_pos := Vector3(data["position"].x, 0, data["position"].z)
-		pick_up.set_deferred("global_position", new_pos)
+		pick_up.position = new_pos
 		if multiplayer.is_server():
 			pick_up.despawn.connect(_pick_up_despawned)
 		return pick_up
