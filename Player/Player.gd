@@ -146,6 +146,8 @@ func flash_halo(vis_time : float) -> void:
 	vis_time = vis_time * (2.0 / 3.0) if bool(vis_time) else 0.4
 	vis_time = max(vis_time, 0.05)
 	var flash_time = vis_time if halo.visible else 0.05
+	if !is_inside_tree():
+		await tree_entered
 	var flash_timer = get_tree().create_timer(flash_time, false)
 	flash_timer.timeout.connect(flash_halo.bind(vis_time))
 

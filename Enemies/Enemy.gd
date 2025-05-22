@@ -17,10 +17,10 @@ const SCORE_VALUE := 1000
 const ACCEL := 15.0
 var speed := 3.0
 
-enum DIRECTIONS { UP, DOWN, LEFT, RIGHT }
-var move_dir : DIRECTIONS = DIRECTIONS.DOWN
+#enum DIRECTIONS { UP, DOWN, LEFT, RIGHT }
+var move_dir : Utilities.DIRECTIONS = Utilities.DIRECTIONS.DOWN
 @export var wall_check : RayCast3D
-var death_dir : DIRECTIONS
+var death_dir : Utilities.DIRECTIONS
 var target_square : Vector2
 
 var spawn_hole : CSGCylinder3D
@@ -40,18 +40,18 @@ func get_prev_state() -> String:
 	return state_machine.prev_state.name.to_lower()
 
 
-func get_move_dir_vect(move_dir : int) -> Vector2:
-	var target_dir : Vector2
-	match move_dir:
-		0:
-			target_dir = Vector2.UP
-		1:
-			target_dir = Vector2.DOWN
-		2:
-			target_dir = Vector2.LEFT
-		3:
-			target_dir = Vector2.RIGHT
-	return target_dir
+#func get_move_dir_vect(move_dir : int) -> Vector2:
+	#var target_dir : Vector2
+	#match move_dir:
+		#0:
+			#target_dir = Vector2.UP
+		#1:
+			#target_dir = Vector2.DOWN
+		#2:
+			#target_dir = Vector2.LEFT
+		#3:
+			#target_dir = Vector2.RIGHT
+	#return target_dir
 
 
 func _footstep(foot_down : bool) -> void:
