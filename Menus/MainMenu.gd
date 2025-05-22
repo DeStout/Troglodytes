@@ -9,7 +9,6 @@ extends Control
 
 
 func _single_player_button() -> void:
-	Pause.update()
 	game.start_game()
 
 

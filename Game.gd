@@ -58,6 +58,7 @@ func _server_disconnected() -> void:
 
 
 func quit_to_lobby() -> void:
+	main_menu.options_menu.update()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Pause.visible = false
 	get_tree().paused = false
@@ -73,6 +74,7 @@ func quit_to_lobby() -> void:
 
 
 func quit_to_main() -> void:
+	main_menu.options_menu.update()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Pause.visible = false
 	get_tree().paused = false

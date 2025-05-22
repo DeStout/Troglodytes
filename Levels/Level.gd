@@ -20,6 +20,7 @@ var num_eggs : int
 
 
 func _ready() -> void:
+	Pause.update()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	if multiplayer.is_server():
