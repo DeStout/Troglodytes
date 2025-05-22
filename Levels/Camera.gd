@@ -30,7 +30,7 @@ func set_player(new_player : CharacterBody3D) -> void:
 
 
 func _process(delta: float) -> void:
-	if !player:
+	if !player or !is_inside_tree():
 		return
 		
 	var viewport_pos := unproject_position(player.global_position)

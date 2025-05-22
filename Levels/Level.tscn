@@ -168,16 +168,16 @@ volume_db = -35.0
 autoplay = true
 bus = &"Music"
 
-[node name="UnfreezeSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_je7y7")
-volume_db = -10.0
-
 [node name="EnvSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_n6v67")
 volume_db = -30.0
 autoplay = true
 bus = &"SFX"
 parameters/looping = true
+
+[node name="UnfreezeSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_je7y7")
+volume_db = -10.0
 
 [connection signal="spawned" from="Characters" to="Camera" method="set_player"]
 [connection signal="body_exited" from="PlayArea" to="Characters" method="character_exited"]

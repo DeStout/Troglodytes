@@ -16,6 +16,15 @@ func _ready() -> void:
 		open_finished.emit()
 
 
+func freeze() -> void:
+	tween.pause()
+
+
+func unfreeze() -> void:
+	if tween and tween.is_valid():
+		tween.play()
+
+
 func close() -> void:
 	if multiplayer.is_server():
 		tween = create_tween()

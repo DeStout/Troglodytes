@@ -34,6 +34,18 @@ func _add_spawn_hole(new_pos : Vector3) -> CSGCylinder3D:
 	return spawn_hole
 
 
+func freeze_spawn_holes() -> void:
+	for spawn_hole in get_node(spawn_path).get_children():
+		if spawn_hole is CSGCylinder3D:
+			spawn_hole.freeze()
+
+
+func unfreeze_spawn_holes() -> void:
+	for spawn_hole in get_node(spawn_path).get_children():
+		if spawn_hole is CSGCylinder3D:
+			spawn_hole.unfreeze()
+
+
 func level_complete_clean_up() -> void:
 	for egg_square in get_tree().get_nodes_in_group("EggSquares"):
 		egg_square.remove_from_group("EggSquares")

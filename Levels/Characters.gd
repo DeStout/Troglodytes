@@ -128,10 +128,11 @@ func freeze_enemies() -> void:
 		tween.pause()
 	for enemy in enemies:
 		enemy.freeze()
+	# player signals directly to Board to freeze spawn holes
 
 
 func _unfreeze_enemies() -> void:
-	unfreeze_sfx.play()
+	_unfreeze_sfx.rpc()
 	await unfreeze_sfx.finished
 	if freeze_time:
 		return
@@ -139,7 +140,12 @@ func _unfreeze_enemies() -> void:
 		tween.play()
 	for enemy in enemies:
 		enemy.unfreeze()
-	
+	board.unfreeze_spawn_holes()
+
+
+@rpc("authority", "call_local")
+func _unfreeze_sfx() -> void:
+	unfreeze_sfx.play()
 
 
 func enemy_defeated(enemy : Enemy) -> void:

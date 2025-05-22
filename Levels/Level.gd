@@ -42,6 +42,7 @@ func _connect_player_signals() -> void:
 	for player in characters.players:
 		#player.game_over.connect(game_over)
 		player.freeze_pick_up.connect(characters.freeze_enemies)
+		player.freeze_pick_up.connect(board.freeze_spawn_holes)
 		player.spawn_footprint.connect(spawn_footprint)
 		player.spawn_fire_ball.connect(spawn_fire_ball)
 		Utilities.anims_to_constant(player)
