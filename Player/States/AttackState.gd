@@ -6,16 +6,13 @@ class_name AttackState extends State
 
 func enter() -> void:
 	#print("Enter AttackState")
-	
 	input_sync.input_update.connect(_update_input)
-	
 	character.anim_player.speed_scale = 1.0
-	
 	if character.fire_power_timer.time_left:
 		character.fire_power_attack.rpc()
 	else:
 		character.attack.rpc()
-		
+	
 	character._footstep(true)
 	character._footstep(false)
 

@@ -44,7 +44,7 @@ const FIRE_POWER_TIME := 10.0
 func _ready() -> void:
 	player_input.set_process_input(is_multiplayer_authority())
 	collision.disabled = !multiplayer.is_server()
-	#attack_cast.enabled = multiplayer.is_server()
+	attack_cast.enabled = multiplayer.is_server()
 
 
 func get_prev_state() -> String:
@@ -85,19 +85,18 @@ func attack() -> void:
 		await get_tree().physics_frame
 		anim_player.play("Attack")
 		_play_attack_sfx.rpc(get_path_to(attack_sfx))
-		
-	attack_cast.force_shapecast_update()
-	if attack_cast.is_colliding():
-		if is_multiplayer_authority():
+	if multiplayer.is_server():
+		attack_cast.force_shapecast_update()
+		if attack_cast.is_colliding():
 			_play_attack_sfx.rpc(get_path_to(hit_sfx))
-			
-		var collisions : Array = attack_cast.collision_result
-		for collision in collisions:
-			if collision.collider is Enemy:
-				collision.collider.attacked(move_dir)
-			elif collisions.has(Enemy):
-				print(collision.name)
-				pass
+				
+			var collisions : Array = attack_cast.collision_result
+			for collision in collisions:
+				if collision.collider is Enemy:
+					collision.collider.attacked(move_dir)
+				elif collisions.has(Enemy):
+					print(collision.name)
+					pass
 
 
 @rpc("call_local", "reliable")
@@ -109,7 +108,7 @@ func fire_power_attack() -> void:
 		state_machine.current_state.attack_finished()
 
 
-@rpc("authority", "call_local")
+@rpc("any_peer", "call_local")
 func _play_attack_sfx(sfx_path : NodePath) -> void:
 	get_node(sfx_path).play()
 
