@@ -6,6 +6,7 @@
 
 [node name="Game" type="Node" node_paths=PackedStringArray("main_menu", "level_spawner")]
 script = ExtResource("1_xkndl")
+set_window_positions = false
 main_menu = NodePath("MainMenu")
 level_spawner = NodePath("LevelSpawner")
 

@@ -23,9 +23,9 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 
 operation = 2
 calculate_tangents = false
 radius = 0.001
+height = 0.5
 sides = 12
 cone = true
-smooth_faces = false
 material = SubResource("StandardMaterial3D_3slnd")
 script = ExtResource("1_7dl7n")
 
