@@ -2,7 +2,7 @@ extends CenterContainer
 
 
 @export var host_join_menu : Control
-@export var join_address : TextEdit
+@export var join_address : LineEdit
 @export var lobby_menu : Control
 @export var lobby_start_button : Button
 @export var lobby_ready_button : Button
@@ -16,8 +16,8 @@ func host_button() -> void:
 	ENetNetwork.create_server()
 
 
-func join_button() -> void:
-	ENetNetwork.join_server(join_address.text)
+func join_button(join_address : String = join_address.text) -> void:
+	ENetNetwork.join_server(join_address)
 
 
 func show_lobby(success : bool, is_host : bool) -> void:

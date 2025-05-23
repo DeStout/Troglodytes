@@ -41,7 +41,8 @@ func _spawn_player(player_num : int) -> Player:
 	player.rotation = spawn_square.rotation
 	player.move_dir = Utilities.get_move_dir(Vector2(player.basis.z.x, -player.basis.z.z))
 	players.append(player)
-	_set_player_texture(player, player_num)
+	if player_num > 0:
+		_set_player_texture(player, player_num)
 	
 	return player
 

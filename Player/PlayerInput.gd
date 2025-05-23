@@ -7,12 +7,9 @@ var player_input : Dictionary[String, Variant] = {"dir_input" : Vector2.ZERO,
 															"attack_input" : false}
 
 
-#func _ready() -> void:
-	#public_visibility = false
-	#set_visibility_for(1, true)
-
-
 func _input(event : InputEvent) -> void:
+	if Pause.visible:
+		return
 	if event is InputEventKey or event is InputEventMouseButton:
 		var dir_input = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown")
 		var attack_input = Input.is_action_just_pressed("Attack")

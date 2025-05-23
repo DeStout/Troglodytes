@@ -219,7 +219,7 @@ text = "Join"
 flat = true
 alignment = 0
 
-[node name="JoinAddress" type="TextEdit" parent="MultMenu/HostJoinMenu/Join"]
+[node name="JoinAddress" type="LineEdit" parent="MultMenu/HostJoinMenu/Join"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -232,10 +232,11 @@ offset_bottom = -15.022
 theme = ExtResource("6_m16r1")
 text = "127.0.0.1"
 placeholder_text = "Join Code"
-context_menu_enabled = false
+expand_to_text_length = true
 emoji_menu_enabled = false
-deselect_on_focus_loss_enabled = false
 virtual_keyboard_enabled = false
+clear_button_enabled = true
+select_all_on_focus = true
 
 [node name="_" type="Button" parent="MultMenu/HostJoinMenu"]
 custom_minimum_size = Vector2(512, 0)
@@ -754,6 +755,7 @@ parameters/looping = true
 [connection signal="button_down" from="MainMenu/VBox/Quit" to="." method="_quit_button"]
 [connection signal="pressed" from="MultMenu/HostJoinMenu/Host" to="MultMenu" method="host_button"]
 [connection signal="pressed" from="MultMenu/HostJoinMenu/Join" to="MultMenu" method="join_button"]
+[connection signal="text_submitted" from="MultMenu/HostJoinMenu/Join/JoinAddress" to="MultMenu" method="join_button"]
 [connection signal="pressed" from="MultMenu/HostJoinMenu/Back" to="." method="_back_button"]
 [connection signal="pressed" from="MultMenu/LobbyListMenu/VBoxContainer/Buttons/Refresh" to="MultMenu/LobbyListMenu" method="refresh_lobby_list"]
 [connection signal="pressed" from="MultMenu/LobbyListMenu/VBoxContainer/Buttons/Back" to="MultMenu" method="back_button"]
