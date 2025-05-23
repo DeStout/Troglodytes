@@ -6,6 +6,7 @@ const MAX_LIVES := 4
 const RESPAWN_DELAY := Vector2(2.0, 6.0)
 
 var player_ := load("res://Player/Player.tscn")
+var player_mat_ := load("res://Player/PlayerSkin_Mat.tres")
 var enemy_ := load("res://Enemies/Enemy.tscn")
 var spawn_hole_ := load("res://Levels/Props/SpawnHole.tscn")
 
@@ -40,8 +41,23 @@ func _spawn_player(player_num : int) -> Player:
 	player.rotation = spawn_square.rotation
 	player.move_dir = Utilities.get_move_dir(Vector2(player.basis.z.x, -player.basis.z.z))
 	players.append(player)
+	_set_player_texture(player, player_num)
 	
 	return player
+
+
+func _set_player_texture(player : Player, player_num : int) -> void:
+	var player_tex : CompressedTexture2D
+	match player_num:
+		1:
+			player_tex = load("res://Player/Player2_A.png")
+		2:
+			player_tex = load("res://Player/Player3_A.png")
+		3:
+			player_tex = load("res://Player/Player4_A.png")
+		_:
+			player_tex = load("res://Player/Player1_A.png")
+	player.player_mat.albedo_texture = player_tex
 
 
 func _spawn_enemy(spawn_hole) -> Enemy:
@@ -65,7 +81,9 @@ func spawn_players() -> void:
 	var player_squares := get_tree().get_nodes_in_group("PlayerSquares")
 	for square_i in range(0, player_squares.size()):
 		if square_i + 1 <= ENetNetwork.peers.size():
-			spawn(square_i)
+			var player = spawn(square_i)
+			#if square_i > 0:
+				#_set_player_texture.rpc(square_i)
 			continue
 		player_squares[square_i].remove_from_group("PlayerSquares")
 

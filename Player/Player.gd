@@ -34,6 +34,8 @@ const START_INV_TIME := 4.0
 const INVINCIBLE_TIME := 8.0
 const INV_FLASH_TIME := 1.25
 const FIRE_POWER_TIME := 10.0
+@onready var skin := $Player/Armature/Skeleton3D/PlayerBody
+var player_mat := load("res://Player/PlayerSkin_mat.tres").duplicate()
 @onready var invincible_timer := $InvincibleTimer
 @onready var halo := $Halo
 @onready var fire_power_timer := $FirePowerTimer
@@ -42,6 +44,7 @@ const FIRE_POWER_TIME := 10.0
 
 
 func _ready() -> void:
+	skin.set_surface_override_material(0, player_mat)
 	player_input.set_process_input(is_multiplayer_authority())
 	collision.disabled = !multiplayer.is_server()
 	attack_cast.enabled = multiplayer.is_server()

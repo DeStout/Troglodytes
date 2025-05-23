@@ -9,11 +9,11 @@ class_name Game extends Node
 
 @export var level_spawner : MultiplayerSpawner
 var levels : Array[String] = [ "res://Levels/Level1a.tscn",
-								"res://Levels/Level1b.tscn",
-								"res://Levels/Level2a.tscn",
-								"res://Levels/Level2b.tscn",
-								"res://Levels/Level3a.tscn",
-								"res://Levels/Level3b.tscn" ]
+	"res://Levels/Level1b.tscn",
+	"res://Levels/Level2a.tscn",
+	"res://Levels/Level2b.tscn",
+	"res://Levels/Level3a.tscn",
+	"res://Levels/Level3b.tscn" ]
 @export var level : Node3D
 var level_num : int = 0
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b2iwuk2gndgr4"]
+[gd_scene load_steps=27 format=3 uid="uid://b2iwuk2gndgr4"]
 
 [ext_resource type="Script" uid="uid://bsebhi65dqn0d" path="res://Player/Player.gd" id="1_cxr5p"]
 [ext_resource type="Script" uid="uid://cqrkr7tiyb2ee" path="res://Player/PlayerInput.gd" id="2_8sa4y"]
@@ -11,10 +11,10 @@
 [ext_resource type="Script" uid="uid://bckj4fk1qx02a" path="res://Player/States/StunState.gd" id="7_dm7nj"]
 [ext_resource type="AudioStream" uid="uid://b6kdy1orqnwqu" path="res://Player/Whoosh.ogg" id="7_j23h2"]
 [ext_resource type="AudioStream" uid="uid://bwynnhmvnxykb" path="res://PickUps/FireShoot.ogg" id="8_0j2ni"]
-[ext_resource type="Texture2D" uid="uid://co50iju1pilq6" path="res://Player/Player1_A.png" id="8_5wa8t"]
 [ext_resource type="AudioStream" uid="uid://jk1e673eyin2" path="res://Player/Hit2.ogg" id="8_s1rgi"]
 [ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://Enemies/EnemyMat.tres" id="9_j23h2"]
 [ext_resource type="Material" uid="uid://ct7eou206ijtc" path="res://Player/Halo_Mat.tres" id="9_p7tob"]
+[ext_resource type="Material" uid="uid://bpai101v6pvg6" path="res://Player/PlayerSkin_mat.tres" id="10_8sa4y"]
 [ext_resource type="PackedScene" uid="uid://lf4ugwuydp4l" path="res://Player/Stars.blend" id="11_3mea3"]
 [ext_resource type="Script" uid="uid://dkrsbvh5qnx5j" path="res://Player/Stars.gd" id="12_7v5gs"]
 
@@ -52,9 +52,6 @@ properties/9/replication_mode = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_js7pq"]
 radius = 0.35
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7tob"]
-albedo_texture = ExtResource("8_5wa8t")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7v5gs"]
 albedo_color = Color(0.93179, 1, 0.45012, 1)
@@ -145,7 +142,7 @@ target_position = Vector3(0, 0, -1)
 [node name="Player" parent="." instance=ExtResource("6_v0k0e")]
 
 [node name="PlayerBody" parent="Player/Armature/Skeleton3D" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_p7tob")
+surface_material_override/0 = ExtResource("10_8sa4y")
 
 [node name="LeftFootBone" type="BoneAttachment3D" parent="Player/Armature/Skeleton3D" index="1"]
 transform = Transform3D(1, 2.98023e-07, -6.33299e-08, -1.30385e-07, -0.213362, 0.976973, 2.30968e-07, -0.976973, -0.213362, -0.234641, 0.0659985, 0.0538339)

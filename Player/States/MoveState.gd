@@ -170,10 +170,10 @@ func _set_target_square() -> void:
 	var target : Vector2 = character.target_square
 	var char_pos := Utilities.v3_to_v2(character.global_position)
 	var min_dist := 9999
+	var move_vect := Utilities.get_move_dir_vect(character.move_dir)
 	for egg_square in get_tree().get_nodes_in_group("EggSquares"):
 		var egg_pos := Utilities.v3_to_v2(egg_square.global_position)
-		if char_pos.direction_to(egg_pos) \
-						.dot(Utilities.get_move_dir_vect(character.move_dir)) <= 0:
+		if !char_pos.direction_to(egg_pos).is_equal_approx(move_vect):
 			continue
 		if char_pos.distance_squared_to(egg_pos) < min_dist:
 			min_dist = char_pos.distance_squared_to(egg_pos)
