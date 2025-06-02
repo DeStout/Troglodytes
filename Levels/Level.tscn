@@ -108,7 +108,6 @@ far = 50.0
 script = ExtResource("2_ht8ui")
 
 [node name="Board" type="MultiplayerSpawner" parent="." node_paths=PackedStringArray("characters", "egg_squares", "home_squares", "walls")]
-_spawnable_scenes = PackedStringArray("uid://dbpkd8ys2yxyr")
 script = ExtResource("2_ah0qf")
 characters = NodePath("../Characters")
 egg_squares = NodePath("Squares/EggSquares")

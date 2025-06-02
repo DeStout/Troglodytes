@@ -8,7 +8,6 @@ const RESPAWN_DELAY := Vector2(2.0, 6.0)
 var player_ := load("res://Player/Player.tscn")
 var player_mat_ := load("res://Player/PlayerSkin_Mat.tres")
 var enemy_ := load("res://Enemies/Enemy.tscn")
-var spawn_hole_ := load("res://Levels/Props/SpawnHole.tscn")
 
 @export var level : Node3D
 @export var board : MultiplayerSpawner
@@ -61,14 +60,13 @@ func _set_player_texture(player : Player, player_num : int) -> void:
 	player.player_mat.albedo_texture = player_tex
 
 
+# Do not type cast function parameter
 func _spawn_enemy(spawn_hole) -> Enemy:
 	var enemy : Enemy = enemy_.instantiate()
 	Utilities.anims_to_constant(enemy)
 	if multiplayer.is_server():
-		var new_pos := Vector3(spawn_hole.global_position.x, 0, spawn_hole.global_position.z)
 		enemy.spawn_hole = spawn_hole
-		#enemy.set_deferred("global_position", new_pos)
-		enemy.position = new_pos
+		enemy.position = spawn_hole.global_position
 	enemy.spawn_footprint.connect(level.spawn_footprint)
 	enemies.append(enemy)
 	enemy.characters = self
@@ -117,8 +115,6 @@ func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 
 
 func _respawn_enemy() -> void:
-		#var enemy = enemy_.instantiate()
-		#var spawn_hole = spawn_hole_.instantiate()
 		var free_square : Node3D = level.get_rand_free_square()
 		var spawn_pos := Vector3(free_square.global_position.x, 0, \
 														free_square.global_position.z)

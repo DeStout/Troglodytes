@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsbxpdu6oxpmt"]
+
+[ext_resource type="Texture2D" uid="uid://ruy3gqxdmiim" path="res://Levels/FX/Materials/SpawnHole_A.png" id="1_2j3w4"]
+[ext_resource type="PackedScene" uid="uid://dj0dqkdxoyx87" path="res://Levels/FX/SpawnHole.blend" id="1_j84vn"]
+[ext_resource type="Script" uid="uid://b5h2lxgi1cwnb" path="res://Levels/FX/SpawnHole.gd" id="2_2j3w4"]
+[ext_resource type="Texture2D" uid="uid://c8j6cokt48337" path="res://Levels/Materials/Sand1_N.png" id="2_443go"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_2j3w4"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54wdl"]
+albedo_texture = ExtResource("1_2j3w4")
+normal_enabled = true
+normal_texture = ExtResource("2_443go")
+
+[node name="SpawnHole1" node_paths=PackedStringArray("anim_player") instance=ExtResource("1_j84vn")]
+script = ExtResource("2_2j3w4")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="Synchronizer" type="MultiplayerSynchronizer" parent="." index="0"]
+replication_config = SubResource("SceneReplicationConfig_2j3w4")
+
+[node name="SpawnHole" parent="." index="1"]
+blend_shapes/Expand = 1.0
+surface_material_override/0 = SubResource("StandardMaterial3D_54wdl")
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "OpenClose"

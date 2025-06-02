@@ -23,7 +23,7 @@ var move_dir : Utilities.DIRECTIONS = Utilities.DIRECTIONS.DOWN
 var death_dir : Utilities.DIRECTIONS
 var target_square : Vector2
 
-var spawn_hole : CSGCylinder3D
+var spawn_hole : Node3D
 
 
 func _ready() -> void:
@@ -32,7 +32,7 @@ func _ready() -> void:
 
 
 func spawn_finished() -> void:
-	spawn_hole.close()
+	spawn_hole.close.rpc()
 	characters.enemy_finished_spawning(Utilities.get_closest_egg_square(global_position))
 
 
@@ -94,6 +94,6 @@ func disable_collision() -> void:
 
 func die() -> void:
 	if spawn_hole:
-		spawn_hole.close()
+		spawn_hole.close.rpc()
 	characters.enemy_defeated(self)
 	queue_free()
