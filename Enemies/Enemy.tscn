@@ -212,7 +212,7 @@ bone_idx = 53
 [node name="RightFoot" type="Node3D" parent="Enemy/Enemy1/Skeleton3D/RightFootBone"]
 transform = Transform3D(1, -1.42109e-14, 1.42109e-14, 2.95319e-14, 1, 0, 7.14984e-14, 2.98023e-08, 1, 5.96046e-08, 0.149298, -0.123785)
 
-[node name="AnimationPlayer" parent="Enemy" index="4"]
+[node name="AnimationPlayer" parent="Enemy" index="1"]
 playback_auto_capture = false
 
 [node name="AttackCheck" type="Area3D" parent="."]

@@ -26,14 +26,6 @@ func _add_home_squares() -> void:
 		square.add_to_group("HomeSquares", true)
 
 
-#func _add_spawn_hole(new_pos : Vector3) -> CSGCylinder3D:
-	#var spawn_hole : CSGCylinder3D = spawn_hole_.instantiate()
-	#spawn_hole.position = Vector3(new_pos.x, (-spawn_hole.height + 0.2) / 2, new_pos.z)
-	#characters.spawn_function = characters._spawn_enemy
-	#spawn_hole.open_finished.connect(characters.spawn.bind(spawn_hole))
-	#return spawn_hole
-
-
 func _add_spawn_hole(new_pos : Vector3) -> SpawnHole:
 	var spawn_hole : SpawnHole = SPAWN_HOLE_.instantiate()
 	characters.spawn_function = characters._spawn_enemy
