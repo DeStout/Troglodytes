@@ -69,7 +69,6 @@ camera_locked = true
 margin_perc = Vector2(1, 1)
 
 [node name="Board" parent="." index="4"]
-_spawnable_scenes = PackedStringArray()
 spawn_path = NodePath("Ground")
 
 [node name="Ground" type="MeshInstance3D" parent="Board" index="0"]

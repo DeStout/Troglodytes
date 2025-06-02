@@ -27,7 +27,6 @@ func unfreeze() -> void:
 
 @rpc("authority", "call_local")
 func close() -> void:
-	print(multiplayer.get_unique_id())
 	anim_player.play_backwards("OpenClose")
 	
 	if multiplayer.is_server():

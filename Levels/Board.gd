@@ -39,6 +39,7 @@ func _add_spawn_hole(new_pos : Vector3) -> SpawnHole:
 	characters.spawn_function = characters._spawn_enemy
 	spawn_hole.open_finished.connect(characters.spawn.bind(spawn_hole))
 	spawn_hole.position = new_pos
+	spawn_hole.rotation.y = randf_range(0, TAU)
 	return spawn_hole
 
 

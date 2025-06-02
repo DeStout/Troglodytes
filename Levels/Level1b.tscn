@@ -86,7 +86,7 @@ margin_perc = Vector2(1, 1)
 [node name="Board" parent="." index="4"]
 spawn_path = NodePath("Ground")
 
-[node name="Ground" type="CSGMesh3D" parent="Board" index="0"]
+[node name="Ground" type="MeshInstance3D" parent="Board" index="0"]
 mesh = SubResource("ArrayMesh_w58g5")
 
 [node name="EggSquare1" type="Node3D" parent="Board/Squares/EggSquares" index="0"]
