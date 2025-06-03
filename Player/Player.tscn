@@ -177,7 +177,7 @@ autoplay = "Idle"
 
 [node name="FirePowerTimer" type="Timer" parent="."]
 wait_time = 10.0
-autostart = true
+one_shot = true
 
 [node name="Halo" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.052, -0.103702)
