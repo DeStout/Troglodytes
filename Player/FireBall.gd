@@ -31,7 +31,7 @@ func _body_collided(body : Node3D) -> void:
 	if !body is CharacterBody3D:
 		queue_free()
 		return
-	if !(body is Player):
+	if body.has_method("burn"):
 		body.burn()
 		queue_free()
 

@@ -182,6 +182,7 @@ func character_exited(character : CharacterBody3D) -> void:
 		if character is Player and ENetNetwork.peers.has(player_id):
 			character.exit_stage.rpc_id(player_id)
 		elif character is Enemy:
-			if character.state_machine.current_state is DeathState:
+			var current_state = character.state_machine.current_state
+			if current_state is DeathState or current_state is BurnState:
 				return
 			character.die()

@@ -9,6 +9,10 @@ func attacked() -> void:
 	transition.emit(self, "DeathState")
 
 
+func burn() -> void:
+	transition.emit(self, "BurnState")
+
+
 #func enter() -> void: pass
 #func exit() -> void: pass
 #func update(delta) -> void: pass

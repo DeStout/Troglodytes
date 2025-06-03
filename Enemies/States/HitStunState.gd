@@ -51,6 +51,12 @@ func freeze() -> void:
 	transition.emit(self, "FreezeState")
 
 
+func burn() -> void:
+	tween.stop()
+	stun_timer.stop()
+	transition.emit(self, "BurnState")
+
+
 #func exit() -> void: pass
 #func update(delta) -> void: pass
 #func physics_update(delta) -> void: pass

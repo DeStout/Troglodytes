@@ -46,6 +46,12 @@ func freeze() -> void:
 	transition.emit(self, "FreezeState")
 
 
+func burn() -> void:
+	anim_player.stop()
+	anim_player.animation_finished.disconnect(_attack_finished)
+	transition.emit(self, "BurnState")
+
+
 #func exit() -> void: pass
 #func update(delta) -> void: pass
 #func physics_update(delta) -> void: pass

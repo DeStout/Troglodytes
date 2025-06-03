@@ -1,7 +1,7 @@
 extends MultiplayerSpawner
 
 
-const SPAWN_HOLE_ = preload("res://Levels/FX/SpawnHole.tscn")
+var spawn_hole_ := load("res://Levels/FX/SpawnHole.tscn")
 
 @export var characters : MultiplayerSpawner
 @export var egg_squares : Node3D
@@ -27,7 +27,7 @@ func _add_home_squares() -> void:
 
 
 func _add_spawn_hole(new_pos : Vector3) -> SpawnHole:
-	var spawn_hole : SpawnHole = SPAWN_HOLE_.instantiate()
+	var spawn_hole : SpawnHole = spawn_hole_.instantiate()
 	characters.spawn_function = characters._spawn_enemy
 	spawn_hole.open_finished.connect(characters.spawn.bind(spawn_hole))
 	spawn_hole.position = new_pos

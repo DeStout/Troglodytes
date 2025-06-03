@@ -40,20 +40,6 @@ func get_prev_state() -> String:
 	return state_machine.prev_state.name.to_lower()
 
 
-#func get_move_dir_vect(move_dir : int) -> Vector2:
-	#var target_dir : Vector2
-	#match move_dir:
-		#0:
-			#target_dir = Vector2.UP
-		#1:
-			#target_dir = Vector2.DOWN
-		#2:
-			#target_dir = Vector2.LEFT
-		#3:
-			#target_dir = Vector2.RIGHT
-	#return target_dir
-
-
 func _footstep(foot_down : bool) -> void:
 	spawn_footprint.emit(self, foot_down)
 
@@ -85,7 +71,8 @@ func unfreeze() -> void:
 
 
 func burn() -> void:
-	queue_free()
+	if state_machine.current_state.has_method("burn"):
+		state_machine.current_state.burn()
 
 
 func disable_collision() -> void:
