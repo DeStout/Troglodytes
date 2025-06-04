@@ -1,0 +1,39 @@
+[gd_scene load_steps=10 format=3 uid="uid://b7iyytxt1o7jn"]
+
+[ext_resource type="PackedScene" uid="uid://jwxh6mbhxdij" path="res://PickUps/PickUp.tscn" id="1_2gk72"]
+[ext_resource type="Script" uid="uid://cqex23ee8r3p2" path="res://PickUps/BerryBush.gd" id="2_nlcch"]
+[ext_resource type="AudioStream" uid="uid://x06ccerbknan" path="res://PickUps/SpeedUp.ogg" id="3_7mkc1"]
+[ext_resource type="PackedScene" uid="uid://ckxjnpmb41i4s" path="res://PickUps/BerryBush.glb" id="4_pw1xo"]
+[ext_resource type="Texture2D" uid="uid://ca2bj45lwm7m5" path="res://PickUps/BerryBush.png" id="5_2pbxy"]
+[ext_resource type="Material" uid="uid://vyxvhhf0hon" path="res://Player/Player_Mat.tres" id="6_soaev"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tnwk1"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("3_7mkc1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_33yjy"]
+transparency = 1
+albedo_texture = ExtResource("5_2pbxy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iy1a4"]
+albedo_color = Color(0.25, 0.124979, 0, 1)
+
+[node name="BerryBush1" node_paths=PackedStringArray("anim_player", "mesh") instance=ExtResource("1_2gk72")]
+script = ExtResource("2_nlcch")
+anim_player = NodePath("BerryBush/AnimationPlayer")
+effect = 0
+mesh = NodePath("BerryBush/SpeedBush1")
+
+[node name="SFX" parent="." index="0"]
+stream = SubResource("AudioStreamRandomizer_tnwk1")
+
+[node name="BerryBush" parent="." index="1" instance=ExtResource("4_pw1xo")]
+
+[node name="SpeedBush1" parent="BerryBush" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_33yjy")
+surface_material_override/1 = SubResource("StandardMaterial3D_iy1a4")
+surface_material_override/2 = ExtResource("6_soaev")
+
+[editable path="BerryBush"]
