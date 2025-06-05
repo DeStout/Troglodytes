@@ -94,7 +94,7 @@ func egg_collected(egg : Node3D) -> void:
 func _spawn_home() -> void:
 	if !multiplayer.is_server():
 		return
-		
+	
 	var home_num := randi_range(0, get_tree().get_nodes_in_group("HomeSquares").size())
 	home_spawner.spawn(home_num)
 

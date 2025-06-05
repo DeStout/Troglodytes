@@ -28,8 +28,8 @@ func _set_type() -> void:
 	match effect:
 		#EFFECTS.SPEED_UP:
 			#apply_effect = _effect_speed.bind(0.5)
-		EFFECTS.SLOW_DOWN:
-			apply_effect = _effect_speed.bind(-0.5)
+		#EFFECTS.SLOW_DOWN:
+			#apply_effect = _effect_speed.bind(-0.5)
 		EFFECTS.FIRE_POWER:
 			apply_effect = _give_fire_power
 		#EFFECTS.FREEZE:

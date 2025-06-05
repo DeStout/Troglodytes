@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b588328qy1e4m"
-path="res://.godot/imported/Arrow.blend-94135c53f1bf7879c1f34057dd911310.scn"
+uid="uid://ck3wncdwigfev"
+path="res://.godot/imported/SpiderWeb.blend-6c3528d665fb59d345c5f4c60e44b2f0.scn"
 
 [deps]
 
-source_file="res://PickUps/Arrow.blend"
-dest_files=["res://.godot/imported/Arrow.blend-94135c53f1bf7879c1f34057dd911310.scn"]
+source_file="res://PickUps/SpiderWeb.blend"
+dest_files=["res://.godot/imported/SpiderWeb.blend-6c3528d665fb59d345c5f4c60e44b2f0.scn"]
 
 [params]
 

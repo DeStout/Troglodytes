@@ -15,6 +15,7 @@ func _spawn_home(home_num : int) -> MeshInstance3D:
 	var home : MeshInstance3D = home_.instantiate()
 	
 	if home_num > get_tree().get_nodes_in_group("HomeSquares").size()-1:
+		var home_squares = get_tree().get_nodes_in_group("HomeSquare")
 		#Yo your array is out of bounds, figure out why
 		breakpoint
 		

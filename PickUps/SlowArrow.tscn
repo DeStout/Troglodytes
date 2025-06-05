@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgmpv301bxldp"]
-
-[ext_resource type="PackedScene" uid="uid://b588328qy1e4m" path="res://PickUps/Arrow.blend" id="1_3hw1b"]
-[ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://Enemies/EnemyMat.tres" id="2_k043v"]
-
-[node name="SlowArrow" instance=ExtResource("1_3hw1b")]
-transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, 1.35, 0)
-surface_material_override/0 = ExtResource("2_k043v")

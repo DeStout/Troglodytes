@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cf0w0uhbea601"]
+
+[ext_resource type="Texture2D" uid="uid://cdqclg3ubvs05" path="res://PickUps/Materials/SpiderWeb.png" id="1_bk6sa"]
+
+[resource]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("1_bk6sa")
+rim_enabled = true
+rim = 0.39

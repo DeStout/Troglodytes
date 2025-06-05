@@ -26,7 +26,7 @@ shader_parameter/Metallic = 0.134
 shader_parameter/Smoothness = 0.627
 shader_parameter/Normals = 0.77
 
-[node name="PickUp1" node_paths=PackedStringArray("anim_player", "mesh") instance=ExtResource("1_v5cxi")]
+[node name="IceBlock1" node_paths=PackedStringArray("anim_player", "mesh") instance=ExtResource("1_v5cxi")]
 script = ExtResource("2_swk3v")
 anim_player = NodePath("IceBlock/AnimationPlayer")
 effect = 3
@@ -36,9 +36,12 @@ mesh = NodePath("IceBlock/Ice")
 stream = SubResource("AudioStreamRandomizer_u4kno")
 
 [node name="IceBlock" parent="." index="1" instance=ExtResource("3_swk3v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Ice" parent="IceBlock" index="0"]
+"blend_shapes/Key 1" = 1.0
 surface_material_override/0 = SubResource("ShaderMaterial_qtxhs")
+
+[node name="AnimationPlayer" parent="IceBlock" index="1"]
+autoplay = "GrowMelt"
 
 [editable path="IceBlock"]

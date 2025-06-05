@@ -29,6 +29,7 @@ monitorable = false
 
 [node name="Collision" type="CollisionShape3D" parent="Area"]
 shape = SubResource("CylinderShape3D_h8yf4")
+disabled = true
 
 [node name="Despawn" type="Timer" parent="."]
 
