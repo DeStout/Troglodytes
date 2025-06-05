@@ -5,6 +5,7 @@ extends PickUp
 
 
 func _ready() -> void:
+	mesh.rotation.y = randf_range(-PI/2, PI/2)
 	apply_effect = _apply_freeze
 	anim_player.play("GrowMelt")
 	

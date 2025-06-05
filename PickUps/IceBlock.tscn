@@ -36,6 +36,7 @@ mesh = NodePath("IceBlock/Ice")
 stream = SubResource("AudioStreamRandomizer_u4kno")
 
 [node name="IceBlock" parent="." index="1" instance=ExtResource("3_swk3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Ice" parent="IceBlock" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_qtxhs")

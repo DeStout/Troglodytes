@@ -29,20 +29,7 @@ stream = SubResource("AudioStreamRandomizer_tnwk1")
 [node name="BerryBush" parent="." index="1" instance=ExtResource("4_pw1xo")]
 
 [node name="BerryBush" parent="BerryBush" index="0"]
-transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, -0.718971, 0)
-blend_shapes/Berry1 = 1.0
-blend_shapes/Berry2 = 1.0
-blend_shapes/Berry3 = 1.0
-blend_shapes/Berry4 = 1.0
-blend_shapes/Berry5 = 1.0
-blend_shapes/Berry6 = 1.0
-blend_shapes/Branch1 = 1.0
-blend_shapes/Branch2 = 1.0
-blend_shapes/Branch3 = 1.0
-blend_shapes/Branch4 = 1.0
-blend_shapes/Branch5 = 1.0
-blend_shapes/Branch6 = 1.0
-blend_shapes/Branch7 = 1.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_pw1xo")
 surface_material_override/1 = ExtResource("6_nlcch")
 surface_material_override/2 = ExtResource("7_7mkc1")
