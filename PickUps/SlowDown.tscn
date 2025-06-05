@@ -1,16 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://gf8hj8gj7p3k"]
+[gd_scene load_steps=5 format=3 uid="uid://gf8hj8gj7p3k"]
 
 [ext_resource type="PackedScene" uid="uid://jwxh6mbhxdij" path="res://PickUps/PickUp.tscn" id="1_5mm1s"]
-[ext_resource type="AudioStream" uid="uid://cxi86u32usgd1" path="res://PickUps/SlowDown.ogg" id="2_4hnkm"]
+[ext_resource type="AudioStream" uid="uid://cxi86u32usgd1" path="res://PickUps/SFX/SlowDown.ogg" id="2_4hnkm"]
 [ext_resource type="PackedScene" uid="uid://bgmpv301bxldp" path="res://PickUps/SlowArrow.tscn" id="2_cqrwk"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cqrwk"]
 random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("2_4hnkm")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_jbcgn"]
-viewport_path = NodePath("SubViewport")
 
 [node name="PickUp1" node_paths=PackedStringArray("mesh", "sfx") instance=ExtResource("1_5mm1s")]
 effect = 1

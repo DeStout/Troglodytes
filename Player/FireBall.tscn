@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dwkq0uelyudar" path="res://Player/FireBall.gd" id="1_avl5a"]
 [ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://Enemies/EnemyMat.tres" id="1_lwaqw"]
-[ext_resource type="Shader" uid="uid://d4klim8n4q2qv" path="res://PickUps/Flame.gdshader" id="3_kxsq1"]
+[ext_resource type="Shader" uid="uid://d4klim8n4q2qv" path="res://PickUps/Materials/Flame.gdshader" id="3_kxsq1"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_toymk"]
 radius = 0.25

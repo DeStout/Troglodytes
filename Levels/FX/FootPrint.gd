@@ -3,8 +3,8 @@ extends Decal
 
 const FADE_TIME := 5.0
 
-var player_print := load("res://Levels/FX/PlayerPrint.tres")
-var enemy_print := load("res://Levels/FX/EnemyPrint.tres")
+var player_print := load("res://Levels/FX/Materials/PlayerFootstep.png")
+var enemy_print := load("res://Levels/FX/Materials/EnemyFootstep.png")
 
 var fade := 0.0
 

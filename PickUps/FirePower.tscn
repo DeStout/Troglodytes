@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://jwxh6mbhxdij" path="res://PickUps/PickUp.tscn" id="1_kaey8"]
 [ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://Enemies/EnemyMat.tres" id="2_almm0"]
-[ext_resource type="Shader" uid="uid://d4klim8n4q2qv" path="res://PickUps/Flame.gdshader" id="2_durqe"]
-[ext_resource type="AudioStream" uid="uid://ciqx0wcnvc2c1" path="res://PickUps/FirePickUp.ogg" id="3_j1oke"]
+[ext_resource type="Shader" uid="uid://d4klim8n4q2qv" path="res://PickUps/Materials/Flame.gdshader" id="2_durqe"]
+[ext_resource type="AudioStream" uid="uid://ciqx0wcnvc2c1" path="res://PickUps/SFX/FirePickUp.ogg" id="3_j1oke"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fvq7w"]
 random_pitch = 1.1

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://jwxh6mbhxdij" path="res://PickUps/PickUp.tscn" id="1_5cvby"]
 [ext_resource type="Material" uid="uid://ct7eou206ijtc" path="res://Player/Halo_Mat.tres" id="2_a55km"]
-[ext_resource type="AudioStream" uid="uid://bkdvqybq1lrhh" path="res://PickUps/Ding.ogg" id="3_a55km"]
+[ext_resource type="AudioStream" uid="uid://bkdvqybq1lrhh" path="res://PickUps/SFX/Ding.ogg" id="3_a55km"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_160s7"]
 inner_radius = 0.3

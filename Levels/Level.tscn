@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://2e7xr16nfjex" path="res://Music/ASassySituation.mp3" id="9_fbd0n"]
 [ext_resource type="AudioStream" uid="uid://cuij1no40h8sf" path="res://Music/CartoonMischief.mp3" id="10_myk7f"]
 [ext_resource type="AudioStream" uid="uid://b2adamdl3fce5" path="res://Menus/BeachWaves.ogg" id="10_n6v67"]
-[ext_resource type="AudioStream" uid="uid://c1ibrkbrrcdwv" path="res://PickUps/IceUnfreeze.ogg" id="11_je7y7"]
+[ext_resource type="AudioStream" uid="uid://c1ibrkbrrcdwv" path="res://PickUps/SFX/IceUnfreeze.ogg" id="11_je7y7"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rjnlo"]
 playback_mode = 2

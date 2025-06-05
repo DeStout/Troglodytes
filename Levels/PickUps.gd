@@ -4,11 +4,11 @@ extends MultiplayerSpawner
 var pick_up_ := load("res://PickUps/PickUp.tscn")
 
 const RESPAWN_DELAY := Vector2(1.0, 5.0)
-enum PICK_UPS {BERRY_BUSH, SLOW_DOWN, FIRE_POWER, FREEZE, INVINCIBLE, PINEAPPLE}
+enum PICK_UPS {BERRY_BUSH, SLOW_DOWN, FIRE_POWER, ICE_BLOCK, INVINCIBLE, PINEAPPLE}
 var pick_ups : Dictionary[PICK_UPS, Variant] = {PICK_UPS.BERRY_BUSH : load("res://PickUps/BerryBush.tscn"),
 											PICK_UPS.SLOW_DOWN : load("res://PickUps/SlowDown.tscn"),
 											PICK_UPS.FIRE_POWER : load("res://PickUps/FirePower.tscn"),
-											PICK_UPS.FREEZE : load("res://PickUps/Freeze.tscn"),
+											PICK_UPS.ICE_BLOCK : load("res://PickUps/IceBlock.tscn"),
 											PICK_UPS.INVINCIBLE : load("res://PickUps/Invincible.tscn"),
 											PICK_UPS.PINEAPPLE : ""}
 

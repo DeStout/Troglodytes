@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://bfuiiibm4ogfg" path="res://PickUps/Egg.tscn" id="1_5tsjt"]
 [ext_resource type="Texture2D" uid="uid://xr27pg1088pa" path="res://Levels/Materials/Sand1.png" id="1_y84t4"]
-[ext_resource type="Texture2D" uid="uid://gieddughtokc" path="res://PickUps/Egg_A.png" id="2_oilmi"]
+[ext_resource type="Texture2D" uid="uid://gieddughtokc" path="res://PickUps/Materials/Egg_A.png" id="2_oilmi"]
 [ext_resource type="Environment" uid="uid://m4o81crqix7v" path="res://Utilities/MMEnv.tres" id="3_7tmcs"]
 [ext_resource type="Texture2D" uid="uid://c8j6cokt48337" path="res://Levels/Materials/Sand1_N.png" id="3_nuj0n"]
-[ext_resource type="Texture2D" uid="uid://de4hw084r38s8" path="res://PickUps/Egg_H.png" id="3_y84t4"]
+[ext_resource type="Texture2D" uid="uid://de4hw084r38s8" path="res://PickUps/Materials/Egg_H.png" id="3_y84t4"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_nqg6k"]
 lightmap_size_hint = Vector2i(1, 1)

@@ -19,7 +19,7 @@ var apply_effect : Callable
 
 func _ready() -> void:
 	_set_type()
-	collision.disabled = !multiplayer.is_server()
+	collision.set_deferred("disabled", !multiplayer.is_server())
 	if multiplayer.is_server():
 		despawn_timer.start(randf_range(DESPAWN_RANGE.x, DESPAWN_RANGE.y))
 
@@ -32,8 +32,8 @@ func _set_type() -> void:
 			apply_effect = _effect_speed.bind(-0.5)
 		EFFECTS.FIRE_POWER:
 			apply_effect = _give_fire_power
-		EFFECTS.FREEZE:
-			apply_effect = _apply_freeze
+		#EFFECTS.FREEZE:
+			#apply_effect = _apply_freeze
 		EFFECTS.INVINCIBLE:
 			apply_effect = _set_invincible
 		EFFECTS.PINEAPPLE:
@@ -44,6 +44,7 @@ func _set_type() -> void:
 
 func _collected(body : CharacterBody3D) -> void:
 	if body is Player and multiplayer.is_server():
+		despawn_timer.stop()
 		_pick_up.rpc()
 		apply_effect.call(body)
 		collision.call_deferred("set_disabled", true)

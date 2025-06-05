@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de4hw084r38s8"
-path.s3tc="res://.godot/imported/Egg_H.png-b4c32f360e767b77c91928dea013659e.s3tc.ctex"
-path.etc2="res://.godot/imported/Egg_H.png-b4c32f360e767b77c91928dea013659e.etc2.ctex"
+uid="uid://w8ecji48vm5s"
+path.s3tc="res://.godot/imported/fire4_64.png-1dd6f8826ae33518a45dee1478e677d5.s3tc.ctex"
+path.etc2="res://.godot/imported/fire4_64.png-1dd6f8826ae33518a45dee1478e677d5.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://PickUps/Egg_H.png"
-dest_files=["res://.godot/imported/Egg_H.png-b4c32f360e767b77c91928dea013659e.s3tc.ctex", "res://.godot/imported/Egg_H.png-b4c32f360e767b77c91928dea013659e.etc2.ctex"]
+source_file="res://PickUps/Materials/fire4_64.png"
+dest_files=["res://.godot/imported/fire4_64.png-1dd6f8826ae33518a45dee1478e677d5.s3tc.ctex", "res://.godot/imported/fire4_64.png-1dd6f8826ae33518a45dee1478e677d5.etc2.ctex"]
 
 [params]
 

@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://bx7c4jm085fh4"]
+
+[ext_resource type="PackedScene" uid="uid://jwxh6mbhxdij" path="res://PickUps/PickUp.tscn" id="1_v5cxi"]
+[ext_resource type="AudioStream" uid="uid://cvoyjtcnlid4a" path="res://PickUps/SFX/IceFreeze.ogg" id="2_mc754"]
+[ext_resource type="Script" uid="uid://cxa3hv4vqwnav" path="res://PickUps/IceBlock.gd" id="2_swk3v"]
+[ext_resource type="PackedScene" uid="uid://dorwelmt70mgb" path="res://PickUps/IceBlock.blend" id="3_swk3v"]
+[ext_resource type="Shader" uid="uid://cp54di2hsvvpn" path="res://PickUps/Materials/IceBlock.gdshader" id="4_30f80"]
+[ext_resource type="Texture2D" uid="uid://b4qrla72krj6n" path="res://PickUps/Materials/IceBlock_A.png" id="5_lunjw"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u4kno"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("2_mc754")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qtxhs"]
+render_priority = 0
+shader = ExtResource("4_30f80")
+shader_parameter/FresnelPower = 1.525
+shader_parameter/FresnelColor = Color(0.170504, 0.530236, 0.933594, 1)
+shader_parameter/Color = Color(0.0919138, 0.182681, 0.6875, 1)
+shader_parameter/Tiling = Vector3(1, 1, 1)
+shader_parameter/Offset = Vector3(0, 0, 0)
+shader_parameter/Ice_Texture = ExtResource("5_lunjw")
+shader_parameter/RefractionAmount = 1.0
+shader_parameter/Metallic = 0.134
+shader_parameter/Smoothness = 0.627
+shader_parameter/Normals = 0.77
+
+[node name="PickUp1" node_paths=PackedStringArray("anim_player", "mesh") instance=ExtResource("1_v5cxi")]
+script = ExtResource("2_swk3v")
+anim_player = NodePath("IceBlock/AnimationPlayer")
+effect = 3
+mesh = NodePath("IceBlock/Ice")
+
+[node name="SFX" parent="." index="0"]
+stream = SubResource("AudioStreamRandomizer_u4kno")
+
+[node name="IceBlock" parent="." index="1" instance=ExtResource("3_swk3v")]
+
+[node name="Ice" parent="IceBlock" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_qtxhs")
+
+[editable path="IceBlock"]

@@ -5,11 +5,17 @@ extends PickUp
 
 
 func _ready() -> void:
-	rotation.y = randf_range(0, TAU)
-	apply_effect = _effect_speed.bind(0.5)
-	anim_player.play("Grow")
+	apply_effect = _apply_freeze
+	anim_player.play("GrowMelt")
 	
 	await anim_player.animation_finished
 	collision.set_deferred("disabled", !multiplayer.is_server())
 	if multiplayer.is_server():
 		despawn_timer.start(randf_range(DESPAWN_RANGE.x, DESPAWN_RANGE.y))
+
+
+func _despawn() -> void:
+	collision.set_deferred("disabled", true)
+	anim_player.play_backwards("GrowMelt")
+	await anim_player.animation_finished
+	super()

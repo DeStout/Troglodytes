@@ -35,7 +35,7 @@ func start_game() -> void:
 
 
 func start_new_game() -> void:
-	#level_num = 4
+	#level_num = 2
 	level = level_spawner.spawn(level_num)
 
 

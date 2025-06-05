@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b8finywqxy7il" path="res://Player/Player1.blend" id="6_v0k0e"]
 [ext_resource type="Script" uid="uid://bckj4fk1qx02a" path="res://Player/States/StunState.gd" id="7_dm7nj"]
 [ext_resource type="AudioStream" uid="uid://b6kdy1orqnwqu" path="res://Player/Whoosh.ogg" id="7_j23h2"]
-[ext_resource type="AudioStream" uid="uid://bwynnhmvnxykb" path="res://PickUps/FireShoot.ogg" id="8_0j2ni"]
+[ext_resource type="AudioStream" uid="uid://bwynnhmvnxykb" path="res://PickUps/SFX/FireShoot.ogg" id="8_0j2ni"]
 [ext_resource type="AudioStream" uid="uid://jk1e673eyin2" path="res://Player/Hit2.ogg" id="8_s1rgi"]
 [ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://Enemies/EnemyMat.tres" id="9_j23h2"]
 [ext_resource type="Material" uid="uid://ct7eou206ijtc" path="res://Player/Halo_Mat.tres" id="9_p7tob"]

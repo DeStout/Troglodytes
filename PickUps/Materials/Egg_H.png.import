@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gieddughtokc"
-path.s3tc="res://.godot/imported/Egg_A.png-e19adfd8b591467b38e2c7a10d6ef526.s3tc.ctex"
-path.etc2="res://.godot/imported/Egg_A.png-e19adfd8b591467b38e2c7a10d6ef526.etc2.ctex"
+uid="uid://de4hw084r38s8"
+path.s3tc="res://.godot/imported/Egg_H.png-c500e5a8c82d866b49ef309a62b9a6a5.s3tc.ctex"
+path.etc2="res://.godot/imported/Egg_H.png-c500e5a8c82d866b49ef309a62b9a6a5.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://PickUps/Egg_A.png"
-dest_files=["res://.godot/imported/Egg_A.png-e19adfd8b591467b38e2c7a10d6ef526.s3tc.ctex", "res://.godot/imported/Egg_A.png-e19adfd8b591467b38e2c7a10d6ef526.etc2.ctex"]
+source_file="res://PickUps/Materials/Egg_H.png"
+dest_files=["res://.godot/imported/Egg_H.png-c500e5a8c82d866b49ef309a62b9a6a5.s3tc.ctex", "res://.godot/imported/Egg_H.png-c500e5a8c82d866b49ef309a62b9a6a5.etc2.ctex"]
 
 [params]
 
@@ -23,7 +23,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
