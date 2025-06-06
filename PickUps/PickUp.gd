@@ -53,7 +53,7 @@ func _collected(body : CharacterBody3D) -> void:
 		_despawn()
 
 
-@rpc("call_local")
+@rpc("authority", "call_local")
 func _pick_up() -> void:
 	mesh.visible = false
 	sfx.play()

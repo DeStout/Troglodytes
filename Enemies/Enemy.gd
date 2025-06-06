@@ -27,7 +27,6 @@ var spawn_hole : Node3D
 
 
 func _ready() -> void:
-	#collision.disabled = !multiplayer.is_server()
 	attack_collision.disabled = !multiplayer.is_server()
 
 
@@ -77,6 +76,11 @@ func burn() -> void:
 
 func disable_collision() -> void:
 	$Collision.call_deferred("set_disabled", true)
+
+
+func pit_fall(trap : Trap) -> void:
+	# HAHA hack to avoid double respawn for now
+	collision.set_deferred("disabled", true)
 
 
 func die() -> void:

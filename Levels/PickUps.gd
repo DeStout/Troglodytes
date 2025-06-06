@@ -1,9 +1,6 @@
 extends MultiplayerSpawner
 
 
-var pick_up_ := load("res://PickUps/PickUp.tscn")
-
-const RESPAWN_DELAY := Vector2(1.0, 5.0)
 enum PICK_UPS {BERRY_BUSH, SPIDER_WEB, FIRE_POWER, ICE_BLOCK, INVINCIBLE, PINEAPPLE}
 var pick_ups : Dictionary[PICK_UPS, Variant] = {PICK_UPS.BERRY_BUSH : load("res://PickUps/BerryBush.tscn"),
 											PICK_UPS.SPIDER_WEB : load("res://PickUps/SpiderWeb.tscn"),
@@ -14,6 +11,7 @@ var pick_ups : Dictionary[PICK_UPS, Variant] = {PICK_UPS.BERRY_BUSH : load("res:
 
 @export var level : Node3D
 @export var num_pick_ups := 4
+@export var respawn_delay := Vector2(1.0, 5.0)
 @export var level_pick_ups : Array[PICK_UPS]
 
 
@@ -52,7 +50,7 @@ func spawn_pick_ups(used_squares : Array[Node3D]) -> Array:
 
 func _pick_up_despawned(pick_up : PickUp) -> void:
 	level.set_square_free(Utilities.get_closest_egg_square(pick_up.global_position))
-	await get_tree().create_timer(randf_range(RESPAWN_DELAY.x, RESPAWN_DELAY.y)).timeout
+	await get_tree().create_timer(randf_range(respawn_delay.x, respawn_delay.y)).timeout
 	
 	var spawn_pos = level.get_rand_free_square().global_position
 	spawn({"position" : spawn_pos, "type" : level_pick_ups.pick_random()})

@@ -87,6 +87,7 @@ Pause={
 3d_physics/layer_4="PickUps"
 3d_physics/layer_5="PlayerAttack"
 3d_physics/layer_6="EnemyAttack"
+3d_physics/layer_7="Traps"
 
 [rendering]
 

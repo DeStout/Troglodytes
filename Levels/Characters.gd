@@ -115,15 +115,16 @@ func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 
 
 func _respawn_enemy() -> void:
-		var free_square : Node3D = level.get_rand_free_square()
-		var spawn_pos := Vector3(free_square.global_position.x, 0, \
-														free_square.global_position.z)
-		while(_any_player_within_dist(spawn_pos, 1.5)):
-			free_square = level.get_rand_free_square()
-			spawn_pos = Vector3(free_square.global_position.x, 0, \
-														free_square.global_position.z)
+		var egg_square : Node3D = level.get_rand_free_square()
+		var spawn_pos := Vector3(egg_square.global_position.x, 0, \
+														egg_square.global_position.z)
+		while !egg_square or _any_player_within_dist(spawn_pos, 1.5):
+			await get_tree().create_timer(0.5).timeout
+			egg_square = level.get_rand_free_square()
+			spawn_pos = Vector3(egg_square.global_position.x, 0, \
+														egg_square.global_position.z)
 		
-		board.spawn(free_square.global_position)
+		board.spawn(egg_square.global_position)
 
 
 func enemy_finished_spawning(spawn_square : Node3D) -> void:

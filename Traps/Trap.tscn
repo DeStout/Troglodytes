@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbxvoo4h5t41u"]
+
+[ext_resource type="Script" uid="uid://brhb3bwmai135" path="res://Traps/Trap.gd" id="1_t2wy4"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_we8b5"]
+height = 1.0
+radius = 0.35
+
+[node name="Trap1" type="Node3D" node_paths=PackedStringArray("despawn_timer", "collision")]
+script = ExtResource("1_t2wy4")
+despawn_timer = NodePath("Despawn")
+collision = NodePath("Area/Collision")
+
+[node name="Area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_layer = 64
+collision_mask = 6
+monitorable = false
+
+[node name="Collision" type="CollisionShape3D" parent="Area"]
+shape = SubResource("CylinderShape3D_we8b5")
+disabled = true
+
+[node name="Despawn" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area" to="." method="_body_triggered"]
+[connection signal="timeout" from="Despawn" to="." method="_despawn"]

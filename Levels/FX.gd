@@ -19,7 +19,6 @@ func spawn_footprint(character : CharacterBody3D, foot_down : bool) -> void:
 	footprint.set_up(character)
 	add_child(footprint, true)
 	footprint.global_position = foot_pos
-	#footprint.set_deferred("global_position", foot_pos)
 	footprint.rotation.y = character.basis.get_euler().y
 	footprint.scale.x = int(foot_down) * 2 - 1
 

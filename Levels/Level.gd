@@ -10,6 +10,7 @@ var game : Node
 @export var ui_lives : Label
 @export var characters : MultiplayerSpawner
 @export var pick_ups : MultiplayerSpawner
+@export var traps : MultiplayerSpawner
 @export var eggs : MultiplayerSpawner
 @export var fx : MultiplayerSpawner
 @export var play_area : Area3D
@@ -35,6 +36,7 @@ func _set_up() -> void:
 	await get_tree().physics_frame
 	used_squares = characters.spawn_enemies(used_squares)
 	used_squares = pick_ups.spawn_pick_ups(used_squares)
+	traps.spawn_traps()
 	_spawn_eggs(used_squares)
 
 
@@ -70,6 +72,8 @@ func set_square_free(square : Node3D) -> void:
 
 
 func get_rand_free_square(use_square := true) -> Node3D:
+	if !free_squares.size():
+		return null
 	var free_square = free_squares.pick_random()
 	if use_square:
 		free_squares.erase(free_square)
