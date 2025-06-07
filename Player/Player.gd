@@ -185,11 +185,14 @@ func exit_stage() -> void:
 
 
 @rpc("any_peer", "call_local")
-func pit_fall() -> void:
+func pit_fall(pit_pos) -> void:
 	if multiplayer.get_remote_sender_id() != 1:
 		return
-	
-	die()
+		
+	position = pit_pos
+	state_machine.current_state.transition.emit(state_machine.current_state, "DeathAnimState")
+	anim_player.play("Fall")
+	await anim_player.animation_finished
 	state_machine.current_state.transition.emit(state_machine.current_state, "StartState")
 
 

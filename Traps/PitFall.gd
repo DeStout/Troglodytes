@@ -18,7 +18,7 @@ func _character_entered(character : CharacterBody3D) -> void:
 		return
 		
 	if character.has_method("pit_fall"):
-		character.pit_fall.rpc()
+		character.pit_fall.rpc_id(character.get_multiplayer_authority(), position)
 
 
 func _despawn() -> void:

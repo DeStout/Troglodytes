@@ -17,7 +17,6 @@ func _body_triggered(body : CharacterBody3D) -> void:
 		despawn_timer.stop()
 		trap_trigger.call(body)
 		collision.call_deferred("set_disabled", true)
-		_despawn()
 
 
 func _despawn() -> void:
