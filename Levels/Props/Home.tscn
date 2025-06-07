@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfanycyrikuxq"]
+[gd_scene load_steps=6 format=3 uid="uid://cfanycyrikuxq"]
 
 [ext_resource type="Material" uid="uid://vyxvhhf0hon" path="res://Player/Player_Mat.tres" id="1_hf3nf"]
 [ext_resource type="Script" uid="uid://cb0eoph2pfe50" path="res://Levels/Props/Home.gd" id="2_maaha"]
+[ext_resource type="AudioStream" uid="uid://ca833wjm6212a" path="res://Levels/HomeSpawn.wav" id="3_fx8b0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mxnmf"]
 size = Vector3(0.9, 0.25, 0.25)
@@ -25,6 +26,11 @@ shape = SubResource("BoxShape3D_4eo0i")
 one_shot = true
 autostart = true
 ignore_time_scale = true
+
+[node name="SpawnSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fx8b0")
+volume_db = -20.0
+autoplay = true
 
 [connection signal="body_entered" from="Area3D" to="." method="player_entered"]
 [connection signal="timeout" from="FlashTimer" to="." method="flash"]

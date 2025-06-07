@@ -5,6 +5,7 @@ const SCORE_VALUE := 50000
 
 var level : Node3D
 @export var timer : Timer
+@export var spawn_sfx : AudioStreamPlayer
 
 
 func flash() -> void:
