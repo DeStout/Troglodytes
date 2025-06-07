@@ -34,6 +34,7 @@ metadata/extras = {
 albedo_texture = ExtResource("3_277io")
 normal_enabled = true
 normal_texture = ExtResource("4_ah3jr")
+disable_receive_shadows = true
 
 [sub_resource type="Animation" id="Animation_7g168"]
 resource_name = "OpenClose_2"

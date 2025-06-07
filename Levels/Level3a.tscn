@@ -41,6 +41,7 @@ size = 13.5
 spawn_path = NodePath("Ground")
 
 [node name="Ground" parent="Board" index="0" instance=ExtResource("2_irp66")]
+layers = 3
 surface_material_override/0 = SubResource("StandardMaterial3D_at52j")
 
 [node name="EggSquare1" type="Node3D" parent="Board/Squares/EggSquares" index="0"]

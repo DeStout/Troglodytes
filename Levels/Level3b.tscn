@@ -40,6 +40,7 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 spawn_path = NodePath("Ground")
 
 [node name="Ground" parent="Board" index="0" instance=ExtResource("2_a5b2j")]
+layers = 3
 surface_material_override/0 = SubResource("StandardMaterial3D_r4tww")
 
 [node name="EggSquare1" type="Node3D" parent="Board/Squares/EggSquares" index="0"]

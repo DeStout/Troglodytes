@@ -16,18 +16,18 @@ func _ready() -> void:
 func _character_entered(character : CharacterBody3D) -> void:
 	if character.has_method("is_invincible") and character.is_invincible():
 		return
-		
-	if character.has_method("pit_fall"):
-		character.pit_fall.rpc_id(character.get_multiplayer_authority(), position)
+	
+	despawn_timer.stop()
+	collision.call_deferred("set_disabled", true)
+	if character is Player:
+		character.pit_fall.rpc_id(character.get_multiplayer_authority(), get_path())
+	elif character is Enemy:
+		character.pit_fall(self)
 
 
-func _despawn() -> void:
-	_despawn_anim.rpc()
-
-
-@rpc("authority", "call_local")
-func _despawn_anim() -> void:
+@rpc("any_peer", "call_local", "reliable")
+func close() -> void:
 	anim_player.play_backwards("OpenClose_2")
 	if multiplayer.is_server():
 		await anim_player.animation_finished
-		super._despawn()
+		_despawn()
