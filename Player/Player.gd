@@ -184,7 +184,11 @@ func exit_stage() -> void:
 		state_machine.current_state.exit_stage()
 
 
-func pit_fall(trap : Trap) -> void:
+@rpc("any_peer", "call_local")
+func pit_fall() -> void:
+	if multiplayer.get_remote_sender_id() != 1:
+		return
+	
 	die()
 	state_machine.current_state.transition.emit(state_machine.current_state, "StartState")
 

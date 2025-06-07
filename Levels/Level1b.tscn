@@ -1204,8 +1204,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 [node name="Water28" parent="Board/Water/WaterRow12" index="27" instance=ExtResource("6_8glmb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 
+[node name="Characters" parent="." index="5"]
+num_enemies = 4
+
 [node name="PickUps" parent="." index="6"]
 level_pick_ups = Array[int]([0, 1, 4])
+
+[node name="Traps" parent="." index="7"]
+num_traps = 1
+level_traps = Array[int]([0])
 
 [node name="Collision" type="CollisionShape3D" parent="PlayArea" index="0"]
 shape = SubResource("BoxShape3D_xcayt")

@@ -11,14 +11,9 @@ func _ready() -> void:
 	spawn_function = _spawn_home
 
 
+# home_num chosen in Level for multiplayer synchronization
 func _spawn_home(home_num : int) -> MeshInstance3D:
 	var home : MeshInstance3D = home_.instantiate()
-	
-	if home_num > get_tree().get_nodes_in_group("HomeSquares").size()-1:
-		var home_squares = get_tree().get_nodes_in_group("HomeSquare")
-		#Yo your array is out of bounds, figure out why
-		breakpoint
-		
 	var home_square : Node3D = get_tree().get_nodes_in_group("HomeSquares")[home_num]
 	var home_pos := home_square.global_position
 	

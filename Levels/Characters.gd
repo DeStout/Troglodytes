@@ -101,7 +101,7 @@ func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 	var egg_squares := get_tree().get_nodes_in_group("EggSquares")
 	for i in range(num_enemies):
 		var egg_square : Node3D = egg_squares.pick_random()
-		while(_any_player_within_dist(egg_square.global_position, 3.0)):
+		while(any_player_within_dist(egg_square.global_position, 2.5)):
 			egg_squares.erase(egg_square)
 			egg_square = egg_squares.pick_random()
 		
@@ -114,26 +114,34 @@ func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 	return used_squares
 
 
-func _respawn_enemy() -> void:
-		var egg_square : Node3D = level.get_rand_free_square()
-		var spawn_pos := Vector3(egg_square.global_position.x, 0, \
-														egg_square.global_position.z)
-		while !egg_square or _any_player_within_dist(spawn_pos, 1.5):
-			await get_tree().create_timer(0.5).timeout
-			egg_square = level.get_rand_free_square()
-			spawn_pos = Vector3(egg_square.global_position.x, 0, \
-														egg_square.global_position.z)
-		
-		board.spawn(egg_square.global_position)
+func _wait_for_free_square() -> Node3D:
+	while !level.has_free_square():
+		await get_tree().create_timer(0.5).timeout
+	var egg_square : Node3D = level.get_rand_free_square()
+	
+	while any_player_within_dist(egg_square.global_position, 2.5):
+		level.set_square_free(egg_square)
+		await get_tree().create_timer(0.5).timeout
+		if !level.has_free_square():
+			continue
+		egg_square = level.get_rand_free_square()
+	return egg_square
 
 
 func enemy_finished_spawning(spawn_square : Node3D) -> void:
 	level.set_square_free(spawn_square)
 
 
-func _any_player_within_dist(check_to : Vector3, min_dist : float) -> bool:
+func any_player_within_dist(check_pos : Vector3, min_dist : float) -> bool:
 	for player in players:
-		if player.global_position.distance_to(check_to) < min_dist:
+		if player.global_position.distance_to(check_pos) < min_dist:
+			return true
+	return false
+
+
+func any_enemy_within_dist(check_pos : Vector3, min_dist : float) -> bool:
+	for enemy in enemies:
+		if enemy.global_position.distance_to(check_pos) < min_dist:
 			return true
 	return false
 
@@ -164,6 +172,7 @@ func _unfreeze_sfx() -> void:
 	unfreeze_sfx.play()
 
 
+# Signaled from Enemy.die()
 func enemy_defeated(enemy : Enemy) -> void:
 	enemies.erase(enemy)
 	if multiplayer.is_server():
@@ -174,7 +183,9 @@ func enemy_defeated(enemy : Enemy) -> void:
 			tween.pause()
 		await tween.finished
 		respawn_tweens.erase(tween)
-		_respawn_enemy()
+		
+		var egg_square = await _wait_for_free_square()
+		board.spawn(egg_square.global_position)
 
 
 func character_exited(character : CharacterBody3D) -> void:

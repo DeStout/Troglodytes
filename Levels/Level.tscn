@@ -139,18 +139,20 @@ spawn_path = NodePath(".")
 script = ExtResource("6_wuvkx")
 level = NodePath("..")
 board = NodePath("../Board")
+num_enemies = 0
 unfreeze_sfx = NodePath("../UnfreezeSFX")
 
-[node name="PickUps" type="MultiplayerSpawner" parent="." node_paths=PackedStringArray("level")]
+[node name="PickUps" type="MultiplayerSpawner" parent="." node_paths=PackedStringArray("level", "characters")]
 spawn_path = NodePath(".")
 script = ExtResource("7_jjge0")
 level = NodePath("..")
+characters = NodePath("../Characters")
 
-[node name="Traps" type="MultiplayerSpawner" parent="." node_paths=PackedStringArray("level")]
+[node name="Traps" type="MultiplayerSpawner" parent="." node_paths=PackedStringArray("level", "characters")]
 spawn_path = NodePath(".")
 script = ExtResource("8_6dhlr")
 level = NodePath("..")
-level_traps = Array[int]([0])
+characters = NodePath("../Characters")
 
 [node name="Eggs" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://bfuiiibm4ogfg")

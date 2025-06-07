@@ -71,9 +71,13 @@ func set_square_free(square : Node3D) -> void:
 		free_squares.append(square)
 
 
+func has_free_square() -> bool:
+	return bool(free_squares.size())
+
+
 func get_rand_free_square(use_square := true) -> Node3D:
 	if !free_squares.size():
-		return null
+		breakpoint
 	var free_square = free_squares.pick_random()
 	if use_square:
 		free_squares.erase(free_square)
@@ -99,7 +103,8 @@ func _spawn_home() -> void:
 	if !multiplayer.is_server():
 		return
 	
-	var home_num := randi_range(0, get_tree().get_nodes_in_group("HomeSquares").size())
+	# Keep home_num for multiplayer synchronization
+	var home_num := randi_range(0, get_tree().get_nodes_in_group("HomeSquares").size()-1)
 	home_spawner.spawn(home_num)
 
 

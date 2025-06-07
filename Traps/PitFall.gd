@@ -14,16 +14,20 @@ func _ready() -> void:
 
 
 func _character_entered(character : CharacterBody3D) -> void:
+	if character.has_method("is_invincible") and character.is_invincible():
+		return
+		
 	if character.has_method("pit_fall"):
-		character.pit_fall(self)
+		character.pit_fall.rpc()
 
 
 func _despawn() -> void:
 	_despawn_anim.rpc()
-	await anim_player.animation_finished
-	super()
 
 
 @rpc("authority", "call_local")
 func _despawn_anim() -> void:
 	anim_player.play_backwards("OpenClose_2")
+	if multiplayer.is_server():
+		await anim_player.animation_finished
+		super._despawn()

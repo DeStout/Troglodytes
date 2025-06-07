@@ -78,7 +78,8 @@ func disable_collision() -> void:
 	$Collision.call_deferred("set_disabled", true)
 
 
-func pit_fall(trap : Trap) -> void:
+@rpc("authority", "call_local")
+func pit_fall() -> void:
 	# HAHA hack to avoid double respawn for now
 	collision.set_deferred("disabled", true)
 
