@@ -8,6 +8,11 @@ extends Control
 @export var options_menu : Control
 
 
+func _ready() -> void:
+	mult_menu.back_button()
+	_back_button()
+
+
 func _single_player_button() -> void:
 	game.start_game()
 

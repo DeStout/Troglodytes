@@ -20,6 +20,7 @@ func join_button(join_address : String = join_address.text) -> void:
 	ENetNetwork.join_server(join_address)
 
 
+# Emitted from ENetNetwork.create_server() and ._server_joined()
 func show_lobby(success : bool, is_host : bool) -> void:
 	ENetNetwork.server_disconnected.connect(back_button)
 	

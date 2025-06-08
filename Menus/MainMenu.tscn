@@ -336,11 +336,12 @@ theme_override_font_sizes/font_size = 36
 text = "Back"
 flat = true
 
-[node name="ENetLobbyMenu" type="MarginContainer" parent="MultMenu" node_paths=PackedStringArray("lobby_code", "player_labels", "start_button", "ready_button")]
+[node name="ENetLobbyMenu" type="MarginContainer" parent="MultMenu" node_paths=PackedStringArray("name_edit", "player_names", "players_ready", "start_button", "ready_button")]
 layout_mode = 2
 script = ExtResource("6_ju15h")
-lobby_code = NodePath("")
-player_labels = [NodePath("PlayerContainer/VBoxContainer/Player1/PlayerName"), NodePath(""), NodePath(""), NodePath("")]
+name_edit = NodePath("Name1/Name2/Name3/NameEdit")
+player_names = [NodePath("PlayerContainer/VBoxContainer/Player1/PlayerName"), NodePath("PlayerContainer/VBoxContainer/Player2/PlayerName"), NodePath("PlayerContainer/VBoxContainer/Player3/PlayerName"), NodePath("PlayerContainer/VBoxContainer/Player4/PlayerName")]
+players_ready = [NodePath("PlayerContainer/VBoxContainer/Player1/PlayerReady"), NodePath("PlayerContainer/VBoxContainer/Player2/PlayerReady"), NodePath("PlayerContainer/VBoxContainer/Player3/PlayerReady"), NodePath("PlayerContainer/VBoxContainer/Player4/PlayerReady")]
 start_button = NodePath("Buttons1/Buttons2/StartReady/Start")
 ready_button = NodePath("Buttons1/Buttons2/StartReady/Ready")
 
@@ -535,18 +536,6 @@ offset_bottom = -2.10004
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Disconnect" type="Button" parent="MultMenu/ENetLobbyMenu/Buttons1/Buttons2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 391.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("6_m16r1")
-text = "Disconnect"
-flat = true
-
 [node name="StartReady" type="Control" parent="MultMenu/ENetLobbyMenu/Buttons1/Buttons2"]
 layout_mode = 1
 anchors_preset = 15
@@ -583,6 +572,19 @@ grow_vertical = 2
 theme = ExtResource("6_m16r1")
 toggle_mode = true
 text = "Ready"
+flat = true
+
+[node name="Disconnect" type="Button" parent="MultMenu/ENetLobbyMenu/Buttons1/Buttons2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 391.0
+offset_right = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m16r1")
+text = "Disconnect"
 flat = true
 
 [node name="SteamLobbyMenu" type="MarginContainer" parent="MultMenu"]
@@ -875,10 +877,10 @@ parameters/looping = true
 [connection signal="pressed" from="MultMenu/HostJoinMenu/Back" to="." method="_back_button"]
 [connection signal="pressed" from="MultMenu/LobbyListMenu/VBoxContainer/Buttons/Refresh" to="MultMenu/LobbyListMenu" method="refresh_lobby_list"]
 [connection signal="pressed" from="MultMenu/LobbyListMenu/VBoxContainer/Buttons/Back" to="MultMenu" method="back_button"]
-[connection signal="text_submitted" from="MultMenu/ENetLobbyMenu/Name1/Name2/Name3/NameEdit" to="MultMenu" method="join_button"]
-[connection signal="pressed" from="MultMenu/ENetLobbyMenu/Buttons1/Buttons2/Disconnect" to="MultMenu" method="back_button"]
+[connection signal="text_changed" from="MultMenu/ENetLobbyMenu/Name1/Name2/Name3/NameEdit" to="MultMenu/ENetLobbyMenu" method="_name_updated"]
 [connection signal="pressed" from="MultMenu/ENetLobbyMenu/Buttons1/Buttons2/StartReady/Start" to="MultMenu/ENetLobbyMenu" method="_start_button_pressed"]
 [connection signal="toggled" from="MultMenu/ENetLobbyMenu/Buttons1/Buttons2/StartReady/Ready" to="MultMenu/ENetLobbyMenu" method="_ready_toggled"]
+[connection signal="pressed" from="MultMenu/ENetLobbyMenu/Buttons1/Buttons2/Disconnect" to="MultMenu" method="back_button"]
 [connection signal="pressed" from="MultMenu/SteamLobbyMenu/VBoxContainer/Buttons/Disconnect" to="MultMenu" method="back_button"]
 [connection signal="value_changed" from="OptionsMenu/VLayout/Master/VLayout/MasterSlider" to="OptionsMenu" method="_master_volume_changed"]
 [connection signal="value_changed" from="OptionsMenu/VLayout/Music/VLayout/MusicSlider" to="OptionsMenu" method="_music_volume_changed"]

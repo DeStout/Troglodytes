@@ -3,7 +3,6 @@ extends Node
 
 signal upnp_finished
 signal server_joined
-signal lobby_code_set
 signal connection_failed
 signal server_disconnected
 signal peers_updated
@@ -14,7 +13,6 @@ const TEST_IP := "127.0.0.1"
 const DEFAULT_PORT := 34500
 const MAX_PEERS := 3
 
-var lobby_code : String
 var peer : MultiplayerPeer
 var peer_id : int = 1
 var peers : Dictionary[int, Dictionary] = {}
@@ -65,31 +63,15 @@ func create_server() -> void:
 	peer.peer_connected.connect(_peer_connected)
 	peer.peer_disconnected.connect(_peer_disconnected)
 	peer_id = 1
-	peers[peer_id] = {"is_ready" : true}
-	
-	print("Server - Lobby Code: %s" % lobby_code)
+	peers[peer_id] = {"name" : "Player 1", "is_ready" : true}
 	server_joined.emit(true, true)
 	
 	Debug.ping_label.visible = true
 
 
 func join_server(join_address : String) -> void:
-	var ip : String = Utilities.decode_ip(join_address)
-	var port := DEFAULT_PORT
-	if ip == "Invalid" or ip == join_address:
-		push_warning("ENetNetwork - %s not coded ip, trying uncoded" % join_address)
-		var ip_port := join_address.split(":")
-		ip = ip_port[0]
-		if ip_port.size() > 1:
-			port = int(ip_port[1])
-		#if !ip.is_valid_ip_address():
-			#push_error("ENetNetwork - Invalid IP Address, returning")
-			#connection_failed.emit()
-			#return
-			
-	#ip = TEST_IP
 	peer = ENetMultiplayerPeer.new()
-	var response : Error = peer.create_client(ip, port)
+	var response : Error = peer.create_client(join_address, DEFAULT_PORT)
 	if response:
 		push_error("ENetNetwork - Server join error: %s" % response)
 		connection_failed.emit()
@@ -97,7 +79,8 @@ func join_server(join_address : String) -> void:
 	
 	multiplayer.multiplayer_peer = peer
 	peer_id = peer.get_unique_id()
-	print("Client %s - Server Join Request (%s:%s): %s" % [peer_id, ip, port, response])
+	print("Client %s - Server Join Request (%s:%s): %s" % \
+									[peer_id, join_address, DEFAULT_PORT, response])
 
 
 func _server_joined() -> void:
@@ -106,6 +89,10 @@ func _server_joined() -> void:
 	server_joined.emit(true, false)
 	
 	Debug.ping_label.visible = true
+
+
+func get_player_number() -> int:
+	return peers.keys().find(multiplayer.get_unique_id())
 
 
 func get_ping() -> float:
@@ -129,9 +116,9 @@ func _server_disconnected() -> void:
 
 func _peer_connected(new_peer_id : int) -> void:
 	if multiplayer.is_server():
-		set_lobby_code.rpc_id(new_peer_id, lobby_code)
 		print("Server - Peer Connected: %s" % new_peer_id)
-		peers[new_peer_id] = {"is_ready" : false}
+		var new_name := "Player %s" % (peers.size()+1)
+		peers[new_peer_id] = {"name" : new_name, "is_ready" : false}
 		update_peers.rpc(peers)
 		_check_peers_ready()
 
@@ -152,23 +139,18 @@ func _peer_disconnected(dead_peer_id : int) -> void:
 		peer_disconnected.emit(dead_peer_id)
 
 
-@rpc("authority", "call_remote")
-func set_lobby_code(new_lobby_code : String) -> void:
-	lobby_code = new_lobby_code
-	lobby_code_set.emit(lobby_code)
+@rpc("any_peer", "call_local")
+func set_peer_name(new_name : String) -> void:
+	peers[multiplayer.get_remote_sender_id()]["name"] = new_name
+	update_peers.rpc(peers)
 
 
-func set_ready(is_ready : bool) -> void:
-	if peer:
-		peer_set_ready.rpc_id(1, is_ready)
-
-
-@rpc("any_peer", "call_remote")
-func peer_set_ready(is_ready) -> void:
+@rpc("any_peer", "call_local")
+func set_peer_ready(is_ready) -> void:
 	peers[multiplayer.get_remote_sender_id()]["is_ready"] = is_ready
 	update_peers.rpc(peers)
 	_check_peers_ready()
-		
+
 
 @rpc("call_local", "reliable")
 func update_peers(new_peers : Dictionary) -> void:
