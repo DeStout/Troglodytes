@@ -72,6 +72,7 @@ mult_button = NodePath("MainMenu/VBox/Multiplayer")
 mult_menu = NodePath("MultMenu")
 options_menu = NodePath("OptionsMenu")
 metadata/_edit_vertical_guides_ = [660.0, 54.0]
+metadata/_edit_horizontal_guides_ = [144.0, 591.0, 221.0]
 
 [node name="BG" type="SubViewportContainer" parent="."]
 layout_mode = 1
@@ -109,6 +110,7 @@ theme_override_font_sizes/font_size = 100
 text = "Troglodytes"
 
 [node name="MainMenu" type="CenterContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.573
@@ -174,23 +176,22 @@ flat = true
 alignment = 0
 
 [node name="MultMenu" type="CenterContainer" parent="." node_paths=PackedStringArray("host_join_menu", "join_address", "lobby_menu", "lobby_start_button", "lobby_ready_button")]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.573
 anchor_bottom = 1.0
+offset_left = 54.0
 offset_top = 144.0
-offset_right = 2.90399
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 43.904
 script = ExtResource("4_1txdl")
 host_join_menu = NodePath("HostJoinMenu")
 join_address = NodePath("HostJoinMenu/Join/JoinAddress")
 lobby_menu = NodePath("ENetLobbyMenu")
-lobby_start_button = NodePath("ENetLobbyMenu/VBoxContainer/Buttons/Start")
-lobby_ready_button = NodePath("ENetLobbyMenu/VBoxContainer/Buttons/Ready")
+lobby_start_button = NodePath("ENetLobbyMenu/Buttons1/Buttons2/StartReady/Start")
+lobby_ready_button = NodePath("ENetLobbyMenu/Buttons1/Buttons2/StartReady/Ready")
 
 [node name="HostJoinMenu" type="VBoxContainer" parent="MultMenu"]
+visible = false
 layout_mode = 2
 
 [node name="Host" type="Button" parent="MultMenu/HostJoinMenu"]
@@ -336,137 +337,252 @@ text = "Back"
 flat = true
 
 [node name="ENetLobbyMenu" type="MarginContainer" parent="MultMenu" node_paths=PackedStringArray("lobby_code", "player_labels", "start_button", "ready_button")]
-visible = false
 layout_mode = 2
 script = ExtResource("6_ju15h")
-lobby_code = NodePath("VBoxContainer/Control/LobbyCode")
-player_labels = [NodePath("VBoxContainer/PlayerContainer/VBoxContainer/Player1"), NodePath("VBoxContainer/PlayerContainer/VBoxContainer/Player2"), NodePath("VBoxContainer/PlayerContainer/VBoxContainer/Player3"), NodePath("VBoxContainer/PlayerContainer/VBoxContainer/Player4")]
-start_button = NodePath("VBoxContainer/Buttons/Start")
-ready_button = NodePath("VBoxContainer/Buttons/Ready")
+lobby_code = NodePath("")
+player_labels = [NodePath("PlayerContainer/VBoxContainer/Player1/PlayerName"), NodePath(""), NodePath(""), NodePath("")]
+start_button = NodePath("Buttons1/Buttons2/StartReady/Start")
+ready_button = NodePath("Buttons1/Buttons2/StartReady/Ready")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MultMenu/ENetLobbyMenu"]
+[node name="Name1" type="Control" parent="MultMenu/ENetLobbyMenu"]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="MultMenu/ENetLobbyMenu/VBoxContainer"]
-layout_mode = 2
-
-[node name="LobbyCode" type="Label" parent="MultMenu/ENetLobbyMenu/VBoxContainer/Control"]
+[node name="Name2" type="MarginContainer" parent="MultMenu/ENetLobbyMenu/Name1"]
+layout_direction = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.074
-anchor_right = 1.0
-offset_left = 1.9
-offset_top = -30.0
-offset_right = 50.0
-offset_bottom = 17.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0.506024, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0.165733, 0.324219, 1)
-theme_override_colors/font_outline_color = Color(0, 0.349868, 0.691406, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("3_5ncg0")
-theme_override_font_sizes/font_size = 50
-text = "Lobby Code:"
-
-[node name="PlayerContainer" type="Control" parent="MultMenu/ENetLobbyMenu/VBoxContainer"]
-custom_minimum_size = Vector2(650, 350)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MultMenu/ENetLobbyMenu/VBoxContainer/PlayerContainer"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.009
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 53.85
+anchor_top = -0.22
+anchor_right = 0.922
+anchor_bottom = 1.057
 offset_top = 26.0
-offset_right = 4.0
+offset_right = 6.69995
+offset_bottom = -382.95
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 15
+
+[node name="Name3" type="HBoxContainer" parent="MultMenu/ENetLobbyMenu/Name1/Name2"]
+layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Player1" type="Label" parent="MultMenu/ENetLobbyMenu/VBoxContainer/PlayerContainer/VBoxContainer"]
+[node name="NameLabel" type="Label" parent="MultMenu/ENetLobbyMenu/Name1/Name2/Name3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
 theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_5ncg0")
 theme_override_font_sizes/font_size = 36
-text = "Player 1 - Not Ready"
+text = "Name:"
 
-[node name="Player2" type="Label" parent="MultMenu/ENetLobbyMenu/VBoxContainer/PlayerContainer/VBoxContainer"]
+[node name="NameEdit" type="LineEdit" parent="MultMenu/ENetLobbyMenu/Name1/Name2/Name3"]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.787182, 0.8125, 0, 1)
+theme = ExtResource("6_m16r1")
+placeholder_text = "Player"
+max_length = 15
+expand_to_text_length = true
+emoji_menu_enabled = false
+clear_button_enabled = true
+select_all_on_focus = true
+
+[node name="PlayerContainer" type="Control" parent="MultMenu/ENetLobbyMenu"]
+custom_minimum_size = Vector2(650, 350)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MultMenu/ENetLobbyMenu/PlayerContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 55
+
+[node name="Player1" type="Control" parent="MultMenu/ENetLobbyMenu/PlayerContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerName" type="Label" parent="MultMenu/ENetLobbyMenu/PlayerContainer/VBoxContainer/Player1"]
+layout_mode = 2
+offset_top = 20.0
+offset_right = 156.0
+offset_bottom = 54.0
+theme = ExtResource("6_m16r1")
+theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
 theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_5ncg0")
 theme_override_font_sizes/font_size = 36
-text = "Player 2 - Not Ready"
+text = "Player 1"
 
-[node name="Player3" type="Label" parent="MultMenu/ENetLobbyMenu/VBoxContainer/PlayerContainer/VBoxContainer"]
+[node name="PlayerReady" type="Label" parent="MultMenu/ENetLobbyMenu/PlayerContainer/VBoxContainer/Player1"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.925781, 0.254206, 1)
+offset_left = 420.0
+offset_top = 20.0
+offset_right = 606.0
+offset_bottom = 54.0
+theme = ExtResource("6_m16r1")
+theme_override_colors/font_color = Color(0, 0.349868, 0.691406, 1)
 theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_5ncg0")
 theme_override_font_sizes/font_size = 36
-text = "Player 3 - Not Ready"
+text = "Not Ready"
 
-[node name="Player4" type="Label" parent="MultMenu/ENetLobbyMenu/VBoxContainer/PlayerContainer/VBoxContainer"]
+[node name="Player2" type="Control" parent="MultMenu/ENetLobbyMenu/PlayerContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0.6954, 1)
-theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+
+[node name="PlayerName" type="Label" parent="MultMenu/ENetLobbyMenu/PlayerContainer/VBoxContainer/Player2"]
+layout_mode = 2
+offset_top = 20.0
+offset_right = 156.0
+offset_bottom = 54.0
+theme = ExtResource("6_m16r1")
+theme_override_colors/font_color = Color(1, 0.992607, 0, 1)
+theme_override_colors/font_outline_color = Color(0.32, 0.32, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_5ncg0")
 theme_override_font_sizes/font_size = 36
-text = "Player 4 - Not Ready"
+text = "Player 2"
 
-[node name="Buttons" type="Control" parent="MultMenu/ENetLobbyMenu/VBoxContainer"]
+[node name="PlayerReady" type="Label" parent="MultMenu/ENetLobbyMenu/PlayerContainer/VBoxContainer/Player2"]
+layout_mode = 2
+offset_left = 420.0
+offset_top = 20.0
+offset_right = 606.0
+offset_bottom = 54.0
+theme = ExtResource("6_m16r1")
+theme_override_colors/font_color = Color(1, 0.992607, 0, 1)
+theme_override_colors/font_outline_color = Color(0.32, 0.32, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 36
+text = "Not Ready"
+
+[node name="Player3" type="Control" parent="MultMenu/ENetLobbyMenu/PlayerContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerName" type="Label" parent="MultMenu/ENetLobbyMenu/PlayerContainer/VBoxContainer/Player3"]
+layout_mode = 2
+offset_top = 20.0
+offset_right = 156.0
+offset_bottom = 54.0
+theme = ExtResource("6_m16r1")
+theme_override_colors/font_color = Color(0.146043, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0.048, 0.32, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 36
+text = "Player 3"
+
+[node name="PlayerReady" type="Label" parent="MultMenu/ENetLobbyMenu/PlayerContainer/VBoxContainer/Player3"]
+layout_mode = 2
+offset_left = 420.0
+offset_top = 20.0
+offset_right = 606.0
+offset_bottom = 54.0
+theme = ExtResource("6_m16r1")
+theme_override_colors/font_color = Color(0.146043, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0.048, 0.32, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 36
+text = "Not Ready"
+
+[node name="Player4" type="Control" parent="MultMenu/ENetLobbyMenu/PlayerContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerName" type="Label" parent="MultMenu/ENetLobbyMenu/PlayerContainer/VBoxContainer/Player4"]
+layout_mode = 2
+offset_top = 20.0
+offset_right = 156.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m16r1")
+theme_override_colors/font_color = Color(1, 0, 0.869341, 1)
+theme_override_colors/font_outline_color = Color(0.32, 0, 0.277333, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 36
+text = "Player 4"
+
+[node name="PlayerReady" type="Label" parent="MultMenu/ENetLobbyMenu/PlayerContainer/VBoxContainer/Player4"]
+layout_mode = 2
+offset_left = 420.0
+offset_top = 20.0
+offset_right = 606.0
+offset_bottom = 54.0
+theme = ExtResource("6_m16r1")
+theme_override_colors/font_color = Color(1, 0, 0.869341, 1)
+theme_override_colors/font_outline_color = Color(0.32, 0, 0.277333, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_5ncg0")
+theme_override_font_sizes/font_size = 36
+text = "Not Ready"
+
+[node name="Buttons1" type="Control" parent="MultMenu/ENetLobbyMenu"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 
-[node name="Start" type="Button" parent="MultMenu/ENetLobbyMenu/VBoxContainer/Buttons"]
+[node name="Buttons2" type="Control" parent="MultMenu/ENetLobbyMenu/Buttons1"]
+layout_mode = 1
+anchor_top = 1.057
+anchor_right = 0.932
+anchor_bottom = 1.226
+offset_top = 0.0499878
+offset_right = 0.199951
+offset_bottom = -2.10004
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Disconnect" type="Button" parent="MultMenu/ENetLobbyMenu/Buttons1/Buttons2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 391.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m16r1")
+text = "Disconnect"
+flat = true
+
+[node name="StartReady" type="Control" parent="MultMenu/ENetLobbyMenu/Buttons1/Buttons2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="MultMenu/ENetLobbyMenu/Buttons1/Buttons2/StartReady"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 245.0
-offset_right = -185.0
+offset_right = -295.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("6_m16r1")
 text = "Start"
 flat = true
 
-[node name="Ready" type="Button" parent="MultMenu/ENetLobbyMenu/VBoxContainer/Buttons"]
+[node name="Ready" type="Button" parent="MultMenu/ENetLobbyMenu/Buttons1/Buttons2/StartReady"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 245.0
-offset_right = -185.0
+offset_right = -297.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("6_m16r1")
 toggle_mode = true
 text = "Ready"
-flat = true
-
-[node name="Disconnect" type="Button" parent="MultMenu/ENetLobbyMenu/VBoxContainer/Buttons"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 431.735
-offset_right = -3.26501
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("6_m16r1")
-text = "Disconnect"
 flat = true
 
 [node name="SteamLobbyMenu" type="MarginContainer" parent="MultMenu"]
@@ -759,9 +875,10 @@ parameters/looping = true
 [connection signal="pressed" from="MultMenu/HostJoinMenu/Back" to="." method="_back_button"]
 [connection signal="pressed" from="MultMenu/LobbyListMenu/VBoxContainer/Buttons/Refresh" to="MultMenu/LobbyListMenu" method="refresh_lobby_list"]
 [connection signal="pressed" from="MultMenu/LobbyListMenu/VBoxContainer/Buttons/Back" to="MultMenu" method="back_button"]
-[connection signal="pressed" from="MultMenu/ENetLobbyMenu/VBoxContainer/Buttons/Start" to="MultMenu/ENetLobbyMenu" method="_start_button_pressed"]
-[connection signal="toggled" from="MultMenu/ENetLobbyMenu/VBoxContainer/Buttons/Ready" to="MultMenu/ENetLobbyMenu" method="_ready_toggled"]
-[connection signal="pressed" from="MultMenu/ENetLobbyMenu/VBoxContainer/Buttons/Disconnect" to="MultMenu" method="back_button"]
+[connection signal="text_submitted" from="MultMenu/ENetLobbyMenu/Name1/Name2/Name3/NameEdit" to="MultMenu" method="join_button"]
+[connection signal="pressed" from="MultMenu/ENetLobbyMenu/Buttons1/Buttons2/Disconnect" to="MultMenu" method="back_button"]
+[connection signal="pressed" from="MultMenu/ENetLobbyMenu/Buttons1/Buttons2/StartReady/Start" to="MultMenu/ENetLobbyMenu" method="_start_button_pressed"]
+[connection signal="toggled" from="MultMenu/ENetLobbyMenu/Buttons1/Buttons2/StartReady/Ready" to="MultMenu/ENetLobbyMenu" method="_ready_toggled"]
 [connection signal="pressed" from="MultMenu/SteamLobbyMenu/VBoxContainer/Buttons/Disconnect" to="MultMenu" method="back_button"]
 [connection signal="value_changed" from="OptionsMenu/VLayout/Master/VLayout/MasterSlider" to="OptionsMenu" method="_master_volume_changed"]
 [connection signal="value_changed" from="OptionsMenu/VLayout/Music/VLayout/MusicSlider" to="OptionsMenu" method="_music_volume_changed"]
