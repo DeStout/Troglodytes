@@ -125,7 +125,7 @@ func _peer_connected(new_peer_id : int) -> void:
 
 func add_local_peer() -> void:
 	peer_id = 1
-	peers[peer_id] = {"is_ready" : true}
+	peers[peer_id] = {"name" : "", "is_ready" : true}
 
 
 func _peer_disconnected(dead_peer_id : int) -> void:

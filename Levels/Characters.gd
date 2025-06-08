@@ -36,6 +36,7 @@ func _spawn_player(player_num : int) -> Player:
 	var player = player_.instantiate()
 	player.set_multiplayer_authority(ENetNetwork.peers.keys()[player_num])
 	var spawn_square = get_tree().get_nodes_in_group("PlayerSquares")[player_num]
+	player.name = ENetNetwork.peers[ENetNetwork.peers.keys()[player_num]]["name"]
 	player.position = spawn_square.global_position
 	player.rotation = spawn_square.rotation
 	player.move_dir = Utilities.get_move_dir(Vector2(player.basis.z.x, -player.basis.z.z))
@@ -81,8 +82,7 @@ func spawn_players() -> void:
 	for square_i in range(0, player_squares.size()):
 		if square_i + 1 <= ENetNetwork.peers.size():
 			var player = spawn(square_i)
-			#if square_i > 0:
-				#_set_player_texture.rpc(square_i)
+			player.name_label.visible = true if ENetNetwork.peers.size() > 1 else false
 			continue
 		player_squares[square_i].remove_from_group("PlayerSquares")
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://b2iwuk2gndgr4"]
+[gd_scene load_steps=29 format=3 uid="uid://b2iwuk2gndgr4"]
 
 [ext_resource type="Script" uid="uid://bsebhi65dqn0d" path="res://Player/Player.gd" id="1_cxr5p"]
 [ext_resource type="Script" uid="uid://cqrkr7tiyb2ee" path="res://Player/PlayerInput.gd" id="2_8sa4y"]
+[ext_resource type="FontFile" uid="uid://dhw1gc0ml3wen" path="res://Menus/Fonts/Dinofans.ttf" id="2_d7xyo"]
 [ext_resource type="Script" uid="uid://bxxodi12mj8h5" path="res://Player/States/StartState.gd" id="3_5wa8t"]
 [ext_resource type="Script" uid="uid://oh5umyrnpcif" path="res://addons/StateMachine/StateMachine/state_machine.gd" id="3_dtqjt"]
 [ext_resource type="Script" uid="uid://ofgysyk2gry1" path="res://Player/States/IdleState.gd" id="4_5ncpa"]
@@ -22,10 +23,10 @@
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_7v5gs"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
-properties/0/replication_mode = 1
+properties/0/replication_mode = 2
 properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
-properties/1/replication_mode = 1
+properties/1/replication_mode = 2
 properties/2/path = NodePath("Player/AnimationPlayer:current_animation")
 properties/2/spawn = true
 properties/2/replication_mode = 2
@@ -50,6 +51,15 @@ properties/8/replication_mode = 2
 properties/9/path = NodePath("HitSFX:playing")
 properties/9/spawn = true
 properties/9/replication_mode = 2
+properties/10/path = NodePath("Name:text")
+properties/10/spawn = true
+properties/10/replication_mode = 2
+properties/11/path = NodePath("Name:modulate")
+properties/11/spawn = true
+properties/11/replication_mode = 2
+properties/12/path = NodePath("Name:outline_modulate")
+properties/12/spawn = true
+properties/12/replication_mode = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_js7pq"]
 radius = 0.35
@@ -97,6 +107,17 @@ player_input = NodePath("PlayerInput")
 
 [node name="Synchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_7v5gs")
+
+[node name="Name" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+pixel_size = 0.0015
+billboard = 1
+double_sided = false
+fixed_size = true
+alpha_cut = 1
+modulate = Color(0, 0.506024, 1, 1)
+text = "Player 1 "
+font = ExtResource("2_d7xyo")
 
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource("2_8sa4y")
