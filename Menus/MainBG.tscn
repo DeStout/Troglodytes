@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bd5xr5rspbutp"]
+[gd_scene load_steps=13 format=4 uid="uid://bd5xr5rspbutp"]
 
 [ext_resource type="PackedScene" uid="uid://bfuiiibm4ogfg" path="res://PickUps/Egg.tscn" id="1_5tsjt"]
 [ext_resource type="Texture2D" uid="uid://xr27pg1088pa" path="res://Levels/Materials/Sand1.png" id="1_y84t4"]
@@ -61,11 +61,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_y84t4")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ydxpa"]
-load_path = "res://.godot/imported/Egg_A.png-e19adfd8b591467b38e2c7a10d6ef526.s3tc.ctex"
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7dfyl"]
-albedo_texture = SubResource("CompressedTexture2D_ydxpa")
+albedo_texture = ExtResource("2_oilmi")
 roughness_texture = ExtResource("3_y84t4")
 normal_enabled = true
 normal_scale = 0.2
@@ -110,7 +107,7 @@ shadow_blur = 6.568
 [node name="Egg" parent="." instance=ExtResource("1_5tsjt")]
 transform = Transform3D(1, 0, 0, 0, 1, -1.74846e-07, 0, 1.74846e-07, 1, 0, 0, 0)
 
-[node name="Mesh" parent="Egg" index="0"]
+[node name="Mesh" parent="Egg" index="1"]
 mesh = SubResource("ArrayMesh_7tmcs")
 surface_material_override/0 = SubResource("StandardMaterial3D_7dfyl")
 

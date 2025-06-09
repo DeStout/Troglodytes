@@ -35,7 +35,7 @@ func start_game() -> void:
 
 
 func start_new_game() -> void:
-	#level_num = 1
+	#level_num = 4
 	level = level_spawner.spawn(level_num)
 
 
@@ -79,7 +79,8 @@ func quit_to_main() -> void:
 	Pause.visible = false
 	get_tree().paused = false
 	
-	ENetNetwork.server_disconnected.disconnect(_server_disconnected)
+	if ENetNetwork.server_disconnected.has_connections():
+		ENetNetwork.server_disconnected.disconnect(_server_disconnected)
 	if level:
 		level.queue_free()
 	level_num = 0

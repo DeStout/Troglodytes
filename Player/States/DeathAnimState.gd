@@ -5,6 +5,8 @@ class_name DeathAnimState extends State
 
 
 func enter() -> void:
+	#print("%s-%s: Enter DeathAnimState" % [multiplayer.get_unique_id(), character.get_multiplayer_authority()])
+	
 	character.velocity = Vector3.ZERO
 	character.anim_player.speed_scale = 1.0
 

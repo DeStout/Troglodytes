@@ -8,9 +8,7 @@ const START_TIME := 1.0
 
 
 func enter() -> void:
-	#if !is_multiplayer_authority():
-		#return
-	#print("Enter StartState")
+	#print("%s-%s: Enter StartState" % [multiplayer.get_unique_id(), character.get_multiplayer_authority()])
 	
 	input_sync.input_update.connect(_update_input)
 	

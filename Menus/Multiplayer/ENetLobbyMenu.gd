@@ -7,8 +7,6 @@ extends MarginContainer
 @export var start_button : Button
 @export var ready_button : Button
 
-var player_num := 0
-
 
 func _ready() -> void:
 	ENetNetwork.peers_updated.connect(update_peers)
@@ -34,8 +32,8 @@ func update_peers() -> void:
 			continue
 		
 		player_name.text = peers[peers.keys()[i]]["name"]
-		var ready := "Ready" if peers[peers.keys()[i]]["is_ready"] else "Waiting"
-		player_ready.text = ready
+		var is_ready := "Ready" if peers[peers.keys()[i]]["is_ready"] else "Waiting"
+		player_ready.text = is_ready
 
 
 func _name_updated(new_name : String) -> void:
@@ -48,8 +46,8 @@ func _name_updated(new_name : String) -> void:
 
 
 func _ready_toggled(toggled : bool) -> void:
-	var ready := "Ready" if toggled else "Waiting"
-	players_ready[ENetNetwork.get_player_number()].text = ready
+	var is_ready := "Ready" if toggled else "Waiting"
+	players_ready[ENetNetwork.get_player_number()].text = is_ready
 	if ENetNetwork.peer:
 		ENetNetwork.set_peer_ready.rpc_id(1, toggled)
 

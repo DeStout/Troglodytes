@@ -8,7 +8,8 @@ const STUN_TIME := 3.0
 
 
 func enter() -> void:
-	#print("Enter StunState")
+	#print("%s-%s: Enter StunState" % [multiplayer.get_unique_id(), character.get_multiplayer_authority()])
+	
 	stun_timer.start(STUN_TIME)
 	character.anim_player.speed_scale = 1.0
 	character.anim_player.play("Stunned")

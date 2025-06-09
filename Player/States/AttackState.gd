@@ -5,7 +5,8 @@ class_name AttackState extends State
 
 
 func enter() -> void:
-	#print("Enter AttackState")
+	#print("%s-%s: Enter AttackState" % [multiplayer.get_unique_id(), character.get_multiplayer_authority()])
+	
 	input_sync.input_update.connect(_update_input)
 	character.anim_player.speed_scale = 1.0
 	if character.fire_power_timer.time_left:

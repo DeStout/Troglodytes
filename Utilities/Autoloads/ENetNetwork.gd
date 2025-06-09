@@ -71,7 +71,13 @@ func create_server() -> void:
 
 func join_server(join_address : String) -> void:
 	peer = ENetMultiplayerPeer.new()
-	var response : Error = peer.create_client(join_address, DEFAULT_PORT)
+	var ip_port := join_address.split(":")
+	var ip := ip_port[0]
+	var port : int = DEFAULT_PORT if ip_port.size() else int(ip_port[1])
+	#if !ip.is_valid_ip_address():
+		#push_error("Invalid Network address")
+		#return
+	var response : Error = peer.create_client(ip, port)
 	if response:
 		push_error("ENetNetwork - Server join error: %s" % response)
 		connection_failed.emit()
@@ -80,7 +86,7 @@ func join_server(join_address : String) -> void:
 	multiplayer.multiplayer_peer = peer
 	peer_id = peer.get_unique_id()
 	print("Client %s - Server Join Request (%s:%s): %s" % \
-									[peer_id, join_address, DEFAULT_PORT, response])
+									[peer_id, ip, port, response])
 
 
 func _server_joined() -> void:
@@ -125,7 +131,7 @@ func _peer_connected(new_peer_id : int) -> void:
 
 func add_local_peer() -> void:
 	peer_id = 1
-	peers[peer_id] = {"name" : "", "is_ready" : true}
+	peers[peer_id] = {"name" : "Player 1", "is_ready" : true}
 
 
 func _peer_disconnected(dead_peer_id : int) -> void:

@@ -9,7 +9,7 @@ var turning := false
 
 
 func enter() -> void:
-	#print("Enter MoveState")
+	#print("%s-%s: Enter MoveState" % [multiplayer.get_unique_id(), character.get_multiplayer_authority()])
 	
 	input_sync.input_update.connect(_update_input)
 	
@@ -59,11 +59,11 @@ func _clear_same_dir_input(dir_input : Vector2) -> Vector2:
 func physics_update(delta) -> void:
 	if turning:
 		return
-		
+	
 	_move(delta)
 	if !_is_at_target():
 		return
-		
+	
 	# [bool, bool]
 	var walls := [character.ray_check(character.move_dir), \
 											character.ray_check(dir_buffer)]

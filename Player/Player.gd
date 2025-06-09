@@ -45,11 +45,24 @@ var player_mat := load("res://Player/PlayerSkin_mat.tres").duplicate()
 
 
 func _ready() -> void:
-	name_label.text = name
+	_set_name_label()
 	skin.set_surface_override_material(0, player_mat)
 	player_input.set_process_input(is_multiplayer_authority())
 	collision.disabled = !multiplayer.is_server()
 	attack_cast.enabled = multiplayer.is_server()
+
+
+func _set_name_label() -> void:
+	name_label.text = name
+	match ENetNetwork.get_player_number():
+		1:
+			name_label.modulate = Color(1.0, 0.993, 0.0)
+		2:
+			name_label.modulate = Color(0.146, 1.0, 0.0)
+		3:
+			name_label.modulate = Color(1.0, 0.0, 0.869)
+		_:
+			name_label.modulate = Color(0.0, 0.506, 1.0)
 
 
 func get_prev_state() -> String:
@@ -172,6 +185,10 @@ func apply_freeze() -> void:
 
 @rpc("any_peer", "call_local", "reliable")
 func attacked() -> void:
+	if multiplayer.get_remote_sender_id() != 1:
+		push_error("Attack rpc blocked")
+		return
+	
 	if state_machine.current_state.has_method("attacked"):
 		state_machine.current_state.attacked()
 
