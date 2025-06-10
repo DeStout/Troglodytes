@@ -207,10 +207,6 @@ script = ExtResource("12_7v5gs")
 [node name="AnimationPlayer" parent="Player" index="1"]
 autoplay = "Idle"
 
-[node name="FirePowerTimer" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
-
 [node name="Halo" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.052, -0.103702)
 visible = false
@@ -237,6 +233,10 @@ stream = SubResource("AudioStreamRandomizer_s1rgi")
 volume_db = -15.0
 max_polyphony = 5
 bus = &"SFX"
+
+[node name="FirePowerTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
 
 [node name="FireSFX" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_v0k0e")

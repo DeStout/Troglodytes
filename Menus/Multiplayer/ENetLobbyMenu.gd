@@ -58,5 +58,4 @@ func enable_start(enabled : bool) -> void:
 
 func reset() -> void:
 	name_edit.clear()
-	start_button.disabled = true
 	ready_button.button_pressed = false

@@ -32,7 +32,7 @@ func show_lobby(success : bool, is_host : bool) -> void:
 		lobby_ready_button.visible = !is_host
 
 
-## Signaled from ENetNetwork._connection_failed()
+# Signaled from ENetNetwork._connection_failed()
 #func connection_failed() -> void:
 	#_connect_connection_signals(false, false)
 
