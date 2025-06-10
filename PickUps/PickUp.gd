@@ -30,8 +30,8 @@ func _set_type() -> void:
 			#apply_effect = _effect_speed.bind(0.5)
 		#EFFECTS.SLOW_DOWN:
 			#apply_effect = _effect_speed.bind(-0.5)
-		EFFECTS.FIRE_POWER:
-			apply_effect = _give_fire_power
+		#EFFECTS.FIRE_POWER:
+			#apply_effect = _give_fire_power
 		#EFFECTS.FREEZE:
 			#apply_effect = _apply_freeze
 		EFFECTS.INVINCIBLE:

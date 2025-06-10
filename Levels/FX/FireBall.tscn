@@ -1,19 +1,19 @@
-[gd_scene load_steps=16 format=4 uid="uid://dk3hna54702v6"]
+[gd_scene load_steps=15 format=4 uid="uid://dk3hna54702v6"]
 
-[ext_resource type="Script" uid="uid://dwkq0uelyudar" path="res://Player/FireBall.gd" id="1_avl5a"]
+[ext_resource type="Script" uid="uid://dwkq0uelyudar" path="res://Levels/FX/FireBall.gd" id="1_avl5a"]
 [ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://Enemies/EnemyMat.tres" id="1_lwaqw"]
 
 [sub_resource type="Gradient" id="Gradient_kxsq1"]
 colors = PackedColorArray(1, 0, 0.0384331, 1, 1, 0.274666, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_2ufx1"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_avl5a"]
 gradient = SubResource("Gradient_kxsq1")
 
 [sub_resource type="Gradient" id="Gradient_jscpm"]
 offsets = PackedFloat32Array(0, 0.747312, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.0742188, 0.0742188, 0.0742188, 1, 0.078125, 0.078125, 0.078125, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_2vf6h"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kxsq1"]
 gradient = SubResource("Gradient_jscpm")
 
 [sub_resource type="Curve" id="Curve_2ufx1"]
@@ -21,7 +21,7 @@ _limits = [0.0, 1.5, 0.0, 1.0]
 _data = [Vector2(0, 1.41573), 0.0, -0.0916166, 0, 0, Vector2(1, 0.910112), -1.60947, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_jscpm"]
+[sub_resource type="CurveTexture" id="CurveTexture_2ufx1"]
 curve = SubResource("Curve_2ufx1")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kxsq1"]
@@ -39,9 +39,9 @@ initial_velocity_max = 2.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.95
 scale_max = 1.05
-scale_curve = SubResource("CurveTexture_jscpm")
-color_ramp = SubResource("GradientTexture1D_2vf6h")
-color_initial_ramp = SubResource("GradientTexture1D_2ufx1")
+scale_curve = SubResource("CurveTexture_2ufx1")
+color_ramp = SubResource("GradientTexture1D_kxsq1")
+color_initial_ramp = SubResource("GradientTexture1D_avl5a")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2vf6h"]
 vertex_color_use_as_albedo = true
@@ -50,7 +50,7 @@ emission = Color(1, 0.245059, 0, 1)
 emission_energy_multiplier = 0.86
 rim_enabled = true
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_xqahg"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_jscpm"]
 _surfaces = [{
 "aabb": AABB(-0.0866026, -0.1, -0.1, 0.173205, 0.3, 0.2),
 "format": 34896613377,
@@ -80,7 +80,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("/39VVQAAnf/+/1VV/7/Nw/9/////f0LcAABVVf+/wt//f1VVAAC4/v7/VVX/v3+6/39VVQAATf8AAFVV/7+G/4Ha/hi+UuHX/3/+GIHaxtT//1VV/z9d2v9/VVX//7XIAABVVf8/5fX//1VV/z9c1X0l/hi+Unb+AABVVf8/fO3/f1VV//982f9//hh9Jdby/38AAP9/o+GB2v4YQK1jxX0l/hhArX7wHZ5d4CMp3B530fAipO1q12PzaIwcniZPfrFHzdhR2YHIbXovI22MYvtI6SEI/pQBffB2uER8tQDcUkhW+uLZwAGB+IGaXGI8cmLGTiF4SEFnWVZo")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_xqahg")
+shadow_mesh = SubResource("ArrayMesh_jscpm")
 
 [sub_resource type="SphereMesh" id="SphereMesh_toymk"]
 radius = 0.25
@@ -88,9 +88,6 @@ height = 0.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lwaqw"]
 radius = 0.35
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_jscpm"]
-viewport_path = NodePath("SubViewport")
 
 [node name="FireBall" type="Node3D" node_paths=PackedStringArray("collision")]
 script = ExtResource("1_avl5a")
@@ -100,7 +97,7 @@ collision = NodePath("Area/Collision")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 amount = 75
 amount_ratio = 0.5
-lifetime = 0.4
+lifetime = 0.25
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_kxsq1")
 draw_pass_1 = SubResource("ArrayMesh_ywbqm")
@@ -122,9 +119,6 @@ shape = SubResource("CylinderShape3D_lwaqw")
 wait_time = 5.0
 one_shot = true
 autostart = true
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("ViewportTexture_jscpm")
 
 [connection signal="body_entered" from="Area" to="." method="_body_collided"]
 [connection signal="timeout" from="DespawnTimer" to="." method="_despawn"]

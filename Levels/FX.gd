@@ -2,7 +2,7 @@ extends MultiplayerSpawner
 
 
 var footprint_ := load("res://Levels/FX/Footprint.tscn")
-var fire_ball_ := load("res://Player/FireBall.tscn")
+var fire_ball_ := load("res://Levels/FX/FireBall.tscn")
 
 enum FX { FOOTPRINT, FIRE_BALL }
 

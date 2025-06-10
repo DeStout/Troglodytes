@@ -160,7 +160,7 @@ spawn_path = NodePath(".")
 script = ExtResource("7_rjnlo")
 
 [node name="FX" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://dk3hna54702v6")
+_spawnable_scenes = PackedStringArray("res://Player/FireBall.tscn")
 spawn_path = NodePath(".")
 script = ExtResource("8_hbkgd")
 

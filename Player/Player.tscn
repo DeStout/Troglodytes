@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bxxodi12mj8h5" path="res://Player/States/StartState.gd" id="3_5wa8t"]
 [ext_resource type="Script" uid="uid://oh5umyrnpcif" path="res://addons/StateMachine/StateMachine/state_machine.gd" id="3_dtqjt"]
 [ext_resource type="Script" uid="uid://ofgysyk2gry1" path="res://Player/States/IdleState.gd" id="4_5ncpa"]
-[ext_resource type="Script" uid="uid://cqa2hqf8yrdbu" path="res://Player/RemoteState.gd" id="5_evw08"]
+[ext_resource type="Script" uid="uid://cqa2hqf8yrdbu" path="res://Player/States/RemoteState.gd" id="5_evw08"]
 [ext_resource type="Script" uid="uid://bxtyxib10gxlu" path="res://Player/States/MoveState.gd" id="5_wi0c6"]
 [ext_resource type="Script" uid="uid://f8hyo1x33o6j" path="res://Player/States/AttackState.gd" id="6_tdg3f"]
 [ext_resource type="PackedScene" uid="uid://b8finywqxy7il" path="res://Player/Player1.blend" id="6_v0k0e"]
@@ -235,8 +235,8 @@ max_polyphony = 5
 bus = &"SFX"
 
 [node name="FirePowerTimer" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
+wait_time = 7.5
+one_shot = true
 
 [node name="FireSFX" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_v0k0e")

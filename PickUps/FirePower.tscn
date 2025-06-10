@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dva7kjnufpaa3"]
+[gd_scene load_steps=22 format=4 uid="uid://dva7kjnufpaa3"]
 
 [ext_resource type="PackedScene" uid="uid://jwxh6mbhxdij" path="res://PickUps/PickUp.tscn" id="1_kaey8"]
-[ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://Enemies/EnemyMat.tres" id="2_almm0"]
-[ext_resource type="Shader" uid="uid://d4klim8n4q2qv" path="res://PickUps/Materials/Flame.gdshader" id="2_durqe"]
+[ext_resource type="Script" uid="uid://b8m24r158ymv3" path="res://PickUps/FirePower.gd" id="2_j1oke"]
+[ext_resource type="Texture2D" uid="uid://c8j6cokt48337" path="res://Levels/Materials/Sand1_N.png" id="3_fvq7w"]
 [ext_resource type="AudioStream" uid="uid://ciqx0wcnvc2c1" path="res://PickUps/SFX/FirePickUp.ogg" id="3_j1oke"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fvq7w"]
@@ -10,29 +10,193 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("3_j1oke")
 
-[sub_resource type="SphereMesh" id="SphereMesh_j1oke"]
-material = ExtResource("2_almm0")
-radius = 0.22
-height = 0.44
-radial_segments = 8
-rings = 8
+[sub_resource type="SphereMesh" id="SphereMesh_usjf7"]
+radius = 0.25
+height = 0.5
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_almm0"]
-viewport_path = NodePath("SubViewport")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_almm0"]
+albedo_color = Color(0.0625, 0.0625, 0.0625, 1)
+emission_enabled = true
+emission = Color(0.33, 0.154, 0, 1)
+emission_energy_multiplier = 0.62
+normal_enabled = true
+normal_scale = 16.0
+normal_texture = ExtResource("3_fvq7w")
+uv1_scale = Vector3(0.085, 0.085, 0.085)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j1oke"]
-shader = ExtResource("2_durqe")
-shader_parameter/fire_color = Color(1, 0.33, 0.068, 1)
-shader_parameter/fire_power_factor = 2.0
-shader_parameter/fire_intensity = 3.0
-shader_parameter/fire_start = 1.0
-shader_parameter/ball_size = 1.0
-shader_parameter/roughness = 0.675
-shader_parameter/detail = 6
-shader_parameter/scale = 4.0
-shader_parameter/lacunarity = 2.0
+[sub_resource type="Gradient" id="Gradient_j1oke"]
+colors = PackedColorArray(1, 0, 0.0384331, 1, 1, 0.274666, 0, 1)
 
-[node name="PickUp1" node_paths=PackedStringArray("mesh") instance=ExtResource("1_kaey8")]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2ufx1"]
+gradient = SubResource("Gradient_j1oke")
+
+[sub_resource type="Gradient" id="Gradient_fvq7w"]
+offsets = PackedFloat32Array(0, 0.747312, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.0742188, 0.0742188, 0.0742188, 1, 0.078125, 0.078125, 0.078125, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2vf6h"]
+gradient = SubResource("Gradient_fvq7w")
+
+[sub_resource type="Curve" id="Curve_2rng4"]
+_limits = [0.0, 1.5, 0.0, 1.0]
+_data = [Vector2(0, 1.41573), 0.0, -0.0916166, 0, 0, Vector2(1, 0.910112), -1.60947, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jscpm"]
+curve = SubResource("Curve_2rng4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_almm0"]
+particle_flag_align_y = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 0.2
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 0.0
+direction = Vector3(0, 0, -1)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 4.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.95
+scale_max = 1.05
+scale_curve = SubResource("CurveTexture_jscpm")
+color_ramp = SubResource("GradientTexture1D_2vf6h")
+color_initial_ramp = SubResource("GradientTexture1D_2ufx1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2vf6h"]
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(1, 0.245059, 0, 1)
+emission_energy_multiplier = 0.86
+rim_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xqahg"]
+_surfaces = [{
+"aabb": AABB(-0.0866026, -0.1, -0.1, 0.173205, 0.3, 0.2),
+"format": 34896613377,
+"index_count": 72,
+"index_data": PackedByteArray("AAAGAAIACgAGAAAACgAEAAYABAABAAYABgABAAIACwAEAAoACAAKAAAACwAKAAgABwAAAAIACAAAAAcABAAMAAEACwAMAAQAAQAJAAIADAAJAAEAAwAHAAIACQADAAIADQAIAAcACwAIAA0ADQAHAAMACwAFAAwACwANAAUADAAFAAkABQANAAMABQADAAkA"),
+"lods": [0.0341114, PackedByteArray("AAAGAAIABAAGAAAABAABAAYABgABAAIABwAAAAIACAAEAAAACAAAAAcABAAFAAEABQAEAAgAAQAJAAIABQAJAAEAAwAHAAIACAAHAAMACQADAAIABQAIAAMABQADAAkA"), 0.0545069, PackedByteArray("AAABAAIABAABAAAAAwAAAAIAAwAEAAAAAQADAAIABQAEAAMABAAFAAEABQADAAEA"), 0.0718376, PackedByteArray("AAABAAIAAQADAAIAAwAAAAIAAQAAAAMA")],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 14,
+"vertex_data": PackedByteArray("/39VVQAAAAD+/1VV/78AAP9/////fwAAAABVVf+/AACB2v4YvlIAAP9//hiB2gAA//9VVf8/AAAAAFVV/z8AAH0l/hi+UgAA/39VVf//AAD/f/4YfSUAAP9/AAD/fwAAgdr+GECtAAB9Jf4YQK0AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7n0j8"]
+resource_name = "Fire_FireMesh"
+_surfaces = [{
+"aabb": AABB(-0.0866026, -0.1, -0.1, 0.173205, 0.3, 0.2),
+"attribute_data": PackedByteArray("pkP3/3QAmq0Ud2qRahfRRRR3fBckd1mK9/8/j2639/9Hu4KUi5/AwJsYft4HABR37kGtI/S8pmXG05/CPPon3yR3dtqn0lmmKrqZs6+ioaQJuRbT"),
+"format": 34896613399,
+"index_count": 72,
+"index_data": PackedByteArray("AAAKAAIACgABAAIAAQALAAIACwADAAIAAwAMAAIADAAEAAIAEQANAAYAEQAIAA0ACAAFAA0ADgARAAYADgAGAA8AEgAIABEAEgARAA4ACAATAAUAEgATAAgAEwAQAAUAFAAOAA8AEgAOABQAFAAPAAcAEgAJABMAEgAUAAkAEwAJABAACQAUAAcACQAHABAA"),
+"lods": [0.0341114, PackedByteArray("AAAKAAIACgABAAIAAQALAAIACwADAAIAAwAMAAIADAAEAAIACAANAAYACAAFAA0ADgAIAAYADgAGAA8ADgAPAAcACQAIAA4ACAAJAAUACQAOAAcACQAQAAUACQAHABAA"), 0.0545069, PackedByteArray("AAABAAIAAQADAAIAAwAEAAIACAAFAAYABwAIAAYACAAJAAUACQAHAAUACQAIAAcA"), 0.0718376, PackedByteArray("AAABAAIAAQADAAIAAwAEAAIABQAGAAcA")],
+"material": SubResource("StandardMaterial3D_2vf6h"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 21,
+"vertex_data": PackedByteArray("/39VVQAAnf/+/1VV/7/Nw/9/////f0LcAABVVf+/wt//f1VVAAC4/v7/VVX/v3+6/39VVQAATf8AAFVV/7+G/4Ha/hi+UuHX/3/+GIHaxtT//1VV/z9d2v9/VVX//7XIAABVVf8/5fX//1VV/z9c1X0l/hi+Unb+AABVVf8/fO3/f1VV//982f9//hh9Jdby/38AAP9/o+GB2v4YQK1jxX0l/hhArX7wHZ5d4CMp3B530fAipO1q12PzaIwcniZPfrFHzdhR2YHIbXovI22MYvtI6SEI/pQBffB2uER8tQDcUkhW+uLZwAGB+IGaXGI8cmLGTiF4SEFnWVZo")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_xqahg")
+
+[sub_resource type="Animation" id="Animation_j1oke"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FireBall/FlameParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FireBall:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_almm0"]
+resource_name = "Spawn"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FireBall/FlameParticles:emitting")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FireBall:scale")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(0.4, 0.4, 0.4), Vector3(0.7, 0.7, 0.7), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fvq7w"]
+resource_name = "Despawn"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FireBall/FlameParticles:emitting")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FireBall:scale")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0.7, 0.7, 0.7), Vector3(0.4, 0.4, 0.4), Vector3(0.1, 0.1, 0.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fvq7w"]
+_data = {
+&"Despawn": SubResource("Animation_fvq7w"),
+&"RESET": SubResource("Animation_j1oke"),
+&"Spawn": SubResource("Animation_almm0")
+}
+
+[node name="FirePower1" node_paths=PackedStringArray("anim_player", "mesh") instance=ExtResource("1_kaey8")]
+script = ExtResource("2_j1oke")
+anim_player = NodePath("AnimationPlayer")
 effect = 2
 mesh = NodePath("FireBall")
 
@@ -40,24 +204,23 @@ mesh = NodePath("FireBall")
 stream = SubResource("AudioStreamRandomizer_fvq7w")
 
 [node name="FireBall" type="MeshInstance3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_j1oke")
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1, 0)
+mesh = SubResource("SphereMesh_usjf7")
+surface_material_override/0 = SubResource("StandardMaterial3D_almm0")
 
-[node name="FireSprite" type="Sprite3D" parent="FireBall" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 1.594, 0)
-texture = SubResource("ViewportTexture_almm0")
+[node name="FlameParticles" type="GPUParticles3D" parent="FireBall" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+emitting = false
+amount = 10
+lifetime = 0.1
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_almm0")
+draw_pass_1 = SubResource("ArrayMesh_7n0j8")
 
-[node name="SubViewport" type="SubViewport" parent="." index="4"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(256, 256)
-render_target_update_mode = 4
+[node name="Area" parent="." index="2"]
+visible = false
 
-[node name="ColorRect" type="ColorRect" parent="SubViewport" index="0"]
-material = SubResource("ShaderMaterial_j1oke")
-custom_minimum_size = Vector2(256, 256)
-offset_left = 256.0
-offset_top = 2.0
-offset_right = 512.0
-offset_bottom = 258.0
-rotation = 1.5708
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_fvq7w")
+}
