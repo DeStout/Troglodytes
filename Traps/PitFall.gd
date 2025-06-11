@@ -25,9 +25,17 @@ func _character_entered(character : CharacterBody3D) -> void:
 		character.pit_fall(self)
 
 
+func _despawn() -> void:
+	collision.call_deferred("set_disabled", true)
+	anim_player.play_backwards("OpenClose_2")
+	if multiplayer.is_server():
+		await anim_player.animation_finished
+		super()
+
+
 @rpc("any_peer", "call_local", "reliable")
 func close() -> void:
 	anim_player.play_backwards("OpenClose_2")
 	if multiplayer.is_server():
 		await anim_player.animation_finished
-		_despawn()
+		super._despawn()
