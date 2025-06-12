@@ -63,7 +63,7 @@ func create_server() -> void:
 	peer.peer_connected.connect(_peer_connected)
 	peer.peer_disconnected.connect(_peer_disconnected)
 	peer_id = 1
-	peers[peer_id] = {"name" : "Player 1", "is_ready" : true, "lives" : 3, "score" : 0}
+	peers[peer_id] = { "name" : "Player 1", "is_ready" : true }
 	server_joined.emit(true, true)
 	
 	Debug.ping_label.visible = true
@@ -97,8 +97,11 @@ func _server_joined() -> void:
 	Debug.ping_label.visible = true
 
 
-func get_player_number() -> int:
-	return peers.keys().find(multiplayer.get_unique_id())
+func get_player_number(player_id : int = 0) -> int:
+	if !player_id:
+		return peers.keys().find(multiplayer.get_unique_id())
+	else:
+		return peers.keys().find(player_id)
 
 
 func get_ping() -> float:
@@ -124,16 +127,14 @@ func _peer_connected(new_peer_id : int) -> void:
 	if multiplayer.is_server():
 		print("Server - Peer Connected: %s" % new_peer_id)
 		var new_name := "Player %s" % (peers.size()+1)
-		peers[new_peer_id] = {"name" : new_name, "is_ready" : false,
-														"lives" : 3, "score" : 0}
+		peers[new_peer_id] = { "name" : new_name, "is_ready" : false }
 		update_peers.rpc(peers)
 		_check_peers_ready()
 
 
 func add_local_peer() -> void:
 	peer_id = 1
-	peers[peer_id] = {"name" : "Player 1", "is_ready" : true,
-														"lives" : 3, "score" : 0}
+	peers[peer_id] = { "name" : "Player 1", "is_ready" : true }
 
 
 func _peer_disconnected(dead_peer_id : int) -> void:

@@ -19,6 +19,8 @@ var respawn_tweens : Array[Tween]
 var freeze_time := 0.0
 @export var unfreeze_sfx : AudioStreamPlayer
 
+var player_stats : Dictionary[int, Array]
+
 
 func _ready() -> void:
 	ENetNetwork.peer_disconnected.connect(_player_disconnected)
@@ -83,6 +85,7 @@ func spawn_players() -> void:
 		if square_i + 1 <= ENetNetwork.peers.size():
 			var player = spawn(square_i)
 			player.name_label.visible = true if ENetNetwork.peers.size() > 1 else false
+			player_stats[player.get_multiplayer_authority()] = [0, 3]
 			continue
 		player_squares[square_i].remove_from_group("PlayerSquares")
 

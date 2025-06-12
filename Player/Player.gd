@@ -3,6 +3,7 @@ class_name Player extends CharacterBody3D
 
 @export var debug_target : MeshInstance3D
 
+signal add_score
 signal spawn_footprint
 signal freeze_pick_up
 signal spawn_fire_ball

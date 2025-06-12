@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c7f7rd7ltauxf"]
+[gd_scene load_steps=31 format=3 uid="uid://c7f7rd7ltauxf"]
 
 [ext_resource type="Script" uid="uid://dwbxnol5sxdj" path="res://Levels/Level.gd" id="1_bwnv0"]
 [ext_resource type="Environment" uid="uid://bsgowgj65v2n4" path="res://Utilities/GEnv.tres" id="2_345ms"]
@@ -15,6 +15,44 @@
 [ext_resource type="AudioStream" uid="uid://cuij1no40h8sf" path="res://Music/CartoonMischief.mp3" id="10_myk7f"]
 [ext_resource type="AudioStream" uid="uid://b2adamdl3fce5" path="res://Menus/BeachWaves.ogg" id="10_n6v67"]
 [ext_resource type="AudioStream" uid="uid://c1ibrkbrrcdwv" path="res://PickUps/SFX/IceUnfreeze.ogg" id="11_je7y7"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_v2lpe"]
+properties/0/path = NodePath("PlayerUIs/Player1/PlayerUI/PlayerUIBox/PlayerName:text")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath("PlayerUIs/Player2/PlayerUI/PlayerUIBox/PlayerName:text")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath("PlayerUIs/Player3/PlayerUI/PlayerUIBox/PlayerName:text")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath("PlayerUIs/Player4/PlayerUI/PlayerUIBox/PlayerName:text")
+properties/3/spawn = true
+properties/3/replication_mode = 2
+properties/4/path = NodePath("PlayerUIs/Player1/PlayerUI/PlayerUIBox/Score:text")
+properties/4/spawn = true
+properties/4/replication_mode = 2
+properties/5/path = NodePath("PlayerUIs/Player2/PlayerUI/PlayerUIBox/Score:text")
+properties/5/spawn = true
+properties/5/replication_mode = 2
+properties/6/path = NodePath("PlayerUIs/Player3/PlayerUI/PlayerUIBox/Score:text")
+properties/6/spawn = true
+properties/6/replication_mode = 2
+properties/7/path = NodePath("PlayerUIs/Player4/PlayerUI/PlayerUIBox/Score:text")
+properties/7/spawn = true
+properties/7/replication_mode = 2
+properties/8/path = NodePath("PlayerUIs/Player1:visible")
+properties/8/spawn = true
+properties/8/replication_mode = 2
+properties/9/path = NodePath("PlayerUIs/Player2:visible")
+properties/9/spawn = true
+properties/9/replication_mode = 2
+properties/10/path = NodePath("PlayerUIs/Player3:visible")
+properties/10/spawn = true
+properties/10/replication_mode = 2
+properties/11/path = NodePath("PlayerUIs/Player4:visible")
+properties/11/spawn = true
+properties/11/replication_mode = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dhlr"]
 bg_color = Color(0, 0.125, 0.25, 0.501961)
@@ -182,7 +220,7 @@ streams_count = 2
 stream_0/stream = ExtResource("9_fbd0n")
 stream_1/stream = ExtResource("10_myk7f")
 
-[node name="Level" type="Node3D" node_paths=PackedStringArray("board", "camera", "characters", "pick_ups", "traps", "eggs", "fx", "play_area", "home_spawner", "ui_player_names", "ui_scores")]
+[node name="Level" type="Node3D" node_paths=PackedStringArray("board", "camera", "characters", "pick_ups", "traps", "eggs", "fx", "play_area", "home_spawner", "player_uis", "ui_player_names", "ui_players_scores", "ui_player_lives")]
 script = ExtResource("1_bwnv0")
 board = NodePath("Board")
 camera = NodePath("LevelViewport/Viewport/Camera")
@@ -193,8 +231,10 @@ eggs = NodePath("Eggs")
 fx = NodePath("FX")
 play_area = NodePath("PlayArea")
 home_spawner = NodePath("Board/Squares/HomeSquares")
-ui_player_names = [NodePath("UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/PlayerName"), NodePath("UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/PlayerName"), NodePath("UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/PlayerName"), NodePath("UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/PlayerName")]
-ui_scores = [NodePath("UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Score"), NodePath("UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Score"), NodePath("UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Score"), NodePath("UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Score")]
+player_uis = NodePath("UI/PlayerUIs")
+ui_player_names = [NodePath("UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/PlayerName"), NodePath("UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/PlayerName"), NodePath("UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/PlayerName"), NodePath("UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/PlayerName")]
+ui_players_scores = [NodePath("UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/Score"), NodePath("UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/Score"), NodePath("UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/Score"), NodePath("UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/Score")]
+ui_player_lives = [NodePath("UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox"), NodePath("UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox"), NodePath("UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox"), NodePath("UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox")]
 metadata/_edit_vertical_guides_ = [1152.0]
 metadata/_edit_horizontal_guides_ = [550.0]
 
@@ -235,7 +275,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="UI"]
+replication_config = SubResource("SceneReplicationConfig_v2lpe")
+
+[node name="PlayerUIs" type="HBoxContainer" parent="UI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -248,15 +291,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 4
 
-[node name="Player1" type="PanelContainer" parent="UI/HBoxContainer"]
+[node name="Player1" type="PanelContainer" parent="UI/PlayerUIs"]
 custom_minimum_size = Vector2(283, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6dhlr")
 
-[node name="PlayerUI" type="Control" parent="UI/HBoxContainer/Player1"]
+[node name="PlayerUI" type="Control" parent="UI/PlayerUIs/Player1"]
 layout_mode = 2
 
-[node name="PlayerUIBox" type="VBoxContainer" parent="UI/HBoxContainer/Player1/PlayerUI"]
+[node name="PlayerUIBox" type="VBoxContainer" parent="UI/PlayerUIs/Player1/PlayerUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -269,7 +312,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="PlayerName" type="Label" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox"]
+[node name="PlayerName" type="Label" parent="UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("4_8b3wp")
@@ -279,7 +322,7 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 24
 text = "Player 1"
 
-[node name="Score" type="Label" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox"]
+[node name="Score" type="Label" parent="UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("4_8b3wp")
@@ -289,11 +332,11 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 24
 text = "Score: 999,999,999"
 
-[node name="Lives" type="Control" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox"]
+[node name="Lives" type="Control" parent="UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="LivesHBox" type="HBoxContainer" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives"]
+[node name="LivesHBox" type="HBoxContainer" parent="UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.008
@@ -303,15 +346,15 @@ offset_left = -0.104
 grow_horizontal = 2
 theme_override_constants/separation = 25
 
-[node name="Life1" type="Control" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+[node name="Life1" type="Control" parent="UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
 layout_mode = 2
 
-[node name="Life2" type="Control" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1"]
+[node name="Life2" type="Control" parent="UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1"]
 anchors_preset = 0
 offset_right = 19.0
 offset_bottom = 19.0
 
-[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1/Life2"]
+[node name="LifePanel" type="PanelContainer" parent="UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1/Life2"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -320,15 +363,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_al8gi")
 
-[node name="Life2" type="Control" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+[node name="Life2" type="Control" parent="UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
 layout_mode = 2
 
-[node name="Life2" type="Control" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2"]
+[node name="Life2" type="Control" parent="UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2"]
 anchors_preset = 0
 offset_right = 19.0
 offset_bottom = 19.0
 
-[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2/Life2"]
+[node name="LifePanel" type="PanelContainer" parent="UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2/Life2"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -337,15 +380,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wywvs")
 
-[node name="Life3" type="Control" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+[node name="Life3" type="Control" parent="UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
 layout_mode = 2
 
-[node name="Life3" type="Control" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3"]
+[node name="Life3" type="Control" parent="UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3"]
 anchors_preset = 0
 offset_right = 19.0
 offset_bottom = 19.0
 
-[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3/Life3"]
+[node name="LifePanel" type="PanelContainer" parent="UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3/Life3"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -354,15 +397,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8mwr5")
 
-[node name="Life4" type="Control" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+[node name="Life4" type="Control" parent="UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+visible = false
 layout_mode = 2
 
-[node name="Life4" type="Control" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4"]
+[node name="Life4" type="Control" parent="UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4"]
 anchors_preset = 0
 offset_right = 19.0
 offset_bottom = 19.0
 
-[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4/Life4"]
+[node name="LifePanel" type="PanelContainer" parent="UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4/Life4"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -371,16 +415,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3wkli")
 
-[node name="Player2" type="PanelContainer" parent="UI/HBoxContainer"]
+[node name="Player2" type="PanelContainer" parent="UI/PlayerUIs"]
 visible = false
 custom_minimum_size = Vector2(283, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_v2lpe")
 
-[node name="PlayerUI" type="Control" parent="UI/HBoxContainer/Player2"]
+[node name="PlayerUI" type="Control" parent="UI/PlayerUIs/Player2"]
 layout_mode = 2
 
-[node name="PlayerUIBox" type="VBoxContainer" parent="UI/HBoxContainer/Player2/PlayerUI"]
+[node name="PlayerUIBox" type="VBoxContainer" parent="UI/PlayerUIs/Player2/PlayerUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -393,7 +437,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="PlayerName" type="Label" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox"]
+[node name="PlayerName" type="Label" parent="UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("4_8b3wp")
@@ -403,7 +447,7 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 24
 text = "Player 2"
 
-[node name="Score" type="Label" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox"]
+[node name="Score" type="Label" parent="UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("4_8b3wp")
@@ -413,11 +457,11 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 24
 text = "Score: 999,999,999"
 
-[node name="Lives" type="Control" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox"]
+[node name="Lives" type="Control" parent="UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="LivesHBox" type="HBoxContainer" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives"]
+[node name="LivesHBox" type="HBoxContainer" parent="UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/Lives"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.008
@@ -427,15 +471,15 @@ offset_left = -0.104
 grow_horizontal = 2
 theme_override_constants/separation = 25
 
-[node name="Life1" type="Control" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+[node name="Life1" type="Control" parent="UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
 layout_mode = 2
 
-[node name="Life2" type="Control" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1"]
+[node name="Life2" type="Control" parent="UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1"]
 anchors_preset = 0
 offset_right = 19.0
 offset_bottom = 19.0
 
-[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1/Life2"]
+[node name="LifePanel" type="PanelContainer" parent="UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1/Life2"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -444,15 +488,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xtlnx")
 
-[node name="Life2" type="Control" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+[node name="Life2" type="Control" parent="UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
 layout_mode = 2
 
-[node name="Life2" type="Control" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2"]
+[node name="Life2" type="Control" parent="UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2"]
 anchors_preset = 0
 offset_right = 19.0
 offset_bottom = 19.0
 
-[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2/Life2"]
+[node name="LifePanel" type="PanelContainer" parent="UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2/Life2"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -461,15 +505,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xtlnx")
 
-[node name="Life3" type="Control" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+[node name="Life3" type="Control" parent="UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
 layout_mode = 2
 
-[node name="Life3" type="Control" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3"]
+[node name="Life3" type="Control" parent="UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3"]
 anchors_preset = 0
 offset_right = 19.0
 offset_bottom = 19.0
 
-[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3/Life3"]
+[node name="LifePanel" type="PanelContainer" parent="UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3/Life3"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -478,15 +522,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xtlnx")
 
-[node name="Life4" type="Control" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+[node name="Life4" type="Control" parent="UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+visible = false
 layout_mode = 2
 
-[node name="Life4" type="Control" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4"]
+[node name="Life4" type="Control" parent="UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4"]
 anchors_preset = 0
 offset_right = 19.0
 offset_bottom = 19.0
 
-[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4/Life4"]
+[node name="LifePanel" type="PanelContainer" parent="UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4/Life4"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -495,16 +540,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xtlnx")
 
-[node name="Player3" type="PanelContainer" parent="UI/HBoxContainer"]
+[node name="Player3" type="PanelContainer" parent="UI/PlayerUIs"]
 visible = false
 custom_minimum_size = Vector2(283, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_55ngp")
 
-[node name="PlayerUI" type="Control" parent="UI/HBoxContainer/Player3"]
+[node name="PlayerUI" type="Control" parent="UI/PlayerUIs/Player3"]
 layout_mode = 2
 
-[node name="PlayerUIBox" type="VBoxContainer" parent="UI/HBoxContainer/Player3/PlayerUI"]
+[node name="PlayerUIBox" type="VBoxContainer" parent="UI/PlayerUIs/Player3/PlayerUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -517,7 +562,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="PlayerName" type="Label" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox"]
+[node name="PlayerName" type="Label" parent="UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("4_8b3wp")
@@ -527,7 +572,7 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 24
 text = "Player 3"
 
-[node name="Score" type="Label" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox"]
+[node name="Score" type="Label" parent="UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("4_8b3wp")
@@ -537,11 +582,11 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 24
 text = "Score: 999,999,999"
 
-[node name="Lives" type="Control" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox"]
+[node name="Lives" type="Control" parent="UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="LivesHBox" type="HBoxContainer" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives"]
+[node name="LivesHBox" type="HBoxContainer" parent="UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/Lives"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.008
@@ -551,15 +596,15 @@ offset_left = -0.104
 grow_horizontal = 2
 theme_override_constants/separation = 25
 
-[node name="Life1" type="Control" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+[node name="Life1" type="Control" parent="UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
 layout_mode = 2
 
-[node name="Life2" type="Control" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1"]
+[node name="Life2" type="Control" parent="UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1"]
 anchors_preset = 0
 offset_right = 19.0
 offset_bottom = 19.0
 
-[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1/Life2"]
+[node name="LifePanel" type="PanelContainer" parent="UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1/Life2"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -568,15 +613,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jsskw")
 
-[node name="Life2" type="Control" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+[node name="Life2" type="Control" parent="UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
 layout_mode = 2
 
-[node name="Life2" type="Control" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2"]
+[node name="Life2" type="Control" parent="UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2"]
 anchors_preset = 0
 offset_right = 19.0
 offset_bottom = 19.0
 
-[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2/Life2"]
+[node name="LifePanel" type="PanelContainer" parent="UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2/Life2"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -585,15 +630,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sdsxl")
 
-[node name="Life3" type="Control" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+[node name="Life3" type="Control" parent="UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
 layout_mode = 2
 
-[node name="Life3" type="Control" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3"]
+[node name="Life3" type="Control" parent="UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3"]
 anchors_preset = 0
 offset_right = 19.0
 offset_bottom = 19.0
 
-[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3/Life3"]
+[node name="LifePanel" type="PanelContainer" parent="UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3/Life3"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -602,15 +647,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sdsxl")
 
-[node name="Life4" type="Control" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+[node name="Life4" type="Control" parent="UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+visible = false
 layout_mode = 2
 
-[node name="Life4" type="Control" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4"]
+[node name="Life4" type="Control" parent="UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4"]
 anchors_preset = 0
 offset_right = 19.0
 offset_bottom = 19.0
 
-[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4/Life4"]
+[node name="LifePanel" type="PanelContainer" parent="UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4/Life4"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -619,16 +665,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sdsxl")
 
-[node name="Player4" type="PanelContainer" parent="UI/HBoxContainer"]
+[node name="Player4" type="PanelContainer" parent="UI/PlayerUIs"]
 visible = false
 custom_minimum_size = Vector2(283, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8b3wp")
 
-[node name="PlayerUI" type="Control" parent="UI/HBoxContainer/Player4"]
+[node name="PlayerUI" type="Control" parent="UI/PlayerUIs/Player4"]
 layout_mode = 2
 
-[node name="PlayerUIBox" type="VBoxContainer" parent="UI/HBoxContainer/Player4/PlayerUI"]
+[node name="PlayerUIBox" type="VBoxContainer" parent="UI/PlayerUIs/Player4/PlayerUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -641,7 +687,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="PlayerName" type="Label" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox"]
+[node name="PlayerName" type="Label" parent="UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("4_8b3wp")
@@ -651,7 +697,7 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 24
 text = "Player 4"
 
-[node name="Score" type="Label" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox"]
+[node name="Score" type="Label" parent="UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("4_8b3wp")
@@ -661,11 +707,11 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 24
 text = "Score: 999,999,999"
 
-[node name="Lives" type="Control" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox"]
+[node name="Lives" type="Control" parent="UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="LivesHBox" type="HBoxContainer" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives"]
+[node name="LivesHBox" type="HBoxContainer" parent="UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/Lives"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.008
@@ -675,15 +721,15 @@ offset_left = -0.104
 grow_horizontal = 2
 theme_override_constants/separation = 25
 
-[node name="Life1" type="Control" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+[node name="Life1" type="Control" parent="UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
 layout_mode = 2
 
-[node name="Life2" type="Control" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1"]
+[node name="Life2" type="Control" parent="UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1"]
 anchors_preset = 0
 offset_right = 19.0
 offset_bottom = 19.0
 
-[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1/Life2"]
+[node name="LifePanel" type="PanelContainer" parent="UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1/Life2"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -692,15 +738,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oqb7r")
 
-[node name="Life2" type="Control" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+[node name="Life2" type="Control" parent="UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
 layout_mode = 2
 
-[node name="Life2" type="Control" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2"]
+[node name="Life2" type="Control" parent="UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2"]
 anchors_preset = 0
 offset_right = 19.0
 offset_bottom = 19.0
 
-[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2/Life2"]
+[node name="LifePanel" type="PanelContainer" parent="UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2/Life2"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -709,15 +755,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ysbpt")
 
-[node name="Life3" type="Control" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+[node name="Life3" type="Control" parent="UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
 layout_mode = 2
 
-[node name="Life3" type="Control" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3"]
+[node name="Life3" type="Control" parent="UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3"]
 anchors_preset = 0
 offset_right = 19.0
 offset_bottom = 19.0
 
-[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3/Life3"]
+[node name="LifePanel" type="PanelContainer" parent="UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3/Life3"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -726,15 +772,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ysbpt")
 
-[node name="Life4" type="Control" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+[node name="Life4" type="Control" parent="UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+visible = false
 layout_mode = 2
 
-[node name="Life4" type="Control" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4"]
+[node name="Life4" type="Control" parent="UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4"]
 anchors_preset = 0
 offset_right = 19.0
 offset_bottom = 19.0
 
-[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4/Life4"]
+[node name="LifePanel" type="PanelContainer" parent="UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4/Life4"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0

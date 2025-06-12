@@ -14,8 +14,10 @@ var game : Node
 @export var play_area : Area3D
 @export var home_spawner : MultiplayerSpawner
 
+@export var player_uis : HBoxContainer
 @export var ui_player_names : Array[Label]
-@export var ui_scores : Array[Label]
+@export var ui_players_scores : Array[Label]
+@export var ui_player_lives : Array[HBoxContainer]
 
 var free_squares : Array[Node3D] = []
 var num_eggs : int
@@ -32,9 +34,12 @@ func _ready() -> void:
 
 func _set_up() -> void:
 	var used_squares : Array[Node3D] = []
+	
 	characters.spawn_players()
 	_connect_player_signals()
+	_create_player_UIs()
 	await get_tree().physics_frame
+	
 	used_squares = characters.spawn_enemies(used_squares)
 	used_squares = pick_ups.spawn_pick_ups(used_squares)
 	traps.spawn_traps()
@@ -43,7 +48,6 @@ func _set_up() -> void:
 
 func _connect_player_signals() -> void:
 	for player in characters.players:
-		#player.game_over.connect(game_over)
 		player.freeze_pick_up.connect(characters.freeze_enemies)
 		player.freeze_pick_up.connect(board.freeze_spawn_holes)
 		player.spawn_footprint.connect(spawn_footprint)
@@ -52,6 +56,14 @@ func _connect_player_signals() -> void:
 		
 		if player.is_multiplayer_authority():
 			camera.set_player(player)
+
+
+func _create_player_UIs() -> void:
+	for player_id in ENetNetwork.peers.keys():
+		var player_num := ENetNetwork.get_player_number(player_id)
+		player_uis.get_children()[player_num].visible = true
+		ui_player_names[player_num].text = ENetNetwork.peers[player_id]["name"]
+		ui_players_scores[player_num].text = "%012d" % 0
 
 
 func _spawn_eggs(used_squares : Array[Node3D]) -> void:
@@ -80,6 +92,10 @@ func get_rand_free_square(use_square := true) -> Node3D:
 	if use_square:
 		free_squares.erase(free_square)
 	return free_square
+
+
+func _add_score(player_num : int, score_value : int) -> void:
+	pass
 
 
 func spawn_footprint(character : CharacterBody3D, foot_down : bool) -> void:
