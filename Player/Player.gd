@@ -138,7 +138,7 @@ func _attack_ended() -> void:
 
 
 func give_score(score_value : int) -> void:
-	add_score.emit(multiplayer.get_unique_id(), score_value)
+	add_score.emit(get_multiplayer_authority(), score_value)
 
 
 @rpc("call_local", "any_peer")

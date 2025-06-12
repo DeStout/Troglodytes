@@ -119,6 +119,7 @@ func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 
 
 func _add_to_score(player_id : int, score_value : int) -> void:
+	print(player_id)
 	player_stats[player_id]["score"] += score_value
 	level.set_ui_score(player_id, player_stats[player_id]["score"])
 
