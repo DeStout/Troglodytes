@@ -33,7 +33,6 @@ func _ready() -> void:
 
 
 func _set_up() -> void:
-	print("setup")
 	var used_squares : Array[Node3D] = []
 	
 	characters.spawn_players()
