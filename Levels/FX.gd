@@ -25,12 +25,14 @@ func spawn_footprint(character : CharacterBody3D, foot_down : bool) -> void:
 
 func spawn_fire_ball(player : Player) -> void:
 	spawn_function = _spawn_fire_ball
-	spawn({"pos" : player.global_position, "move_dir" : player.move_dir})
+	spawn({"id" : player.get_multiplayer_authority(), \
+					"pos" : player.global_position, "move_dir" : player.move_dir})
 
 
 func _spawn_fire_ball(player_data : Dictionary) -> Node3D:
 	var fire_ball : Node3D = fire_ball_.instantiate()
 	fire_ball.position = player_data["pos"]
+	fire_ball.emitter_id = player_data["id"]
 	fire_ball.move_dir = player_data["move_dir"]
 	fire_ball.align_to_dir()
 	

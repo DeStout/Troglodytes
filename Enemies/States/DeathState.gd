@@ -18,7 +18,7 @@ func enter() -> void:
 	# Close the hole before character.die()
 	if character.spawn_hole:
 		character.spawn_hole.close()
-	
+	character.last_attacker.give_score(character.SCORE_VALUE)
 	if randi_range(0, 25) == 0:
 		wilheim.play()
 		await wilheim.finished

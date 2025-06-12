@@ -21,6 +21,7 @@ var speed := 3.0
 var move_dir : Utilities.DIRECTIONS = Utilities.DIRECTIONS.DOWN
 @export var wall_check : RayCast3D
 var death_dir : Utilities.DIRECTIONS
+var last_attacker : CharacterBody3D
 var target_square : Vector2
 
 var spawn_hole : Node3D
@@ -49,7 +50,8 @@ func _body_attackable(character : CharacterBody3D) -> void:
 			state_machine.current_state.attack()
 
 
-func attacked(attack_dir : int) -> void:
+func attacked(attacker : CharacterBody3D, attack_dir : int) -> void:
+	last_attacker = attacker
 	death_dir = attack_dir
 	if state_machine.current_state.has_method("attacked"):
 		state_machine.current_state.attacked()
@@ -69,7 +71,8 @@ func unfreeze() -> void:
 		state_machine.current_state.unfreeze()
 
 
-func burn() -> void:
+func burn(emitter_id : int) -> void:
+	last_attacker = characters.get_player_by_id(emitter_id)
 	if state_machine.current_state.has_method("burn"):
 		state_machine.current_state.burn()
 

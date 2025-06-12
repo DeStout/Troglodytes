@@ -14,8 +14,9 @@ func enter() -> void:
 	flame.visible = true
 	if character.spawn_hole:
 		character.spawn_hole.close()
+	character.last_attacker.give_score(character.SCORE_VALUE)
 	
-	_set_burn_tex.rpc()
+	_set_burn_texture.rpc()
 	
 	for sfx in burn_sfx:
 		sfx.play()
@@ -25,7 +26,7 @@ func enter() -> void:
 
 
 @rpc("authority", "call_local")
-func _set_burn_tex() -> void:
+func _set_burn_texture() -> void:
 	var burn_mat = StandardMaterial3D.new()
 	burn_mat.albedo_texture = burn_tex
 	character.body.set_surface_override_material(0, burn_mat)

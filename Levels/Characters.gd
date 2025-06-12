@@ -19,7 +19,7 @@ var respawn_tweens : Array[Tween]
 var freeze_time := 0.0
 @export var unfreeze_sfx : AudioStreamPlayer
 
-var player_stats : Dictionary[int, Array]
+var player_stats : Dictionary[int, Dictionary]
 
 
 func _ready() -> void:
@@ -85,7 +85,8 @@ func spawn_players() -> void:
 		if square_i + 1 <= ENetNetwork.peers.size():
 			var player = spawn(square_i)
 			player.name_label.visible = true if ENetNetwork.peers.size() > 1 else false
-			player_stats[player.get_multiplayer_authority()] = [0, 3]
+			player_stats[player.get_multiplayer_authority()] = \
+														{"score" : 0, "lives" : 3}
 			continue
 		player_squares[square_i].remove_from_group("PlayerSquares")
 
@@ -117,6 +118,11 @@ func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 	return used_squares
 
 
+func _add_to_score(player_id : int, score_value : int) -> void:
+	player_stats[player_id]["score"] += score_value
+	level.set_ui_score(player_id, player_stats[player_id]["score"])
+
+
 func _wait_for_free_square() -> Node3D:
 	while !level.has_free_square():
 		await get_tree().create_timer(0.5).timeout
@@ -133,6 +139,13 @@ func _wait_for_free_square() -> Node3D:
 
 func enemy_finished_spawning(spawn_square : Node3D) -> void:
 	level.set_square_free(spawn_square)
+
+
+func get_player_by_id(player_id : int) -> CharacterBody3D:
+	for player in players:
+		if player.get_multiplayer_authority() == player_id:
+			return player
+	return null
 
 
 func any_player_within_dist(check_pos : Vector3, min_dist : float) -> bool:

@@ -57,9 +57,6 @@ size = Vector3(10, 1, 10)
 
 [node name="Level2b" instance=ExtResource("1_dmp38")]
 
-[node name="Viewport" parent="LevelViewport" index="0"]
-size = Vector2i(1152, 550)
-
 [node name="Camera" parent="LevelViewport/Viewport" index="0"]
 margin_perc = Vector2(0.75, 0.6)
 
@@ -340,19 +337,19 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, 0.
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, 0.5, 10)
 
 [node name="HomeSquare22" type="Node3D" parent="Board/Squares/HomeSquares" index="22" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, 11)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10, 0.5, 11)
 
 [node name="HomeSquare23" type="Node3D" parent="Board/Squares/HomeSquares" index="23" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5, 11)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8, 0.5, 11)
 
 [node name="HomeSquare24" type="Node3D" parent="Board/Squares/HomeSquares" index="24" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, 11)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6, 0.5, 11)
 
 [node name="HomeSquare25" type="Node3D" parent="Board/Squares/HomeSquares" index="25" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 11)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.5, 11)
 
 [node name="HomeSquare26" type="Node3D" parent="Board/Squares/HomeSquares" index="26" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 11)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, 0.5, 11)
 
 [node name="HomeSquare44" type="Node3D" parent="Board/Squares/HomeSquares" index="27" groups=["HomeSquares"]]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0.5, 10)
@@ -364,13 +361,13 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0.5
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0.5, 6)
 
 [node name="HomeSquare29" type="Node3D" parent="Board/Squares/HomeSquares" index="30" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, 5)
 
 [node name="HomeSquare30" type="Node3D" parent="Board/Squares/HomeSquares" index="31" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0.5, 5)
 
 [node name="HomeSquare31" type="Node3D" parent="Board/Squares/HomeSquares" index="32" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, 5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 0.5, 5)
 
 [node name="HomeSquare32" type="Node3D" parent="Board/Squares/HomeSquares" index="33" groups=["HomeSquares"]]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0.5, 4)
@@ -382,13 +379,13 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0.
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0.5, 0)
 
 [node name="HomeSquare35" type="Node3D" parent="Board/Squares/HomeSquares" index="36" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.5, -1)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6, 0.5, -1)
 
 [node name="HomeSquare36" type="Node3D" parent="Board/Squares/HomeSquares" index="37" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.5, -1)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8, 0.5, -1)
 
 [node name="HomeSquare37" type="Node3D" parent="Board/Squares/HomeSquares" index="38" groups=["HomeSquares"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, -1)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10, 0.5, -1)
 
 [node name="HomeSquare38" type="Node3D" parent="Board/Squares/HomeSquares" index="39" groups=["HomeSquares"]]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11, 0.5, -2)

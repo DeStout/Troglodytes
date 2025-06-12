@@ -220,7 +220,7 @@ streams_count = 2
 stream_0/stream = ExtResource("9_fbd0n")
 stream_1/stream = ExtResource("10_myk7f")
 
-[node name="Level" type="Node3D" node_paths=PackedStringArray("board", "camera", "characters", "pick_ups", "traps", "eggs", "fx", "play_area", "home_spawner", "player_uis", "ui_player_names", "ui_players_scores", "ui_player_lives")]
+[node name="Level" type="Node3D" node_paths=PackedStringArray("board", "camera", "characters", "pick_ups", "traps", "eggs", "fx", "play_area", "home_spawner", "player_uis", "ui_player_names", "ui_player_scores", "ui_player_lives")]
 script = ExtResource("1_bwnv0")
 board = NodePath("Board")
 camera = NodePath("LevelViewport/Viewport/Camera")
@@ -233,7 +233,7 @@ play_area = NodePath("PlayArea")
 home_spawner = NodePath("Board/Squares/HomeSquares")
 player_uis = NodePath("UI/PlayerUIs")
 ui_player_names = [NodePath("UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/PlayerName"), NodePath("UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/PlayerName"), NodePath("UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/PlayerName"), NodePath("UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/PlayerName")]
-ui_players_scores = [NodePath("UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/Score"), NodePath("UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/Score"), NodePath("UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/Score"), NodePath("UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/Score")]
+ui_player_scores = [NodePath("UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/Score"), NodePath("UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/Score"), NodePath("UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/Score"), NodePath("UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/Score")]
 ui_player_lives = [NodePath("UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox"), NodePath("UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox"), NodePath("UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox"), NodePath("UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox")]
 metadata/_edit_vertical_guides_ = [1152.0]
 metadata/_edit_horizontal_guides_ = [550.0]

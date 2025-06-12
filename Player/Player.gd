@@ -112,7 +112,7 @@ func attack() -> void:
 			var collisions : Array = attack_cast.collision_result
 			for collision in collisions:
 				if collision.collider is Enemy:
-					collision.collider.attacked(move_dir)
+					collision.collider.attacked(self, move_dir)
 				elif collisions.has(Enemy):
 					print(collision.name)
 					pass
@@ -135,6 +135,10 @@ func _play_attack_sfx(sfx_path : NodePath) -> void:
 func _attack_ended() -> void:
 	if state_machine.current_state is AttackState:
 		state_machine.current_state.attack_finished()
+
+
+func give_score(score_value : int) -> void:
+	add_score.emit(multiplayer.get_unique_id(), score_value)
 
 
 @rpc("call_local", "any_peer")

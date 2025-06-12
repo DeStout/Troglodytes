@@ -3,7 +3,7 @@ class_name PickUp extends Node3D
 
 signal despawn
 
-const SCORE_VALUE := 50
+const SCORE_VALUE := 150
 
 enum EFFECTS { SPEED_UP, SLOW_DOWN, FIRE_POWER, FREEZE, INVINCIBLE, PINEAPPLE }
 @export var effect : EFFECTS = -1
@@ -26,14 +26,6 @@ func _ready() -> void:
 
 func _set_type() -> void:
 	match effect:
-		#EFFECTS.SPEED_UP:
-			#apply_effect = _effect_speed.bind(0.5)
-		#EFFECTS.SLOW_DOWN:
-			#apply_effect = _effect_speed.bind(-0.5)
-		#EFFECTS.FIRE_POWER:
-			#apply_effect = _give_fire_power
-		#EFFECTS.FREEZE:
-			#apply_effect = _apply_freeze
 		EFFECTS.INVINCIBLE:
 			apply_effect = _set_invincible
 		EFFECTS.PINEAPPLE:
@@ -47,6 +39,7 @@ func _collected(body : CharacterBody3D) -> void:
 		despawn_timer.stop()
 		_pick_up.rpc()
 		apply_effect.call(body)
+		body.give_score(SCORE_VALUE)
 		collision.call_deferred("set_disabled", true)
 		if sfx:
 			await sfx.finished

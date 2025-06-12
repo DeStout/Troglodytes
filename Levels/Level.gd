@@ -16,7 +16,7 @@ var game : Node
 
 @export var player_uis : HBoxContainer
 @export var ui_player_names : Array[Label]
-@export var ui_players_scores : Array[Label]
+@export var ui_player_scores : Array[Label]
 @export var ui_player_lives : Array[HBoxContainer]
 
 var free_squares : Array[Node3D] = []
@@ -33,6 +33,7 @@ func _ready() -> void:
 
 
 func _set_up() -> void:
+	print("setup")
 	var used_squares : Array[Node3D] = []
 	
 	characters.spawn_players()
@@ -48,6 +49,7 @@ func _set_up() -> void:
 
 func _connect_player_signals() -> void:
 	for player in characters.players:
+		player.add_score.connect(characters._add_to_score)
 		player.freeze_pick_up.connect(characters.freeze_enemies)
 		player.freeze_pick_up.connect(board.freeze_spawn_holes)
 		player.spawn_footprint.connect(spawn_footprint)
@@ -63,7 +65,7 @@ func _create_player_UIs() -> void:
 		var player_num := ENetNetwork.get_player_number(player_id)
 		player_uis.get_children()[player_num].visible = true
 		ui_player_names[player_num].text = ENetNetwork.peers[player_id]["name"]
-		ui_players_scores[player_num].text = "%012d" % 0
+		ui_player_scores[player_num].text = "%012d" % 0
 
 
 func _spawn_eggs(used_squares : Array[Node3D]) -> void:
@@ -74,6 +76,12 @@ func _spawn_eggs(used_squares : Array[Node3D]) -> void:
 		var egg = eggs.spawn(square.global_position + Vector3(0, 0.5, 0))
 		egg.collected.connect(egg_collected)
 	num_eggs = eggs.get_children().size()
+
+
+func set_player_stats(player_stats : Dictionary) -> void:
+	characters.player_stats = player_stats
+	for player_id in player_stats.keys():
+		set_ui_score(player_id, player_stats[player_id]["score"])
 
 
 func set_square_free(square : Node3D) -> void:
@@ -94,8 +102,9 @@ func get_rand_free_square(use_square := true) -> Node3D:
 	return free_square
 
 
-func _add_score(player_num : int, score_value : int) -> void:
-	pass
+func set_ui_score(player_id : int, score_value : int) -> void:
+	var score_text = "%012d" % score_value
+	ui_player_scores[ENetNetwork.get_player_number(player_id)].text = score_text
 
 
 func spawn_footprint(character : CharacterBody3D, foot_down : bool) -> void:
@@ -124,7 +133,7 @@ func _spawn_home() -> void:
 
 func level_complete() -> void:
 	level_clean_up()
-	game.load_next_level()
+	game.load_next_level(characters.player_stats)
 
 
 func level_clean_up() -> void:

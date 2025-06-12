@@ -39,11 +39,12 @@ func start_new_game() -> void:
 	level = level_spawner.spawn(level_num)
 
 
-func load_next_level() -> void:
+func load_next_level(player_stats : Dictionary) -> void:
 	level.queue_free()
 	level_num = min(levels.size() - 1, level_num + 1)
 	await level.tree_exited
-	level_spawner.spawn(level_num)
+	var next_level = level_spawner.spawn(level_num)
+	next_level.set_player_stats(player_stats)
 
 
 func _server_disconnected() -> void:

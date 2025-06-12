@@ -1,25 +1,39 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfanycyrikuxq"]
+[gd_scene load_steps=7 format=3 uid="uid://cfanycyrikuxq"]
 
-[ext_resource type="Material" uid="uid://vyxvhhf0hon" path="res://Player/Player_Mat.tres" id="1_hf3nf"]
+[ext_resource type="FontFile" uid="uid://dhw1gc0ml3wen" path="res://Menus/Fonts/Dinofans.ttf" id="1_8wueu"]
 [ext_resource type="Script" uid="uid://cb0eoph2pfe50" path="res://Levels/Props/Home.gd" id="2_maaha"]
 [ext_resource type="AudioStream" uid="uid://ca833wjm6212a" path="res://Levels/HomeSpawn.wav" id="3_fx8b0"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_mxnmf"]
-size = Vector3(0.9, 0.25, 0.25)
+[sub_resource type="TextMesh" id="TextMesh_68y70"]
+text = "Exit"
+font = ExtResource("1_8wueu")
+pixel_size = 0.04
+depth = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fx8b0"]
+albedo_color = Color(0.220118, 0.452031, 1, 1)
+rim_enabled = true
+rim_tint = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4eo0i"]
 size = Vector3(1, 0.25, 0.25)
 
-[node name="Home" type="MeshInstance3D" node_paths=PackedStringArray("timer")]
-mesh = SubResource("BoxMesh_mxnmf")
-surface_material_override/0 = ExtResource("1_hf3nf")
+[node name="Home" type="Node3D" node_paths=PackedStringArray("mesh", "timer", "spawn_sfx")]
 script = ExtResource("2_maaha")
+mesh = NodePath("Mesh")
 timer = NodePath("FlashTimer")
+spawn_sfx = NodePath("SpawnSFX")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("TextMesh_68y70")
+surface_material_override/0 = SubResource("StandardMaterial3D_fx8b0")
+
+[node name="Area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="Collision" type="CollisionShape3D" parent="Area"]
 shape = SubResource("BoxShape3D_4eo0i")
 
 [node name="FlashTimer" type="Timer" parent="."]
@@ -32,5 +46,5 @@ stream = ExtResource("3_fx8b0")
 volume_db = -20.0
 autoplay = true
 
-[connection signal="body_entered" from="Area3D" to="." method="player_entered"]
+[connection signal="body_entered" from="Area" to="." method="player_entered"]
 [connection signal="timeout" from="FlashTimer" to="." method="flash"]

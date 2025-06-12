@@ -3,7 +3,7 @@ extends Node3D
 
 const SPEED := 16.0
 
-#var emitter : Player
+var emitter_id : int
 var move_dir : Utilities.DIRECTIONS
 
 @export var collision : CollisionShape3D
@@ -32,7 +32,7 @@ func _body_collided(body : Node3D) -> void:
 		queue_free()
 		return
 	if body.has_method("burn"):
-		body.burn()
+		body.burn(emitter_id)
 		queue_free()
 
 

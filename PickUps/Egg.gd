@@ -30,11 +30,12 @@ func _process(delta: float) -> void:
 		mesh.position.y = pos_offset + AMPLITUDE * sin(time + time_offset)
 
 
-func _collected(body : CharacterBody3D) -> void:
-	if body is Player and multiplayer.is_server():
+func _collected(player : CharacterBody3D) -> void:
+	if player is Player and multiplayer.is_server():
 		pick_up_sfx.play()
 		mesh.visible = false
 		collision.call_deferred("set_disabled", true)
+		player.give_score(SCORE_VALUE)
 		collected.emit(self)
 		await pick_up_sfx.finished
 		queue_free()
