@@ -33,9 +33,11 @@ size = Vector3(20, 1, 4)
 
 [node name="Level3a" instance=ExtResource("1_xb24h")]
 
-[node name="Camera" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -11, 10, -4)
-size = 13.5
+[node name="Viewport" parent="LevelViewport" index="0"]
+size = Vector2i(1152, 550)
+
+[node name="Camera" parent="LevelViewport/Viewport" index="0"]
+margin_perc = Vector2(0.75, 0.6)
 
 [node name="Board" parent="." index="4"]
 spawn_path = NodePath("Ground")

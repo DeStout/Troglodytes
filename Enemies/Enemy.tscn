@@ -268,7 +268,7 @@ visible = false
 mesh = SubResource("SphereMesh_de0ly")
 
 [node name="LeftFootBone" type="BoneAttachment3D" parent="Enemy/Enemy1/Skeleton3D" index="1"]
-transform = Transform3D(1, -9.35095e-08, 4.19057e-07, -5.91567e-07, -0.487495, 0.873126, -2.33396e-09, -0.873126, -0.487495, -0.184363, 0.196411, -0.0225158)
+transform = Transform3D(1, -1.12907e-07, 4.47216e-07, -5.91567e-07, -0.487495, 0.873125, -2.33395e-09, -0.873126, -0.487495, -0.184363, 0.196411, -0.0225157)
 bone_name = "Foot.L"
 bone_idx = 6
 
@@ -276,7 +276,7 @@ bone_idx = 6
 transform = Transform3D(1, -1.42109e-14, 1.42109e-14, 2.95319e-14, 1, 0, 7.14984e-14, 2.98023e-08, 1, 5.96046e-08, 0.149298, -0.123785)
 
 [node name="RightFootBone" type="BoneAttachment3D" parent="Enemy/Enemy1/Skeleton3D" index="2"]
-transform = Transform3D(1, 9.35095e-08, -4.19057e-07, 5.91567e-07, -0.487495, 0.873126, 2.33396e-09, -0.873126, -0.487495, 0.184363, 0.196411, -0.0225158)
+transform = Transform3D(1, 1.12907e-07, -4.47216e-07, 5.91567e-07, -0.487495, 0.873125, 2.33395e-09, -0.873126, -0.487495, 0.184363, 0.196411, -0.0225157)
 bone_name = "Foot.R"
 bone_idx = 53
 

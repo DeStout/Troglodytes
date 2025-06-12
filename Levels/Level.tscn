@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://c7f7rd7ltauxf"]
+[gd_scene load_steps=30 format=3 uid="uid://c7f7rd7ltauxf"]
 
 [ext_resource type="Script" uid="uid://dwbxnol5sxdj" path="res://Levels/Level.gd" id="1_bwnv0"]
 [ext_resource type="Environment" uid="uid://bsgowgj65v2n4" path="res://Utilities/GEnv.tres" id="2_345ms"]
 [ext_resource type="Script" uid="uid://c2kw3luipogux" path="res://Levels/Board.gd" id="2_ah0qf"]
 [ext_resource type="Script" uid="uid://dh6svpcicndr1" path="res://Levels/Camera.gd" id="2_ht8ui"]
+[ext_resource type="Theme" uid="uid://csp5gvg4q0sb4" path="res://Utilities/MainTheme.tres" id="4_8b3wp"]
 [ext_resource type="Script" uid="uid://clpjegnt7rp85" path="res://Levels/HomeSpawns.gd" id="5_f8l1f"]
 [ext_resource type="Script" uid="uid://cd8sd1n0dx8dh" path="res://Levels/Characters.gd" id="6_wuvkx"]
 [ext_resource type="Script" uid="uid://dianiwfctiy1j" path="res://Levels/PickUps.gd" id="7_jjge0"]
@@ -15,16 +16,176 @@
 [ext_resource type="AudioStream" uid="uid://b2adamdl3fce5" path="res://Menus/BeachWaves.ogg" id="10_n6v67"]
 [ext_resource type="AudioStream" uid="uid://c1ibrkbrrcdwv" path="res://PickUps/SFX/IceUnfreeze.ogg" id="11_je7y7"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dhlr"]
+bg_color = Color(0, 0.125, 0.25, 0.501961)
+skew = Vector2(0.1, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.165333, 0.32, 0.501961)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_al8gi"]
+bg_color = Color(0, 0.506024, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.165733, 0.324219, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wywvs"]
+bg_color = Color(0, 0.506024, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.165733, 0.324219, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mwr5"]
+bg_color = Color(0, 0.506024, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.165733, 0.324219, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wkli"]
+bg_color = Color(0, 0.506024, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.165733, 0.324219, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2lpe"]
+bg_color = Color(0.25, 0.25, 0, 0.501961)
+skew = Vector2(0.1, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.32, 0.32, 0, 0.501961)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xtlnx"]
+bg_color = Color(1, 0.992607, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.32, 0.32, 0, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55ngp"]
+bg_color = Color(0.0375, 0.25, 0, 0.501961)
+skew = Vector2(0.1, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.048, 0.32, 0, 0.501961)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsskw"]
+bg_color = Color(0.146043, 1, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.048, 0.32, 0, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sdsxl"]
+bg_color = Color(0.146043, 1, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.048, 0.32, 0, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8b3wp"]
+bg_color = Color(0.25, 0, 0.216667, 0.501961)
+skew = Vector2(0.1, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.32, 0, 0.277333, 0.501961)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oqb7r"]
+bg_color = Color(1, 0, 0.869341, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.32, 0, 0.277333, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ysbpt"]
+bg_color = Color(1, 0, 0.869341, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.32, 0, 0.277333, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rjnlo"]
 playback_mode = 2
 streams_count = 2
 stream_0/stream = ExtResource("9_fbd0n")
 stream_1/stream = ExtResource("10_myk7f")
 
-[node name="Level" type="Node3D" node_paths=PackedStringArray("board", "camera", "characters", "pick_ups", "traps", "eggs", "fx", "play_area", "home_spawner")]
+[node name="Level" type="Node3D" node_paths=PackedStringArray("board", "camera", "characters", "pick_ups", "traps", "eggs", "fx", "play_area", "home_spawner", "ui_player_names", "ui_scores")]
 script = ExtResource("1_bwnv0")
 board = NodePath("Board")
-camera = NodePath("Camera")
+camera = NodePath("LevelViewport/Viewport/Camera")
 characters = NodePath("Characters")
 pick_ups = NodePath("PickUps")
 traps = NodePath("Traps")
@@ -32,75 +193,29 @@ eggs = NodePath("Eggs")
 fx = NodePath("FX")
 play_area = NodePath("PlayArea")
 home_spawner = NodePath("Board/Squares/HomeSquares")
+ui_player_names = [NodePath("UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/PlayerName"), NodePath("UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/PlayerName"), NodePath("UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/PlayerName"), NodePath("UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/PlayerName")]
+ui_scores = [NodePath("UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Score"), NodePath("UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Score"), NodePath("UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Score"), NodePath("UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Score")]
+metadata/_edit_vertical_guides_ = [1152.0]
+metadata/_edit_horizontal_guides_ = [550.0]
 
-[node name="UIBoard1" type="ColorRect" parent="."]
-visible = false
-custom_minimum_size = Vector2(256, 76)
+[node name="LevelViewport" type="SubViewportContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 120.0
-offset_top = 557.0
-offset_right = -776.0
-offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.121094, 0.121094, 0.121094, 1)
+mouse_filter = 2
+stretch = true
 
-[node name="UIBoard2" type="ColorRect" parent="UIBoard1"]
-custom_minimum_size = Vector2(244, 64)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 6.0
-offset_right = -6.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.753906, 0.616073, 0.493017, 1)
+[node name="Viewport" type="SubViewport" parent="LevelViewport"]
+handle_input_locally = false
+scaling_3d_scale = 2.0
+texture_mipmap_bias = -2.0
+sdf_scale = 0
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
 
-[node name="Score" type="Label" parent="UIBoard1/UIBoard2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 4.0
-offset_right = 6.0
-offset_bottom = -32.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Score: 0"
-
-[node name="Lives" type="Label" parent="UIBoard1/UIBoard2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 35.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Lives: 2"
-vertical_alignment = 2
-
-[node name="Env" type="WorldEnvironment" parent="."]
-environment = ExtResource("2_345ms")
-
-[node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.83998, -0.469921, 0.271309, -1.01783e-08, 0.499999, 0.866026, -0.542617, -0.727445, 0.41999, 0, 0, 0)
-light_color = Color(1, 0.804167, 0.75, 1)
-light_angular_distance = 0.5
-shadow_enabled = true
-shadow_blur = 4.905
-directional_shadow_split_1 = 0.009
-
-[node name="Camera" type="Camera3D" parent="."]
+[node name="Camera" type="Camera3D" parent="LevelViewport/Viewport"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8.32341, 9.46478)
 projection = 1
 current = true
@@ -108,6 +223,537 @@ fov = 33.0
 size = 12.0
 far = 50.0
 script = ExtResource("2_ht8ui")
+margin_perc = Vector2(0.5, 0.5)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchor_top = 0.849
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.152039
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="Player1" type="PanelContainer" parent="UI/HBoxContainer"]
+custom_minimum_size = Vector2(283, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6dhlr")
+
+[node name="PlayerUI" type="Control" parent="UI/HBoxContainer/Player1"]
+layout_mode = 2
+
+[node name="PlayerUIBox" type="VBoxContainer" parent="UI/HBoxContainer/Player1/PlayerUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 4.0
+offset_right = -19.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PlayerName" type="Label" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_8b3wp")
+theme_override_colors/font_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "Player 1"
+
+[node name="Score" type="Label" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_8b3wp")
+theme_override_colors/font_color = Color(0, 0.506024, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.165733, 0.324219, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "Score: 999,999,999"
+
+[node name="Lives" type="Control" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LivesHBox" type="HBoxContainer" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.008
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.104
+grow_horizontal = 2
+theme_override_constants/separation = 25
+
+[node name="Life1" type="Control" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+layout_mode = 2
+
+[node name="Life2" type="Control" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1"]
+anchors_preset = 0
+offset_right = 19.0
+offset_bottom = 19.0
+
+[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1/Life2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_al8gi")
+
+[node name="Life2" type="Control" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+layout_mode = 2
+
+[node name="Life2" type="Control" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2"]
+anchors_preset = 0
+offset_right = 19.0
+offset_bottom = 19.0
+
+[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2/Life2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wywvs")
+
+[node name="Life3" type="Control" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+layout_mode = 2
+
+[node name="Life3" type="Control" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3"]
+anchors_preset = 0
+offset_right = 19.0
+offset_bottom = 19.0
+
+[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3/Life3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8mwr5")
+
+[node name="Life4" type="Control" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+layout_mode = 2
+
+[node name="Life4" type="Control" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4"]
+anchors_preset = 0
+offset_right = 19.0
+offset_bottom = 19.0
+
+[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4/Life4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3wkli")
+
+[node name="Player2" type="PanelContainer" parent="UI/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(283, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v2lpe")
+
+[node name="PlayerUI" type="Control" parent="UI/HBoxContainer/Player2"]
+layout_mode = 2
+
+[node name="PlayerUIBox" type="VBoxContainer" parent="UI/HBoxContainer/Player2/PlayerUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 4.0
+offset_right = -19.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PlayerName" type="Label" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_8b3wp")
+theme_override_colors/font_color = Color(1, 0.992607, 0, 1)
+theme_override_colors/font_outline_color = Color(0.32, 0.32, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "Player 2"
+
+[node name="Score" type="Label" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_8b3wp")
+theme_override_colors/font_color = Color(1, 0.992607, 0, 1)
+theme_override_colors/font_outline_color = Color(0.32, 0.32, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "Score: 999,999,999"
+
+[node name="Lives" type="Control" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LivesHBox" type="HBoxContainer" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.008
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.104
+grow_horizontal = 2
+theme_override_constants/separation = 25
+
+[node name="Life1" type="Control" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+layout_mode = 2
+
+[node name="Life2" type="Control" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1"]
+anchors_preset = 0
+offset_right = 19.0
+offset_bottom = 19.0
+
+[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1/Life2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xtlnx")
+
+[node name="Life2" type="Control" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+layout_mode = 2
+
+[node name="Life2" type="Control" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2"]
+anchors_preset = 0
+offset_right = 19.0
+offset_bottom = 19.0
+
+[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2/Life2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xtlnx")
+
+[node name="Life3" type="Control" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+layout_mode = 2
+
+[node name="Life3" type="Control" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3"]
+anchors_preset = 0
+offset_right = 19.0
+offset_bottom = 19.0
+
+[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3/Life3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xtlnx")
+
+[node name="Life4" type="Control" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+layout_mode = 2
+
+[node name="Life4" type="Control" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4"]
+anchors_preset = 0
+offset_right = 19.0
+offset_bottom = 19.0
+
+[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4/Life4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xtlnx")
+
+[node name="Player3" type="PanelContainer" parent="UI/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(283, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_55ngp")
+
+[node name="PlayerUI" type="Control" parent="UI/HBoxContainer/Player3"]
+layout_mode = 2
+
+[node name="PlayerUIBox" type="VBoxContainer" parent="UI/HBoxContainer/Player3/PlayerUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 4.0
+offset_right = -19.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PlayerName" type="Label" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_8b3wp")
+theme_override_colors/font_color = Color(0.146043, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0.048, 0.32, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "Player 3"
+
+[node name="Score" type="Label" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_8b3wp")
+theme_override_colors/font_color = Color(0.146043, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0.048, 0.32, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "Score: 999,999,999"
+
+[node name="Lives" type="Control" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LivesHBox" type="HBoxContainer" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.008
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.104
+grow_horizontal = 2
+theme_override_constants/separation = 25
+
+[node name="Life1" type="Control" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+layout_mode = 2
+
+[node name="Life2" type="Control" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1"]
+anchors_preset = 0
+offset_right = 19.0
+offset_bottom = 19.0
+
+[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1/Life2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jsskw")
+
+[node name="Life2" type="Control" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+layout_mode = 2
+
+[node name="Life2" type="Control" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2"]
+anchors_preset = 0
+offset_right = 19.0
+offset_bottom = 19.0
+
+[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2/Life2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sdsxl")
+
+[node name="Life3" type="Control" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+layout_mode = 2
+
+[node name="Life3" type="Control" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3"]
+anchors_preset = 0
+offset_right = 19.0
+offset_bottom = 19.0
+
+[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3/Life3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sdsxl")
+
+[node name="Life4" type="Control" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+layout_mode = 2
+
+[node name="Life4" type="Control" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4"]
+anchors_preset = 0
+offset_right = 19.0
+offset_bottom = 19.0
+
+[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4/Life4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sdsxl")
+
+[node name="Player4" type="PanelContainer" parent="UI/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(283, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8b3wp")
+
+[node name="PlayerUI" type="Control" parent="UI/HBoxContainer/Player4"]
+layout_mode = 2
+
+[node name="PlayerUIBox" type="VBoxContainer" parent="UI/HBoxContainer/Player4/PlayerUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 4.0
+offset_right = -19.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PlayerName" type="Label" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_8b3wp")
+theme_override_colors/font_color = Color(1, 0, 0.869341, 1)
+theme_override_colors/font_outline_color = Color(0.32, 0, 0.277333, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "Player 4"
+
+[node name="Score" type="Label" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_8b3wp")
+theme_override_colors/font_color = Color(1, 0, 0.869341, 1)
+theme_override_colors/font_outline_color = Color(0.32, 0, 0.277333, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "Score: 999,999,999"
+
+[node name="Lives" type="Control" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LivesHBox" type="HBoxContainer" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.008
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.104
+grow_horizontal = 2
+theme_override_constants/separation = 25
+
+[node name="Life1" type="Control" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+layout_mode = 2
+
+[node name="Life2" type="Control" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1"]
+anchors_preset = 0
+offset_right = 19.0
+offset_bottom = 19.0
+
+[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1/Life2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oqb7r")
+
+[node name="Life2" type="Control" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+layout_mode = 2
+
+[node name="Life2" type="Control" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2"]
+anchors_preset = 0
+offset_right = 19.0
+offset_bottom = 19.0
+
+[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2/Life2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ysbpt")
+
+[node name="Life3" type="Control" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+layout_mode = 2
+
+[node name="Life3" type="Control" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3"]
+anchors_preset = 0
+offset_right = 19.0
+offset_bottom = 19.0
+
+[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3/Life3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ysbpt")
+
+[node name="Life4" type="Control" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+layout_mode = 2
+
+[node name="Life4" type="Control" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4"]
+anchors_preset = 0
+offset_right = 19.0
+offset_bottom = 19.0
+
+[node name="LifePanel" type="PanelContainer" parent="UI/HBoxContainer/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4/Life4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ysbpt")
+
+[node name="Env" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_345ms")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.83998, -0.469921, 0.271309, -1.01783e-08, 0.499999, 0.866026, -0.542617, -0.727445, 0.41999, 0, 0, 0)
+layers = 5
+light_color = Color(1, 0.804167, 0.75, 1)
+light_angular_distance = 0.5
+shadow_enabled = true
+shadow_blur = 4.905
+directional_shadow_split_1 = 0.009
 
 [node name="Board" type="MultiplayerSpawner" parent="." node_paths=PackedStringArray("characters", "egg_squares", "home_squares", "walls")]
 script = ExtResource("2_ah0qf")
@@ -160,7 +806,6 @@ spawn_path = NodePath(".")
 script = ExtResource("7_rjnlo")
 
 [node name="FX" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Player/FireBall.tscn")
 spawn_path = NodePath(".")
 script = ExtResource("8_hbkgd")
 
@@ -187,5 +832,5 @@ parameters/looping = true
 stream = ExtResource("11_je7y7")
 volume_db = -10.0
 
-[connection signal="spawned" from="Characters" to="Camera" method="set_player"]
+[connection signal="spawned" from="Characters" to="LevelViewport/Viewport/Camera" method="set_player"]
 [connection signal="body_exited" from="PlayArea" to="Characters" method="character_exited"]

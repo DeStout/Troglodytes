@@ -6,8 +6,6 @@ var home_ := load("res://Levels/Props/Home.tscn")
 var game : Node
 @export var board : MultiplayerSpawner
 @export var camera : Camera3D
-@export var ui_score : Label
-@export var ui_lives : Label
 @export var characters : MultiplayerSpawner
 @export var pick_ups : MultiplayerSpawner
 @export var traps : MultiplayerSpawner
@@ -15,6 +13,9 @@ var game : Node
 @export var fx : MultiplayerSpawner
 @export var play_area : Area3D
 @export var home_spawner : MultiplayerSpawner
+
+@export var ui_player_names : Array[Label]
+@export var ui_scores : Array[Label]
 
 var free_squares : Array[Node3D] = []
 var num_eggs : int
@@ -56,9 +57,6 @@ func _connect_player_signals() -> void:
 func _spawn_eggs(used_squares : Array[Node3D]) -> void:
 	var egg_squares := get_tree().get_nodes_in_group("EggSquares")
 	for square in egg_squares:
-		#if Utilities.v3_to_v2(square.global_position) == \
-							#Utilities.v3_to_v2(characters.player.global_position):
-			#continue
 		if used_squares.has(square) or square.is_in_group("PlayerSquares"):
 			continue
 		var egg = eggs.spawn(square.global_position + Vector3(0, 0.5, 0))
