@@ -62,9 +62,9 @@ size = Vector3(18, 1, 14)
 
 [node name="Level1a" instance=ExtResource("1_dl8mf")]
 
-[node name="Camera" parent="LevelViewport/Viewport" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8.32341, 8.8464)
-size = 12.5
+[node name="Camera" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8.32341, 9.55288)
+size = 13.5
 camera_locked = true
 
 [node name="Board" parent="." index="4"]

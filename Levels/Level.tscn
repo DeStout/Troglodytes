@@ -53,6 +53,54 @@ properties/10/replication_mode = 2
 properties/11/path = NodePath("PlayerUIs/Player4:visible")
 properties/11/spawn = true
 properties/11/replication_mode = 2
+properties/12/path = NodePath("PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1:visible")
+properties/12/spawn = true
+properties/12/replication_mode = 2
+properties/13/path = NodePath("PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2:visible")
+properties/13/spawn = true
+properties/13/replication_mode = 2
+properties/14/path = NodePath("PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3:visible")
+properties/14/spawn = true
+properties/14/replication_mode = 2
+properties/15/path = NodePath("PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4:visible")
+properties/15/spawn = true
+properties/15/replication_mode = 2
+properties/16/path = NodePath("PlayerUIs/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1:visible")
+properties/16/spawn = true
+properties/16/replication_mode = 2
+properties/17/path = NodePath("PlayerUIs/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2:visible")
+properties/17/spawn = true
+properties/17/replication_mode = 2
+properties/18/path = NodePath("PlayerUIs/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3:visible")
+properties/18/spawn = true
+properties/18/replication_mode = 2
+properties/19/path = NodePath("PlayerUIs/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4:visible")
+properties/19/spawn = true
+properties/19/replication_mode = 2
+properties/20/path = NodePath("PlayerUIs/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1:visible")
+properties/20/spawn = true
+properties/20/replication_mode = 2
+properties/21/path = NodePath("PlayerUIs/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2:visible")
+properties/21/spawn = true
+properties/21/replication_mode = 2
+properties/22/path = NodePath("PlayerUIs/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3:visible")
+properties/22/spawn = true
+properties/22/replication_mode = 2
+properties/23/path = NodePath("PlayerUIs/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4:visible")
+properties/23/spawn = true
+properties/23/replication_mode = 2
+properties/24/path = NodePath("PlayerUIs/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life1:visible")
+properties/24/spawn = true
+properties/24/replication_mode = 2
+properties/25/path = NodePath("PlayerUIs/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life2:visible")
+properties/25/spawn = true
+properties/25/replication_mode = 2
+properties/26/path = NodePath("PlayerUIs/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life3:visible")
+properties/26/spawn = true
+properties/26/replication_mode = 2
+properties/27/path = NodePath("PlayerUIs/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox/Life4:visible")
+properties/27/spawn = true
+properties/27/replication_mode = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dhlr"]
 bg_color = Color(0, 0.125, 0.25, 0.501961)
@@ -223,7 +271,7 @@ stream_1/stream = ExtResource("10_myk7f")
 [node name="Level" type="Node3D" node_paths=PackedStringArray("board", "camera", "characters", "pick_ups", "traps", "eggs", "fx", "play_area", "home_spawner", "player_uis", "ui_player_names", "ui_player_scores", "ui_player_lives")]
 script = ExtResource("1_bwnv0")
 board = NodePath("Board")
-camera = NodePath("LevelViewport/Viewport/Camera")
+camera = NodePath("Camera")
 characters = NodePath("Characters")
 pick_ups = NodePath("PickUps")
 traps = NodePath("Traps")
@@ -238,33 +286,6 @@ ui_player_lives = [NodePath("UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives/Liv
 metadata/_edit_vertical_guides_ = [1152.0]
 metadata/_edit_horizontal_guides_ = [550.0]
 
-[node name="LevelViewport" type="SubViewportContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-stretch = true
-
-[node name="Viewport" type="SubViewport" parent="LevelViewport"]
-handle_input_locally = false
-scaling_3d_scale = 2.0
-texture_mipmap_bias = -2.0
-sdf_scale = 0
-size = Vector2i(1152, 648)
-render_target_update_mode = 4
-
-[node name="Camera" type="Camera3D" parent="LevelViewport/Viewport"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8.32341, 9.46478)
-projection = 1
-current = true
-fov = 33.0
-size = 12.0
-far = 50.0
-script = ExtResource("2_ht8ui")
-margin_perc = Vector2(0.5, 0.5)
-
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchor_top = 0.849
@@ -275,7 +296,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="UI"]
+[node name="UISynchronizer" type="MultiplayerSynchronizer" parent="UI"]
 replication_config = SubResource("SceneReplicationConfig_v2lpe")
 
 [node name="PlayerUIs" type="HBoxContainer" parent="UI"]
@@ -393,6 +414,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wywvs")
 
 [node name="Life3" type="Control" parent="UI/PlayerUIs/Player1/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 
@@ -535,6 +557,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xtlnx")
 
 [node name="Life3" type="Control" parent="UI/PlayerUIs/Player2/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 
@@ -677,6 +700,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sdsxl")
 
 [node name="Life3" type="Control" parent="UI/PlayerUIs/Player3/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 
@@ -819,6 +843,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ysbpt")
 
 [node name="Life3" type="Control" parent="UI/PlayerUIs/Player4/PlayerUI/PlayerUIBox/Lives/LivesHBox"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 
@@ -870,6 +895,16 @@ light_angular_distance = 0.5
 shadow_enabled = true
 shadow_blur = 4.905
 directional_shadow_split_1 = 0.009
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8.32341, 9.46478)
+projection = 1
+current = true
+fov = 33.0
+size = 12.0
+far = 50.0
+script = ExtResource("2_ht8ui")
+margin_perc = Vector2(0.5, 0.5)
 
 [node name="Board" type="MultiplayerSpawner" parent="." node_paths=PackedStringArray("characters", "egg_squares", "home_squares", "walls")]
 script = ExtResource("2_ah0qf")
@@ -948,5 +983,5 @@ parameters/looping = true
 stream = ExtResource("11_je7y7")
 volume_db = -10.0
 
-[connection signal="spawned" from="Characters" to="LevelViewport/Viewport/Camera" method="set_player"]
+[connection signal="spawned" from="Characters" to="Camera" method="set_player"]
 [connection signal="body_exited" from="PlayArea" to="Characters" method="character_exited"]

@@ -2,7 +2,7 @@ extends MultiplayerSpawner
 
 
 const INIT_LIVES := 3
-const MAX_LIVES := 4
+const MAX_LIVES := 5
 const RESPAWN_DELAY := Vector2(2.0, 6.0)
 
 var player_ := load("res://Player/Player.tscn")
@@ -86,7 +86,9 @@ func spawn_players() -> void:
 			var player = spawn(square_i)
 			player.name_label.visible = true if ENetNetwork.peers.size() > 1 else false
 			player_stats[player.get_multiplayer_authority()] = \
-														{"score" : 0, "lives" : 3}
+												{"score" : 0, "lives" : INIT_LIVES}
+			level.set_ui_lives(player.get_multiplayer_authority(), \
+						player_stats[player.get_multiplayer_authority()]["lives"])
 			continue
 		player_squares[square_i].remove_from_group("PlayerSquares")
 
@@ -121,6 +123,18 @@ func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 func _add_to_score(player_id : int, score_value : int) -> void:
 	player_stats[player_id]["score"] += score_value
 	level.set_ui_score(player_id, player_stats[player_id]["score"])
+
+
+# Signaled from Player.subtract_life()
+func _add_subtract_life(player_id : int, add_life : bool) -> void:
+	var delta_life = int(add_life) * 2 - 1
+	var player_lives = player_stats[player_id]["lives"]
+	player_lives = clamp(player_lives + delta_life, 0, MAX_LIVES)
+	player_stats[player_id]["lives"] = player_lives
+	if player_lives == 0:
+		_remove_defeated_player(player_id)
+		return
+	level.set_ui_lives(player_id, player_lives)
 
 
 func _wait_for_free_square() -> Node3D:
@@ -214,3 +228,14 @@ func character_exited(character : CharacterBody3D) -> void:
 			if current_state is DeathState or current_state is BurnState:
 				return
 			character.die()
+
+
+func _remove_defeated_player(player_id : int) -> void:
+	if ENetNetwork.peers.size() <= 1:
+		level.game_over()
+	else:
+		var player = get_player_by_id(player_id)
+		players.erase(player)
+		player.queue_free()
+		if !players.size():
+			ENetNetwork.quit_game.rpc()

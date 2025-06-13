@@ -4,6 +4,7 @@ class_name Player extends CharacterBody3D
 @export var debug_target : MeshInstance3D
 
 signal add_score
+signal delta_life
 signal spawn_footprint
 signal freeze_pick_up
 signal spawn_fire_ball
@@ -200,6 +201,9 @@ func attacked() -> void:
 
 @rpc("call_local", "any_peer")
 func exit_stage() -> void:
+	if is_queued_for_deletion():
+		return
+	
 	if !invincible_timer.time_left:
 		die()
 	else:
@@ -226,7 +230,15 @@ func pit_fall(pit_path : NodePath) -> void:
 
 
 func die() -> void:
+	add_subtract_life.rpc_id(1, false)
 	respawn()
+
+
+@rpc("authority", "call_local", "reliable")
+func add_subtract_life(add_life : bool) -> void:
+	if multiplayer.is_server():
+		# Signal to characters._subtract_life()
+		delta_life.emit(get_multiplayer_authority(), add_life)
 
 
 func respawn() -> void:

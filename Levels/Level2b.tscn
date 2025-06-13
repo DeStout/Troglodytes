@@ -57,13 +57,13 @@ size = Vector3(10, 1, 10)
 
 [node name="Level2b" instance=ExtResource("1_dmp38")]
 
-[node name="Camera" parent="LevelViewport/Viewport" index="0"]
+[node name="Camera" parent="." index="1"]
 margin_perc = Vector2(0.75, 0.6)
 
-[node name="Sun" parent="." index="3"]
+[node name="Sun" parent="." index="4"]
 transform = Transform3D(0.83998, -0.469921, 0.271308, -1.01783e-08, 0.499999, 0.866026, -0.542617, -0.727445, 0.419989, 0, 7.81542, 3.05087)
 
-[node name="Board" parent="." index="4"]
+[node name="Board" parent="." index="5"]
 spawn_path = NodePath("Ground")
 
 [node name="Ground" type="MeshInstance3D" parent="Board" index="0"]
@@ -1825,18 +1825,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
 [node name="Water34" parent="Board/Water/WaterRow19" index="20" instance=ExtResource("6_ppn4f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
-[node name="Characters" parent="." index="5"]
+[node name="Characters" parent="." index="6"]
 num_enemies = 6
 
-[node name="PickUps" parent="." index="6"]
+[node name="PickUps" parent="." index="7"]
 num_pick_ups = 5
 level_pick_ups = Array[int]([0, 1, 3, 4])
 
-[node name="Traps" parent="." index="7"]
+[node name="Traps" parent="." index="8"]
 num_traps = 2
 level_traps = Array[int]([0])
 
-[node name="PlayArea" parent="." index="10"]
+[node name="PlayArea" parent="." index="11"]
 visible = false
 
 [node name="Collision1" type="CollisionShape3D" parent="PlayArea" index="0"]

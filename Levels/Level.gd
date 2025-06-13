@@ -49,6 +49,7 @@ func _set_up() -> void:
 func _connect_player_signals() -> void:
 	for player in characters.players:
 		player.add_score.connect(characters._add_to_score)
+		player.delta_life.connect(characters._add_subtract_life)
 		player.freeze_pick_up.connect(characters.freeze_enemies)
 		player.freeze_pick_up.connect(board.freeze_spawn_holes)
 		player.spawn_footprint.connect(spawn_footprint)
@@ -77,10 +78,11 @@ func _spawn_eggs(used_squares : Array[Node3D]) -> void:
 	num_eggs = eggs.get_children().size()
 
 
-func set_player_stats(player_stats : Dictionary) -> void:
+func set_start_player_stats(player_stats : Dictionary) -> void:
 	characters.player_stats = player_stats
 	for player_id in player_stats.keys():
 		set_ui_score(player_id, player_stats[player_id]["score"])
+		set_ui_lives(player_id, player_stats[player_id]["lives"])
 
 
 func set_square_free(square : Node3D) -> void:
@@ -104,6 +106,14 @@ func get_rand_free_square(use_square := true) -> Node3D:
 func set_ui_score(player_id : int, score_value : int) -> void:
 	var score_text = "%012d" % score_value
 	ui_player_scores[ENetNetwork.get_player_number(player_id)].text = score_text
+
+
+func set_ui_lives(player_id : int, lives_amount : int) -> void:
+	var player_num = ENetNetwork.get_player_number(player_id)
+	var ui_lives := ui_player_lives[player_num].get_children()
+	for life_num in range(ui_lives.size()):
+		var life_ui = ui_lives[life_num]
+		life_ui.visible = true if life_num + 1 < lives_amount else false
 
 
 func spawn_footprint(character : CharacterBody3D, foot_down : bool) -> void:
@@ -139,3 +149,7 @@ func level_clean_up() -> void:
 	for connection in play_area.body_exited.get_connections():
 		play_area.body_exited.disconnect(connection["callable"])
 	board.level_complete_clean_up()
+
+
+func game_over() -> void:
+	game.quit_to_main()

@@ -44,7 +44,7 @@ func load_next_level(player_stats : Dictionary) -> void:
 	level_num = min(levels.size() - 1, level_num + 1)
 	await level.tree_exited
 	var next_level = level_spawner.spawn(level_num)
-	next_level.set_player_stats(player_stats)
+	next_level.set_start_player_stats(player_stats)
 
 
 func _server_disconnected() -> void:
