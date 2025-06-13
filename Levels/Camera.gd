@@ -20,6 +20,7 @@ func set_player(new_player : CharacterBody3D) -> void:
 	if !(new_player is Player) or !new_player.is_multiplayer_authority():
 		return
 	player = new_player
+	
 	if camera_locked:
 		return
 	

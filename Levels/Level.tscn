@@ -287,6 +287,7 @@ metadata/_edit_vertical_guides_ = [1152.0]
 metadata/_edit_horizontal_guides_ = [550.0]
 
 [node name="UI" type="Control" parent="."]
+z_index = 2
 layout_mode = 3
 anchor_top = 0.849
 anchor_right = 1.0

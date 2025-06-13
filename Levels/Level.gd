@@ -2,6 +2,7 @@ class_name Level extends Node3D
 
 
 var home_ := load("res://Levels/Props/Home.tscn")
+var game_over_ := load("res://Levels/GameOver.tscn")
 
 var game : Node
 @export var board : MultiplayerSpawner
@@ -145,11 +146,14 @@ func level_complete() -> void:
 	game.load_next_level(characters.player_stats)
 
 
+@rpc("authority", "call_local", "reliable")
+func game_over() -> void:
+	var game_over = game_over_.instantiate()
+	game_over.game = game
+	add_child(game_over)
+
+
 func level_clean_up() -> void:
 	for connection in play_area.body_exited.get_connections():
 		play_area.body_exited.disconnect(connection["callable"])
 	board.level_complete_clean_up()
-
-
-func game_over() -> void:
-	game.quit_to_main()
