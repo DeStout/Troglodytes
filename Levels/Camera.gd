@@ -1,5 +1,6 @@
 extends Camera3D
 
+@export var characters : MultiplayerSpawner
 @export var camera_locked := false
 @export var camera_x_centered := false
 @export var camera_y_centered := false
@@ -8,6 +9,7 @@ var w_margins : Vector2
 var h_margins : Vector2
 @export var margin_perc := Vector2(0.75, 0.65)
 var player : Player
+var spectating := false
 
 
 func _ready() -> void:
@@ -16,8 +18,14 @@ func _ready() -> void:
 	h_margins = Vector2((1.0 - margin_perc.y) * viewport_size.y, margin_perc.y * viewport_size.y)
 
 
-func set_player(new_player : CharacterBody3D) -> void:
-	if !(new_player is Player) or !new_player.is_multiplayer_authority():
+func _input(event: InputEvent) -> void:
+	if !spectating:
+		return
+
+
+func set_player(new_player : CharacterBody3D, is_spectate := false) -> void:
+	if !new_player is Player or \
+						(!new_player.is_multiplayer_authority() and !is_spectate):
 		return
 	player = new_player
 	
@@ -37,7 +45,6 @@ func set_player(new_player : CharacterBody3D) -> void:
 	var temp_plane = Plane(Vector3.UP)
 	var cam_pos = temp_plane.intersects_ray(project_ray_origin(project_pos), 
 												project_ray_normal(Vector2.ZERO))
-	print("%s\n%s\n%s\n" % ["%s %s" % [w_margins, h_margins], project_pos, cam_pos])
 	if !camera_x_centered:
 		global_position.x -= cam_pos.x - player.global_position.x
 	if !camera_y_centered:
@@ -47,9 +54,9 @@ func set_player(new_player : CharacterBody3D) -> void:
 
 
 func _process(delta: float) -> void:
-	if !player or !is_inside_tree():
+	if !player or !player.is_inside_tree() or !is_inside_tree():
 		return
-		
+	
 	var viewport_pos := unproject_position(player.global_position)
 	if !camera_x_centered and (w_margins.x > viewport_pos.x or w_margins.y < viewport_pos.x):
 		position.x += player.speed * sign(viewport_pos.x - viewport_size.x / 2) * delta

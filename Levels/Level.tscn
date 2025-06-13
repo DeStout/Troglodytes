@@ -897,7 +897,7 @@ shadow_enabled = true
 shadow_blur = 4.905
 directional_shadow_split_1 = 0.009
 
-[node name="Camera" type="Camera3D" parent="."]
+[node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("characters")]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8.32341, 9.46478)
 projection = 1
 current = true
@@ -905,6 +905,7 @@ fov = 33.0
 size = 12.0
 far = 50.0
 script = ExtResource("2_ht8ui")
+characters = NodePath("../Characters")
 margin_perc = Vector2(0.5, 0.5)
 
 [node name="Board" type="MultiplayerSpawner" parent="." node_paths=PackedStringArray("characters", "egg_squares", "home_squares", "walls")]

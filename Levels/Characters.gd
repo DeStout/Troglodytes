@@ -144,6 +144,9 @@ func _remove_defeated_player(player_id : int) -> void:
 	
 	if !players.size():
 		level.game_over.rpc()
+		return
+	
+	level.set_spectating.rpc(player_id, players[0].get_multiplayer_authority())
 
 
 func _wait_for_free_square() -> Node3D:
@@ -166,6 +169,8 @@ func enemy_finished_spawning(spawn_square : Node3D) -> void:
 
 func get_player_by_id(player_id : int) -> CharacterBody3D:
 	for player in players:
+		if !player:
+			continue
 		if player.get_multiplayer_authority() == player_id:
 			return player
 	return null

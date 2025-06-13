@@ -141,6 +141,12 @@ func _spawn_home() -> void:
 	home_spawner.spawn(home_num)
 
 
+@rpc("authority", "call_local", "reliable")
+func set_spectating(dead_player_id, spec_player_id) -> void:
+	if camera.player.get_multiplayer_authority() == dead_player_id:
+		camera.set_player(characters.get_player_by_id(spec_player_id), true)
+
+
 func level_complete() -> void:
 	level_clean_up()
 	game.load_next_level(characters.player_stats)
