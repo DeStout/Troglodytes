@@ -84,7 +84,7 @@ func disable_collision() -> void:
 func pit_fall(pit_fall : Trap) -> void:
 	# HAHA hack to avoid double respawn for now
 	collision.set_deferred("disabled", true)
-	pit_fall.close()
+	pit_fall.close.rpc()
 
 
 func die() -> void:

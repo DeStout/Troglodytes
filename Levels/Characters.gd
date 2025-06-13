@@ -1,7 +1,7 @@
 extends MultiplayerSpawner
 
 
-const INIT_LIVES := 1
+const INIT_LIVES := 3
 const MAX_LIVES := 5
 const RESPAWN_DELAY := Vector2(2.0, 6.0)
 
