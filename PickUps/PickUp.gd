@@ -18,20 +18,9 @@ var apply_effect : Callable
 
 
 func _ready() -> void:
-	_set_type()
 	collision.set_deferred("disabled", !multiplayer.is_server())
 	if multiplayer.is_server():
 		despawn_timer.start(randf_range(DESPAWN_RANGE.x, DESPAWN_RANGE.y))
-
-
-func _set_type() -> void:
-	match effect:
-		EFFECTS.INVINCIBLE:
-			apply_effect = _set_invincible
-		EFFECTS.PINEAPPLE:
-			pass
-		_:
-			pass
 
 
 func _collected(body : CharacterBody3D) -> void:

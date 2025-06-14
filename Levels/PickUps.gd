@@ -6,7 +6,7 @@ var pick_ups : Dictionary[PICK_UPS, Variant] = {PICK_UPS.BERRY_BUSH : load("res:
 											PICK_UPS.SPIDER_WEB : load("res://PickUps/SpiderWeb.tscn"),
 											PICK_UPS.FIRE_POWER : load("res://PickUps/FirePower.tscn"),
 											PICK_UPS.ICE_BLOCK : load("res://PickUps/IceBlock.tscn"),
-											PICK_UPS.INVINCIBLE : load("res://PickUps/Invincible.tscn"),
+											PICK_UPS.INVINCIBLE : load("res://PickUps/Halo.tscn"),
 											PICK_UPS.PINEAPPLE : ""}
 
 @export var level : Node3D

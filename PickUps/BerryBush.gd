@@ -17,7 +17,7 @@ func _ready() -> void:
 
 
 func _despawn() -> void:
-	#collision.set_deferred("disabled", true)
+	collision.set_deferred("disabled", true)
 	_despawn_anim.rpc()
 	await anim_player.animation_finished
 	super()
