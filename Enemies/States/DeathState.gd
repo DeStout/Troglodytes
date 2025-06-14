@@ -14,7 +14,7 @@ func enter() -> void:
 	#print(character.name, ": Enter DeathState")
 	character.disable_collision()
 	death_dir = Utilities.get_move_dir_vect(character.death_dir)
-	velocity = Vector3(death_dir.x, 0, death_dir.y) * DEATH_SPEED
+	velocity = Utilities.v2_to_v3(death_dir) * DEATH_SPEED
 	# Close the hole before character.die()
 	if character.spawn_hole:
 		character.spawn_hole.close()

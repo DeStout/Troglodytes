@@ -55,7 +55,7 @@ func _slerp_to_dirp() -> void:
 		return
 	
 	turning = true
-	var new_basis = Basis.looking_at(Vector3(target_dir.x, 0, target_dir.y))
+	var new_basis = Basis.looking_at(Utilities.v2_to_v3(target_dir))
 	var new_rot := new_basis.get_rotation_quaternion()
 	tween = create_tween()
 	tween.tween_method(func(weight : float):

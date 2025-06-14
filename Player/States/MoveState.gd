@@ -139,7 +139,7 @@ func _slerp_to_dirp(stop := false) -> void:
 		return
 	
 	turning = stop
-	var new_basis : Basis = character.basis.looking_at(Vector3(target_dir.x, 0, target_dir.y))
+	var new_basis : Basis = character.basis.looking_at(Utilities.v2_to_v3(target_dir))
 	
 	var turn_dir = -character.basis.z.signed_angle_to(-new_basis.z, Vector3.UP)
 	if turn_dir > 0:
@@ -181,7 +181,7 @@ func _set_target_square() -> void:
 	character.target_square = target
 	
 	# Debug
-	character.debug_target.global_position = Vector3(target.x, 0.05, target.y)
+	character.debug_target.global_position = Utilities.v2_to_v3(target, 0.05)
 
 
 func attacked() -> void:

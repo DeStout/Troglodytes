@@ -23,7 +23,8 @@ func _set_search_target() -> void:
 	character.move_dir = randi() % Utilities.DIRECTIONS.size()
 	var move_dist_vect : Vector2 = Utilities.get_move_dir_vect(character.move_dir)
 	move_dist_vect *= randi_range(1, 6) * 2
-	var v3_square := Vector3(move_dist_vect.x, 0, move_dist_vect.y)
+	var v3_square := Utilities.v2_to_v3(move_dist_vect)
+	Utilities
 	
 	var ray_target : Vector3 = v3_square + wall_check.global_position
 	ray_target = wall_check.to_local(ray_target)
@@ -40,6 +41,11 @@ func _set_search_target() -> void:
 	v3_square = Utilities.get_closest_egg_square(v3_square).global_position
 	character.target_square = Utilities.v3_to_v2(v3_square)
 	wall_check.target_position = Vector3.FORWARD
+
+
+func _is_valid_move_dir() -> bool:
+	
+	return true
 
 
 func _act(_anim_finished : String) -> void:

@@ -32,7 +32,7 @@ func attacked() -> void:
 @rpc("any_peer", "call_local")
 func _hit_jitter(death_dir : Utilities.DIRECTIONS) -> void:
 	var death_vect : Vector2 = Utilities.get_move_dir_vect(death_dir) * 0.25
-	var jitter_pos := character.global_position + Vector3(death_vect.x, 0.0, death_vect.y)
+	var jitter_pos := character.global_position + Utilities.v2_to_v3(death_vect)
 	tween = create_tween()
 	tween.tween_property(character.body, "global_position", jitter_pos, 0.05)
 	tween.tween_property(character.body, "position", Vector3.ZERO, 0.05)

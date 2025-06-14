@@ -32,6 +32,10 @@ func v3_to_v2(pos3 : Vector3) -> Vector2:
 	return Vector2(pos3.x, pos3.z)
 
 
+func v2_to_v3(pos2 : Vector2, y_pos : float = 0.0) -> Vector3:
+	return Vector3(pos2.x, y_pos, pos2.y)
+
+
 func get_move_dir_vect(move_dir : DIRECTIONS) -> Vector2:
 	var target_dir : Vector2
 	match move_dir:

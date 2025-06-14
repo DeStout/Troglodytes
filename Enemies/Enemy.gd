@@ -5,6 +5,7 @@ signal spawn_footprint
 
 const SCORE_VALUE := 1000
 
+var play_area : Area3D
 @export var characters : MultiplayerSpawner
 @export var body : MeshInstance3D
 @export var collision : CollisionShape3D
