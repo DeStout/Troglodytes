@@ -263,12 +263,12 @@ target_position = Vector3(0, 0, -1)
 surface_material_override/0 = SubResource("StandardMaterial3D_d6ysj")
 
 [node name="Rock" type="MeshInstance3D" parent="Enemy/Enemy1/Skeleton3D/Enemy" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.899168, 0.437602, 0, -0.437602, 0.899168, -0.0152588, 1.77541, 0.94302)
+transform = Transform3D(1, 0, 0, 0, -0.998795, -0.0490589, 0, 0.0490589, -0.998795, 0.13098, 0.821008, -1.09663)
 visible = false
 mesh = SubResource("SphereMesh_de0ly")
 
 [node name="LeftFootBone" type="BoneAttachment3D" parent="Enemy/Enemy1/Skeleton3D" index="1"]
-transform = Transform3D(1, -1.12907e-07, 4.47216e-07, -5.91567e-07, -0.487495, 0.873125, -2.33395e-09, -0.873126, -0.487495, -0.184363, 0.196411, -0.0225157)
+transform = Transform3D(0.879304, -0.279467, -0.385645, -0.381581, 0.0711434, -0.921594, 0.284992, 0.957516, -0.0440827, -0.225799, 1.32054, 0.735605)
 bone_name = "Foot.L"
 bone_idx = 6
 
@@ -276,7 +276,7 @@ bone_idx = 6
 transform = Transform3D(1, -1.42109e-14, 1.42109e-14, 2.95319e-14, 1, 0, 7.14984e-14, 2.98023e-08, 1, 5.96046e-08, 0.149298, -0.123785)
 
 [node name="RightFootBone" type="BoneAttachment3D" parent="Enemy/Enemy1/Skeleton3D" index="2"]
-transform = Transform3D(1, 1.12907e-07, -4.47216e-07, 5.91567e-07, -0.487495, 0.873125, 2.33395e-09, -0.873126, -0.487495, 0.184363, 0.196411, -0.0225157)
+transform = Transform3D(0.985755, 0.0663421, 0.154548, 0.168179, -0.380449, -0.909381, -0.00153278, 0.922419, -0.386187, 0.115207, 1.21022, 0.82066)
 bone_name = "Foot.R"
 bone_idx = 53
 

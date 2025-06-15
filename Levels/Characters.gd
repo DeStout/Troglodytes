@@ -176,6 +176,17 @@ func get_player_by_id(player_id : int) -> CharacterBody3D:
 	return null
 
 
+func get_closest_player(pos_check : Vector3) -> Player:
+	var closest_player := players[0]
+	var dist = closest_player.global_position.distance_squared_to(pos_check)
+	for player in players:
+		var new_dist := player.global_position.distance_squared_to(pos_check)
+		if new_dist < dist:
+			closest_player = player
+			dist = new_dist
+	return closest_player
+
+
 func any_player_within_dist(check_pos : Vector3, min_dist : float) -> bool:
 	for player in players:
 		if player.global_position.distance_to(check_pos) < min_dist:

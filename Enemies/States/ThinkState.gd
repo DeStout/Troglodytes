@@ -1,6 +1,7 @@
 class_name ThinkState extends State
 
 const MOVE_DIST := Vector2i(2, 16)
+const SEEK_DIST := 12.0
 
 @export var anim_player : AnimationPlayer
 @export var wall_check : RayCast3D
@@ -16,11 +17,19 @@ func enter() -> void:
 
 
 func _choose_action() -> String:
-	_set_random_target()
+	var action := randi() % 2
+	match action:
+		0:
+			_set_random_target()
+		1:
+			_seek_player()
+		_:
+			_set_random_target()
 	return "SearchState"
 
 
 func _set_random_target() -> void:
+	#print("%s: Moving random" % character.name)
 	var directions := Utilities.DIRECTIONS.keys()
 	directions.shuffle()
 	for dir in directions:
@@ -34,6 +43,34 @@ func _set_random_target() -> void:
 			character.move_dir = move_dir
 			character.target_square = Utilities.v3_to_v2(target)
 			break
+
+
+func _seek_player() -> void:
+	#print("%s: Seeking player" % character.name)
+	var seek_player : Player = character.characters \
+									.get_closest_player(character.global_position)
+	var player_pos := seek_player.global_position
+	var player_dist := character.global_position.distance_to(player_pos)
+	if player_dist > SEEK_DIST:
+		_set_random_target()
+	
+	var dir_to := Utilities.v3_to_v2(\
+							character.global_position.direction_to(player_pos))
+	var dirs = [Vector2(dir_to.x, 0), Vector2(0, dir_to.y)]
+	dirs.sort_custom(func(dir1 : Vector2, dir2 : Vector2):
+		return dir1.length() > dir2.length())
+		
+	for dir in dirs:
+		dir *= snappedi(roundi(player_dist), 2)
+		var target := Utilities.v2_to_v3(dir)
+		
+		target = _set_valid_target(target)
+		if !target.is_equal_approx(character.position):
+			character.move_dir = Utilities.get_move_dir(dir)
+			character.target_square = Utilities.v3_to_v2(target)
+			return
+	
+	_set_random_target()
 
 
 func _set_valid_target(target : Vector3) -> Vector3:
