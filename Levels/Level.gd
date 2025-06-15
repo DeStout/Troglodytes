@@ -62,11 +62,14 @@ func _connect_player_signals() -> void:
 
 
 func _create_player_UIs() -> void:
+	for ui in player_uis.get_children():
+		ui.visible = false
+	
 	for player_id in ENetNetwork.peers.keys():
 		var player_num := ENetNetwork.get_player_number(player_id)
 		player_uis.get_children()[player_num].visible = true
 		ui_player_names[player_num].text = ENetNetwork.peers[player_id]["name"]
-		ui_player_scores[player_num].text = "%012d" % 0
+		ui_player_scores[player_num].text = "Score: 000,000,000"
 
 
 func _spawn_eggs(used_squares : Array[Node3D]) -> void:
@@ -105,7 +108,9 @@ func get_rand_free_square(use_square := true) -> Node3D:
 
 
 func set_ui_score(player_id : int, score_value : int) -> void:
-	var score_text = "%012d" % score_value
+	var score_text = "Score: %09d" % score_value
+	score_text = score_text.insert(10, ",")
+	score_text = score_text.insert(14, ",")
 	ui_player_scores[ENetNetwork.get_player_number(player_id)].text = score_text
 
 

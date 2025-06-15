@@ -457,7 +457,6 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3wkli")
 
 [node name="Player2" type="PanelContainer" parent="UI/PlayerUIs"]
-visible = false
 custom_minimum_size = Vector2(283, 0)
 layout_mode = 2
 mouse_filter = 2
@@ -600,7 +599,6 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xtlnx")
 
 [node name="Player3" type="PanelContainer" parent="UI/PlayerUIs"]
-visible = false
 custom_minimum_size = Vector2(283, 0)
 layout_mode = 2
 mouse_filter = 2
@@ -743,7 +741,6 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sdsxl")
 
 [node name="Player4" type="PanelContainer" parent="UI/PlayerUIs"]
-visible = false
 custom_minimum_size = Vector2(283, 0)
 layout_mode = 2
 mouse_filter = 2

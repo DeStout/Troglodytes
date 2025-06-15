@@ -47,12 +47,17 @@ func _set_random_target() -> void:
 
 func _seek_player() -> void:
 	#print("%s: Seeking player" % character.name)
+	if !character.characters.players.size():
+		_set_random_target()
+		return
+	
 	var seek_player : Player = character.characters \
 									.get_closest_player(character.global_position)
 	var player_pos := seek_player.global_position
 	var player_dist := character.global_position.distance_to(player_pos)
 	if player_dist > SEEK_DIST:
 		_set_random_target()
+		return
 	
 	var dir_to := Utilities.v3_to_v2(\
 							character.global_position.direction_to(player_pos))
