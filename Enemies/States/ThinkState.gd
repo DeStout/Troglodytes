@@ -1,5 +1,6 @@
 class_name ThinkState extends State
 
+const MOVE_DIST := Vector2i(2, 16)
 
 @export var anim_player : AnimationPlayer
 @export var wall_check : RayCast3D
@@ -15,37 +16,37 @@ func enter() -> void:
 
 
 func _choose_action() -> String:
-	_set_search_target()
+	_set_random_target()
 	return "SearchState"
 
 
-func _set_search_target() -> void:
-	character.move_dir = randi() % Utilities.DIRECTIONS.size()
-	var move_dist_vect : Vector2 = Utilities.get_move_dir_vect(character.move_dir)
-	move_dist_vect *= randi_range(1, 6) * 2
-	var v3_square := Utilities.v2_to_v3(move_dist_vect)
-	Utilities
-	
-	var ray_target : Vector3 = v3_square + wall_check.global_position
+func _set_random_target() -> void:
+	var directions := Utilities.DIRECTIONS.keys()
+	directions.shuffle()
+	for dir in directions:
+		var move_dir = Utilities.DIRECTIONS[dir]
+		var move_dist_vect := Utilities.get_move_dir_vect(move_dir)
+		move_dist_vect *= snappedi(randi_range(MOVE_DIST.x, MOVE_DIST.y), 2)
+		var target := Utilities.v2_to_v3(move_dist_vect)
+		
+		target = _set_valid_target(target)
+		if !target.is_equal_approx(character.position):
+			character.move_dir = move_dir
+			character.target_square = Utilities.v3_to_v2(target)
+			break
+
+
+func _set_valid_target(target : Vector3) -> Vector3:
+	var ray_target : Vector3 = target + wall_check.global_position
 	ray_target = wall_check.to_local(ray_target)
 	wall_check.target_position = ray_target
 	wall_check.force_raycast_update()
-	if wall_check.is_colliding():
-		v3_square = Utilities.get_closest_egg_square( \
-									wall_check.get_collision_point()).global_position
-		character.target_square = Utilities.v3_to_v2(v3_square)
-		wall_check.target_position = Vector3.FORWARD
-		return
-	
-	v3_square += character.position
-	v3_square = Utilities.get_closest_egg_square(v3_square).global_position
-	character.target_square = Utilities.v3_to_v2(v3_square)
 	wall_check.target_position = Vector3.FORWARD
-
-
-func _is_valid_move_dir() -> bool:
-	
-	return true
+	if wall_check.is_colliding():
+		var collision = wall_check.get_collision_point()
+		return Utilities.get_closest_egg_square(collision).global_position
+	target += character.position
+	return Utilities.get_closest_egg_square(target).global_position
 
 
 func _act(_anim_finished : String) -> void:
