@@ -226,7 +226,7 @@ func pit_fall(pit_path : NodePath) -> void:
 	anim_player.play("Fall")
 	await anim_player.animation_finished
 	pit_fall.close.rpc()
-	state_machine.current_state.die()
+	state_machine.current_state.player_die()
 
 
 func die() -> void:

@@ -11,9 +11,13 @@ func enter() -> void:
 	character.anim_player.speed_scale = 1.0
 
 
-func die() -> void:
+func player_die() -> void:
 	character.die()
 	transition.emit(self, "StartState")
+
+
+func enemy_die() -> void:
+	pass
 	
 	
 #func update(delta) -> void: pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://ddgvecm4ml23n"]
+[gd_scene load_steps=38 format=4 uid="uid://ddgvecm4ml23n"]
 
 [ext_resource type="Script" uid="uid://dhpybsoy6ujgs" path="res://Enemies/Enemy.gd" id="1_s7bn3"]
 [ext_resource type="Script" uid="uid://oh5umyrnpcif" path="res://addons/StateMachine/StateMachine/state_machine.gd" id="2_biruh"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://d154d1kmob6vu" path="res://Enemies/Enemy1_A.png" id="15_lplnl"]
 [ext_resource type="AudioStream" uid="uid://crr4j8veaxvxs" path="res://Enemies/SFX/BurnScream.ogg" id="16_pvd1v"]
 [ext_resource type="AudioStream" uid="uid://bqwnqef2bt4yr" path="res://Enemies/SFX/BurnHowie.ogg" id="18_oohld"]
+[ext_resource type="Script" uid="uid://cdil7a1equf7c" path="res://Player/States/DeathAnimState.gd" id="19_pwnby"]
 [ext_resource type="AudioStream" uid="uid://et36j7u4mqdi" path="res://Enemies/SFX/BurnSizzle.ogg" id="19_yjlkr"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_od5md"]
@@ -249,6 +250,9 @@ stream = SubResource("AudioStreamRandomizer_468av")
 volume_db = -25.0
 bus = &"SFX"
 
+[node name="DeathAnimState" type="Node" parent="StateMachine"]
+script = ExtResource("19_pwnby")
+
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_js7pq")
@@ -263,12 +267,12 @@ target_position = Vector3(0, 0, -1)
 surface_material_override/0 = SubResource("StandardMaterial3D_d6ysj")
 
 [node name="Rock" type="MeshInstance3D" parent="Enemy/Enemy1/Skeleton3D/Enemy" index="0"]
-transform = Transform3D(1, 0, 0, 0, -0.998795, -0.0490589, 0, 0.0490589, -0.998795, 0.13098, 0.821008, -1.09663)
+transform = Transform3D(1, 0, 0, 0, 0.899168, 0.437602, 0, -0.437602, 0.899168, -0.0152588, 1.77541, 0.94302)
 visible = false
 mesh = SubResource("SphereMesh_de0ly")
 
 [node name="LeftFootBone" type="BoneAttachment3D" parent="Enemy/Enemy1/Skeleton3D" index="1"]
-transform = Transform3D(0.879304, -0.279467, -0.385645, -0.381581, 0.0711434, -0.921594, 0.284992, 0.957516, -0.0440827, -0.225799, 1.32054, 0.735605)
+transform = Transform3D(1, -1.12907e-07, 4.47216e-07, -5.91567e-07, -0.487495, 0.873125, -2.33395e-09, -0.873126, -0.487495, -0.184363, 0.196411, -0.0225157)
 bone_name = "Foot.L"
 bone_idx = 6
 
@@ -276,7 +280,7 @@ bone_idx = 6
 transform = Transform3D(1, -1.42109e-14, 1.42109e-14, 2.95319e-14, 1, 0, 7.14984e-14, 2.98023e-08, 1, 5.96046e-08, 0.149298, -0.123785)
 
 [node name="RightFootBone" type="BoneAttachment3D" parent="Enemy/Enemy1/Skeleton3D" index="2"]
-transform = Transform3D(0.985755, 0.0663421, 0.154548, 0.168179, -0.380449, -0.909381, -0.00153278, 0.922419, -0.386187, 0.115207, 1.21022, 0.82066)
+transform = Transform3D(1, 1.12907e-07, -4.47216e-07, 5.91567e-07, -0.487495, 0.873125, 2.33395e-09, -0.873126, -0.487495, 0.184363, 0.196411, -0.0225157)
 bone_name = "Foot.R"
 bone_idx = 53
 

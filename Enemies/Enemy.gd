@@ -84,8 +84,21 @@ func disable_collision() -> void:
 
 func pit_fall(pit_fall : Trap) -> void:
 	# HAHA hack to avoid double respawn for now
-	collision.set_deferred("disabled", true)
+	#collision.set_deferred("disabled", true)
+	#pit_fall.close.rpc()
+	
+	if !pit_fall:
+		push_error("Bad pit fall node path")
+		return
+	position = pit_fall.position
+	state_machine.current_state.transition.emit(state_machine.current_state, "DeathAnimState")
+	anim_player.play("Flail")
+	await anim_player.animation_finished
+	anim_player.play("PitFall")
+	await anim_player.animation_finished
+	#collision.set_deferred("disabled", true)
 	pit_fall.close.rpc()
+	die()
 
 
 func die() -> void:
