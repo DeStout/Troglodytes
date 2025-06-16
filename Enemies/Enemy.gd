@@ -1,16 +1,18 @@
 class_name Enemy extends CharacterBody3D
 
 
+@export var debug_target : MeshInstance3D
+
 signal spawn_footprint
 
 const SCORE_VALUE := 1000
 
 var play_area : Area3D
-@export var characters : MultiplayerSpawner
+var characters : MultiplayerSpawner
+@export var state_machine : Node
 @export var body : MeshInstance3D
 @export var collision : CollisionShape3D
 @export var attack_collision : CollisionShape3D
-@export var state_machine : Node
 @export var anim_player : AnimationPlayer
 @export var right_foot : Node3D
 @export var left_foot : Node3D
@@ -30,11 +32,6 @@ var spawn_hole : Node3D
 
 func _ready() -> void:
 	attack_collision.disabled = !multiplayer.is_server()
-
-
-func spawn_finished() -> void:
-	spawn_hole.close.rpc()
-	characters.enemy_finished_spawning(Utilities.get_closest_egg_square(global_position))
 
 
 func get_prev_state() -> String:
@@ -83,22 +80,21 @@ func disable_collision() -> void:
 
 
 func pit_fall(pit_fall : Trap) -> void:
-	# HAHA hack to avoid double respawn for now
-	#collision.set_deferred("disabled", true)
-	#pit_fall.close.rpc()
-	
 	if !pit_fall:
 		push_error("Bad pit fall node path")
 		return
 	position = pit_fall.position
-	state_machine.current_state.transition.emit(state_machine.current_state, "DeathAnimState")
+	state_machine.current_state.transition.emit(\
+									state_machine.current_state, "DeathAnimState")
 	anim_player.play("Flail")
 	await anim_player.animation_finished
 	anim_player.play("PitFall")
 	await anim_player.animation_finished
-	#collision.set_deferred("disabled", true)
+	
+	# HAHA hack to avoid double respawn for now
+	collision.set_deferred("disabled", true)
 	pit_fall.close.rpc()
-	die()
+	#die()
 
 
 func die() -> void:

@@ -15,7 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://bwynnhmvnxykb" path="res://PickUps/SFX/FireShoot.ogg" id="8_0j2ni"]
 [ext_resource type="AudioStream" uid="uid://jk1e673eyin2" path="res://Player/Hit2.ogg" id="8_s1rgi"]
 [ext_resource type="Script" uid="uid://cdil7a1equf7c" path="res://Player/States/DeathAnimState.gd" id="9_3nb2p"]
-[ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://Enemies/EnemyMat.tres" id="9_j23h2"]
+[ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://Utilities/DebugRed_Mat.tres" id="9_j23h2"]
 [ext_resource type="Material" uid="uid://ct7eou206ijtc" path="res://Player/Halo_Mat.tres" id="9_p7tob"]
 [ext_resource type="Material" uid="uid://bpai101v6pvg6" path="res://Player/PlayerSkin_mat.tres" id="10_8sa4y"]
 [ext_resource type="PackedScene" uid="uid://lf4ugwuydp4l" path="res://Player/Stars.blend" id="11_3mea3"]

@@ -14,7 +14,7 @@ func enter() -> void:
 
 func _spawn_finished(anim_finished : String) -> void:
 	assert(anim_finished == "Spawn", "SpawnState and 'Spawn' animation desynced")
-	character.spawn_finished()
+	character.spawn_hole.close.rpc()
 	if anim_player.animation_finished.has_connections():
 		anim_player.animation_finished.disconnect(_spawn_finished)
 	transition.emit(self, "ThinkState")

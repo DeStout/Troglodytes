@@ -77,7 +77,7 @@ func _spawn_enemy(spawn_hole) -> Enemy:
 	return enemy
 
 
-func spawn_players() -> void:
+func spawn_players(used_squares : Array) -> Array:
 	spawn_function = _spawn_player
 	
 	var player_squares := get_tree().get_nodes_in_group("PlayerSquares")
@@ -89,8 +89,11 @@ func spawn_players() -> void:
 												{"score" : 0, "lives" : INIT_LIVES}
 			level.set_ui_lives(player.get_multiplayer_authority(), \
 						player_stats[player.get_multiplayer_authority()]["lives"])
+			used_squares.append(player_squares[square_i])
+			level.set_square_free(player_squares[square_i])
 			continue
 		player_squares[square_i].remove_from_group("PlayerSquares")
+	return used_squares
 
 
 func _player_disconnected(peer_id : int) -> void:
@@ -110,12 +113,15 @@ func spawn_enemies(used_squares : Array[Node3D]) -> Array:
 		while(any_player_within_dist(egg_square.global_position, 2.5)):
 			egg_squares.erase(egg_square)
 			egg_square = egg_squares.pick_random()
-		
-		board.spawn(egg_square.global_position)
-		
 		egg_squares.erase(egg_square)
 		used_squares.append(egg_square)
-		level.set_square_free(egg_square)
+		
+		var tween := create_tween()
+		respawn_tweens.append(tween)
+		tween.finished.connect(respawn_tweens.erase.bind(tween))
+		tween.finished.connect(board.spawn.bind(egg_square.global_position))
+		tween.finished.connect(tween.kill)
+		tween.tween_interval(randf_range(RESPAWN_DELAY.x, RESPAWN_DELAY.y))
 		
 	return used_squares
 
@@ -163,8 +169,11 @@ func _wait_for_free_square() -> Node3D:
 	return egg_square
 
 
-func enemy_finished_spawning(spawn_square : Node3D) -> void:
-	level.set_square_free(spawn_square)
+func take_free_square(square : Node3D, is_take := false) -> void:
+	if is_take:
+		level.get_square(square)
+	else:
+		level.set_square_free(square)
 
 
 func get_player_by_id(player_id : int) -> CharacterBody3D:

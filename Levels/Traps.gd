@@ -26,6 +26,7 @@ func _spawn_trap(data : Dictionary) -> Trap:
 
 
 func spawn_traps() -> void:
+	await get_tree().create_timer(5.0).timeout
 	for i in range(num_traps):
 		var egg_square = await _wait_for_free_square()
 		var trap_data := { "position" : egg_square.position, 
@@ -46,9 +47,10 @@ func _trap_despawned(trap_pos : Vector3) -> void:
 
 func _wait_for_free_square() -> Node3D:
 	while !level.has_free_square():
+		print("Traps - waiting for free square")
 		await get_tree().create_timer(0.5).timeout
+		
 	var egg_square : Node3D = level.get_rand_free_square()
-	
 	while !_is_valid_square(egg_square):
 		level.set_square_free(egg_square)
 		await get_tree().create_timer(0.5).timeout

@@ -60,6 +60,7 @@ func _pick_up_despawned(pick_up : PickUp) -> void:
 
 func _wait_for_free_square() -> Node3D:
 	while !level.has_free_square():
+		print("Pick Ups - waiting for free square")
 		await get_tree().create_timer(0.5).timeout
 	var egg_square : Node3D = level.get_rand_free_square()
 	

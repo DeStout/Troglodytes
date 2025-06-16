@@ -36,7 +36,7 @@ func _ready() -> void:
 func _set_up() -> void:
 	var used_squares : Array[Node3D] = []
 	
-	characters.spawn_players()
+	used_squares = characters.spawn_players(used_squares)
 	_connect_player_signals()
 	_create_player_UIs()
 	await get_tree().physics_frame
@@ -75,7 +75,8 @@ func _create_player_UIs() -> void:
 func _spawn_eggs(used_squares : Array[Node3D]) -> void:
 	var egg_squares := get_tree().get_nodes_in_group("EggSquares")
 	for square in egg_squares:
-		if used_squares.has(square) or square.is_in_group("PlayerSquares"):
+		#if used_squares.has(square) or square.is_in_group("PlayerSquares"):
+		if used_squares.has(square):
 			continue
 		var egg = eggs.spawn(square.global_position + Vector3(0, 0.5, 0))
 		egg.collected.connect(egg_collected)
@@ -89,7 +90,13 @@ func set_start_player_stats(player_stats : Dictionary) -> void:
 		set_ui_lives(player_id, player_stats[player_id]["lives"])
 
 
+func get_square(square : Node3D) -> void:
+	if free_squares.has(square):
+		free_squares.erase(square)
+
+
 func set_square_free(square : Node3D) -> void:
+	#print("Level - Square freed: ", square.position)
 	if !free_squares.has(square):
 		free_squares.append(square)
 

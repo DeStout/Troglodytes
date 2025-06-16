@@ -222,7 +222,8 @@ func pit_fall(pit_path : NodePath) -> void:
 		push_error("Bad pit fall node path")
 		return
 	position = pit_fall.position
-	state_machine.current_state.transition.emit(state_machine.current_state, "DeathAnimState")
+	state_machine.current_state.transition.emit(\
+									state_machine.current_state, "DeathAnimState")
 	anim_player.play("Fall")
 	await anim_player.animation_finished
 	pit_fall.close.rpc()

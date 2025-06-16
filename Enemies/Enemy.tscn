@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://ddgvecm4ml23n"]
+[gd_scene load_steps=40 format=4 uid="uid://ddgvecm4ml23n"]
 
 [ext_resource type="Script" uid="uid://dhpybsoy6ujgs" path="res://Enemies/Enemy.gd" id="1_s7bn3"]
 [ext_resource type="Script" uid="uid://oh5umyrnpcif" path="res://addons/StateMachine/StateMachine/state_machine.gd" id="2_biruh"]
@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://bqwnqef2bt4yr" path="res://Enemies/SFX/BurnHowie.ogg" id="18_oohld"]
 [ext_resource type="Script" uid="uid://cdil7a1equf7c" path="res://Player/States/DeathAnimState.gd" id="19_pwnby"]
 [ext_resource type="AudioStream" uid="uid://et36j7u4mqdi" path="res://Enemies/SFX/BurnSizzle.ogg" id="19_yjlkr"]
+[ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://Utilities/DebugRed_Mat.tres" id="22_oohld"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_od5md"]
 properties/0/path = NodePath(".:position")
@@ -141,14 +142,18 @@ radius = 0.6
 [sub_resource type="ViewportTexture" id="ViewportTexture_muk8g"]
 viewport_path = NodePath("StateMachine/BurnState/SubViewport")
 
-[node name="Enemy1" type="CharacterBody3D" node_paths=PackedStringArray("body", "collision", "attack_collision", "state_machine", "anim_player", "right_foot", "left_foot", "wall_check")]
+[sub_resource type="BoxMesh" id="BoxMesh_oxt2j"]
+size = Vector3(1, 0.1, 1)
+
+[node name="Enemy1" type="CharacterBody3D" node_paths=PackedStringArray("debug_target", "state_machine", "body", "collision", "attack_collision", "anim_player", "right_foot", "left_foot", "wall_check")]
 collision_layer = 4
 collision_mask = 49
 script = ExtResource("1_s7bn3")
+debug_target = NodePath("DebugTarget")
+state_machine = NodePath("StateMachine")
 body = NodePath("Enemy/Enemy1/Skeleton3D/Enemy")
 collision = NodePath("Collision")
 attack_collision = NodePath("AttackCheck/Collision")
-state_machine = NodePath("StateMachine")
 anim_player = NodePath("Enemy/AnimationPlayer")
 right_foot = NodePath("Enemy/Enemy1/Skeleton3D/RightFootBone/RightFoot")
 left_foot = NodePath("Enemy/Enemy1/Skeleton3D/LeftFootBone/LeftFoot")
@@ -312,6 +317,14 @@ visible = false
 shaded = true
 double_sided = false
 texture = SubResource("ViewportTexture_muk8g")
+
+[node name="DebugTarget" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+top_level = true
+visible = false
+mesh = SubResource("BoxMesh_oxt2j")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("22_oohld")
 
 [connection signal="timeout" from="StateMachine/HitStunState/StunTimer" to="StateMachine/HitStunState" method="reset_attacked"]
 [connection signal="body_entered" from="AttackCheck" to="." method="_body_attackable"]

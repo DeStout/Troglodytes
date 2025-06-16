@@ -7,10 +7,14 @@ const SEEK_DIST := 12.0
 @export var wall_check : RayCast3D
 
 var _next_action := ""
+var init_think := true
 
 
 func enter() -> void:
 	#print(character.name, ": Enter ThinkState")
+	
+	character.characters.take_free_square(Utilities.get_closest_egg_square(\
+												character.global_position), true)
 	anim_player.animation_finished.connect(_act)
 	anim_player.play("Think")
 	_next_action = _choose_action()
@@ -42,6 +46,7 @@ func _set_random_target() -> void:
 		if !target.is_equal_approx(character.position):
 			character.move_dir = move_dir
 			character.target_square = Utilities.v3_to_v2(target)
+			character.debug_target.global_position = target
 			break
 
 
@@ -73,6 +78,7 @@ func _seek_player() -> void:
 		if !target.is_equal_approx(character.position):
 			character.move_dir = Utilities.get_move_dir(dir)
 			character.target_square = Utilities.v3_to_v2(target)
+			character.debug_target.global_position = target
 			return
 	
 	_set_random_target()
@@ -120,6 +126,12 @@ func burn() -> void:
 	transition.emit(self, "BurnState")
 
 
-#func exit() -> void: pass
+func exit() -> void:
+	if init_think:
+		init_think = false
+		character.characters.take_free_square(Utilities.get_closest_egg_square(\
+													character.global_position), false)
+
+
 #func update(delta) -> void: pass
 #func physics_update(delta) -> void: pass

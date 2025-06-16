@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=4 uid="uid://dk3hna54702v6"]
 
 [ext_resource type="Script" uid="uid://dwkq0uelyudar" path="res://Levels/FX/FireBall.gd" id="1_avl5a"]
-[ext_resource type="Material" uid="uid://g2rjptubc2j5" path="res://Enemies/EnemyMat.tres" id="1_lwaqw"]
+[ext_resource type="Material" uid="uid://bmsgvh8guxmkb" path="res://Levels/FX/Materials/FireBall.tres" id="2_4ik60"]
 
 [sub_resource type="Gradient" id="Gradient_kxsq1"]
 colors = PackedColorArray(1, 0, 0.0384331, 1, 1, 0.274666, 0, 1)
@@ -105,7 +105,7 @@ draw_pass_1 = SubResource("ArrayMesh_ywbqm")
 [node name="FlameBall" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("SphereMesh_toymk")
-surface_material_override/0 = ExtResource("1_lwaqw")
+surface_material_override/0 = ExtResource("2_4ik60")
 
 [node name="Area" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
