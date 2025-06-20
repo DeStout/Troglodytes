@@ -2,6 +2,7 @@ class_name HitStunState extends State
 
 
 const ATTACKS_TO_KILL := 3
+@export var stun_time := 0.22
 @onready var stun_timer := $StunTimer
 var attacked_num := 0
 var tween : Tween
@@ -10,14 +11,14 @@ var tween : Tween
 func enter() -> void:
 	#print(character.name, ": Enter HitStunState")
 	if tween and tween.is_valid():
-		stun_timer.start()
+		stun_timer.start(stun_time)
 		tween.play()
 		return
 	attacked()
 
 
 func attacked() -> void:
-	stun_timer.start()
+	stun_timer.start(stun_time)
 	attacked_num += 1
 	
 	if attacked_num == ATTACKS_TO_KILL and multiplayer.is_server():

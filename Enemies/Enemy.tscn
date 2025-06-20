@@ -207,6 +207,7 @@ bus = &"SFX"
 
 [node name="HitStunState" type="Node" parent="StateMachine"]
 script = ExtResource("7_jio8c")
+stun_time = 0.2
 
 [node name="StunTimer" type="Timer" parent="StateMachine/HitStunState"]
 wait_time = 0.25

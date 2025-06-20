@@ -1,7 +1,7 @@
 class_name ThinkState extends State
 
 const MOVE_DIST := Vector2i(2, 16)
-const SEEK_DIST := 12.0
+const SEEK_DIST := 10
 
 @export var anim_player : AnimationPlayer
 @export var wall_check : RayCast3D
@@ -42,7 +42,8 @@ func _set_random_target() -> void:
 		move_dist_vect *= snappedi(randi_range(MOVE_DIST.x, MOVE_DIST.y), 2)
 		var target := Utilities.v2_to_v3(move_dist_vect)
 		
-		target = _set_valid_target(target)
+		target = _check_wall_collisions(target)
+		target = _check_target_reachable(target, move_dist_vect.normalized())
 		if !target.is_equal_approx(character.position):
 			character.move_dir = move_dir
 			character.target_square = Utilities.v3_to_v2(target)
@@ -67,14 +68,15 @@ func _seek_player() -> void:
 	var dir_to := Utilities.v3_to_v2(\
 							character.global_position.direction_to(player_pos))
 	var dirs = [Vector2(dir_to.x, 0), Vector2(0, dir_to.y)]
-	dirs.sort_custom(func(dir1 : Vector2, dir2 : Vector2):
+	dirs.sort_custom(func(dir1 : Vector2, dir2 : Vector2) -> bool:
 		return dir1.length() > dir2.length())
-		
+	
 	for dir in dirs:
 		dir *= snappedi(roundi(player_dist), 2)
 		var target := Utilities.v2_to_v3(dir)
 		
-		target = _set_valid_target(target)
+		target = _check_wall_collisions(target)
+		target = _check_target_reachable(target, dir.normalized())
 		if !target.is_equal_approx(character.position):
 			character.move_dir = Utilities.get_move_dir(dir)
 			character.target_square = Utilities.v3_to_v2(target)
@@ -84,7 +86,7 @@ func _seek_player() -> void:
 	_set_random_target()
 
 
-func _set_valid_target(target : Vector3) -> Vector3:
+func _check_wall_collisions(target : Vector3) -> Vector3:
 	var ray_target : Vector3 = target + wall_check.global_position
 	ray_target = wall_check.to_local(ray_target)
 	wall_check.target_position = ray_target
@@ -95,6 +97,32 @@ func _set_valid_target(target : Vector3) -> Vector3:
 		return Utilities.get_closest_egg_square(collision).global_position
 	target += character.position
 	return Utilities.get_closest_egg_square(target).global_position
+
+
+func _check_target_reachable(target3 : Vector3, dir_vect : Vector2) -> Vector3:
+	var char_pos2 := Utilities.v3_to_v2(character.position)
+	var target2 := Utilities.v3_to_v2(target3)
+	var egg_squares := get_tree().get_nodes_in_group("EggSquares")\
+			# Filter squares if they are along the Enemies chosen row/column
+			.filter(func(square3 : Node3D) -> bool:
+				var square2 := Utilities.v3_to_v2(square3.position)
+				if !is_equal_approx(char_pos2.direction_to(square2)\
+															.dot(dir_vect), 1.0):
+					return false
+				return true)
+	if !egg_squares.size():
+		return character.position
+	
+	# Return a closer position if square position continuity is broken
+	# Return initial target otherwise
+	for i in range(egg_squares.size()):
+		var test_pos := char_pos2 + (2 * (i+1) * dir_vect)
+		if !egg_squares.any(func(square3 : Node3D) -> bool:
+				if test_pos == Utilities.v3_to_v2(square3.position):
+					return true
+				return false):
+			return Utilities.v2_to_v3(char_pos2 + (2 * i * dir_vect))
+	return target3
 
 
 func _act(_anim_finished : String) -> void:
