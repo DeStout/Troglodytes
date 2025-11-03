@@ -7,10 +7,10 @@ extends PickUp
 func _ready() -> void:
 	rotation.y = randf_range(0, TAU)
 	anim_player.play("Grow")
-	
+
 	if multiplayer.is_server():
 		apply_effect = _effect_speed.bind(0.5)
-		
+
 		await anim_player.animation_finished
 		collision.set_deferred("disabled", !multiplayer.is_server())
 		despawn_timer.start(randf_range(DESPAWN_RANGE.x, DESPAWN_RANGE.y))

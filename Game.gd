@@ -20,7 +20,7 @@ var level_num : int = 0
 
 func _ready() -> void:
 	SetWindowPos.set_window_positions(set_window_positions, show_on_main_screen)
-	
+
 	ENetNetwork.game = self
 	Pause.game = self
 
@@ -50,11 +50,11 @@ func load_next_level(player_stats : Dictionary) -> void:
 func _server_disconnected() -> void:
 	ENetNetwork.server_disconnected.disconnect(_server_disconnected)
 	ENetNetwork.reset_peer()
-	
+
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Pause.visible = false
 	get_tree().paused = false
-	
+
 	quit_to_main()
 
 
@@ -63,13 +63,13 @@ func quit_to_lobby() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Pause.visible = false
 	get_tree().paused = false
-	
+
 	ENetNetwork.server_disconnected.disconnect(_server_disconnected)
 	level.visible = false
 	if multiplayer.is_server() and level:
 		level.queue_free()
 	level_num = 0
-	
+
 	add_child(main_menu)
 	main_menu.mult_menu.lobby_menu.ready_button.button_pressed = false
 
@@ -79,14 +79,14 @@ func quit_to_main() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Pause.visible = false
 	get_tree().paused = false
-	
+
 	if ENetNetwork.server_disconnected.has_connections():
 		ENetNetwork.server_disconnected.disconnect(_server_disconnected)
 	if level:
 		level.queue_free()
 	level_num = 0
 	ENetNetwork.reset_peer()
-	
+
 	add_child(main_menu)
 	main_menu.mult_menu.back_button()
 	main_menu.mult_menu.visible = false

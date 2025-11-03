@@ -12,7 +12,7 @@ var init_think := true
 
 func enter() -> void:
 	#print(character.name, ": Enter ThinkState")
-	
+
 	character.characters.take_free_square(Utilities.get_closest_egg_square(\
 												character.global_position), true)
 	anim_player.animation_finished.connect(_act)
@@ -41,7 +41,7 @@ func _set_random_target() -> void:
 		var move_dist_vect := Utilities.get_move_dir_vect(move_dir)
 		move_dist_vect *= snappedi(randi_range(MOVE_DIST.x, MOVE_DIST.y), 2)
 		var target := Utilities.v2_to_v3(move_dist_vect)
-		
+
 		target = _check_wall_collisions(target)
 		target = _check_target_reachable(target, move_dist_vect.normalized())
 		if !target.is_equal_approx(character.position):
@@ -56,7 +56,7 @@ func _seek_player() -> void:
 	if !character.characters.players.size():
 		_set_random_target()
 		return
-	
+
 	var seek_player : Player = character.characters \
 									.get_closest_player(character.global_position)
 	var player_pos := seek_player.global_position
@@ -64,17 +64,17 @@ func _seek_player() -> void:
 	if player_dist > SEEK_DIST:
 		_set_random_target()
 		return
-	
+
 	var dir_to := Utilities.v3_to_v2(\
 							character.global_position.direction_to(player_pos))
 	var dirs = [Vector2(dir_to.x, 0), Vector2(0, dir_to.y)]
 	dirs.sort_custom(func(dir1 : Vector2, dir2 : Vector2) -> bool:
 		return dir1.length() > dir2.length())
-	
+
 	for dir in dirs:
 		dir *= snappedi(roundi(player_dist), 2)
 		var target := Utilities.v2_to_v3(dir)
-		
+
 		target = _check_wall_collisions(target)
 		target = _check_target_reachable(target, dir.normalized())
 		if !target.is_equal_approx(character.position):
@@ -82,7 +82,7 @@ func _seek_player() -> void:
 			character.target_square = Utilities.v3_to_v2(target)
 			character.debug_target.global_position = target
 			return
-	
+
 	_set_random_target()
 
 
@@ -112,7 +112,7 @@ func _check_target_reachable(target3 : Vector3, dir_vect : Vector2) -> Vector3:
 				return true)
 	if !egg_squares.size():
 		return character.position
-	
+
 	# Return a closer position if square position continuity is broken
 	# Return initial target otherwise
 	for i in range(egg_squares.size()):

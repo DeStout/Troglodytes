@@ -27,7 +27,7 @@ var num_eggs : int
 func _ready() -> void:
 	Pause.update()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
+
 	if multiplayer.is_server():
 		_set_up()
 		#_spawn_home()
@@ -35,12 +35,12 @@ func _ready() -> void:
 
 func _set_up() -> void:
 	var used_squares : Array[Node3D] = []
-	
+
 	used_squares = characters.spawn_players(used_squares)
 	_connect_player_signals()
 	_create_player_UIs()
 	await get_tree().physics_frame
-	
+
 	used_squares = characters.spawn_enemies(used_squares)
 	used_squares = pick_ups.spawn_pick_ups(used_squares)
 	traps.spawn_traps()
@@ -56,7 +56,7 @@ func _connect_player_signals() -> void:
 		player.spawn_footprint.connect(spawn_footprint)
 		player.spawn_fire_ball.connect(spawn_fire_ball)
 		Utilities.anims_to_constant(player)
-		
+
 		if player.is_multiplayer_authority():
 			camera.set_player(player)
 
@@ -64,7 +64,7 @@ func _connect_player_signals() -> void:
 func _create_player_UIs() -> void:
 	for ui in player_uis.get_children():
 		ui.visible = false
-	
+
 	for player_id in ENetNetwork.peers.keys():
 		var player_num := ENetNetwork.get_player_number(player_id)
 		player_uis.get_children()[player_num].visible = true
@@ -147,7 +147,7 @@ func egg_collected(egg : Node3D) -> void:
 func _spawn_home() -> void:
 	if !multiplayer.is_server():
 		return
-	
+
 	# Keep home_num for multiplayer synchronization
 	var home_num := randi_range(0, get_tree().get_nodes_in_group("HomeSquares").size()-1)
 	home_spawner.spawn(home_num)

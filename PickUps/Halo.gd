@@ -16,10 +16,10 @@ func _ready() -> void:
 	set_process(false)
 	rotation.y = randf_range(0, TAU)
 	anim_player.play("Descend")
-	
+
 	if multiplayer.is_server():
 		apply_effect = _set_invincible
-		
+
 		await anim_player.animation_finished
 		collision.set_deferred("disabled", !multiplayer.is_server())
 		set_process(true)
