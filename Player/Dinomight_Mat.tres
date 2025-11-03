@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://c3bf18bx57agu"]
+
+[ext_resource type="Texture2D" uid="uid://brke884vwokv1" path="res://Player/dinomight_a.png" id="1_5o3va"]
+[ext_resource type="Texture2D" uid="uid://cd0nxh7fk2rfx" path="res://Player/dinomight_n.png" id="2_465gs"]
+
+[resource]
+albedo_texture = ExtResource("1_5o3va")
+normal_enabled = true
+normal_texture = ExtResource("2_465gs")

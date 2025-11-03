@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c71p31dd61txw"]
+
+[ext_resource type="PackedScene" uid="uid://b6h42arattq18" path="res://Player/Dinomight.blend" id="1_wd2ox"]
+[ext_resource type="Material" uid="uid://c3bf18bx57agu" path="res://Player/Dinomight_Mat.tres" id="2_puyej"]
+
+[node name="Dinomight" instance=ExtResource("1_wd2ox")]
+
+[node name="bottomteeth" parent="Dinomight/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_puyej")
+
+[node name="eyes" parent="Dinomight/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("2_puyej")
+
+[node name="spikes" parent="Dinomight/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("2_puyej")
+
+[node name="topteeth" parent="Dinomight/Skeleton3D" index="3"]
+surface_material_override/0 = ExtResource("2_puyej")
+
+[node name="body" parent="Dinomight/Skeleton3D" index="4"]
+surface_material_override/0 = ExtResource("2_puyej")
