@@ -5,13 +5,13 @@ signal despawn
 
 const SCORE_VALUE := 150
 
-enum EFFECTS { SPEED_UP, SLOW_DOWN, FIRE_POWER, FREEZE, INVINCIBLE, PINEAPPLE }
+enum EFFECTS { BERRY_BUSH, SPIDER_WEB, FIRE_POWER, ICE_BLOCK, HALO, TOOTH }
 @export var effect : EFFECTS = -1
 @export var mesh : Node3D = null
 @export var sfx : AudioStreamPlayer
 @export var collision : CollisionShape3D
 
-const DESPAWN_RANGE := Vector2(9.0, 14.0)
+const DESPAWN_RANGE := Vector2(12.0, 20.0)
 @export var despawn_timer : Timer
 
 var apply_effect : Callable
@@ -55,6 +55,10 @@ func _apply_freeze(player : Player) -> void:
 
 func _set_invincible(player : Player) -> void:
 	player.set_invincible.rpc()
+
+
+func _dinomight(player: Player) -> void:
+	player.dinomight.rpc()
 
 
 func _despawn() -> void:

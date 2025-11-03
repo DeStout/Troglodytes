@@ -1,18 +1,18 @@
 extends MultiplayerSpawner
 
 
-enum PICK_UPS {BERRY_BUSH, SPIDER_WEB, FIRE_POWER, ICE_BLOCK, INVINCIBLE, PINEAPPLE}
+enum PICK_UPS { BERRY_BUSH, SPIDER_WEB, FIRE_POWER, ICE_BLOCK, HALO, TOOTH }
 var pick_ups : Dictionary[PICK_UPS, Variant] = {PICK_UPS.BERRY_BUSH : load("res://PickUps/BerryBush.tscn"),
 											PICK_UPS.SPIDER_WEB : load("res://PickUps/SpiderWeb.tscn"),
 											PICK_UPS.FIRE_POWER : load("res://PickUps/FirePower.tscn"),
 											PICK_UPS.ICE_BLOCK : load("res://PickUps/IceBlock.tscn"),
-											PICK_UPS.INVINCIBLE : load("res://PickUps/Halo.tscn"),
-											PICK_UPS.PINEAPPLE : ""}
+											PICK_UPS.HALO : load("res://PickUps/Halo.tscn"),
+											PICK_UPS.TOOTH : load("res://PickUps/Tooth.tscn")}
 
 @export var level : Node3D
 @export var characters : MultiplayerSpawner
 @export var num_pick_ups := 4
-@export var respawn_delay := Vector2(1.0, 5.0)
+@export var respawn_delay := Vector2(2.0, 17.0)
 @export var level_pick_ups : Array[PICK_UPS]
 
 
@@ -41,9 +41,9 @@ func spawn_pick_ups(used_squares : Array[Node3D]) -> Array:
 		if characters.any_player_within_dist(egg_square.global_position, 2.0):
 			egg_squares.erase(egg_square)
 			egg_square = egg_squares.pick_random()
-		
+
 		spawn({"position" : egg_square.global_position, "type" : level_pick_ups.pick_random()})
-		
+
 		egg_squares.erase(egg_square)
 		used_squares.append(egg_square)
 	return used_squares
@@ -53,7 +53,7 @@ func spawn_pick_ups(used_squares : Array[Node3D]) -> Array:
 func _pick_up_despawned(pick_up : PickUp) -> void:
 	level.set_square_free(Utilities.get_closest_egg_square(pick_up.global_position))
 	await get_tree().create_timer(randf_range(respawn_delay.x, respawn_delay.y)).timeout
-	
+
 	var egg_square = await _wait_for_free_square()
 	spawn({"position" : egg_square.position, "type" : level_pick_ups.pick_random()})
 
@@ -63,7 +63,7 @@ func _wait_for_free_square() -> Node3D:
 		print("Pick Ups - waiting for free square")
 		await get_tree().create_timer(0.5).timeout
 	var egg_square : Node3D = level.get_rand_free_square()
-	
+
 	while characters.any_player_within_dist(egg_square.global_position, 2.0):
 		level.set_square_free(egg_square)
 		await get_tree().create_timer(0.5).timeout

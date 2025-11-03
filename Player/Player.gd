@@ -98,7 +98,7 @@ func _footstep(foot_down : bool) -> void:
 func attack() -> void:
 	if !multiplayer.is_server() and !is_multiplayer_authority():
 		return
-	
+
 	if is_multiplayer_authority():
 		if anim_player.current_animation == "Attack":
 			anim_player.stop()
@@ -109,7 +109,7 @@ func attack() -> void:
 		attack_cast.force_shapecast_update()
 		if attack_cast.is_colliding():
 			_play_attack_sfx.rpc(get_path_to(hit_sfx))
-				
+
 			var collisions : Array = attack_cast.collision_result
 			for collision in collisions:
 				if collision.collider is Enemy:
@@ -164,7 +164,7 @@ func flash_halo(vis_time : float) -> void:
 	if !invincible_timer.time_left or inv_time_left > INV_FLASH_TIME:
 		halo.visible = invincible_timer.time_left
 		return
-	
+
 	halo.visible = !halo.visible
 	vis_time = vis_time * (2.0 / 3.0) if bool(vis_time) else 0.4
 	vis_time = max(vis_time, 0.05)
@@ -189,12 +189,16 @@ func apply_freeze() -> void:
 	freeze_pick_up.emit()
 
 
+func dinomight() -> void:
+	print("I'm a dino. RAWR. I'm gonna bite you")
+
+
 @rpc("any_peer", "call_local", "reliable")
 func attacked() -> void:
 	if multiplayer.get_remote_sender_id() != 1:
 		push_error("Attack rpc blocked")
 		return
-	
+
 	if state_machine.current_state.has_method("attacked"):
 		state_machine.current_state.attacked()
 
@@ -203,7 +207,7 @@ func attacked() -> void:
 func exit_stage() -> void:
 	if is_queued_for_deletion():
 		return
-	
+
 	if !invincible_timer.time_left:
 		die()
 	else:
@@ -216,7 +220,7 @@ func exit_stage() -> void:
 func pit_fall(pit_path : NodePath) -> void:
 	if multiplayer.get_remote_sender_id() != 1:
 		return
-	
+
 	var pit_fall : Trap = get_node(pit_path)
 	if !pit_fall:
 		push_error("Bad pit fall node path")
@@ -246,7 +250,7 @@ func respawn() -> void:
 	speed = (MAX_SPEED + MIN_SPEED) / 2
 	anim_speed = (MAX_ANIM_SPEED + MIN_ANIM_SPEED) / 2
 	anim_player.speed_scale = anim_speed
-	
+
 	fire_power_timer.stop()
 	var respawn_pos = Utilities.get_closest_egg_square(global_position).global_position
 	position = Vector3(respawn_pos.x, 0, respawn_pos.z)
